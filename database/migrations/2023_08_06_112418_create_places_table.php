@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('adress');     #
             $table->string('workhours');  # робочі години
             $table->text('desc');         # опис закладу
-            $table->float('sitplaces');   # посадочн місць
+            $table->unsignedSmallInteger('sitplaces');   # посадочн місць
             $table->string('delivery');   # що по доставці
             $table->string('manager');    # контакти керуючого viber,tg,....
             $table->string('phone1');

@@ -13,9 +13,20 @@
 	<div class="wrap_main">
 		<h1>QR меню Вінниця</h1>
 		<h2>Найкращі заклади та меню у Вінниці</h2>
+		<div class="navbar">
+			<a href="{{ route('index') }}">Головна</a>
+			<a href="{{ route('place.add')  }}">+</a>
+			<a href="{{ route('home') }}">Мої заклади</a>
+			<a href="{{ route('register') }}">Реєстрація</a>
+			<a href="{{ route('login') }}">Вхід</a>
+			<form action="{{ route('logout') }}" method="POST">
+				@csrf
+				<input type="submit" class="btn" value="Вихід">
+			</form>
+		</div>
 
 		@yield('main')
 	</div>
 	
 </body>
-</html>
+</html>	

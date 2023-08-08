@@ -1,23 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+@section ('main')
+@if(count ($places) > 0)
+<table class="table table-striped">
+    @foreach ($places as $place)
+    <tr>
+        <td>{{ $place->name }}</td>
+        <td>{{ $place->adress }}</td>
+        <td>{{ $place->workhours }}</td>
+        <td>{{ $place->sitplaces }}</td>
+        <td>{{ $place->delivery }}</td>
+        <td>{{ $place->manager }}</td>
+        <td>{{ $place->phone1 }}</td>
+        <td>{{ $place->viber }}</td>
+        <td><a href="">edit</a></td>
+        <td><a href="">delete</a></td>
+    </tr>
+    @endforeach
+</table>
+@endif
+@endsection('main')

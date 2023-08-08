@@ -11,24 +11,27 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::create('places', function (Blueprint $table) {
+            $value = ''; // empty value
+            
             $table->id();
             $table->string('name');       # назва закладу
             $table->string('adress');     #
             $table->string('workhours');  # робочі години
-            $table->text('desc');         # опис закладу
-            $table->unsignedSmallInteger('sitplaces');   # посадочн місць
-            $table->string('delivery');   # що по доставці
+            $table->text('description');         # опис закладу
+            $table->unsignedSmallInteger('sitplaces')->default(0);   # посадочн місць
+            $table->string('delivery')->default($value);   # що по доставці
             $table->string('manager');    # контакти керуючого viber,tg,....
-            $table->string('phone1');
-            $table->string('phone2');
-            $table->string('phone3');
-            $table->string('phone4');
-            $table->string('email');
-            $table->string('viber');
-            $table->string('telegram');
-            $table->string('insta');
-            $table->string('fb');
+            $table->string('phone1')->default($value);
+            $table->string('phone2')->default($value);
+            $table->string('phone3')->default($value);
+            $table->string('phone4')->default($value);
+            $table->string('email')->default($value);
+            $table->string('viber')->default($value);
+            $table->string('telegram')->default($value);
+            $table->string('insta')->default($value);
+            $table->string('fb')->default($value);
             $table->timestamps();
             $table->index('id');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

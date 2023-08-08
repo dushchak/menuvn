@@ -46,6 +46,6 @@ class User extends Authenticatable
     ];
 
     public function places(){
-        return $this->hasMany(Places::class);
+        return $this->hasMany(Places::class); // звязок "один -> багато"
     }
 }

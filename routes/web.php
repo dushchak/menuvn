@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+/*V*/
 use App\Http\Controllers\PlacesController;  
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +24,9 @@ use App\Http\Controllers\PlacesController;
 Route::get('/', [PlacesController::class, 'index'])->name('index');
 
 Auth::routes();
+
+Route::get('/home/add', [App\Http\Controllers\HomeController::class, 'formAddPlace'])->name('place.add');
+
+Route::post('/home', [App\Http\Controllers\HomeController::class, 'storePlace'])->name('place.store');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

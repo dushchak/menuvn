@@ -5,7 +5,7 @@
             $table->string('name');       # (*) назва закладу
             $table->string('adress');     #(*) 
             $table->string('workhours');  # (*) робочі години
-            $table->text('desc');         # (*) опис закладу
+            $table->text('description');         # (*) опис закладу
             $table->unsignedSmallInteger('sitplaces');   # посадочн місць
             $table->string('delivery');   # що по доставці
             $table->string('manager');    # (*) контакти керуючого viber,tg,....
@@ -34,7 +34,7 @@ class Places extends Model
         'name',
         'adress',
         'workhours',
-        'desc',
+        'description',
         'sitplaces',
         'delivery',
         'manager',

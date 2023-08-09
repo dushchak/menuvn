@@ -13,7 +13,7 @@ return new class extends Migration
     {
 
         Schema::create('places', function (Blueprint $table) {
-            $value = ''; // empty value
+            // $value = ''; // empty value
             
             $table->id();
             $table->string('name');       # назва закладу
@@ -21,17 +21,17 @@ return new class extends Migration
             $table->string('workhours');  # робочі години
             $table->text('description');         # опис закладу
             $table->unsignedSmallInteger('sitplaces')->default(0);   # посадочн місць
-            $table->string('delivery')->default($value);   # що по доставці
+            $table->string('delivery')->nullable();   # що по доставці
             $table->string('manager');    # контакти керуючого viber,tg,....
-            $table->string('phone1')->default($value);
-            $table->string('phone2')->default($value);
-            $table->string('phone3')->default($value);
-            $table->string('phone4')->default($value);
-            $table->string('email')->default($value);
-            $table->string('viber')->default($value);
-            $table->string('telegram')->default($value);
-            $table->string('insta')->default($value);
-            $table->string('fb')->default($value);
+            $table->string('phone1');
+            $table->string('phone2')->nullable();
+            $table->string('phone3')->nullable();
+            $table->string('phone4')->nullable();
+            $table->string('email')->nullable();
+            $table->string('viber')->nullable();
+            $table->string('telegram')->nullable();
+            $table->string('insta')->nullable();
+            $table->string('fb')->nullable();
             $table->timestamps();
             $table->index('id');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

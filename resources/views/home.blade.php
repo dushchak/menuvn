@@ -17,6 +17,9 @@
         <td>{{ $place->viber }}</td>
         <td><a href="">edit</a></td>
         <td><a href="">delete</a></td>
+        <td><a href="{{ route('dish.add', $place->id)    }}">new dish</a></td>
+        <td><a href="">view menu</a></td>
+
     </tr>
     @endforeach
 </table>

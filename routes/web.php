@@ -25,8 +25,18 @@ Route::get('/', [PlacesController::class, 'index'])->name('index');
 
 Auth::routes();
 
+// add new resto
 Route::get('/home/add', [App\Http\Controllers\HomeController::class, 'formAddPlace'])->name('place.add');
 
 Route::post('/home', [App\Http\Controllers\HomeController::class, 'storePlace'])->name('place.store');
+
+// add new dish
+Route::get('/home/newdish/{placeid}', [App\Http\Controllers\HomeController::class, 'formNewDish'])->name('dish.add');
+
+Route::post('/home', [App\Http\Controllers\HomeController::class, 'storeDish'])->name('dish.store');
+
+
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,0 +1,65 @@
+@extends('layouts.base')
+
+@section('title')
+
+@section('main')
+<div class="container">
+	<h1>Додати страву до меню</h1>
+<form action="{{ route('dish.store') }}" method="POST">
+	@csrf
+
+	<input type="hidden" id="postId" name="places_id" value="{{$placeid}}" />
+
+
+	<div class="form-group">
+		<label for="txtName">*Назва страви</label>
+		<input type="text" name="dish_title" id="txtName" class="form-control">
+	</div>
+
+	<select name="dish_group">
+  <!--Supplement an id here instead of using 'name'-->
+  <option value="Основне меню" selected>Основне меню</option>
+  <option value="Холодні закуски">Холодні закуски</option>
+  <option value="Гарячі закуски">Гарячі закуски</option>
+  <option value="Перші страви">Перші страви</option>
+  <option value="Гарніри">Гарніри</option>
+  <option value="Салати">Салати</option>
+  <option value="Десерт">Десерт</option>
+  <option value="Гарячі напої">Гарячі напої</option>
+  <option value="Холодні напої">Холодні напої</option>
+  <option value="Пиво">Пиво</option>
+  <option value="Вино">Вино</option>
+  <option value="Міцні напої">Міцні напої</option>
+
+</select>
+	
+	
+	<div class="form-group">
+		<label for="txtDesc">*Про страву - склад, пропорції, опис та особливості приготування, ітп</label>
+		<textarea id="txtDesc" name="description" rows="5" cols="60">
+			20/50/30 Сметана/Дируни/Соус 
+		</textarea>
+
+	</div>
+	<!--  -->
+
+	<div class="form-group">
+		<label for="txtSitPlaces">Вага 1 порції, грамм</label>
+		<input type="text" name="portionweight" id="txtName" class="form-control">
+	</div>
+	<div class="form-group">
+		<label for="txtDelivery">*Ціна 1 порції, грн</label>
+		<input type="text" name="portioncost" id="txtName" class="form-control">
+	</div>
+	<div class="form-group">
+		<label for="txtManager">Ціна за 100 грамм, грн</label>
+		<input type="text" name="cost100g" id="txtName" class="form-control">
+	</div>
+
+	<div class="form-group">
+		<input type="submit" class="btn btn-primary" value="Додати">
+	</div>
+</form>
+</div>
+
+@endsection

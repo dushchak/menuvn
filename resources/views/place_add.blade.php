@@ -6,6 +6,8 @@
 <div class="container">
 <form action="{{ route('place.store') }}" method="POST">
 	@csrf
+
+
 	<div class="form-group">
 		<label for="txtName">Назва закладу</label>
 		<input type="text" name="name" id="txtName" class="form-control">

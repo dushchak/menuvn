@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 /*V*/
 use Illuminate\Support\Facades\Auth; // підключаєм трейт фасад авторизації 
+use App\Models\Places;
+use App\Models\Dish;  
+use App\Models\Photo;  
 
 class HomeController extends Controller
 {
@@ -54,5 +57,29 @@ class HomeController extends Controller
         ]);
 
         return redirect()->route('home');
+    }
+
+    public function formNewDish($placeid){
+       return view('dish_add', ['placeid'=>$placeid]);
+    }
+
+
+    public function storeDish(Request $request){
+
+        if(Auth::user()) {  //!!!! тут треба через Polices 
+
+            Dish::create([
+            'dishtitle'=> $request->dish_title,
+            'dishgroup'=> $request->dish_group,
+            'description'=> $request->description,
+            'portionweight'=> $request->portionweight,
+            'portioncost'=> $request->portioncost,
+            'cost100g'=> $request->cost100g,
+            'places_id'=> $request->places_id
+            ]);
+
+        return redirect()->route('home');
+        }
+    
     }
 }

@@ -21,7 +21,9 @@ use App\Http\Controllers\HomeController;
 //     return view('welcome');
 // });
 
-Route::get('/', [PlacesController::class, 'index'])->name('index');
+Route::get('/', [PlacesController::class, 'index'])->name('index'); //guests
+
+Route::get('/menu/{placeid}', [PlacesController::class, 'viewMenu'])->name('viewMenu'); // guests
 
 Auth::routes();
 

@@ -2,9 +2,8 @@
 
 /*
             $table->id();
-            $table->string('title');
-            $table->string('category')->nullable();
-            $table->string('group')->nullable(); 
+            $table->string('dishtitle');
+            $table->string('dishgroup')->nullable(); 
             $table->text('description');
             $table->string('portionweight')->nullable();
             $table->string('portioncost');
@@ -32,5 +31,7 @@ class Dish extends Model
         'cost100g',
         'places_id'
     ];
+
+    
 
 }

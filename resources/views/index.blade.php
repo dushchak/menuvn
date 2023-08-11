@@ -21,6 +21,7 @@
 		<td>{{ $place->manager }}</td>
         <td>{{ $place->phone1 }}</td>
 		<td>{{ $place->viber }}</td>
+		<td><a href="{{ route('viewMenu', $place->id) }}">view menu</a></td>
 	</tr>
 	@endforeach
 </table>

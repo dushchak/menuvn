@@ -19,6 +19,7 @@
         <td>{{ $dish->cost100g }}</td>
         <td><a href="">edit dish</a></td>
         <td><a href="">delete dish</a></td>
+        <td><a href="">Повідомити про помилку</a></td>
         
 
 

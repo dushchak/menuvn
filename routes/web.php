@@ -35,7 +35,7 @@ Route::post('/home', [App\Http\Controllers\HomeController::class, 'storeDish'])-
 // add new resto
 Route::get('/home/add', [App\Http\Controllers\HomeController::class, 'formAddPlace'])->name('place_add');
 
-Route::post('/home', [App\Http\Controllers\HomeController::class, 'storePlace'])->name('place.store');
+Route::post('/home/store', [App\Http\Controllers\HomeController::class, 'storePlace'])->name('place.store');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

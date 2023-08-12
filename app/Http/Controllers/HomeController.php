@@ -78,7 +78,7 @@ class HomeController extends Controller
             'places_id'=> $request->places_id
             ]);
 
-        return redirect()->route('home');
+        return redirect()->route('viewMenu', $request->places_id);
         }
     
     }

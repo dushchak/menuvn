@@ -4,7 +4,7 @@
 
 @section ('main')
 <div class="newdish">
-    <a href="">new dish</a>
+    <a href="{{route('dish.add', $placeid)}}">new dish</a>
 </div>
 @if(count ($menu) > 0)
 <table class="table table-striped">

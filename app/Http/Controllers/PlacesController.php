@@ -28,7 +28,7 @@ class PlacesController extends Controller
 
         //dd($menu);
 
-        return view ('viewmenu', ['menu'=>$menu] ); // вивід dishes
+        return view ('viewmenu', ['menu'=>$menu, 'placeid'=>$placeid] ); // вивід dishes
 
     }
 }

@@ -37,6 +37,20 @@ class HomeController extends Controller
     }
 
     public function storePlace(Request $request) {
+        $validatedData = $request->validate([
+                'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+
+        if($request->hasFile('image_file')){
+            #get original name file with extension
+            $fileNameWithExt = $request->file('image_file')->getClientOriginalName(); // Exempl: "krah-bitkoin.jpg"
+            $fileNameWithExt = str_replace(" ", "_", $fileNameWithExt); // замена пробелов(якщо є) на _
+
+            #Uploading file - Загрузка файла в папку /storage
+            $path = $request->file('image_file')->storeAs('public/images/places', $fileNameWithExt);//"krah-bitcoina_1691843459.jpg"
+//          dd($path);
+        }              
+
         Auth::user()->places()->create([
             'name'=> $request->name,
             'adress'=> $request->adress,
@@ -53,7 +67,8 @@ class HomeController extends Controller
             'viber'=> $request->viber,
             'telegram'=> $request->telegram,
             'insta'=> $request->insta,
-            'fb'=> $request->fb
+            'fb'=> $request->fb,
+            'thumbnail'=>$fileNameWithExt,
         ]);
 
         return redirect()->route('home');
@@ -68,6 +83,30 @@ class HomeController extends Controller
 
         if(Auth::user()) {  //!!!! тут треба через Polices 
 
+            //dd($request->file('select_file'));
+            $validatedData = $request->validate([
+                'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+
+            if($request->hasFile('image_file')){
+                #get original name file with extension
+                $fileNameWithExt = $request->file('image_file')->getClientOriginalName(); // Exempl: "krah-bitkoin.jpg"
+                $fileNameWithExt = str_replace(" ", "_", $fileNameWithExt); // замена пробелов(якщо є) на _   
+
+                # file name
+                $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);     // "krah-bitkoin"
+                
+                # file extension like ".jpg"
+                $extension = $request->file('image_file')->getClientOriginalExtension();  // ".jpg"
+                
+                #   new name з Unixtime з розширенням 
+                $newName = $fileName."_".time().".".$extension;  // krah-bitkoin_2023-08-12.jpg
+                
+                #Uploading file - Загрузка файла в папку /storage
+                $path = $request->file('image_file')->storeAs('public/images/dishes', $fileNameWithExt);//"krah-bitcoina_1691843459.jpg"
+//                dd($path);
+            }    
+
             Dish::create([
             'dishtitle'=> $request->dish_title,
             'dishgroup'=> $request->dish_group,
@@ -75,7 +114,9 @@ class HomeController extends Controller
             'portionweight'=> $request->portionweight,
             'portioncost'=> $request->portioncost,
             'cost100g'=> $request->cost100g,
-            'places_id'=> $request->places_id
+            'places_id'=> $request->places_id,
+//            'thumbnail' => $request->file('image_file')->store('images/dishes'),
+             'thumbnail' => $fileNameWithExt, 
             ]);
 
         return redirect()->route('viewMenu', $request->places_id);

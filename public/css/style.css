@@ -3,3 +3,14 @@
 	width: 1000px;
 	margin: 0 auto;
 }
+
+
+.dish__image {
+	height: 100px;
+}
+
+
+.footer {
+	margin: 0 auto;
+	text-align: center;
+}

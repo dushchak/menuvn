@@ -29,7 +29,8 @@ class Dish extends Model
         'portionweight',
         'portioncost',
         'cost100g',
-        'places_id'
+        'places_id',
+        'thumbnail'
     ];
 
     

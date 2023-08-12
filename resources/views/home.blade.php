@@ -7,6 +7,7 @@
 <table class="table table-striped">
     @foreach ($places as $place)
     <tr>
+        <td><img class="dish__image" src="/storage/images/places/{{$place->thumbnail}}" alt=""></td>
         <td>{{ $place->name }}</td>
         <td>{{ $place->adress }}</td>
         <td>{{ $place->workhours }}</td>

@@ -10,7 +10,7 @@
 <table class="table table-striped">
     @foreach ($menu as $dish)
     <tr>
-        <td>image</td>
+        <td><img class="dish__image" src="/storage/images/dishes/{{$dish->thumbnail}}" alt=""></td>
         <td>{{ $dish->dishtitle }}</td>
         <td>{{ $dish->dishgroup }}</td>
         <td>{{ $dish->description }}</td>

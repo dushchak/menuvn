@@ -5,7 +5,7 @@
 @section('main')
 <div class="container">
 	<h1>Додати страву до меню</h1>
-<form action="{{ route('dish.store') }}" method="POST">
+<form action="{{ route('dish.store') }}" method="POST" enctype="multipart/form-data" >
 	@csrf
 
 	<input type="hidden" id="postId" name="places_id" value="{{$placeid}}" />
@@ -57,9 +57,26 @@
 	</div>
 
 	<div class="form-group">
+		<label  >Thumbnail</label>
+		<br>
+		<input type="file" name="image_file">
+	</div>
+
+	<div class="form-group">
 		<input type="submit" class="btn btn-primary" value="Додати">
 	</div>
 </form>
+<div class="valid_errors">
+	@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+</div>
 </div>
 
 @endsection

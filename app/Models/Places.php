@@ -51,7 +51,8 @@ class Places extends Model
         'viber',
         'telegram',
         'insta',
-        'fb'
+        'fb',
+        'thumbnail',
         ];
 
     // звязок вгору з клонкою таблиці: users.id

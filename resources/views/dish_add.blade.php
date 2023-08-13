@@ -5,7 +5,7 @@
 @section('main')
 <div class="container">
 	<h1>Додати страву до меню</h1>
-<form action="{{ route('dish.store') }}" method="POST" enctype="multipart/form-data" >
+<form action="{{ route('dish.save') }}" method="POST" enctype="multipart/form-data" >
 	@csrf
 
 	<input type="hidden" id="postId" name="places_id" value="{{$placeid}}" />

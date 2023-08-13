@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('portioncost');
             $table->string('cost100g')->nullable();
             $table->unsignedTinyInteger('position')->default(100);
-            $table->string('thumbnail');
+            $table->string('thumbnail')->nullable();
             $table->foreignId('places_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

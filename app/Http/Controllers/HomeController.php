@@ -79,11 +79,12 @@ class HomeController extends Controller
     }
 
 
-    public function storeDish(Request $request){
+
+    // Зберігаєм страву з меню
+    public function saveDish(Request $request){
 
         if(Auth::user()) {  //!!!! тут треба через Polices 
 
-            //dd($request->file('select_file'));
             $validatedData = $request->validate([
                 'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ]);
@@ -107,16 +108,19 @@ class HomeController extends Controller
 //                dd($path);
             }    
 
-            Dish::create([
-            'dishtitle'=> $request->dish_title,
-            'dishgroup'=> $request->dish_group,
-            'description'=> $request->description,
-            'portionweight'=> $request->portionweight,
-            'portioncost'=> $request->portioncost,
-            'cost100g'=> $request->cost100g,
-            'places_id'=> $request->places_id,
-//            'thumbnail' => $request->file('image_file')->store('images/dishes'),
-             'thumbnail' => $fileNameWithExt, 
+            // створюємо обєкт одного закладу = place_id
+            $place = Places::firstOrNew(['id'=>$request->places_id]);
+            /* викликаємо метод "прямогозвязку" методом dishes()
+             який автоматом додає в таблицю БД - "place_id"
+             */
+            $place->dishes()->create([
+                'dishtitle'=> $request->dish_title,
+                'dishgroup'=> $request->dish_group,
+                'description'=> $request->description,
+                'portionweight'=> $request->portionweight,
+                'portioncost'=> $request->portioncost,
+                'cost100g'=> $request->cost100g,
+                'thumbnail' => $fileNameWithExt, 
             ]);
 
         return redirect()->route('viewMenu', $request->places_id);

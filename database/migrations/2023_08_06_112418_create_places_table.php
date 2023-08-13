@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('telegram')->nullable();
             $table->string('insta')->nullable();
             $table->string('fb')->nullable();
-            $table->string('thumbnail');
+            $table->string('thumbnail')->nullable();
             $table->timestamps();
             $table->index('id');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

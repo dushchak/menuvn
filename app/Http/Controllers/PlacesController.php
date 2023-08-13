@@ -24,8 +24,14 @@ class PlacesController extends Controller
     // перегляд меню
     public function viewMenu($placeid) {
 
-        $menu = Dish::where('places_id', $placeid)->get();
+        #var 1
+        //$menu = Places::where ($placeid);
+        // $menu->dishes()->latest()->get();
 
+        #var 2
+        //$menu = Dish::all();
+
+         $menu = Dish::where('places_id', $placeid)->orderBy('dishgroup','asc')->orderBy('position','asc')->get();
         //dd($menu);
 
         return view ('viewmenu', ['menu'=>$menu, 'placeid'=>$placeid] ); // вивід dishes

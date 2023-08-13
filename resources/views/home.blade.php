@@ -17,7 +17,7 @@
         <td>{{ $place->phone1 }}</td>
         <td>{{ $place->viber }}</td>
         <td><a href="">edit</a></td>
-        <td><a href="">delete</a></td>
+        <td><a href="">Відключити</a></td>
         <td><a href="{{ route('dish.add', $place->id)    }}">new dish</a></td>
         <td><a href="{{ route('viewMenu', $place->id) }}">view menu</a></td>
 

@@ -30,8 +30,14 @@ class Dish extends Model
         'portioncost',
         'cost100g',
         'places_id',
+        'position',
         'thumbnail'
     ];
+
+
+    public function oneplace(){
+        return $this->belongsTo(Places::class);
+    }
 
     
 

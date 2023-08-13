@@ -109,6 +109,7 @@ class HomeController extends Controller
             }    
 
             // створюємо обєкт одного закладу = place_id
+            //$place = Places::find(['id'=>$request->places_id]);
             $place = Places::firstOrNew(['id'=>$request->places_id]);
             /* викликаємо метод "прямогозвязку" методом dishes()
              який автоматом додає в таблицю БД - "place_id"

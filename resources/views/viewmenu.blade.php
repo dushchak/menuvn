@@ -6,7 +6,7 @@
 <div class="newdish">
     <a href="{{route('dish.add', $placeid)}}">new dish</a>
 </div>
-@if(count ($menu) > 0)
+@if(count ($menu) > 0) 
 <table class="table table-striped">
     @foreach ($menu as $dish)
     <tr>
@@ -17,9 +17,12 @@
         <td>{{ $dish->portionweight }}</td>
         <td>{{ $dish->portioncost }}</td>
         <td>{{ $dish->cost100g }}</td>
-        <td><a href="">edit dish</a></td>
-        <td><a href="">delete dish</a></td>
+        <td><a href="">+</a></td>
+        <td><a href="">-</a></td>
+        <td><a href="">edit</a></td>
+        <td><a href="">delete</a></td>
         <td><a href="">Повідомити про помилку</a></td>
+        <td></td>
         
 
 

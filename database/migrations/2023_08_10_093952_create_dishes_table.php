@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
             $table->string('dishtitle');
-            $table->string('dishgroup')->nullable(); 
+            $table->unsignedTinyInteger('dishgroup')->default(1); 
             $table->text('description');
             $table->string('portionweight')->nullable();
             $table->string('portioncost');
             $table->string('cost100g')->nullable();
-            $table->unsignedTinyInteger('position')->default(100);
+            $table->tinyInteger('position')->default(1);
             $table->string('thumbnail')->nullable();
             $table->foreignId('places_id')->constrained()->onDelete('cascade');
             $table->timestamps();

@@ -18,18 +18,20 @@
 
 	<select name="dish_group">
   <!--Supplement an id here instead of using 'name'-->
-  <option value="Основне меню" selected>Основне меню</option>
-  <option value="Холодні закуски">Холодні закуски</option>
-  <option value="Гарячі закуски">Гарячі закуски</option>
-  <option value="Перші страви">Перші страви</option>
-  <option value="Гарніри">Гарніри</option>
-  <option value="Салати">Салати</option>
-  <option value="Десерт">Десерт</option>
-  <option value="Гарячі напої">Гарячі напої</option>
-  <option value="Холодні напої">Холодні напої</option>
-  <option value="Пиво">Пиво</option>
-  <option value="Вино">Вино</option>
-  <option value="Міцні напої">Міцні напої</option>
+  <option value="1" selected>Основне меню</option>
+  <option value="2">Холодні закуски</option>
+  <option value="3">Гарячі закуски</option>
+  <option value="4">Перші страви</option>
+  <option value="5">Гарніри</option>
+  <option value="6">Салати</option>
+  <option value="7">Десерт</option>
+  <option value="8">Гарячі напої</option>
+  <option value="9">Холодні напої</option>
+  <option value="10">Пиво</option>
+  <option value="11">Вино</option>
+  <option value="12">Міцні напої</option>
+  <option value="13">Алкогольні напої</option>
+  <option value="14">Коктейлі</option>
 
 </select>
 	

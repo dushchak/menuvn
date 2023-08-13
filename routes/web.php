@@ -27,19 +27,22 @@ Route::get('/menu/{placeid}', [PlacesController::class, 'viewMenu'])->name('view
 
 Auth::routes();
 
-// add new dish
-Route::get('/home/newdish/{placeid}', [App\Http\Controllers\HomeController::class, 'formNewDish'])->name('dish.add');
-
-//Route::post('/home', [App\Http\Controllers\HomeController::class, 'storeDish'])->name('dish.store');
-
-
 // add new resto
 Route::get('/home/add', [App\Http\Controllers\HomeController::class, 'formAddPlace'])->name('place_add');
 
 Route::post('/home/store', [App\Http\Controllers\HomeController::class, 'storePlace'])->name('place.store');
 
+// add new dish
+Route::get('/home/newdish/{placeid}', [App\Http\Controllers\HomeController::class, 'formNewDish'])->name('dish.add');
+
+//Route::post('/home', [App\Http\Controllers\HomeController::class, 'storeDish'])->name('dish.store');
 //test
 Route::post('/home/save', [App\Http\Controllers\HomeController::class, 'saveDish'])->name('dish.save');
+
+
+
+
+
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

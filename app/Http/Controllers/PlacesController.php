@@ -31,4 +31,9 @@ class PlacesController extends Controller
         return view ('viewmenu', ['menu'=>$menu, 'placeid'=>$placeid] ); // вивід dishes
 
     }
+
+    public function printQR(){
+
+        return view ('QRpage');
+    } 
 }

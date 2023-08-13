@@ -19,12 +19,13 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [PlacesController::class, 'index'])->name('index'); //guests
 
+Route::get('/menu/print', [PlacesController::class, 'printQR'])->name('printQRpage'); // guests
+
 Route::get('/menu/{placeid}', [PlacesController::class, 'viewMenu'])->name('viewMenu'); // guests
 
+
+
 Auth::routes();
-
-
-
 
 // add new dish
 Route::get('/home/newdish/{placeid}', [App\Http\Controllers\HomeController::class, 'formNewDish'])->name('dish.add');

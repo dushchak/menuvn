@@ -27,6 +27,11 @@
     @endforeach
 </table>
 @endif
+
+<div class="testinfo">
+    Lorem ipsum dolor sit amet consectetur adipisicing, elit. Eligendi aspernatur provident pariatur, corrupti placeat molestias tenetur quidem voluptatem vero voluptatibus ipsa vitae, magni quasi quae optio nisi ipsum eius assumenda.
+</div>
+
 <div class="footer">
    
     {!! 
@@ -39,6 +44,11 @@
         ->margin(1)
         ->generate(Request::url()); 
     !!}
+<div>
+    <a href="{{ route('printQRpage')   }}">Сторінка для друку</a>   
+</div>
+    
+
     
 </div>
 @endsection('main')

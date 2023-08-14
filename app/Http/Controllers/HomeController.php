@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; // підключаєм трейт фасад авторизації 
 use App\Models\Places;
 use App\Models\Dish;  
-use App\Models\Photo;  
+use App\Models\Photo; 
+//use App\Http\Controllers\Storage;
+use Illuminate\Support\Facades\Storage; 
 
 class HomeController extends Controller
 {
@@ -47,7 +49,7 @@ class HomeController extends Controller
             $fileNameWithExt = str_replace(" ", "_", $fileNameWithExt); // замена пробелов(якщо є) на _
 
             #Uploading file - Загрузка файла в папку /storage
-            $path = $request->file('image_file')->storeAs('public/images/places', $fileNameWithExt);//"krah-bitcoina_1691843459.jpg"
+            $path = $request->file('image_file')->storeAs('public/images/places', $fileNameWithExt);//"krah-bitc_1691843459.jpg"
 //          dd($path);
         }              
 
@@ -74,11 +76,96 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
-    public function formNewDish($placeid){
-       return view('dish_add', ['placeid'=>$placeid]);
+    public function formEditPlace(Places $placeid) {
+
+        //$places = Places::find($placeid)->get();
+        //dd($placeid);
+
+        return view('editPlace',['place'=>$placeid]);
+
+    }
+
+    public function updatePlace(Request $request,Places $placeid) {
+/*        
+        $validatedData = $request->validate([
+                'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+
+        if($request->hasFile('image_file')){
+            #get original name file with extension
+            $fileNameWithExt = $request->file('image_file')->getClientOriginalName(); // Exempl: "krah-bitkoin.jpg"
+            $fileNameWithExt = str_replace(" ", "_", $fileNameWithExt); // замена пробелов(якщо є) на _
+
+            #Uploading file - Загрузка файла в папку /storage
+            $path = $request->file('image_file')->storeAs('public/images/places', $fileNameWithExt);//"krah-bitc_1691843459.jpg"
+//          dd($path);
+        }
+
+*/
+        $placeid->fill([
+            'name'=> $request->name,
+            'adress'=> $request->adress,
+            'workhours'=> $request->workhours,
+            'description'=> $request->description,
+            'sitplaces'=> $request->sitplaces,
+            'delivery'=> $request->delivery,
+            'manager'=> $request->manager,
+            'phone1'=> $request->phone1,
+            'phone2'=> $request->phone2,
+            'phone3'=> $request->phone3,
+            'phone4'=> $request->phone4,
+            'email'=> $request->email,
+            'viber'=> $request->viber,
+            'telegram'=> $request->telegram,
+            'insta'=> $request->insta,
+            'fb'=> $request->fb,
+            'disabled' => $request->disabled, 
+        ]);
+
+        $placeid->save();
+
+        return redirect()->route('home');        
+    }
+
+    public function updatePlaceImage(Request $request,Places $placeid) {
+        $validatedData = $request->validate([
+                'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+
+        if($request->hasFile('image_file')){
+            #get original name file with extension
+            $fileNameWithExt = $request->file('image_file')->getClientOriginalName(); // Exempl: "krah-bitkoin.jpg"
+            $fileNameWithExt = str_replace(" ", "_", $fileNameWithExt); // замена пробелов(якщо є) на _
+
+            #Uploading file - Загрузка файла в папку /storage
+            $path = $request->file('image_file')->storeAs('public/images/places', $fileNameWithExt);//"krah-bitc_1691843459.jpg"
+//          dd($path);
+        }
+
+        $placeid->fill([
+            'thumbnail'=>$fileNameWithExt,
+        ]);
+
+        $result = $placeid->save();
+        if($result){
+            $resldel = Storage::disk('public')->delete('images/places/'.$request->thumbnail); //для удаления файла из папки 
+            //dd('images/places/'.$placeid->thumbnail);
+            //dd($resldel);
+        }
+
+        return redirect()->route('home');         
+
+    }
+
+    public function deletePlaceImage() {
+        Storage::disk('public')->delete('images/places/',$request->thumbnail); //для удаления файла из папки 
     }
 
 
+
+    public function formNewDish($placeid){
+       return view('dish_add', ['placeid'=>$placeid]);
+    }
 
     // Зберігаєм страву з меню
     public function saveDish(Request $request){

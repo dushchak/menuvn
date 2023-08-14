@@ -53,6 +53,7 @@ class Places extends Model
         'insta',
         'fb',
         'thumbnail',
+        'disabled',
         ];
 
     // звязок вгору з клонкою таблиці: users.id

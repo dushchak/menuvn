@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('insta')->nullable();
             $table->string('fb')->nullable();
             $table->string('thumbnail')->nullable();
+            $table->unsignedTinyInteger('disabled')->default(0);
             $table->timestamps();
             $table->index('id');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

@@ -236,7 +236,8 @@ class HomeController extends Controller
 
         $dishid->save();
 
-        return redirect()->route('viewMenu',$request->dishid);
+        //return redirect()->route('viewMenu',$request->dishid);
+        return redirect()->route('viewMenu',$dishid->places_id);
     }
 
 
@@ -266,7 +267,7 @@ class HomeController extends Controller
             //dd($resldel);
         }
 
-        //return redirect()->route('home');
+        
         return redirect()->route('viewMenu',$request->dish_id);         
 
     }
@@ -286,5 +287,21 @@ class HomeController extends Controller
     
         //return redirect()->route('home');
         return redirect()->route('viewMenu',$dishid);         
+    }
+
+    public function formDelDish(Dish $dish) {
+        return view('formDeleteDish', ['dish'=>$dish]);
+
+    }
+
+    public function deleteDish(Dish $dish){
+        //dd($dish);
+        $result = $dish->delete();
+        if($result){
+            $test = Storage::disk('public')->delete('images/dishes/'.$dish->thumbnail); //для удаления файла из папки
+            //dd($test);
+        }
+        
+        return redirect()->route('viewMenu',$dish->places_id);    
     }
 }

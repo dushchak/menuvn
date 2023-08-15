@@ -39,7 +39,10 @@ Route::get('/home/delImg/{placeid}', [App\Http\Controllers\HomeController::class
 /* Dishes */
 Route::get('/home/editdish/{dishid}', [App\Http\Controllers\HomeController::class, 'formEditDish'])->name('dish.editdish');
 Route::post('/home/upddish/{dishid}', [App\Http\Controllers\HomeController::class, 'updateDish'])->name('dish.updatedish');
-Route::delete('/home/delDish/{dishid}', [App\Http\Controllers\HomeController::class, 'deleteDish'])->name('dish.delete');
+
+Route::get('/home/delFormDish/{dish}', [App\Http\Controllers\HomeController::class, 'formDelDish'])->name('dish.formdeldish');
+Route::delete('/home/delDish/{dish}', [App\Http\Controllers\HomeController::class, 'deleteDish'])->name('dish.delete');
+
 Route::post('/home/updDishImg/{dishid}', [App\Http\Controllers\HomeController::class, 'updateDishImage'])->name('dish.updateDishImage');
 Route::get('/home/delDishImg/{dishid}', [App\Http\Controllers\HomeController::class, 'deleteDishImage'])->name('dish.deleteDishImage');
 

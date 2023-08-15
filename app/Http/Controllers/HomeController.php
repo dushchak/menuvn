@@ -86,22 +86,7 @@ class HomeController extends Controller
     }
 
     public function updatePlace(Request $request,Places $placeid) {
-/*        
-        $validatedData = $request->validate([
-                'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            ]);
 
-        if($request->hasFile('image_file')){
-            #get original name file with extension
-            $fileNameWithExt = $request->file('image_file')->getClientOriginalName(); // Exempl: "krah-bitkoin.jpg"
-            $fileNameWithExt = str_replace(" ", "_", $fileNameWithExt); // замена пробелов(якщо є) на _
-
-            #Uploading file - Загрузка файла в папку /storage
-            $path = $request->file('image_file')->storeAs('public/images/places', $fileNameWithExt);//"krah-bitc_1691843459.jpg"
-//          dd($path);
-        }
-
-*/
         $placeid->fill([
             'name'=> $request->name,
             'adress'=> $request->adress,
@@ -157,9 +142,22 @@ class HomeController extends Controller
 
     }
 
-    public function deletePlaceImage() {
-        Storage::disk('public')->delete('images/places/',$request->thumbnail); //для удаления файла из папки 
+    public function deletePlaceImage(Places $placeid) {
+    
+        $result = $placeid->fill([
+            'thumbnail'=>"",
+        ]);
+        if($result){
+            $oneplace = Places::find($placeid);
+            //dd($oneplace[0]->thumbnail);
+            Storage::disk('public')->delete('images/places/'.$oneplace[0]->thumbnail); //для удаления файла из папки 
+        }
+    
+        return redirect()->route('home');
     }
+
+
+
 
 
 
@@ -214,5 +212,79 @@ class HomeController extends Controller
         return redirect()->route('viewMenu', $request->places_id);
         }
     
+    }
+
+
+    public function formEditDish(Dish $dishid) {
+
+        //$places = Places::find($placeid)->get();
+        //dd($dishid);
+
+        return view('editDish',['dish'=>$dishid]);
+
+    }
+
+    public function updateDish (Request $request,Dish $dishid){
+        $dishid->fill([
+            'dishtitle'=> $request->dishtitle,
+            'dishgroup'=> $request->dishgroup,
+            'description'=> $request->description,
+            'portionweight'=> $request->portionweight,
+            'portioncost'=> $request->portioncost,
+            'cost100g'=> $request->cost100g,
+        ]);
+
+        $dishid->save();
+
+        return redirect()->route('viewMenu',$request->dishid);
+    }
+
+
+    public function updateDishImage(Request $request,Dish $dishid) {
+        $validatedData = $request->validate([
+                'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+
+        if($request->hasFile('image_file')){
+            #get original name file with extension
+            $fileNameWithExt = $request->file('image_file')->getClientOriginalName(); // Exempl: "krah-bitkoin.jpg"
+            $fileNameWithExt = str_replace(" ", "_", $fileNameWithExt); // замена пробелов(якщо є) на _
+
+            #Uploading file - Загрузка файла в папку /storage
+            $path = $request->file('image_file')->storeAs('public/images/dishes', $fileNameWithExt);//"krah-bitc_1691843459.jpg"
+//          dd($path);
+        }
+
+        $dishid->fill([
+            'thumbnail'=>$fileNameWithExt,
+        ]);
+        $result = $dishid->save();
+        
+        if($result){
+            $resldel = Storage::disk('public')->delete('images/dishes/'.$request->thumbnail); //для удаления файла из папки 
+            //dd('images/places/'.$dishid->thumbnail);
+            //dd($resldel);
+        }
+
+        //return redirect()->route('home');
+        return redirect()->route('viewMenu',$request->dish_id);         
+
+    }
+
+    //deleteDishImage
+    public function deleteDishImage(Dish $dishid) {
+    
+        $result = $dishid->fill([
+            'thumbnail'=>"",
+        ]);
+        if($result){
+            $dish = Dish::find($dishid);
+            //dd($dish[0]->thumbnail);
+            $test = Storage::disk('public')->delete('images/dishes/'.$dish[0]->thumbnail); //для удаления файла из папки 
+            
+        }
+    
+        //return redirect()->route('home');
+        return redirect()->route('viewMenu',$dishid);         
     }
 }

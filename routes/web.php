@@ -27,26 +27,25 @@ Route::get('/menu/{placeid}', [PlacesController::class, 'viewMenu'])->name('view
 
 Auth::routes();
 
-// add new resto
+/*Places*/
 Route::get('/home/add', [App\Http\Controllers\HomeController::class, 'formAddPlace'])->name('place_add');
-
 Route::post('/home/store', [App\Http\Controllers\HomeController::class, 'storePlace'])->name('place.store');
-
 Route::get('/home/edit/{placeid}', [App\Http\Controllers\HomeController::class, 'formEditPlace'])->name('place.edit');
 Route::patch('/home/edit/{placeid}', [App\Http\Controllers\HomeController::class, 'updatePlace'])->name('place.update');
 
 Route::patch('/home/updImg/{placeid}', [App\Http\Controllers\HomeController::class, 'updatePlaceImage'])->name('place.updateImage');
+Route::get('/home/delImg/{placeid}', [App\Http\Controllers\HomeController::class, 'deletePlaceImage'])->name('place.deleteImage');
 
-
-Route::get('/home/delete/{placeid}', [App\Http\Controllers\HomeController::class, 'formDeletePlace'])->name('place.delform');
-Route::delete('/home/destroy/{placeid}', [App\Http\Controllers\HomeController::class, 'deletePlace'])->name('place.delete');
+/* Dishes */
+Route::get('/home/editdish/{dishid}', [App\Http\Controllers\HomeController::class, 'formEditDish'])->name('dish.editdish');
+Route::post('/home/upddish/{dishid}', [App\Http\Controllers\HomeController::class, 'updateDish'])->name('dish.updatedish');
+Route::delete('/home/delDish/{dishid}', [App\Http\Controllers\HomeController::class, 'deleteDish'])->name('dish.delete');
+Route::post('/home/updDishImg/{dishid}', [App\Http\Controllers\HomeController::class, 'updateDishImage'])->name('dish.updateDishImage');
+Route::get('/home/delDishImg/{dishid}', [App\Http\Controllers\HomeController::class, 'deleteDishImage'])->name('dish.deleteDishImage');
 
 
 // add new dish
 Route::get('/home/newdish/{placeid}', [App\Http\Controllers\HomeController::class, 'formNewDish'])->name('dish.add');
-
-//Route::post('/home', [App\Http\Controllers\HomeController::class, 'storeDish'])->name('dish.store');
-//test
 Route::post('/home/save', [App\Http\Controllers\HomeController::class, 'saveDish'])->name('dish.save');
 
 

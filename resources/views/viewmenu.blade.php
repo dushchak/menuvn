@@ -19,7 +19,7 @@
         <td>{{ $dish->cost100g }}</td>
         <td><a href="">+</a></td>
         <td><a href="">-</a></td>
-        <td><a href="">edit</a></td>
+        <td><a href="{{ route('dish.editdish', $dish->id) }}">edit</a></td>
         <td><a href="">delete</a></td>
         <td><a href="">Повідомити про помилку</a></td>
         <td></td>

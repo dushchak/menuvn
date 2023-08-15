@@ -110,7 +110,7 @@
 	</div>
 	</form>
 	<div class="button">
-		<a class="btn btn-primary" href="{{ route('place.update', ['placeid'=>$place->id]) }}">Видалити зображення</a>
+		<a class="btn btn-primary" href="{{ route('place.deleteImage', ['placeid'=>$place->id]) }}">Видалити зображення</a>
 	</div>
 </div>
 

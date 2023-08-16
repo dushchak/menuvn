@@ -22,27 +22,20 @@ class PlacesController extends Controller
 
 
     // перегляд меню
-    public function viewMenu($placeid) {
-
+    public function viewMenu(Places $place) {
         //dd($placeid);
-        #var 1
-        //$menu = Places::where ($placeid);
-        // $menu->dishes()->latest()->get();
 
-        #var 2
-        //$menu = Dish::all();
+        if($place->disabled != 1){
+            $menu = $place->dishes()->orderBy('position','desc')->get();    
+        }
+        //dd($menu);
 
-         $menu = Dish::where('places_id', $placeid)->orderBy('dishgroup','asc')->orderBy('position','asc')->get();
-         $dish = new Dish();
-        
-        //dd($dish->oneplace());
-
-        return view ('viewmenu', ['menu'=>$menu, 'placeid'=>$placeid] ); // вивід dishes
+        return view ('viewmenu', ['menu'=>$menu ] ); // вивід dishes
 
     }
 
-    public function printQR(){
-
-        return view ('QRpage');
+    public function printQR(Places $place){
+        //dd($place);
+        return view ('QRpage', ['place'=>$place]);
     } 
 }

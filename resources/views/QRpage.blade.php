@@ -4,7 +4,7 @@
 
 @section ('main')
 <div class="printQR">
-	<h1>Кафе Диканька</h1>
+	<h1>{{ $place->name }}</h1>
 	<h2>Меню:</h2>
 	{!! 
         

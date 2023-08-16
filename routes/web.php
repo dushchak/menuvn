@@ -19,9 +19,9 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [PlacesController::class, 'index'])->name('index'); //guests
 
-Route::get('/menu/print', [PlacesController::class, 'printQR'])->name('printQRpage'); // guests
+Route::get('/menu/print/{place}', [PlacesController::class, 'printQR'])->name('printQRpage'); // guests
 
-Route::get('/menu/{placeid}', [PlacesController::class, 'viewMenu'])->name('viewMenu'); // guests
+Route::get('/menu/{place}', [PlacesController::class, 'viewMenu'])->name('viewMenu'); // guests
 
 
 
@@ -51,6 +51,9 @@ Route::get('/home/delDishImg/{dishid}', [App\Http\Controllers\HomeController::cl
 Route::get('/home/newdish/{placeid}', [App\Http\Controllers\HomeController::class, 'formNewDish'])->name('dish.add');
 Route::post('/home/save', [App\Http\Controllers\HomeController::class, 'saveDish'])->name('dish.save');
 
+
+Route::get('/home/updish/{dish}', [App\Http\Controllers\HomeController::class, 'upDish'])->name('dish.up');
+Route::get('/home/downdish/{dish}', [App\Http\Controllers\HomeController::class, 'downDish'])->name('dish.down');
 
 
 

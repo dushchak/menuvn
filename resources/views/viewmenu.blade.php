@@ -4,7 +4,7 @@
 
 @section ('main')
 <div class="newdish">
-    <a href="{{route('dish.add', $placeid)}}">new dish</a>
+    <a href="{{route('dish.add', $menu[0]->places_id) }}">new dish</a>
 </div>
 @if(count ($menu) > 0) 
 <table class="table table-striped">
@@ -17,10 +17,12 @@
         <td>{{ $dish->portionweight }}</td>
         <td>{{ $dish->portioncost }}</td>
         <td>{{ $dish->cost100g }}</td>
-        <td><a href="">+</a></td>
-        <td><a href="">-</a></td>
+        @auth
+        <td><a href="{{ route('dish.up', $dish->id)  }}">+</a></td>
+        <td><a href="{{ route('dish.down', $dish->id)  }}">-</a></td>
         <td><a href="{{ route('dish.editdish', $dish->id) }}">edit</a></td>
         <td><a href="{{ route('dish.formdeldish', $dish->id) }}">delete</a></td>
+        @endauth
         <td><a href="">Повідомити про помилку</a></td>
         <td></td>
         
@@ -48,7 +50,7 @@
         ->generate(Request::url()); 
     !!}
 <div>
-    <a href="{{ route('printQRpage')   }}">Сторінка для друку</a>   
+    <a href="{{ route('printQRpage', $menu[0]->places_id )   }}">Сторінка для друку</a>   
 </div>
     
 

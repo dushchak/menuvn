@@ -242,7 +242,7 @@ class HomeController extends Controller
 
 
     public function updateDishImage(Request $request,Dish $dishid) {
-        dd($dishid);
+        //dd($dishid);
         $validatedData = $request->validate([
                 'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ]);
@@ -304,5 +304,28 @@ class HomeController extends Controller
         }
         
         return redirect()->route('viewMenu',$dish->places_id);    
+    }
+
+
+    public function upDish(Dish $dish) {
+        //dd("$dish");
+        $pos = $dish->position;
+        if($pos < 120){
+            $dish->fill(['position' => $pos+1]);
+            $dish->save();
+        }
+        
+        return redirect()->route('viewMenu',$dish->places_id);  
+    }
+
+    public function downDish(Dish $dish) {
+        //dd("$dish");
+        $pos = $dish->position;
+        if($pos > 1 ){
+            $dish->fill(['position' => 1]);
+            $dish->save();
+        }
+        
+        return redirect()->route('viewMenu', $dish->places_id );  
     }
 }

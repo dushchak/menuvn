@@ -16,13 +16,19 @@
 		<div class="navbar">
 			<a href="{{ route('index') }}">Головна</a>
 			<a href="{{ route('place_add')  }}">+</a>
+			@auth
 			<a href="{{ route('home') }}">Мої заклади</a>
+			@endauth
+			@guest
 			<a href="{{ route('register') }}">Реєстрація</a>
 			<a href="{{ route('login') }}">Вхід</a>
+			@endguest
+			@auth
 			<form action="{{ route('logout') }}" method="POST">
 				@csrf
 				<input type="submit" class="btn" value="Вихід">
 			</form>
+			@endauth
 		</div>
 
 		@yield('main')

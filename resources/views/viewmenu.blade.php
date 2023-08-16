@@ -23,8 +23,9 @@
         <td><a href="{{ route('dish.editdish', $dish->id) }}">edit</a></td>
         <td><a href="{{ route('dish.formdeldish', $dish->id) }}">delete</a></td>
         @endauth
+        @guest
         <td><a href="">Повідомити про помилку</a></td>
-        <td></td>
+        @endguest
         
 
 

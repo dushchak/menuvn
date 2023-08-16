@@ -242,6 +242,7 @@ class HomeController extends Controller
 
 
     public function updateDishImage(Request $request,Dish $dishid) {
+        dd($dishid);
         $validatedData = $request->validate([
                 'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ]);
@@ -268,7 +269,7 @@ class HomeController extends Controller
         }
 
         
-        return redirect()->route('viewMenu',$request->dish_id);         
+        return redirect()->route('viewMenu',$dishid->places_id);         
 
     }
 

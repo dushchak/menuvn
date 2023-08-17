@@ -4,26 +4,24 @@
 
 @section ('main')
 @if(count ($places) > 0)
-<table class="table table-striped">
-    @foreach ($places as $place)
-    <tr>
-        <td><img class="dish__image" src="/storage/images/places/{{$place->thumbnail}}" alt=""></td>
-        <td>{{ $place->name }}</td>
-        <td>{{ $place->adress }}</td>
-        <td>{{ $place->workhours }}</td>
-        <td>{{ $place->sitplaces }}</td>
-        <td>{{ $place->delivery }}</td>
-        <td>{{ $place->manager }}</td>
-        <td>{{ $place->phone1 }}</td>
-        <td>{{ $place->viber }}</td>
-        <td>{{ $place->viber }}</td>
-        <td><a href="{{ route('place.edit', $place->id) }}">edit</a></td>
-        <td><a href="">Відключити</a></td>
-        <td><a href="{{ route('dish.add', $place->id)    }}">new dish</a></td>
-        <td><a href="{{ route('viewMenu', $place->id) }}">view menu</a></td>
 
-    </tr>
+    @foreach ($places as $place)
+    <div class="place">
+        <img class="dish__image" src="/storage/images/places/{{$place->thumbnail}}" alt="">
+        <h3>{{ $place->name }}</h3>
+        <div class="place__adress">{{ $place->adress }}</div>
+        <div class="place__workhours">{{ $place->workhours }}</div>
+        <div class="place__delivery">{{ $place->delivery }}</div>
+        <div class="place__phone1">{{ $place->phone1 }}</div>
+        <div class="place__sitplaces">{{ $place->sitplaces }}</div>
+    </div>
+    
+    <div class="place__actions">
+        <a href="{{ route('place.edit', $place->id) }}">edit</a>
+        <a href="{{ route('viewMenu', $place->id) }}">view menu</a>
+    </div> 
+        
     @endforeach
-</table>
+    
 @endif
 @endsection('main')

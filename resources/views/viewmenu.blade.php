@@ -4,35 +4,109 @@
 
 @section ('main')
 <div class="newdish">
-    <a href="{{route('dish.add', $menu[0]->places_id) }}">new dish</a>
+    <a href="{{route('dish.add', $place->id) }}">new dish</a>
 </div>
-@if(count ($menu) > 0) 
-<table class="table table-striped">
-    @foreach ($menu as $dish)
-    <tr>
-        <td><img class="dish__image" src="/storage/images/dishes/{{$dish->thumbnail}}" alt=""></td>
-        <td>{{ $dish->dishtitle }}</td>
-        <td>{{ $dish->dishgroup }}</td>
-        <td>{{ $dish->description }}</td>
-        <td>{{ $dish->portionweight }}</td>
-        <td>{{ $dish->portioncost }}</td>
-        <td>{{ $dish->cost100g }}</td>
-        @auth
-        <td><a href="{{ route('dish.up', $dish->id)  }}">+</a></td>
-        <td><a href="{{ route('dish.down', $dish->id)  }}">-</a></td>
-        <td><a href="{{ route('dish.editdish', $dish->id) }}">edit</a></td>
-        <td><a href="{{ route('dish.formdeldish', $dish->id) }}">delete</a></td>
-        @endauth
-        @guest
-        <td><a href="">Повідомити про помилку</a></td>
-        @endguest
-        
 
 
-    </tr>
-    @endforeach
-</table>
+
+<div>
+    <h3>{{$place->name}}</h3>
+    <p>{{$place->adress}}</p>
+    <p>{{$place->phone1}}</p>
+    <p>{{$place->delivery}}</p>   
+</div>
+
+
+@if($place->disabled==1)
+        <p>Заклад не працює! Меню не доступне!</p>
 @endif
+
+
+        
+@if($place->disabled==0)
+    @if(count ($menu) > 0) 
+ 
+        @foreach ($menu as $dish)
+        @switch($dish->dishgroup)
+            @case(1)
+                <h3>Основне меню</h3>
+                @break
+            @case(2)
+                <h3>Холодні закуски</h3>
+                @break
+            @case(3)
+                <h3>Гарячі закуски</h3>
+                @break
+            @case(4)
+                <h3>Перші страви</h3>
+                @break
+            @case(5)
+                <h3>Гарніри</h3>
+                @break
+            @case(6)
+                <h3>Салати</h3>
+                @break
+            @case(7)
+                <h3>Десерт</h3>
+                @break
+            @case(8)
+                <h3>Гарячі напої</h3>
+                @break
+            @case(9)
+                <h3>Холодні напої</h3>
+                @break
+            @case(10)
+                <h3>Пиво</h3>
+                @break
+            @case(11)
+                <h3>Вино</h3>
+                @break
+            @case(12)
+                <h3>Міцні напої</h3>
+                @break
+            @case(13)
+                <h3>Алкогольні напої</h3>
+                @break
+            @case(14)
+                <h3>Коктейлі</h3>
+                @break
+            @default
+                <h3>Основне меню</h3>
+        @endswitch
+        <div class="dish">
+            <img class="dish__image" src="/storage/images/dishes/{{$dish->thumbnail}}" alt="">
+            <div class="dish__info">
+                <h4>{{ $dish->dishtitle }}</h4>
+            <p>Порція, вага: {{ $dish->portionweight }} грам</p>
+            <p>Ціна за 100гр: {{ $dish->cost100g }} грн</p>
+            <p>Ціна за порцію: {{ $dish->portioncost }} грн</p>
+            <p>{{ $dish->description }}</p>
+        </div>
+
+            <td>{{ $dish->portioncost }}</td>
+            <td>{{ $dish->cost100g }}</td>
+            <td>Замовити </td>
+            @auth
+            <td><a href="{{ route('dish.up', $dish->id)  }}">+</a></td>
+            <td><a href="{{ route('dish.down', $dish->id)  }}">-</a></td>
+            <td><a href="{{ route('dish.editdish', $dish->id) }}">edit</a></td>
+            <td><a href="{{ route('dish.formdeldish', $dish->id) }}">delete</a></td>
+            @endauth
+            @guest
+            <td><a href="">Повідомити про помилку</a></td>
+            @endguest
+            </div>
+            
+            
+
+
+     
+        @endforeach
+  
+    @endif
+@endif
+
+
 
 <div class="testinfo">
     Lorem ipsum dolor sit amet consectetur adipisicing, elit. Eligendi aspernatur provident pariatur, corrupti placeat molestias tenetur quidem voluptatem vero voluptatibus ipsa vitae, magni quasi quae optio nisi ipsum eius assumenda.
@@ -51,7 +125,7 @@
         ->generate(Request::url()); 
     !!}
 <div>
-    <a href="{{ route('printQRpage', $menu[0]->places_id )   }}">Сторінка для друку</a>   
+    <a href="{{ route('printQRpage', $place->id )   }}">Сторінка для друку</a>   
 </div>
     
 

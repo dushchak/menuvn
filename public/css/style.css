@@ -4,9 +4,14 @@
 	margin: 0 auto;
 }
 
-
+.dish {
+	display: flex;
+}
 .dish__image {
-	height: 100px;
+	width: 300px;
+}
+.dish__info {
+	padding: 20px;
 }
 
 

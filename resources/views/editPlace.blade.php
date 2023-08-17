@@ -78,7 +78,7 @@
 		<input type="text" name="facebook" id="txtName" class="form-control"  value="{{ $place->facebook  }}">
 	</div>
 	<div>
-		<input type="radio" id="contactChoice1" name="disabled" value="0" />
+		<input type="radio" id="contactChoice1" name="disabled" value="0" checked />
       <label for="contactChoice1">Включити</label>
 
       <input type="radio" id="contactChoice2" name="disabled" value="1" />

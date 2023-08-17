@@ -23,14 +23,17 @@ class PlacesController extends Controller
 
     // перегляд меню
     public function viewMenu(Places $place) {
-        //dd($placeid);
+        //dd($place->id);
 
         if($place->disabled != 1){
-            $menu = $place->dishes()->orderBy('position','desc')->get();    
+            $menu = $place->dishes()->orderBy('dishgroup','asc')->orderBy('position','desc')->get();    
+        }
+        else{
+            $menu = $place->dishes()->latest()->get(); 
         }
         //dd($menu);
 
-        return view ('viewmenu', ['menu'=>$menu ] ); // вивід dishes
+        return view ('viewmenu', ['menu'=>$menu, 'place'=>$place ] ); // вивід dishes
 
     }
 

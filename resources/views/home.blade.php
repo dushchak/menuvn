@@ -14,12 +14,14 @@
         <div class="place__delivery">{{ $place->delivery }}</div>
         <div class="place__phone1">{{ $place->phone1 }}</div>
         <div class="place__sitplaces">{{ $place->sitplaces }}</div>
+
+        <div class="place__actions">
+            <a href="{{ route('place.edit', $place->id) }}">edit</a>
+            <a href="{{ route('viewMenu', $place->id) }}">view menu</a>
+        </div> 
     </div>
     
-    <div class="place__actions">
-        <a href="{{ route('place.edit', $place->id) }}">edit</a>
-        <a href="{{ route('viewMenu', $place->id) }}">view menu</a>
-    </div> 
+   
         
     @endforeach
     

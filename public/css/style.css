@@ -10,6 +10,10 @@
 .dish__image {
 	width: 300px;
 }
+.dish__image img {
+	max-width: 100%;
+	object-fit: none;
+}
 .dish__info {
 	padding: 20px;
 }

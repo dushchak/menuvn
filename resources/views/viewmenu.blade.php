@@ -74,7 +74,9 @@
                 <h3>Основне меню</h3>
         @endswitch
         <div class="dish">
-            <img class="dish__image" src="/storage/images/dishes/{{$dish->thumbnail}}" alt="">
+            <div class="dish__image">
+                <img class="img" src="/storage/images/dishes/{{$dish->thumbnail}}" alt="">
+            </div>
             <div class="dish__info">
                 <h4>{{ $dish->dishtitle }}</h4>
             <p>Порція, вага: {{ $dish->portionweight }} грам</p>

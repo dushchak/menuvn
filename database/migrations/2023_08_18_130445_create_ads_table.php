@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
+            $table->string('title');
             $table->text('description')->nullable(); 
             $table->string('img'); # filename
-            $table->unsignedTinyInteger('typeads',1)->default(0); #img / img+txt
+            $table->unsignedTinyInteger('typeads'); #img / img+txt
             $table->date('payed_at')->nullable(); # date
-            $table->unsignedTinyInteger('moderate',1)->default(0); # 0/1
-            $table->foreignId('places_id')
+            $table->unsignedTinyInteger('moderate'); # 0/1
+            $table->foreignId('places_id');
             $table->timestamps();
         });
     }

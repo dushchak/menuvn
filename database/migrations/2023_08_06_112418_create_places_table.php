@@ -33,7 +33,9 @@ return new class extends Migration
             $table->string('insta')->nullable();
             $table->string('fb')->nullable();
             $table->string('thumbnail')->nullable();
-            $table->unsignedTinyInteger('disabled')->default(0);
+            $table->unsignedTinyInteger('disabled')->default(0); # 1=disable place 
+            $table->unsignedTinyInteger('moderate')->default(0); # 0/1 moderate new place
+            $table->unsignedTinyInteger('position')->default(0); # rating places 
             $table->timestamps();
             $table->index('id');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

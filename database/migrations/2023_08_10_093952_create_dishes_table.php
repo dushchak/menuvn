@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('cost100g')->nullable();
             $table->tinyInteger('position')->default(1);
             $table->string('thumbnail')->nullable();
-            $table->foreignId('place_id')->constrained()->onDelete('cascade');
+            $table->foreignId('places_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

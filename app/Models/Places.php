@@ -68,4 +68,8 @@ class Places extends Model
     public function photos(){
         return $this->hasMany(Photo::class);
     }
+
+    public function ads(){
+        return $this->hasMany(Ads::class);
+    }
 }

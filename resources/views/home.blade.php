@@ -18,6 +18,7 @@
         <div class="place__actions">
             <a href="{{ route('place.edit', $place->id) }}">edit</a>
             <a href="{{ route('viewMenu', $place->id) }}">view menu</a>
+            <a href="{{ route('ads.new', $place->id) }}">new Ads</a>
         </div> 
     </div>
     

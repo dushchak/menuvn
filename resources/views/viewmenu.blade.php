@@ -79,25 +79,24 @@
             </div>
             <div class="dish__info">
                 <h4>{{ $dish->dishtitle }}</h4>
-            <p>Порція, вага: {{ $dish->portionweight }} грам</p>
-            <p>Ціна за 100гр: {{ $dish->cost100g }} грн</p>
-            <p>Ціна за порцію: {{ $dish->portioncost }} грн</p>
-            <p>{{ $dish->description }}</p>
-        </div>
-
-            <td>{{ $dish->portioncost }}</td>
-            <td>{{ $dish->cost100g }}</td>
-            <td>Замовити </td>
-            @auth
-            <td><a href="{{ route('dish.up', $dish->id)  }}">+</a></td>
-            <td><a href="{{ route('dish.down', $dish->id)  }}">-</a></td>
-            <td><a href="{{ route('dish.editdish', $dish->id) }}">edit</a></td>
-            <td><a href="{{ route('dish.formdeldish', $dish->id) }}">delete</a></td>
-            @endauth
-            @guest
-            <td><a href="">Повідомити про помилку</a></td>
-            @endguest
+                <p>Порція, вага: {{ $dish->portionweight }} грам</p>
+                <p>Ціна за 100гр: {{ $dish->cost100g }} грн</p>
+                <p>Ціна за порцію: {{ $dish->portioncost }} грн</p>
+                <p>{{ $dish->description }}</p>
             </div>
+
+            <div class="dish__actions">
+                 <td>Замовити </td>
+                     @auth
+                    <a href="{{ route('dish.up', $dish->id)  }}">+</a>
+                    <a href="{{ route('dish.down', $dish->id)  }}">-</a>
+                    <a href="{{ route('dish.editdish', $dish->id) }}">edit</a>
+                    <a href="{{ route('dish.formdeldish', $dish->id) }}">delete</a>                @endauth
+                    @guest
+                    <a href="">Повідомити про помилку</a>
+                    @endguest
+            </div>    
+        </div>
             
             
 

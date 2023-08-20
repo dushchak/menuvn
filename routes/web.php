@@ -23,6 +23,7 @@ Route::get('/menu/print/{place}', [PlacesController::class, 'printQR'])->name('p
 
 Route::get('/menu/{place}', [PlacesController::class, 'viewMenu'])->name('viewMenu'); // guests
 
+Route::get('/news', [PlacesController::class, 'viewAds'])->name('viewAds'); // guests
 
 
 Auth::routes();
@@ -55,6 +56,12 @@ Route::post('/home/save', [App\Http\Controllers\HomeController::class, 'saveDish
 Route::get('/home/updish/{dish}', [App\Http\Controllers\HomeController::class, 'upDish'])->name('dish.up');
 Route::get('/home/downdish/{dish}', [App\Http\Controllers\HomeController::class, 'downDish'])->name('dish.down');
 
+
+// 
+// Ads
+Route::get('/myads/{place}', [App\Http\Controllers\AdsController::class, 'myAds'])->name('myads');
+Route::get('/myads/newads/{place}', [App\Http\Controllers\AdsController::class, 'formNewAds'])->name('ads.new');
+Route::post('/myads/saveads', [App\Http\Controllers\AdsController::class, 'saveNewAds'])->name('newads.save');
 
 
 

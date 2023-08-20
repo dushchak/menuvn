@@ -3,8 +3,79 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; // підключаєм трейт фасад авторизації 
+
+use App\Models\Places;
+use App\Models\Ads;
 
 class AdsController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /*
+    public function index(){
+        
+        $places = Places::latest()->get();
+            
+        return view ('index', ['places' => $places]); // вивід таблиці закладів
+    }
+*/
+    public function myAds(Places $place)
+    {
+        //$ads = Auth::user()->places()->get();
+        $ads = $place->ads()->get();
+        dd($ads);
+        return view('myAds', ['myAds'=>$ads ]);
+    }
+
+    public function formNewAds(Places $place){
+        return view('formNewAds', ['place'=>$place] );
+    }
+
+    public function saveNewAds(Request $request){
+        //dd($request);
+
+        if(Auth::user()) {  //!!!! тут треба через Polices ????
+            $validatedData = $request->validate([
+                'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+
+            if($request->hasFile('image_file')){
+                #get original name file with extension
+                $fileNameWithExt = $request->file('image_file')->getClientOriginalName(); // Exempl: "krah-bitkoin.jpg"
+                $fileNameWithExt = str_replace(" ", "_", $fileNameWithExt); // замена пробелов(якщо є) на _   
+
+                # file name
+                $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);     // "krah-bitkoin"
+                
+                # file extension like ".jpg"
+                $extension = $request->file('image_file')->getClientOriginalExtension();  // ".jpg"
+                
+                #   new name з Unixtime з розширенням 
+                $newName = $fileName."_".time().".".$extension;  // krah-bitkoin_2023-08-12.jpg
+                
+                #Uploading file - Загрузка файла в папку /storage
+                $path = $request->file('image_file')->storeAs('public/images/ads', $fileNameWithExt);//"krah-bitcoina_1691843459.jpg"
+//                dd($path);
+            }    
+
+            // 
+            $place = Places::firstOrNew(['id'=>$request->places_id]);
+            /* викликаємо метод "прямогозвязку" методом dishes()
+             який автоматом додає в таблицю БД - "place_id"
+             */
+            $place->ads()->create([
+                            'title'=> $request->title,
+                            'description'=> $request->description,
+                            'typeads'=> $request->typeads,
+                            'moderate'=> 0,
+                            'img' => $fileNameWithExt, 
+            ]);
+
+        return redirect()->route('home');
+        }
+    
+    }
 }

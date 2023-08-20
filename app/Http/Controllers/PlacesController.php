@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Places;
 use App\Models\Dish;
+use App\Models\Ads;
 
 
 
@@ -40,5 +41,11 @@ class PlacesController extends Controller
     public function printQR(Places $place){
         //dd($place);
         return view ('QRpage', ['place'=>$place]);
+    }
+
+    public function viewAds () {
+        $ads = Ads::latest()->get();
+        //dd($ads);
+        return view ('allAds', ['ads'=>$ads]);
     } 
 }

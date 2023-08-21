@@ -14,9 +14,12 @@
 		<h1>QR меню Вінниця</h1>
 		<h2>Найкращі заклади та меню у Вінниці</h2>
 		<div class="navbar">
-			<a href="{{ route('index') }}">Головна</a>
-			<a href="{{ route('place_add')  }}">+</a>
+			<a href="{{ route('index') }}">Білий список</a>
+			<a href="{{ route('newsAds') }}">Акції</a>
+
+			
 			@auth
+			<a href="{{ route('place_add')  }}">+</a>
 			<a href="{{ route('home') }}">Мої заклади</a>
 			@endauth
 			@guest

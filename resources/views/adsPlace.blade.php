@@ -3,14 +3,12 @@
 
 
 @section ('main')
+<h2>Акції та знижки</h2>
 @if(count ($ads) > 0)
-<h3>place name</h3>
+<h3>{{$place->name}}</h3>
     @foreach ($ads as $adv)
     <div class="place">
         <img class="dish__image" src="/storage/images/ads/{{$adv->img}}" alt="">
-        <div class="place__adress">{{ $adv->place->name }}</div>
-        <div class="place__adress">{{ $adv->place->adress }}</div>
-        <div class="place__adress">{{ $adv->place->phone1 }}</div>
         <div class="place__adress">{{ $adv->title }}</div>
         <div class="place__workhours">{{ $adv->desctiption }}</div>
         <div class="place__delivery">{{ $adv->typeads }}</div>

@@ -43,9 +43,25 @@ class PlacesController extends Controller
         return view ('QRpage', ['place'=>$place]);
     }
 
-    public function viewAds () {
+    public function allAds () {
         $ads = Ads::latest()->get();
         //dd($ads);
-        return view ('allAds', ['ads'=>$ads]);
+        
+        foreach($ads as $item){
+            $item->place = Places::find($item->places_id) ;
+            $adverts[] = $item; 
+        }
+        //dd($adverts);
+        
+        
+        return view ('allAds', ['ads'=>$adverts]);
+    }
+
+    public function adsPlace(Places $place){
+
+        $ads = $place->ads()->get();
+        //dd($ads);
+
+        return view ('adsPlace', ['ads'=>$ads, 'place'=>$place]);    
     } 
 }

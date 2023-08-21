@@ -23,7 +23,9 @@ Route::get('/menu/print/{place}', [PlacesController::class, 'printQR'])->name('p
 
 Route::get('/menu/{place}', [PlacesController::class, 'viewMenu'])->name('viewMenu'); // guests
 
-Route::get('/news', [PlacesController::class, 'viewAds'])->name('viewAds'); // guests
+Route::get('/news', [PlacesController::class, 'allAds'])->name('newsAds'); // guests
+
+Route::get('/news/{place}', [PlacesController::class, 'adsPlace'])->name('adsPlace'); // guests
 
 
 Auth::routes();

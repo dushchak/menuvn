@@ -22,6 +22,7 @@
         <td>{{ $place->phone1 }}</td>
 		<td>{{ $place->viber }}</td>
 		<td><a href="{{ route('viewMenu', $place->id) }}">view menu</a></td>
+		<td><a href="{{ route('adsPlace', $place->id) }}">Акції</a></td>
 	</tr>
 	@endforeach
 </table>

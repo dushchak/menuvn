@@ -16,6 +16,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
+use App\Models\Places;
+
 class Ads extends Model
 {
     #use HasFactory;

@@ -62,6 +62,6 @@ class PlacesController extends Controller
         $ads = $place->ads()->get();
         //dd($ads);
 
-        return view ('adsPlace', ['ads'=>$ads, 'place'=>$place]);    
+        return view ('placeAds', ['ads'=>$ads, 'place'=>$place]);    
     } 
 }

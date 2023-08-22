@@ -61,9 +61,13 @@ Route::get('/home/downdish/{dish}', [App\Http\Controllers\HomeController::class,
 
 // 
 // Ads
-Route::get('/myads/{place}', [App\Http\Controllers\AdsController::class, 'myAds'])->name('myads');
+Route::get('/myads/{place}', [App\Http\Controllers\AdsController::class, 'placeAds'])->name('placeAds');
 Route::get('/myads/newads/{place}', [App\Http\Controllers\AdsController::class, 'formNewAds'])->name('ads.new');
 Route::post('/myads/saveads', [App\Http\Controllers\AdsController::class, 'saveNewAds'])->name('newads.save');
+
+Route::get('/myads/editads/{ads}', [App\Http\Controllers\AdsController::class, 'formEditAds'])->name('ads.editform');
+Route::post('/myads/updads/{ads}', [App\Http\Controllers\AdsController::class, 'updateDish'])->name('ads.update');
+
 
 
 

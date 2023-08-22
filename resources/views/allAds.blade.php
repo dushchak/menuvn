@@ -21,8 +21,7 @@
         <div class="place__sitplaces">{{ $adv->created_at }}</div>
 
         <div class="place__actions">
-            <a href="{{ route('place.edit', 'placeid') }}">edit</a>
-            <a href="{{ route('viewMenu', 'placeid') }}">view menu</a>
+          
         </div> 
     </div>
     

@@ -21,6 +21,7 @@
         <div class="place__actions">
             <a href="{{ route('ads.editform', $adv) }}">edit</a>
             <a href="{{ route('viewMenu', 'placeid') }}">view menu</a>
+           
         </div> 
     </div>
     

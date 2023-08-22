@@ -15,9 +15,8 @@ namespace App\Models;
 #use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/*V*/
 use App\Models\Places;
-use App\Models\Photo; 
+
 
 class Dish extends Model
 {

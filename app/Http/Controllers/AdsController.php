@@ -86,7 +86,7 @@ class AdsController extends Controller
         return view('formEditAds', ['ads'=>$ads] );
     }
 
-    public function updateDish (Request $request, Ads $ads){
+    public function updateAds (Request $request, Ads $ads){
         //dd($request);
 
         if(Auth::user()) {  //!!!! тут треба через Polices
@@ -126,5 +126,17 @@ class AdsController extends Controller
             $ads->save();
 
             return redirect()->route('placeAds', $ads->places_id );
+    }
+
+
+     public function deleteAds(Ads $ads){
+        //dd($dish);
+        $result = $ads->delete();
+        if($result){
+            $test = Storage::disk('public')->delete('images/ads/'.$ads->img); //для удаления файла из папки
+            //dd($test);
+        }
+        
+        return redirect()->route('placeAds', $ads->places_id );  
     }
 }

@@ -46,6 +46,8 @@
 		</div>
 	</form>
 
+	 <a href="{{ route('ads.delete', $ads)}}">deleteAds</a>
+
 	<div class="valid_errors">
 		@if ($errors->any())
 	    <div class="alert alert-danger">

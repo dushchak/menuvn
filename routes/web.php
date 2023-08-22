@@ -66,11 +66,14 @@ Route::get('/myads/newads/{place}', [App\Http\Controllers\AdsController::class, 
 Route::post('/myads/saveads', [App\Http\Controllers\AdsController::class, 'saveNewAds'])->name('newads.save');
 
 Route::get('/myads/editads/{ads}', [App\Http\Controllers\AdsController::class, 'formEditAds'])->name('ads.editform');
-Route::post('/myads/updads/{ads}', [App\Http\Controllers\AdsController::class, 'updateDish'])->name('ads.update');
+Route::post('/myads/updads/{ads}', [App\Http\Controllers\AdsController::class, 'updateAds'])->name('ads.update');
+Route::get('/myads/delete/{ads}', [App\Http\Controllers\AdsController::class, 'deleteAds'])->name('ads.delete');
 
 
-
-
+// Coins
+Route::get('/wallet/addForm/{place}', [App\Http\Controllers\CoinsController::class, 'formAddConis'])->name('coins.formAdd');
+Route::post('/wallet/add/{place}', [App\Http\Controllers\CoinsController::class, 'addCoins'])->name('coins.add');
+//Route::get('/wallet/add/{place}', [App\Http\Controllers\WalletController::class, 'addCoins'])->name('ads.new');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

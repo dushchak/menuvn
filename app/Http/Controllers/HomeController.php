@@ -37,9 +37,13 @@ class HomeController extends Controller
 
         $places = Auth::user()->places()->latest()->get();
         foreach($places as $place){
-            $latestCoin = $place->coins()->latest('coins_after')->get();  
-            dd($latestCoin);  
-            $place->coins=$latestCoin[0]->coins_after;
+            $latestCoin = $place->coins()->orderBy('id','desc')->first('coins_after'); 
+            if($latestCoin){  
+                $place->coins=$latestCoin->coins_after;
+            }
+            else{
+                $place->coins=0;
+            }
         }
         //dd($places);
 

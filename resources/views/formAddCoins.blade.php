@@ -4,7 +4,7 @@
 
 @section('main')
 <div class="container">
-	<h1>Поповнити монети</h1>
+	<h1>Поповнити монети {{$place->name}}</h1>
 <form action="{{ route('coins.add', $place) }}" method="POST" >
 	@csrf
 

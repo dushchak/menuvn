@@ -20,6 +20,7 @@
             <a href="{{ route('viewMenu', $place->id) }}">view menu</a>
             <a href="{{ route('ads.new', $place->id) }}">new Ads</a>
             <a href="{{ route('adsPlace', $place->id) }}">view Ads</a>
+            <p>{{ $place->coins }}</p>
         </div> 
     </div>
     

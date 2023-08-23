@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 
 /*V*/
 use Illuminate\Support\Facades\Auth; // підключаєм трейт фасад авторизації 
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\Places;
 use App\Models\Dish;  
 use App\Models\Photo; 
-//use App\Http\Controllers\Storage;
-use Illuminate\Support\Facades\Storage; 
+use App\Models\Coins;
+
+ 
 
 class HomeController extends Controller
 {
@@ -31,7 +34,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home', ['places'=>Auth::user()->places()->latest()->get() ]);
+
+        $places = Auth::user()->places()->latest()->get();
+        foreach($places as $place){
+            $latestCoin = $place->coins()->latest('coins_after')->get();  
+            dd($latestCoin);  
+            $place->coins=$latestCoin[0]->coins_after;
+        }
+        //dd($places);
+
+        return view('home', ['places'=> $places]);
     }
 
     public function formAddPlace(){

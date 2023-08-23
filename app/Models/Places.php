@@ -72,4 +72,8 @@ class Places extends Model
     public function ads(){
         return $this->hasMany(Ads::class);
     }
+
+    public function coins(){
+        return $this->hasMany(Coins::class);
+    }
 }

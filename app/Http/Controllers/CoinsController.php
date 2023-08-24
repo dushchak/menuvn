@@ -60,6 +60,49 @@ class CoinsController extends Controller
         $place->coins()->save($coins);
 
         return redirect()->route('home');
+    }
 
+    public function buyAds (Places $place){
+        //dd($place);
+        return view('buyAds', ['place' => $place]  );
+    }
+
+    public function payAds (Request $request, Places $place) {
+        //dd($place, $request);
+
+        switch ($request->typeoperation) {
+            case 'buyads':
+                $sum = -100;
+                break;
+            default:
+                $sum = 0;
+                break;
+        }
+
+        $lastpay = $place->coins()->orderBy('id','desc')->first('coins_after')   ; // залишок на рахунку в останній операції
+        //dd($lastpay);
+        if($lastpay == null || $lastpay->coins_after == 0){
+            return redirect()->route('home'); // сторінка "Недостатньо коштів"
+        }
+        elseif ($lastpay->coins_after+$sum <= 0) {
+            return redirect()->route('home'); // сторінка "Недостатньо коштів"
+        }
+        else{
+            $coins_before = $lastpay->coins_after;
+        }
+        $comment = "за рекламу ".$place->name;
+
+        $coins = new Coins();
+        $coins->fill([
+            'coins_before' => intval($coins_before),     // 0
+            'operation_sum' => intval($sum),    // 10
+            'coins_after' => $coins_before + $sum,      // before+sum
+            'operator_id' => Auth::user()->id,      // Auth::user->id
+            'typeoperation'=> "buyAds",    // "add"
+            'comment' => $comment,          // "поповнення"
+        ]);
+        $place->coins()->save($coins);
+
+        return redirect()->route('home');
     }
 }

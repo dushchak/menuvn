@@ -20,7 +20,7 @@
             <a href="{{ route('viewMenu', $place->id) }}">view menu</a>
             <a href="{{ route('ads.new', $place->id) }}">new Ads</a>
             <a href="{{ route('adsPlace', $place->id) }}">view Ads</a>
-            <a href="">Купити 1М реклами</a>
+            <a href="{{ route('coins.buyads', $place->id)}}">Купити 1М реклами</a>
             <a href="">В ТОП списку</a>
             <a href="">Підключитись до tg бота</a>
             <a href="">Активувати тариф "Стандарт" (350/М)</a>

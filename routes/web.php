@@ -73,7 +73,9 @@ Route::get('/myads/delete/{ads}', [App\Http\Controllers\AdsController::class, 'd
 // Coins
 Route::get('/wallet/addForm/{place}', [App\Http\Controllers\CoinsController::class, 'formAddConis'])->name('coins.formAdd');
 Route::post('/wallet/add/{place}', [App\Http\Controllers\CoinsController::class, 'addCoins'])->name('coins.add');
-//Route::get('/wallet/add/{place}', [App\Http\Controllers\WalletController::class, 'addCoins'])->name('ads.new');
+Route::get('/wallet/buyads/{place}', [App\Http\Controllers\CoinsController::class, 'buyAds'])->name('coins.buyads');
+Route::post('/wallet/payads/{place}', [App\Http\Controllers\CoinsController::class, 'payAds'])->name('coins.payads');
+
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -344,4 +344,8 @@ class HomeController extends Controller
         
         return redirect()->route('viewMenu', $dish->places_id );  
     }
+
+    public function testRole (User $user){
+
+    }
 }

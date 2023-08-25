@@ -78,7 +78,7 @@ Route::post('/wallet/payads/{place}', [App\Http\Controllers\CoinsController::cla
 
 
 //
-Route::get('/wallet/addForm/{place}', [App\Http\Controllers\CoinsController::class, 'formAddConis'])->name('coins.formAdd')->middleware('auth', 'can:admin-panel');
+Route::get('/test/{user}', [App\Http\Controllers\HomeController::class, 'testRole'])->name('testRole')->middleware('auth', 'can:admin-panel');
 
 
 

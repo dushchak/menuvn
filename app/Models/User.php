@@ -14,6 +14,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    /*V*/
+    const ROLE_USER = 1;
+    const ROLE_CLIENT = 5;
+    const ROLE_ADMIN = 10;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -47,5 +52,9 @@ class User extends Authenticatable
 
     public function places(){
         return $this->hasMany(Places::class); // звязок "один -> багато"
+    }
+
+    public function isAdmin(): bool{
+        return $this->role === self::ROLE_ADMIN;
     }
 }

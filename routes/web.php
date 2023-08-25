@@ -77,5 +77,15 @@ Route::get('/wallet/buyads/{place}', [App\Http\Controllers\CoinsController::clas
 Route::post('/wallet/payads/{place}', [App\Http\Controllers\CoinsController::class, 'payAds'])->name('coins.payads');
 
 
+//
+Route::get('/test/{user}', [App\Http\Controllers\HomeController::class, 'testRole'])->name('testRole')->middleware('auth', 'can:admin-panel');
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+/*
+Role in Laravel
+https://klisl.com/laravel-role-simple.html
+*/

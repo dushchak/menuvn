@@ -54,6 +54,9 @@ class Places extends Model
         'fb',
         'thumbnail',
         'disabled',
+        'moderate',
+        'position',
+        'wifi',
         ];
 
     // звязок вгору з клонкою таблиці: users.id

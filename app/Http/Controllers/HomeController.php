@@ -55,6 +55,7 @@ class HomeController extends Controller
     }
 
     public function storePlace(Request $request) {
+        //dd($request);
         $validatedData = $request->validate([
                 'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ]);
@@ -85,7 +86,7 @@ class HomeController extends Controller
             'viber'=> $request->viber,
             'telegram'=> $request->telegram,
             'insta'=> $request->insta,
-            'fb'=> $request->fb,
+            'fb'=> $request->facebook,
             'thumbnail'=>$fileNameWithExt,
         ]);
 
@@ -102,6 +103,7 @@ class HomeController extends Controller
     }
 
     public function updatePlace(Request $request,Places $placeid) {
+        //dd($request);
 
         $placeid->fill([
             'name'=> $request->name,

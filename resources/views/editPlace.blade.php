@@ -62,6 +62,10 @@
 
 	<!--  -->
 	<div class="form-group">
+		<label for="txtEmail">Email</label>
+		<input type="text" name="email" id="txtName" class="form-control"  value="{{ $place->phone4  }}">
+	</div>
+	<div class="form-group">
 		<label for="txtViber">Viber</label>
 		<input type="text" name="viber" id="txtName" class="form-control" value="{{ $place->viber  }}">
 	</div>
@@ -75,7 +79,7 @@
 	</div>
 	<div class="form-group">
 		<label for="txtFb">Facebook</label>
-		<input type="text" name="facebook" id="txtName" class="form-control"  value="{{ $place->facebook  }}">
+		<input type="text" name="fb" id="txtName" class="form-control"  value="{{ $place->facebook  }}">
 	</div>
 	<div>
 		<input type="radio" id="contactChoice1" name="disabled" value="0" checked />

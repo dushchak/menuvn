@@ -58,6 +58,10 @@
 		<label for="txtEmail">Телефон 4</label>
 		<input type="text" name="phone4" id="txtName" class="form-control" value=" ">
 	</div>
+	<div class="form-group">
+		<label for="txtEmail">Email</label>
+		<input type="text" name="email" id="txtName" class="form-control" value=" ">
+	</div>
 
 	<!--  -->
 	<div class="form-group">

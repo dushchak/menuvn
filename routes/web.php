@@ -77,15 +77,21 @@ Route::get('/wallet/buyads/{place}', [App\Http\Controllers\CoinsController::clas
 Route::post('/wallet/payads/{place}', [App\Http\Controllers\CoinsController::class, 'payAds'])->name('coins.payads');
 
 
-//
+// Admin
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('adminpanel');
+/*
 Route::get('/test/{user}', [App\Http\Controllers\HomeController::class, 'testRole'])->name('testRole')->middleware('auth', 'can:admin-panel');
-
+*/
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+
+
 /*
 Role in Laravel
-https://klisl.com/laravel-role-simple.html
+https://klisl.com/laravel-role-simple.html 
+https://laravel.demiart.ru/laravel-gates/
+https://step2.dev/ru/blog/7-laravel-gates-policies-guards-explained
 */

@@ -1,0 +1,877 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"el",
+				"elseif\telseif …"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
+				"for",
+				"foreach"
+			],
+			[
+				"coi",
+				"coins_before"
+			],
+			[
+				"con",
+				"coins_after"
+			],
+			[
+				"co",
+				"coins_before"
+			],
+			[
+				"coins",
+				"coins_before"
+			],
+			[
+				"res",
+				"resldel"
+			],
+			[
+				"up",
+				"update"
+			],
+			[
+				"p",
+				"placeid"
+			],
+			[
+				"pla",
+				"placeid"
+			],
+			[
+				"str_re",
+				"str_replace()"
+			],
+			[
+				"plac",
+				"places_id"
+			],
+			[
+				"por",
+				"portioncost"
+			],
+			[
+				"po",
+				"portionweight"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"node",
+				"nodeValue"
+			],
+			[
+				"Ze",
+				"Zend_Debug"
+			],
+			[
+				"Zend_",
+				"Zend_Debug"
+			],
+			[
+				"re",
+				"result_ins"
+			],
+			[
+				"my",
+				"myq_connection"
+			],
+			[
+				"sql",
+				"sql__update"
+			],
+			[
+				"de",
+				"desc_old"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"footer",
+				"footer__contacts"
+			],
+			[
+				"vib",
+				"viber_icon.svg"
+			],
+			[
+				"at",
+				"attantion.svg"
+			],
+			[
+				"bac",
+				"background-image"
+			],
+			[
+				"li",
+				"lightblue"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"bo",
+				"bold"
+			],
+			[
+				"fo",
+				"font-weight"
+			],
+			[
+				"foo",
+				"footer__contacts"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"col",
+				"color"
+			],
+			[
+				"ma",
+				"main__sidebar"
+			],
+			[
+				"fl",
+				"flex-direction"
+			],
+			[
+				"footer__",
+				"footer__contacts"
+			],
+			[
+				"ima",
+				"images/"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"fle",
+				"flex-direction"
+			],
+			[
+				"header",
+				"header__menu"
+			],
+			[
+				"trans",
+				"transition"
+			],
+			[
+				"tras",
+				"transform"
+			],
+			[
+				"ta",
+				"text-align"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"ge",
+				"grey"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"hea",
+				"header__menu"
+			],
+			[
+				"dis",
+				"display"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"cont",
+				"content"
+			],
+			[
+				"list",
+				"list-style"
+			],
+			[
+				"al",
+				"align-items"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"lig",
+				"lightblue"
+			],
+			[
+				"pa",
+				"padding-top"
+			],
+			[
+				"ali",
+				"align-items"
+			],
+			[
+				"bot",
+				"bottom"
+			],
+			[
+				"hei",
+				"height"
+			],
+			[
+				"togg",
+				"toggleClass"
+			],
+			[
+				"trn",
+				"transition"
+			],
+			[
+				"der",
+				"derma_logo_m.jpg"
+			],
+			[
+				"ol",
+				"olive"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"s",
+				"serif"
+			],
+			[
+				"q",
+				"questionPlus"
+			],
+			[
+				"an",
+				"ansNum"
+			],
+			[
+				"qu",
+				"questArr"
+			],
+			[
+				"ar",
+				"sans-serif"
+			],
+			[
+				"im",
+				"img_background.jpg"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"bg",
+				"bg_grad_blue.png"
+			],
+			[
+				"x",
+				"repeat-x"
+			],
+			[
+				"mh",
+				"min-height"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"css",
+				"css/"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"spa",
+				"space-between"
+			],
+			[
+				"af",
+				"after"
+			],
+			[
+				"ho",
+				"hover"
+			],
+			[
+				"fs",
+				"font-size"
+			],
+			[
+				"d",
+				"dvolodymyr.jpg"
+			],
+			[
+				"lh",
+				"line-height"
+			],
+			[
+				"id",
+				"id_image"
+			],
+			[
+				"desi",
+				"design/"
+			],
+			[
+				"mo",
+				"mobile.png"
+			],
+			[
+				"cl",
+				"clock.png"
+			],
+			[
+				"ra",
+				"randomNumber"
+			],
+			[
+				"2",
+				"2open"
+			],
+			[
+				"wh",
+				"whs4"
+			],
+			[
+				"i",
+				"import"
+			],
+			[
+				"l",
+				"layout_notes2"
+			],
+			[
+				"add",
+				"addLayout"
+			],
+			[
+				"la",
+				"layout_result"
+			],
+			[
+				"QTe",
+				"QTextEdit"
+			],
+			[
+				"bu",
+				"button_note_del"
+			],
+			[
+				"shift",
+				"shift_y"
+			],
+			[
+				"row",
+				"row_4"
+			],
+			[
+				"button_",
+				"button_tag_add"
+			],
+			[
+				"fiel",
+				"field_tag"
+			],
+			[
+				"ro",
+				"row_2"
+			],
+			[
+				"butt",
+				"button_note_save"
+			],
+			[
+				"button",
+				"button_note_create"
+			],
+			[
+				"QHB",
+				"QHBoxLayout"
+			],
+			[
+				"Qli",
+				"QLineEdit"
+			],
+			[
+				"wa",
+				"warrior1"
+			],
+			[
+				"QL",
+				"QLabel"
+			],
+			[
+				"Q",
+				"QPushButton"
+			],
+			[
+				"QW",
+				"QtWidgets"
+			],
+			[
+				"array_r",
+				"array_rand()"
+			],
+			[
+				"resul",
+				"result_add"
+			],
+			[
+				"ser",
+				"server_path"
+			],
+			[
+				"Sen",
+				"SendFtpTo"
+			],
+			[
+				"zdam",
+				"zdam_imgs/"
+			],
+			[
+				"n",
+				"None"
+			],
+			[
+				"dat",
+				"datetime_sqlite"
+			],
+			[
+				"ran",
+				"rand()"
+			],
+			[
+				"post",
+				"post_arr"
+			],
+			[
+				"des",
+				"DESC"
+			],
+			[
+				"e",
+				"elseif"
+			],
+			[
+				"mysqli_fetch_",
+				"mysqli_fetch_row"
+			],
+			[
+				"var",
+				"var_dump()"
+			],
+			[
+				"er",
+				"error_reporting()"
+			],
+			[
+				"va",
+				"var_dump()"
+			],
+			[
+				"ur",
+				"urlencode()"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "routes/web.php",
+			"settings":
+			{
+				"buffer_size": 4464,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 390.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: inst",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Local Dependency"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control:",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 485.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/mars19/www/menuvn",
+		"/home/mars19/www/menuvn/app",
+		"/home/mars19/www/menuvn/app/Models",
+		"/home/mars19/www/menuvn/routes"
+	],
+	"file_history":
+	[
+		"/home/mars19/www/menuvn/resources/views/home.blade.php",
+		"/home/mars19/www/menuvn/app/Models/Places.php",
+		"/home/mars19/www/menuvn/app/Models/Coins.php",
+		"/home/mars19/www/menuvn/resources/views/Coins/formAddCoins.blade.php",
+		"/home/mars19/www/menuvn/app/Models/Dish.php",
+		"/home/mars19/www/menuvn/resources/views/formEditAds.blade.php",
+		"/home/mars19/www/menuvn/resources/views/placeAds.blade.php",
+		"/home/mars19/www/menuvn/app/Http/Controllers/PlacesController.php",
+		"/home/mars19/www/menuvn/resources/views/adsPlace.blade.php",
+		"/home/mars19/www/menuvn/resources/views/editPlace.blade.php",
+		"/home/mars19/www/menuvn/app/Models/User.php",
+		"/home/mars19/www/menuvn/resources/views/dish_add.blade.php",
+		"/home/mars19/www/menuvn/app/Http/Controllers/HomeController.php",
+		"/home/mars19/www/menuvn/database/migrations/2023_08_18_130445_create_ads_table.php",
+		"/home/mars19/www/menuvn/resources/views/place_add.blade.php",
+		"/home/mars19/www/menuvn/resources/views/layouts/base.blade.php",
+		"/home/mars19/www/menuvn/resources/views/viewmenu.blade.php",
+		"/home/mars19/www/menuvn/database/migrations/2023_08_06_112418_create_places_table.php",
+		"/home/mars19/www/menuvn/database/migrations/2023_08_10_093952_create_dishes_table.php",
+		"/home/mars19/www/dovidka_laravel/app/Http/Controllers/HomeController.php",
+		"/home/mars19/www/menuvn/public/css/style.css",
+		"/home/mars19/www/menuvn/resources/views/index.blade.php",
+		"/home/mars19/www/menuvn/config/app.php",
+		"/home/mars19/www/menuvn/resources/views/auth/register.blade.php",
+		"/home/mars19/www/menuvn/resources/views/auth/login.blade.php",
+		"/home/mars19/www/landing_vikna/calculator.html",
+		"/home/mars19/www/landing_vikna/evikna.html",
+		"/home/mars19/temp/crm.evikna.com.ua/20230404/views/scripts/client/botadder.phtml",
+		"/home/mars19/temp/crm.evikna.com.ua/20230404/controllers/ClientController.php",
+		"/home/mars19/www/dovidka_nlp/Translate_Big_txt/mysql_filter_mysql.py",
+		"/home/mars19/www/invest.ua/www/math_battle/index.html",
+		"/home/mars19/www/invest.ua/www/math_battle/index_obj.html",
+		"/home/mars19/www/sites.local/index.html",
+		"/home/mars19/www/viber_robota/controller_zdam_id.py",
+		"/home/mars19/www/dovidka_nlp/Translate_Big_txt/loader_robotavn_viberdb.py",
+		"/home/mars19/www/viber_robota/Loader_ViberDB_MysqlDB/loader_robotavn_viberdb.py",
+		"/home/mars19/www/viber_robota/controller_robotavn.py",
+		"/home/mars19/Arduino__projects/__my_scratchbook/GARAGE/hot_nano.cpp",
+		"/home/mars19/Desktop/Logika_school/1_2022/Vypusk_1y/kazino.py",
+		"/home/mars19/Desktop/Logika_school/1_2022/Part 5/Part 5/main_answers5.py",
+		"/home/mars19/Desktop/Logika_school/1_2022/Vypusk_1y/pitomec.py",
+		"/home/mars19/Desktop/Logika_school/12_2021/Arcanoid/lesson3/arcanoid3.py",
+		"/home/mars19/Desktop/Logika_school/12_2021/ImagEditor/lesson3/app2.py",
+		"/home/mars19/Desktop/Logika_school/12_2021/ImagEditor/lesson3/app1.py",
+		"/home/mars19/Desktop/Logika_school/12_2021/Arcanoid/lesson 2/arcanoid2.py",
+		"/home/mars19/Desktop/Logika_school/ImagEditor/lesson 2/Part 2/Part 2/main_answers2.py",
+		"/home/mars19/Desktop/Logika_school/ImagEditor/lesson 2/Part 1/Part 1/main_answers1.py",
+		"/home/mars19/Desktop/Logika_school/Rizne_logika/temp_11122021/11111/Трек 1/image.py",
+		"/home/mars19/Desktop/Logika_school/Rizne_logika/temp_11122021/10_code/arcanoid_1.py",
+		"/home/mars19/Desktop/Logika_school/Rizne_logika/temp_11122021/10_code/imageeditor.py",
+		"/home/mars19/Desktop/Logika_school/Rizne_logika/temp_11122021/10_code/image.py",
+		"/home/mars19/Desktop/Logika_school/chat_vidpovidi.py",
+		"/home/mars19/Desktop/Logika_school/Rizne_logika/temp_11122021/11111/Трек 1/main.py",
+		"/home/mars19/Desktop/Logika_school/calculator_okna/class.py",
+		"/home/mars19/Desktop/Logika_school/calculator_okna/test-pyqt5.py",
+		"/home/mars19/Desktop/Logika_school/calculator_okna/handler_btn.py",
+		"/home/mars19/Desktop/Logika_school/calculator_okna/item_okna.py",
+		"/home/mars19/Desktop/Logika_school/calculator_okna/app.py",
+		"/home/mars19/Desktop/Logika_school/calculator_okna/calculator.py",
+		"/home/mars19/Desktop/Logika_school/old_lessons/10_00/30_10_2021/5/final_new/memo_card_layout.py",
+		"/home/mars19/Desktop/Logika_school/old_lessons/10_00/30_10_2021/5/final_new/memo_main_layout.py",
+		"/home/mars19/Desktop/Logika_school/old_lessons/10_00/30_10_2021/5/final_new/memo_main.py",
+		"/home/mars19/Desktop/Logika_school/10--00/4-12-2021/smart_notes.py",
+		"/home/mars19/Arduino__projects/__my_scratchbook/my_scatchbook/attiny13a/Termometr/tm1637_ds18b20_termometr_v/1637.h",
+		"/home/mars19/Arduino__projects/__my_scratchbook/my_scatchbook/attiny13a/Termometr/tm1637_ds18b20_termometr_v/main.h",
+		"/home/mars19/Desktop/Logika_school/12--00/20-11-2021/fast-clicker.py",
+		"/home/mars19/Desktop/Logika_school/10--00/13-11-2021/pupils_small.py",
+		"/home/mars19/Desktop/Logika_school/list_func.py",
+		"/home/mars19/Desktop/Logika_school/fallout__game.py",
+		"/home/mars19/Desktop/Logika_school/ne_turtle.py",
+		"/home/mars19/Desktop/Logika_school/maxim.py",
+		"/home/mars19/www/invest.ua/www/math/css/main.css",
+		"/home/mars19/www/invest.ua/www/math/index.php",
+		"/home/mars19/www/invest.ua/www/math/multipl.php",
+		"/home/mars19/www/viber_robota/test2.py",
+		"/home/mars19/temp/zdam.vn.ua/view.phtml",
+		"/home/mars19/temp/zdam.vn.ua/IndexController.php",
+		"/home/mars19/temp/zdam.vn.ua/main.css",
+		"/home/mars19/temp/zdam.vn.ua/layout.phtml",
+		"/home/mars19/temp/robota.vn.ua_viber/20210705/main.css",
+		"/home/mars19/www/viber_robota/delete_dublicates_zdam.py",
+		"/home/mars19/www/viber_robota/ftp_to_server.py",
+		"/home/mars19/www/zdam.ua/application/models/DbTable/Ads.php",
+		"/home/mars19/www/zdam.ua/application/controllers/IndexController.php",
+		"/home/mars19/temp/python_uahosting/hello.py",
+		"/home/mars19/www/testphp.ua/www/phone_detect.php",
+		"/home/mars19/Dropbox/PROECTS/zdam_vn/controller_zdam_eventid.py",
+		"/home/mars19/Dropbox/PROECTS/zdam_vn/controller_zdam_id.py",
+		"/home/mars19/www/crm_to_txp/crm_articles_to_txt.py",
+		"/home/mars19/Dropbox/PROECTS/crm_to_txp/crm_articles_to_txt.py",
+		"/home/mars19/temp/untitled.html",
+		"/home/mars19/temp/clear_viber.py",
+		"/home/mars19/temp/test_sqlite.py",
+		"/home/mars19/temp/test_mysql.py",
+		"/home/mars19/www/invest.ua/www/gosleep/index.html",
+		"/home/mars19/www/testphp.ua/www/phpdate/gosleep.php",
+		"/home/mars19/www/s008.ua/public_html/opt_parser.php",
+		"/home/mars19/www/s008.ua/public_html/432_parser.php",
+		"/home/mars19/www/s008.ua/public_html/0432_cat.php",
+		"/home/mars19/www/s008.ua/public_html/dovidka_cat.php",
+		"/home/mars19/www/s005.ua/public_html/index.php",
+		"/home/mars19/www/s006.ua/public_html/landing3/js/calc.js",
+		"/home/mars19/www/landing_vikna/js/calc.js",
+		"/home/mars19/www/landing_vikna/js/evikna.js",
+		"/home/mars19/temp/crm.evikna.com.ua/20230711/public/js/main.js",
+		"/home/mars19/temp/crm.evikna.com.ua/20230711/public/test.html",
+		"/home/mars19/temp/crm.evikna.com.ua/20230711/views/scripts/order/index.phtml",
+		"/home/mars19/temp/crm.evikna.com.ua/20230711/views/scripts/partials/listorders.phtml",
+		"/home/mars19/temp/crm.evikna.com.ua/20230711/models/DbTable/Orders.php",
+		"/home/mars19/temp/crm.evikna.com.ua/20230711/controllers/OrderController.php",
+		"/home/mars19/temp/crm.evikna.com.ua/20230404/Bootstrap.php",
+		"/home/mars19/temp/crm.evikna.com.ua/20230711/layouts/scripts/layout.phtml",
+		"/home/mars19/temp/crm.evikna.com.ua/20230711/configs/application.ini",
+		"/home/mars19/temp/crm.evikna.com.ua/20230711/public/index.php",
+		"/home/mars19/temp/crm.evikna.com.ua/20230711/Bootstrap.php",
+		"/home/mars19/www/landing_vikna/index2.html",
+		"/home/mars19/temp/telegram_bot_librarys/bot.php",
+		"/home/mars19/www/s005.ua/public_html/css/cover.css",
+		"/home/mars19/temp/crm.evikna.com.ua/application.ini",
+		"/home/mars19/www/s006.ua/public_html/landing3/css/style.css",
+		"/home/mars19/www/s006.ua/public_html/index.html",
+		"/home/mars19/temp/vikna.vinn.site__ads/vikna.vinn.site/textpattern/config.php",
+		"/home/mars19/temp/vikna.vinn.site__ads/vikna.vinn.site/textpattern/lib/constants.php",
+		"/home/mars19/Books/Maxim/Chzhan_Tyan-i_Lin_bolshoy_i_Lin_malenkiy_5789d6_451288.fb2",
+		"/tmp/fz3temp-2/license.txt",
+		"/tmp/fz3temp-2/php.log",
+		"/home/mars19/Backup/dovidka_vn/sql/companies.sql",
+		"/home/mars19/temp/zdam.vn.ua/20230302/application/views/scripts/index/aboutus.phtml"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "routes/web.php",
+					"selected": true,
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 4464,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": true,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 867.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "menuvn.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 345.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (!Schema::hasColumn('users', 'role')) {
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedSmallInteger('role')->after('remember_token');
         });
@@ -18,6 +19,7 @@ return new class extends Migration
         DB::table('users')->update([
             'role' => User::ROLE_USER,
         ]);
+    }
     }
 
     /**

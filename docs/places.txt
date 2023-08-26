@@ -1,0 +1,25 @@
+#	Ім'я	Тип	Зіставлення	Атрибути	Нуль	За замовчуванням
+1	id 	bigint 		UNSIGNED	Ні	Немає 
+2	name 	varchar(255) 	utf8mb4_unicode_ci 		Ні	Немає 
+3	adress 	varchar(255) 	utf8mb4_unicode_ci 		Ні	Немає 
+4	workhours 	varchar(255) 	utf8mb4_unicode_ci 		Ні	Немає 
+5	description 	text 	utf8mb4_unicode_ci 		Ні	Немає 
+6	sitplaces 	smallint 		UNSIGNED	Ні	0
+7	delivery 	varchar(255) 	utf8mb4_unicode_ci 		Так	NULL 
+8	manager 	varchar(255) 	utf8mb4_unicode_ci 		Ні	Немає 
+9	phone1 	varchar(255) 	utf8mb4_unicode_ci 		Ні	Немає 
+10	phone2 	varchar(255) 	utf8mb4_unicode_ci 		Так	NULL 
+11	phone3 	varchar(255) 	utf8mb4_unicode_ci 		Так	NULL 
+12	phone4 	varchar(255) 	utf8mb4_unicode_ci 		Так	NULL 
+13	email 	varchar(255) 	utf8mb4_unicode_ci 		Так	NULL 
+14	viber 	varchar(255) 	utf8mb4_unicode_ci 		Так	NULL 
+15	telegram 	varchar(255) 	utf8mb4_unicode_ci 		Так	NULL 
+16	insta 	varchar(255) 	utf8mb4_unicode_ci 		Так	NULL 
+17	fb 	varchar(255) 	utf8mb4_unicode_ci 		Так	NULL 
+18	thumbnail 	varchar(255) 	utf8mb4_unicode_ci 		Так	NULL 
+19	disabled 	tinyint 		UNSIGNED	Ні	0
+20	moderate 	tinyint 		UNSIGNED	Ні	0
+21	position 	tinyint 		UNSIGNED	Ні	0
+22	created_at 	timestamp 			Так	NULL 
+23	updated_at 	timestamp 			Так	NULL 
+24	user_id 	bigint 				

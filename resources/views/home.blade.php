@@ -12,9 +12,10 @@
         </div>
         <div class="place__info">
             <h3>{{ $place->name }}</h3>
-            <div class="place__adress">{{ $place->adress }}</div>
+            
             <div class="place__workhours">Розклад: {{ $place->workhours }}</div>
             <div class="place__sitplaces">Місць: {{ $place->sitplaces }}</div>
+            <div class="place__adress">Wi-Fi: {{ $place->wifipass }}</div>
             <div class="place__delivery">Доставка: {{ $place->delivery }}</div>
             <div class="place__phone1">Про нас: {{ $place->description }}</div>
             

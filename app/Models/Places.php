@@ -42,6 +42,7 @@ class Places extends Model
         'description',
         'sitplaces',
         'delivery',
+        'wifipass',
         'manager',
         'phone1',
         'phone2',

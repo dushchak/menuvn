@@ -35,6 +35,10 @@
 		<input type="text" name="delivery" id="txtName" class="form-control">
 	</div>
 	<div class="form-group">
+		<label for="txtDelivery">Пароль Wi-Fi</label>
+		<input type="text" name="wifipass" id="txtName" class="form-control">
+	</div>
+	<div class="form-group">
 		<label for="txtManager">Контакти керуючого</label>
 		<input type="text" name="manager" id="txtName" class="form-control">
 	</div>

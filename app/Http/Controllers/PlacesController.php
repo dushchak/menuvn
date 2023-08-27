@@ -63,5 +63,10 @@ class PlacesController extends Controller
         //dd($ads);
 
         return view ('placeAds', ['ads'=>$ads, 'place'=>$place]);    
+    }
+
+    public function upPlace(Places $place){
+        
+        return view ('formUpPlace');
     } 
 }

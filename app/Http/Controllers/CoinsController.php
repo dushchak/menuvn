@@ -67,11 +67,14 @@ class CoinsController extends Controller
         return view('buyAds', ['place' => $place]  );
     }
 
-    public function payAds (Request $request, Places $place) {
+    public function pay (Request $request, Places $place) {
         //dd($place, $request);
 
         switch ($request->typeoperation) {
             case 'buyads':
+                $sum = -100;
+                break;  
+            case 'upplace':
                 $sum = -100;
                 break;
             default:
@@ -81,10 +84,7 @@ class CoinsController extends Controller
 
         $lastpay = $place->coins()->orderBy('id','desc')->first('coins_after')   ; // залишок на рахунку в останній операції
         //dd($lastpay);
-        if($lastpay == null || $lastpay->coins_after == 0){
-            return redirect()->route('home'); // сторінка "Недостатньо коштів"
-        }
-        elseif ($lastpay->coins_after+$sum <= 0) {
+        if($lastpay == null || $lastpay->coins_after+$sum <= 0){
             return redirect()->route('home'); // сторінка "Недостатньо коштів"
         }
         else{
@@ -105,4 +105,9 @@ class CoinsController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function formUpPlace(Places $place){
+        
+        return view ('formUpPlace', ['place'=>$place]);
+    } 
 }

@@ -39,24 +39,31 @@ Route::patch('/home/edit/{placeid}', [App\Http\Controllers\HomeController::class
 Route::patch('/home/updImg/{placeid}', [App\Http\Controllers\HomeController::class, 'updatePlaceImage'])->name('place.updateImage');
 Route::get('/home/delImg/{placeid}', [App\Http\Controllers\HomeController::class, 'deletePlaceImage'])->name('place.deleteImage');
 
+Route::get('/home/up/{place}', [App\Http\Controllers\CoinsController::class, 'formUpPlace'])->name('place.formuplist');
+
+
+
+
 /* Dishes */
-Route::get('/home/editdish/{dishid}', [App\Http\Controllers\HomeController::class, 'formEditDish'])->name('dish.editdish');
-Route::post('/home/upddish/{dishid}', [App\Http\Controllers\HomeController::class, 'updateDish'])->name('dish.updatedish');
+Route::get('/home/editdish/{dishid}', [App\Http\Controllers\DishesController::class, 'formEditDish'])->name('dish.editdish');
+Route::post('/home/upddish/{dishid}', [App\Http\Controllers\DishesController::class, 'updateDish'])->name('dish.updatedish');
 
-Route::get('/home/delFormDish/{dish}', [App\Http\Controllers\HomeController::class, 'formDelDish'])->name('dish.formdeldish');
-Route::delete('/home/delDish/{dish}', [App\Http\Controllers\HomeController::class, 'deleteDish'])->name('dish.delete');
+Route::get('/home/delFormDish/{dish}', [App\Http\Controllers\DishesController::class, 'formDelDish'])->name('dish.formdeldish');
+Route::delete('/home/delDish/{dish}', [App\Http\Controllers\DishesController::class, 'deleteDish'])->name('dish.delete');
 
-Route::post('/home/updDishImg/{dishid}', [App\Http\Controllers\HomeController::class, 'updateDishImage'])->name('dish.updateDishImage');
-Route::get('/home/delDishImg/{dishid}', [App\Http\Controllers\HomeController::class, 'deleteDishImage'])->name('dish.deleteDishImage');
-
-
-// add new dish
-Route::get('/home/newdish/{placeid}', [App\Http\Controllers\HomeController::class, 'formNewDish'])->name('dish.add');
-Route::post('/home/save', [App\Http\Controllers\HomeController::class, 'saveDish'])->name('dish.save');
+Route::post('/home/updDishImg/{dishid}', [App\Http\Controllers\DishesController::class, 'updateDishImage'])->name('dish.updateDishImage');
+Route::get('/home/delDishImg/{dishid}', [App\Http\Controllers\DishesController::class, 'deleteDishImage'])->name('dish.deleteDishImage');
 
 
-Route::get('/home/updish/{dish}', [App\Http\Controllers\HomeController::class, 'upDish'])->name('dish.up');
-Route::get('/home/downdish/{dish}', [App\Http\Controllers\HomeController::class, 'downDish'])->name('dish.down');
+
+
+// Dishes
+Route::get('/home/newdish/{placeid}', [App\Http\Controllers\DishesController::class, 'formNewDish'])->name('dish.add');
+Route::post('/home/save', [App\Http\Controllers\DishesController::class, 'saveDish'])->name('dish.save');
+
+
+Route::get('/home/updish/{dish}', [App\Http\Controllers\DishesController::class, 'upDish'])->name('dish.up');
+Route::get('/home/downdish/{dish}', [App\Http\Controllers\DishesController::class, 'downDish'])->name('dish.down');
 
 
 // 
@@ -74,7 +81,7 @@ Route::get('/myads/delete/{ads}', [App\Http\Controllers\AdsController::class, 'd
 Route::get('/wallet/addForm/{place}', [App\Http\Controllers\CoinsController::class, 'formAddConis'])->name('coins.formAdd');
 Route::post('/wallet/add/{place}', [App\Http\Controllers\CoinsController::class, 'addCoins'])->name('coins.add');
 Route::get('/wallet/buyads/{place}', [App\Http\Controllers\CoinsController::class, 'buyAds'])->name('coins.buyads');
-Route::post('/wallet/payads/{place}', [App\Http\Controllers\CoinsController::class, 'payAds'])->name('coins.payads');
+Route::post('/wallet/payads/{place}', [App\Http\Controllers\CoinsController::class, 'pay'])->name('coins.payads');
 
 
 // Admin

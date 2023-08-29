@@ -21,7 +21,7 @@ class CoinsController extends Controller
 {
      public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth'); // всі дії Coins роблять залоговані користувачі
     }
 
     public function formAddConis(Places $place){

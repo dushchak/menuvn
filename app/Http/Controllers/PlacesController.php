@@ -38,10 +38,46 @@ class PlacesController extends Controller
 
     }
 
-    public function printQR(Places $place){
-        //dd($place);
-        return view ('QRpage', ['place'=>$place]);
+    public function printQR(Request $request, Places $place){
+        //dd($request);
+        $menuurl = route('viewMenu', ['place' => $place->id ]); // генеруємо  адресу МЕНЮ з іменованого Роута  )))
+        
+        $arrColor=str_split(substr($request->qrcolor, 1), 2);
+        foreach ($arrColor as $key) {
+            $arrColorDec[] = intval(hexdec($key));
+        }
+        $request->qrcolor = $arrColorDec;
+
+
+        $arrBg = str_split(substr($request->qrbg, 1),2);
+        foreach ($arrBg as $key) {
+            $arrBgDec[] = hexdec($key);
+        }
+        $request->qrbg = $arrBgDec;
+
+        $arrGrad1 = str_split(substr($request->grad_col_1, 1), 2);
+        foreach ($arrGrad1 as $key) {
+            $arrGradCol1[] = intval(hexdec($key));
+        }
+        $request->grad_col_1 = $arrGradCol1;
+
+        $arrGrad2 = str_split(substr($request->grad_col_2, 1), 2);
+        foreach ($arrGrad2 as $key) {
+            $arrGradCol2[] = intval(hexdec($key));
+        }
+        $request->grad_col_2 = $arrGradCol2;
+
+
+        //dd($request->grad_col_1);
+
+        return view ('QRpage', ['place'=>$place, 'menuurl'=>$menuurl, 'qrstyle'=>$request]);
     }
+
+    public function printQRstyle(Request $request, Places $place){
+        //dd($request);
+        return $this->printQR($request, $place);
+    }
+
 
     public function allAds () {
         $ads = Ads::latest()->get();

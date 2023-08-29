@@ -20,6 +20,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [PlacesController::class, 'index'])->name('index'); //guests
 
 Route::get('/menu/print/{place}', [PlacesController::class, 'printQR'])->name('printQRpage'); // guests
+Route::post('/menu/qrstyle/{place}', [PlacesController::class, 'printQRstyle'])->name('printQRstyle'); // guests
 
 Route::get('/menu/{place}', [PlacesController::class, 'viewMenu'])->name('viewMenu'); // guests
 

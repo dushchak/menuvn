@@ -82,7 +82,7 @@ Route::get('/myads/delete/{ads}', [App\Http\Controllers\AdsController::class, 'd
 Route::get('/wallet/addForm/{place}', [App\Http\Controllers\CoinsController::class, 'formAddConis'])->name('coins.formAdd');
 Route::post('/wallet/add/{place}', [App\Http\Controllers\CoinsController::class, 'addCoins'])->name('coins.add');
 Route::get('/wallet/buyads/{place}', [App\Http\Controllers\CoinsController::class, 'buyAds'])->name('coins.buyads');
-Route::post('/wallet/payads/{place}', [App\Http\Controllers\CoinsController::class, 'pay'])->name('coins.payads');
+Route::post('/wallet/payads/{place}', [App\Http\Controllers\CoinsController::class, 'payAds'])->name('coins.payads');
 
 
 // Admin

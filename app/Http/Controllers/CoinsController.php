@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
+use DateTimeImmutable;
+//use DatePeriod;
+//use DateInterval;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; // підключаєм трейт фасад авторизації 
 
@@ -64,23 +69,41 @@ class CoinsController extends Controller
 
     public function buyAds (Places $place){
         //dd($place);
+
+        $now  = new DateTimeImmutable();
+    
+        $str_payed = "06-10-2023";
+        $payed_to = new DateTimeImmutable($str_payed);
+        //$payed_to = null; // tests
+
+        if($str_payed == null){
+            $promo_to = new DateTimeImmutable("+ 1 month"); // +1М реклами
+        }
+        elseif ($payed_to < $now) {
+            $promo_to = new DateTimeImmutable("+ 1 month"); // +1М реклами
+        }
+        elseif ($payed_to >= $now) {
+            $promo_to = $payed_to->modify("+ 1 month"); // додатково +1М реклами
+        }
+
+        dd($promo_to->format('d-m-y'));
+        
         return view('buyAds', ['place' => $place]  );
     }
 
-    public function pay (Request $request, Places $place) {
-        //dd($place, $request);
+    public function payAds(Places $place ){
+        $sum = -100;                    // ціна за місяць рекламних постерів
+        $typeoperation = "buyAds";
+        $comment = "за 1М реклами ".$place->name;
 
-        switch ($request->typeoperation) {
-            case 'buyads':
-                $sum = -100;
-                break;  
-            case 'upplace':
-                $sum = -100;
-                break;
-            default:
-                $sum = 0;
-                break;
-        }
+        $this->pay($place, $sum, $typeoperation, $comment);
+
+        return redirect()->route('home');
+
+    }
+
+    public function pay (Places $place, $sum, $typeoperation, $comment) {
+        //dd($place, $request);
 
         $lastpay = $place->coins()->orderBy('id','desc')->first('coins_after')   ; // залишок на рахунку в останній операції
         //dd($lastpay);
@@ -90,7 +113,7 @@ class CoinsController extends Controller
         else{
             $coins_before = $lastpay->coins_after;
         }
-        $comment = "за рекламу ".$place->name;
+        
 
         $coins = new Coins();
         $coins->fill([
@@ -98,7 +121,7 @@ class CoinsController extends Controller
             'operation_sum' => intval($sum),    // 10
             'coins_after' => $coins_before + $sum,      // before+sum
             'operator_id' => Auth::user()->id,      // Auth::user->id
-            'typeoperation'=> "buyAds",    // "add"
+            'typeoperation'=> $typeoperation,    // "add"
             'comment' => $comment,          // "поповнення"
         ]);
         $place->coins()->save($coins);

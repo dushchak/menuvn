@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth; // підключаєм трейт фаса
 
 use App\Models\Places;
 use App\Models\Coins;
+use App\Models\Ads;
 
 /*
         'coins_before',
@@ -70,39 +71,95 @@ class CoinsController extends Controller
     public function buyAds (Places $place){
         //dd($place);
 
-        $now  = new DateTimeImmutable();
-    
-        $str_payed = "06-10-2023";
-        $payed_to = new DateTimeImmutable($str_payed);
-        //$payed_to = null; // tests
-
-        if($str_payed == null){
-            $promo_to = new DateTimeImmutable("+ 1 month"); // +1М реклами
-        }
-        elseif ($payed_to < $now) {
-            $promo_to = new DateTimeImmutable("+ 1 month"); // +1М реклами
-        }
-        elseif ($payed_to >= $now) {
-            $promo_to = $payed_to->modify("+ 1 month"); // додатково +1М реклами
-        }
-
-        dd($promo_to->format('d-m-y'));
-        
         return view('buyAds', ['place' => $place]  );
     }
 
-    public function payAds(Places $place ){
-        $sum = -100;                    // ціна за місяць рекламних постерів
-        $typeoperation = "buyAds";
-        $comment = "за 1М реклами ".$place->name;
-
-        $this->pay($place, $sum, $typeoperation, $comment);
-
-        return redirect()->route('home');
-
+    public function formNoAds (Places $place){
+        return view('formNoAds', ['place' => $place]  );
     }
 
-    public function pay (Places $place, $sum, $typeoperation, $comment) {
+
+    public function payAds(Places $place ){
+        $sum = -10;                    // ціна за місяць рекламних постерів
+        $typeoperation = "buyAds";
+        $comment = "1М промо ".$place->name;
+
+        $this->pay($place, $sum, $typeoperation, $comment);
+        $this->storeDate($place, 'ads', 'm1');
+
+        return redirect()->route('home');
+    }
+
+
+    public function payNoAds(Places $place ){
+        $sum = -10;                    // ціна за місяць рекламних постерів
+        $typeoperation = "buyNoAds";
+        $comment = "1М БЕЗ реклами ".$place->name;
+
+        $this->pay($place, $sum, $typeoperation, $comment);
+        $this->storeDate($place, 'noads', 'm1');
+
+        return redirect()->route('home');
+    }
+
+    //
+    private function storeDate(Places $place, $typepayment, $period ){
+        //dd($place);
+        switch($typepayment){
+            case 'ads':
+                $str_payed = $place->adsto;
+                $field = 'adsto';           // name table column
+                break;
+            case 'noads':
+                $str_payed = $place->noadsto;
+                $field = 'noadsto';         // name table column
+                break;
+            default:
+                break;
+        }
+
+        switch ($period) {
+            case 'm1':
+                $timeper = "+ 1 month";
+                break;
+            case 'm6':
+                $timeper = "+ 6 month";
+                break;
+            case 'm12':
+                $timeper = "+ 12 month";
+                break;
+            
+            default:
+                dd('Error: chkDate() - $period ???');
+                //return     ; // error "period"
+                break;
+        }
+        //$str_payed = "06-10-2023"; //test
+
+        $now  = new DateTimeImmutable();                //obj "now"
+        $payed_to = new DateTimeImmutable($str_payed);  //obj "payed_at"
+        //$payed_to = null;                             // str, tests
+
+        if($str_payed == null){
+            $promo_to = new DateTimeImmutable($timeper); // +1М реклами
+        }
+        elseif ($payed_to < $now) {
+            $promo_to = new DateTimeImmutable($timeper); // +1М реклами
+        }
+        elseif ($payed_to >= $now) {
+            $promo_to = $payed_to->modify($timeper); // додатково +1М реклами
+        }
+
+        $new_payed = $promo_to->format('Y-m-d');
+
+        //dd($field, $new_payed);
+        $place->fill([
+            $field => $new_payed,  // 'adsto' => '2023-11-01'
+        ]);
+        $place->save();
+    }
+
+    private function pay (Places $place, $sum, $typeoperation, $comment) {
         //dd($place, $request);
 
         $lastpay = $place->coins()->orderBy('id','desc')->first('coins_after')   ; // залишок на рахунку в останній операції

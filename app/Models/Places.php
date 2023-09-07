@@ -57,6 +57,8 @@ class Places extends Model
         'disabled',
         'moderate',
         'position',
+        'adsto',
+        'noadsto',
         'wifi',
         ];
 

@@ -84,6 +84,10 @@ Route::post('/wallet/add/{place}', [App\Http\Controllers\CoinsController::class,
 Route::get('/wallet/buyads/{place}', [App\Http\Controllers\CoinsController::class, 'buyAds'])->name('coins.buyads');
 Route::post('/wallet/payads/{place}', [App\Http\Controllers\CoinsController::class, 'payAds'])->name('coins.payads');
 
+Route::get('/wallet/noads/{place}', [App\Http\Controllers\CoinsController::class, 'formNoAds'])->name('coins.formNoAds') ;
+//Route::get('/wallet/noads/{place}', [App\Http\Controllers\CoinsController::class, 'buyAds'])->name('coins.buyads');
+Route::post('/wallet/noads/{place}', [App\Http\Controllers\CoinsController::class, 'payNoAds'])->name('coins.noads1m');
+
 
 // Admin
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('adminpanel');

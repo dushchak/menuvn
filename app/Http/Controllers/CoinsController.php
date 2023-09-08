@@ -79,25 +79,65 @@ class CoinsController extends Controller
     }
 
 
-    public function payAds(Places $place ){
-        $sum = -10;                    // ціна за місяць рекламних постерів
+    public function payAds(Request $request, Places $place ){
+        switch ($request->period) {
+            case 'm1':
+                $sum = -10;                    // ціна за місяць рекламних постерів
+                $comment = "1М Промо ".$place->name;
+                $period = "m1";
+                break;
+            case 'm6':
+                $sum = -55;                    // ціна за 6місяць рекламних постерів
+                $comment = "6М Промо ".$place->name;
+                $period = "m6";
+                break;
+            case 'm12':
+                $sum = -90;                    // ціна за 12місяць рекламних постерів
+                $comment = "12М БЕЗ реклами ".$place->name;
+                $period = "m12";
+                break;
+            default:
+                dd("Error value 'period'"); // tyt redirect to error page!!!!!!!!!!!!!!!!!!!
+                //redirect()->;
+                break;
+        }
+
         $typeoperation = "buyAds";
-        $comment = "1М промо ".$place->name;
 
         $this->pay($place, $sum, $typeoperation, $comment);
-        $this->storeDate($place, 'ads', 'm1');
+        $this->storeDate($place, 'ads', $period);
 
         return redirect()->route('home');
     }
 
 
-    public function payNoAds(Places $place ){
-        $sum = -10;                    // ціна за місяць рекламних постерів
+    public function payNoAds(Request $request, Places $place ){
+        switch ($request->period) {
+            case 'm1':
+                $sum = -10;                    // ціна за місяць рекламних постерів
+                $comment = "1М БЕЗ реклами ".$place->name;
+                $period = "m1";
+                break;
+            case 'm6':
+                $sum = -55;                    // ціна за 6місяць рекламних постерів
+                $comment = "6М БЕЗ реклами ".$place->name;
+                $period = "m6";
+                break;
+            case 'm12':
+                $sum = -90;                    // ціна за 12місяць рекламних постерів
+                $comment = "12М БЕЗ реклами ".$place->name;
+                $period = "m12";
+                break;
+            default:
+                dd("Error value 'period'"); // tyt redirect to error page!!!!!!!!!!!!!!!!!!!
+                //redirect()->;
+                break;
+        }
+       
         $typeoperation = "buyNoAds";
-        $comment = "1М БЕЗ реклами ".$place->name;
 
         $this->pay($place, $sum, $typeoperation, $comment);
-        $this->storeDate($place, 'noads', 'm1');
+        $this->storeDate($place, 'noads', $period);
 
         return redirect()->route('home');
     }

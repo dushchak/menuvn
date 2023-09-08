@@ -14,9 +14,21 @@
 
 	<input type="hidden" name="typeoperation" value="buyads">
 	<div class="form-group">
+		<p>Включити ваші Промо:</p>
+			<div>
+			    <input type="radio" id="contactChoice1" name="period" value="m1" />
+			    <label for="contactChoice1">1 місяць - 10 монет</label>
+
+			    <input type="radio" id="contactChoice2" name="period" value="m6" />
+			    <label for="contactChoice2">6 місяць - 55 монет</label>
+
+			    <input type="radio" id="contactChoice3" name="period" value="m12" />
+			    <label for="contactChoice3">12 місяць - 90 монет</label>
+			</div>
 		<input type="submit" class="btn btn-primary" value="Оплатити">
 	</div>
 </form>
+
 
 
 <div class="valid_errors">
@@ -28,7 +40,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+	@endif
 </div>
 </div>
 

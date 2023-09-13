@@ -79,13 +79,14 @@ Route::get('/myads/delete/{ads}', [App\Http\Controllers\AdsController::class, 'd
 
 
 // Coins
+
+Route::post('/wallet/nocoins/{place}', [App\Http\Controllers\CoinsController::class, 'pageNoCoins'])->name('coins.nocoins');
 Route::get('/wallet/addForm/{place}', [App\Http\Controllers\CoinsController::class, 'formAddConis'])->name('coins.formAdd');
 Route::post('/wallet/add/{place}', [App\Http\Controllers\CoinsController::class, 'addCoins'])->name('coins.add');
 Route::get('/wallet/buyads/{place}', [App\Http\Controllers\CoinsController::class, 'buyAds'])->name('coins.buyads');
 Route::post('/wallet/payads/{place}', [App\Http\Controllers\CoinsController::class, 'payAds'])->name('coins.payads');
 
 Route::get('/wallet/noads/{place}', [App\Http\Controllers\CoinsController::class, 'formNoAds'])->name('coins.formNoAds') ;
-//Route::get('/wallet/noads/{place}', [App\Http\Controllers\CoinsController::class, 'buyAds'])->name('coins.buyads');
 Route::post('/wallet/noads/{place}', [App\Http\Controllers\CoinsController::class, 'payNoAds'])->name('coins.noads1m');
 
 

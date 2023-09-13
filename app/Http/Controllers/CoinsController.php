@@ -115,17 +115,17 @@ class CoinsController extends Controller
         switch ($request->period) {
             case 'm1':
                 $sum = -10;                    // ціна за місяць рекламних постерів
-                $comment = "1М БЕЗ реклами ".$place->name;
+                $comment = "1М noAds ".$place->name;
                 $period = "m1";
                 break;
             case 'm6':
                 $sum = -55;                    // ціна за 6місяць рекламних постерів
-                $comment = "6М БЕЗ реклами ".$place->name;
+                $comment = "6М noAds ".$place->name;
                 $period = "m6";
                 break;
             case 'm12':
                 $sum = -90;                    // ціна за 12місяць рекламних постерів
-                $comment = "12М БЕЗ реклами ".$place->name;
+                $comment = "12М noAds ".$place->name;
                 $period = "m12";
                 break;
             default:
@@ -135,9 +135,13 @@ class CoinsController extends Controller
         }
        
         $typeoperation = "buyNoAds";
+        //dd($place, $sum, $typeoperation, $comment,);
 
-        $this->pay($place, $sum, $typeoperation, $comment);
-        $this->storeDate($place, 'noads', $period);
+        $result = $this->pay($place, $sum, $typeoperation, $comment); // Спочатку!! ПЕРЕВІРКА и списание монет
+        if($result == 'nomoney'){
+            return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
+        }
+        $this->storeDate($place, 'noads', $period); // до якої дати буде діяти
 
         return redirect()->route('home');
     }
@@ -155,6 +159,7 @@ class CoinsController extends Controller
                 $field = 'noadsto';         // name table column
                 break;
             default:
+                dd('Error: 159 $typepayment'); // error page
                 break;
         }
 
@@ -200,17 +205,18 @@ class CoinsController extends Controller
     }
 
     private function pay (Places $place, $sum, $typeoperation, $comment) {
-        //dd($place, $request);
+        //dd($place, $sum, $typeoperation, $comment,);
 
         $lastpay = $place->coins()->orderBy('id','desc')->first('coins_after')   ; // залишок на рахунку в останній операції
         //dd($lastpay);
         if($lastpay == null || $lastpay->coins_after+$sum <= 0){
-            return redirect()->route('home'); // сторінка "Недостатньо коштів"
+            return 'nomoney'; // flag to show "noMoney" page
         }
         else{
             $coins_before = $lastpay->coins_after;
+             //dd($coins_before);
         }
-        
+       
 
         $coins = new Coins();
         $coins->fill([
@@ -221,13 +227,19 @@ class CoinsController extends Controller
             'typeoperation'=> $typeoperation,    // "add"
             'comment' => $comment,          // "поповнення"
         ]);
-        $place->coins()->save($coins);
-
-        return redirect()->route('home');
+        $result= $place->coins()->save($coins);
+        dd($result);
     }
 
     public function formUpPlace(Places $place){
         
         return view ('formUpPlace', ['place'=>$place]);
     } 
+
+    public function pageNoCoins(Places $place){
+        
+        return view ('pageNoCoins', ['place'=>$place]);
+    } 
+
+
 }

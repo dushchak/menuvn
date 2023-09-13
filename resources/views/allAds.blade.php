@@ -4,7 +4,7 @@
 
 @section ('main')
 @if(count ($ads) > 0)
-<h3>place name</h3>
+<h3>Найкращі пропозиції</h3>
     @foreach ($ads as $adv)
     <div class="place">
         <img class="dish__image" src="/storage/images/ads/{{$adv->img}}" alt="">

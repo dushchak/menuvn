@@ -17,10 +17,15 @@ class PlacesController extends Controller
     public function index(){
         
         $places = Places::latest()->get();
-            
+        //$countAds = count ($places->ads()->latest()->get());
+        //dd($countAds);    
         return view ('index', ['places' => $places]); // вивід таблиці закладів
     }
 
+    public function viewPlace(Places $place) {
+        //dd($place);
+        return view ('viewPlace', ['place' => $place]); 
+    }
 
     // перегляд меню
     public function viewMenu(Places $place) {

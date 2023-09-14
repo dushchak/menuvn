@@ -3,9 +3,7 @@
 
 
 @section ('main')
-@if(count ($places) > 0)
 
-    @foreach ($places as $place)
     <div class="place">
         <div class="place__image">
             <img class="" src="/storage/images/places/{{$place->thumbnail}}" alt="">    
@@ -35,16 +33,9 @@
 
 
 
-            <div>Монет: {{ $place->coins }}</div>
-            <div>БЕЗ РЕКЛАМИ в меню до: {{ $place->noadsto }}</div>
-            <div>Ваші ПРОМО-оголошення до: {{ $place->adsto }}</div>
-
             <div class="place__actions">
-                <a href="{{ route('place.view', $place->id) }}">viewPlace</a>
-                <a href="{{ route('place.edit', $place->id) }}">editPlace</a>
-
-                place.view
-                <a href="{{ route('viewMenu', $place->id) }}">view Menu</a>
+                <a href="{{ route('place.edit', $place->id) }}">edit</a>
+                <a href="{{ route('viewMenu', $place->id) }}">view menu</a>
                 <a href="{{ route('ads.new', $place->id) }}">new Ads</a>
                 <a href="{{ route('adsPlace', $place->id) }}">view Ads</a>
                 <a href="{{ route('coins.buyads', $place->id)}}">+1М promo</a>
@@ -57,10 +48,5 @@
         </div>
          
     </div>
-    
-   
-        
-    @endforeach
-    
-@endif
+
 @endsection('main')

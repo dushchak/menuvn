@@ -42,7 +42,6 @@ Route::patch('/home/edit/{placeid}', [App\Http\Controllers\HomeController::class
 Route::patch('/home/updImg/{placeid}', [App\Http\Controllers\HomeController::class, 'updatePlaceImage'])->name('place.updateImage');
 Route::get('/home/delImg/{placeid}', [App\Http\Controllers\HomeController::class, 'deletePlaceImage'])->name('place.deleteImage');
 
-Route::get('/home/up/{place}', [App\Http\Controllers\CoinsController::class, 'formUpPlace'])->name('place.formuplist');
 
 
 
@@ -85,11 +84,14 @@ Route::get('/myads/delete/{ads}', [App\Http\Controllers\AdsController::class, 'd
 Route::post('/wallet/nocoins/{place}', [App\Http\Controllers\CoinsController::class, 'pageNoCoins'])->name('coins.nocoins');
 Route::get('/wallet/addForm/{place}', [App\Http\Controllers\CoinsController::class, 'formAddConis'])->name('coins.formAdd');
 Route::post('/wallet/add/{place}', [App\Http\Controllers\CoinsController::class, 'addCoins'])->name('coins.add');
-Route::get('/wallet/buyads/{place}', [App\Http\Controllers\CoinsController::class, 'buyAds'])->name('coins.buyads');
-Route::post('/wallet/payads/{place}', [App\Http\Controllers\CoinsController::class, 'payAds'])->name('coins.payads');
+Route::get('/wallet/buyads/{place}', [App\Http\Controllers\CoinsController::class, 'formBuyAds'])->name('coins.buyads');
+Route::post('/wallet/payads/{place}', [App\Http\Controllers\CoinsController::class, 'payPromo'])->name('coins.payads');
 
-Route::get('/wallet/noads/{place}', [App\Http\Controllers\CoinsController::class, 'formNoAds'])->name('coins.formNoAds') ;
+Route::get('/wallet/formnoads/{place}', [App\Http\Controllers\CoinsController::class, 'formNoAds'])->name('coins.formNoAds') ;
 Route::post('/wallet/noads/{place}', [App\Http\Controllers\CoinsController::class, 'payNoAds'])->name('coins.noads1m');
+
+Route::get('/wallet/formup/{place}', [App\Http\Controllers\CoinsController::class, 'formUpPlace'])->name('coins.formUp');
+Route::post('/wallet/storeUp/{place}', [App\Http\Controllers\CoinsController::class, 'upTop'])->name('coins.storeUp');
 
 
 // Admin

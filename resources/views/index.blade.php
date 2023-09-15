@@ -16,7 +16,7 @@
 		<td><img class="dish__image" src="/storage/images/places/{{$place->thumbnail}}" alt=""></td>
 
 		@auth
-			<td>Рейтинг: {{ $place->position }}<a href="{{ route('place.formuplist', $place->id) }}">up</a></td>
+			<td>Рейтинг: {{ $place->position }}<a href="{{ route('coins.formUp', $place->id) }}">up</a></td>
 		@endauth
 		<td>{{ $place->name }}</td>
 		<td>{{ $place->adress }}</td>

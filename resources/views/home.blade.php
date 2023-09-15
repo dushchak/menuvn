@@ -40,17 +40,15 @@
             <div>Ваші ПРОМО-оголошення до: {{ $place->adsto }}</div>
 
             <div class="place__actions">
-                <a href="{{ route('place.view', $place->id) }}">viewPlace</a>
+                
                 <a href="{{ route('place.edit', $place->id) }}">editPlace</a>
-
-                place.view
                 <a href="{{ route('viewMenu', $place->id) }}">view Menu</a>
                 <a href="{{ route('ads.new', $place->id) }}">new Ads</a>
                 <a href="{{ route('adsPlace', $place->id) }}">view Ads</a>
-                <a href="{{ route('coins.buyads', $place->id)}}">+1М promo</a>
-                <a href="{{ route('coins.formNoAds', $place->id)}}">+1М noAds</a>
+                <a href="{{ route('coins.buyads', $place->id)}}">+Promo</a>
+                <a href="{{ route('coins.formNoAds', $place->id)}}">+NoAds</a>
                 
-                <a href="">В ТОП списку</a>
+                <a href="{{ route('coins.formUp', $place->id)}}">ТОП списку</a>
                 <a href="">Підключитись до tg бота</a>
                 <a href="">Активувати тариф "Стандарт" (350/М)</a>
             </div>    

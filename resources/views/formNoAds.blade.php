@@ -6,15 +6,14 @@
 <div class="container">
 	<h1>Відключити рекламу в Меню {{$place->name}}</h1>
 	<p>Підключіть показ вашої реклами на сторінках Menu.vn.ua. Ви можете показувати цільовій аудиторії ваші оголошення, розкажіть про ваші знижки та акційні пропозиції</p>
-	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ipsa suscipit repellat exercitationem consequuntur quam, alias, assumenda cupiditate, commodi eligendi consequatur voluptate illo? Sequi et explicabo totam nostrum. Voluptates, aliquid.</p>
-
+	
 	<p>Ціна: 30 монет/місяць</p>
 <form action="{{ route('coins.noads1m', $place) }}" method="POST" >
 	@csrf
 	<div class="form-group">
 		<p>На який час відключити рекламу в Меню:</p>
 			<div>
-			    <input type="radio" id="contactChoice1" name="period" value="m1" />
+			    <input type="radio" id="contactChoice1" name="period" value="m1" checked />
 			    <label for="contactChoice1">1 місяць - 10 монет</label>
 
 			    <input type="radio" id="contactChoice2" name="period" value="m6" />

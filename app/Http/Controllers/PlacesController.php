@@ -16,8 +16,8 @@ class PlacesController extends Controller
     //
     public function index(){
         
-        $places = Places::latest()->get();
-        //$countAds = count ($places->ads()->latest()->get());
+        $places = Places::orderBy('position','desc')->get();
+        //$countAds = count ($places->ads()->latest()->get()); // підрахунок кількості Ads ресторана > Акції
         //dd($countAds);    
         return view ('index', ['places' => $places]); // вивід таблиці закладів
     }

@@ -4,19 +4,17 @@
 
 @section('main')
 <div class="container">
-	<h1>Реклама для {{$place->name}}</h1>
+	<h1>+ ПРОМО для {{$place->name}}</h1>
 	<p>Підключіть показ вашої реклами на сторінках Menu.vn.ua. Ви можете показувати цільовій аудиторії ваші оголошення, розкажіть про ваші знижки та акційні пропозиції</p>
 	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ipsa suscipit repellat exercitationem consequuntur quam, alias, assumenda cupiditate, commodi eligendi consequatur voluptate illo? Sequi et explicabo totam nostrum. Voluptates, aliquid.</p>
 
 	<p>Ціна: 300грн/місяць</p>
 <form action="{{ route('coins.payads', $place) }}" method="POST" >
 	@csrf
-
-	<input type="hidden" name="typeoperation" value="buyads">
 	<div class="form-group">
 		<p>Включити ваші Промо:</p>
 			<div>
-			    <input type="radio" id="contactChoice1" name="period" value="m1" />
+			    <input type="radio" id="contactChoice1" name="period" value="m1" checked />
 			    <label for="contactChoice1">1 місяць - 10 монет</label>
 
 			    <input type="radio" id="contactChoice2" name="period" value="m6" />

@@ -68,18 +68,28 @@ class CoinsController extends Controller
         return redirect()->route('home');
     }
 
-    public function buyAds (Places $place){
+
+
+
+    public function formBuyAds (Places $place){
         //dd($place);
 
-        return view('buyAds', ['place' => $place]  );
+        return view('formBuyAds', ['place' => $place]  );
     }
 
     public function formNoAds (Places $place){
         return view('formNoAds', ['place' => $place]  );
     }
 
+    public function formUpPlace(Places $place){  
+        return view ('formUpPlace', ['place'=>$place]);
+    }
 
-    public function payAds(Request $request, Places $place ){
+
+
+
+
+    public function payPromo(Request $request, Places $place ){
         switch ($request->period) {
             case 'm1':
                 $sum = -10;                    // ціна за місяць рекламних постерів
@@ -93,7 +103,7 @@ class CoinsController extends Controller
                 break;
             case 'm12':
                 $sum = -90;                    // ціна за 12місяць рекламних постерів
-                $comment = "12М БЕЗ реклами ".$place->name;
+                $comment = "12М Промо ".$place->name;
                 $period = "m12";
                 break;
             default:
@@ -102,10 +112,15 @@ class CoinsController extends Controller
                 break;
         }
 
-        $typeoperation = "buyAds";
+        $typeoperation = "promoto";
 
-        $this->pay($place, $sum, $typeoperation, $comment);
-        $this->storeDate($place, 'ads', $period);
+        $result = $this->pay($place, $sum, $typeoperation, $comment);
+        if($result == 'nomoney'){
+            return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
+        }
+        else {
+            $this->storeDate($place, $typeoperation, $period);
+        }
 
         return redirect()->route('home');
     }
@@ -141,22 +156,69 @@ class CoinsController extends Controller
         if($result == 'nomoney'){
             return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
         }
-        $this->storeDate($place, 'noads', $period); // до якої дати буде діяти
+        else{
+            $this->storeDate($place, 'noads', $period); // до якої дати буде діяти
+        }
 
         return redirect()->route('home');
     }
 
+    public function upTop(Request $request, Places $place ){
+        switch ($request->period) {
+            case 'm1':
+                $sum = -10;                    // ціна за місяць рекламних постерів
+                $comment = "1М ТОП ".$place->name;
+                $period = "m1";
+                break;
+            case 'm6':
+                $sum = -55;                    // ціна за 6місяць рекламних постерів
+                $comment = "6М ТОП ".$place->name;
+                $period = "m6";
+                break;
+            case 'm12':
+                $sum = -90;                    // ціна за 12місяць рекламних постерів
+                $comment = "12М ТОП ".$place->name;
+                $period = "m12";
+                break;
+            default:
+                dd("Error value 'period'"); // tyt redirect to error page!!!!!!!!!!!!!!!!!!!
+                //redirect()->;
+                break;
+        }
+
+        $typeoperation = "toplist";
+
+        $result = $this->pay($place, $sum, $typeoperation, $comment); // операції з монетами
+        if($result == 'nomoney'){
+            return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
+        }
+        else{
+            $store = $this->storeDate($place, $typeoperation, $period);  // запис кінцевої дати послуги 
+            //dd($store, $typeoperation, $period);
+            $place->position = 1;
+            $place->save();
+        
+        }
+
+        return redirect()->route('home');
+
+    } 
+
     //
     private function storeDate(Places $place, $typepayment, $period ){
-        //dd($place);
+        //dd($typepayment);
         switch($typepayment){
-            case 'ads':
+            case 'promoto':
                 $str_payed = $place->adsto;
                 $field = 'adsto';           // name table column
                 break;
             case 'noads':
                 $str_payed = $place->noadsto;
                 $field = 'noadsto';         // name table column
+                break;
+            case 'toplist':
+                $str_payed = $place->positionto;
+                $field = 'positionto';         // name table column
                 break;
             default:
                 dd('Error: 159 $typepayment'); // error page
@@ -228,16 +290,12 @@ class CoinsController extends Controller
             'comment' => $comment,          // "поповнення"
         ]);
         $result= $place->coins()->save($coins);
-        dd($result);
+        //dd($result);
     }
 
-    public function formUpPlace(Places $place){
-        
-        return view ('formUpPlace', ['place'=>$place]);
-    } 
+
 
     public function pageNoCoins(Places $place){
-        
         return view ('pageNoCoins', ['place'=>$place]);
     } 
 

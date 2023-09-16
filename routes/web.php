@@ -36,6 +36,7 @@ Auth::routes();
 /*Places*/
 Route::get('/home/add', [App\Http\Controllers\HomeController::class, 'formAddPlace'])->name('place_add');
 Route::post('/home/store', [App\Http\Controllers\HomeController::class, 'storePlace'])->name('place.store');
+Route::get('home/tomoder', function(){ 	return view('pageToModer'); })->name('place.toModer');
 Route::get('/home/edit/{placeid}', [App\Http\Controllers\HomeController::class, 'formEditPlace'])->name('place.edit');
 Route::patch('/home/edit/{placeid}', [App\Http\Controllers\HomeController::class, 'updatePlace'])->name('place.update');
 

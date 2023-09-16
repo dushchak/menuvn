@@ -90,7 +90,8 @@ class HomeController extends Controller
             'thumbnail'=>$fileNameWithExt,
         ]);
 
-        return redirect()->route('home');
+        //return redirect()->route('home');
+        return redirect()->route('place.toModer');
     }
 
     public function formEditPlace(Places $placeid) {

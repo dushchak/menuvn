@@ -14,7 +14,7 @@
         
         <div class="place__adress">{{ $adv->place->name }}</div>
         @if(!empty($adv->img))
-        <img class="dish__image" src="/storage/images/ads/{{$adv->img}}" alt="">
+            <img class="dish__image" src="/storage/images/ads/{{$adv->img}}" alt="">
         @endif    
         <div class="place__adress">{{ $adv->title }}</div>
         <div class="place__adress">{{ $adv->description }}</div>

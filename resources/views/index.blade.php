@@ -18,19 +18,16 @@
 		@auth
 			<td>Рейтинг: {{ $place->position }}<a href="{{ route('coins.formUp', $place->id) }}">up</a></td>
 		@endauth
-		<td>{{ $place->name }}</td>
+		<td><a href="{{ route('place.view', $place->id) }}">{{ $place->name }}</a></td>
 		<td>{{ $place->adress }}</td>
 		<td>{{ $place->workhours }}</td>
-		<td>{{ $place->sitplaces }}</td>
-		<td>{{ $place->delivery }}</td>
-        <td>{{ $place->phone1 }}</td>
 		<td>{{ $place->viber }}</td>
-		<td><a href="{{ route('viewMenu', $place->id) }}">view menu</a></td>
+		<td><a href="{{ route('viewMenu', $place->id) }}">Меню</a></td>
 		@php
 		echo  count ($place->ads()->latest()->get()); /// кількість оголошень ресторана
 		@endphp
-		<td><a href="{{ route('adsPlace', $place->id) }}">Акції</a></td>
-		<td><a href="{{ route('place.view', $place->id) }}">viewPlace</a></td>
+		<td><a href="{{ route('adsPlace', $place->id) }}">PROMO-пропозиції</a></td>
+		
 		
 
 	</tr>

@@ -1,0 +1,97 @@
+@font-face {
+  font-family: 'icons';
+  src:  url('../fonts/icons.eot?f9t4gk');
+  src:  url('../fonts/icons.eot?f9t4gk#iefix') format('embedded-opentype'),
+    url('../fonts/icons.ttf?f9t4gk') format('truetype'),
+    url('../fonts/icons.woff?f9t4gk') format('woff'),
+    url('../fonts/icons.svg?f9t4gk#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="_icon-"]::before, 
+[class*=" _icon-"]::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+._icon-facebook:before {
+  content: "\e900";
+}
+._icon-instagram:before {
+  content: "\e901";
+}
+._icon-phone-solid:before {
+  content: "\e902";
+}
+._icon-email-solid:before {
+  content: "\e903";
+}
+._icon-email-regular:before {
+  content: "\e904";
+}
+._icon-xmark:before {
+  content: "\e905";
+}
+._icon-location-dot-solid:before {
+  content: "\e906";
+}
+._icon-wifi-solid:before {
+  content: "\e907";
+}
+._icon-whatsapp:before {
+  content: "\e908";
+}
+._icon-telegram:before {
+  content: "\e909";
+}
+._icon-viber:before {
+  content: "\e90a";
+}
+._icon-square-instagram:before {
+  content: "\e90b";
+}
+._icon-truck-fast-solid:before {
+  content: "\e90c";
+}
+._icon-circle-up-regular:before {
+  content: "\e90d";
+}
+._icon-circle-down-regular:before {
+  content: "\e90e";
+}
+._icon-utensils-solid:before {
+  content: "\e90f";
+}
+._icon-store-solid:before {
+  content: "\e910";
+}
+._icon-shop-solid:before {
+  content: "\e911";
+}
+._icon-wallet-solid:before {
+  content: "\e912";
+}
+._icon-coins-solid:before {
+  content: "\e913";
+}
+._icon-users-solid:before {
+  content: "\e914";
+}
+._icon-clock-regular:before {
+  content: "\e915";
+}
+._icon-square-plus-regular:before {
+  content: "\e916";
+}

@@ -106,6 +106,8 @@ class HomeController extends Controller
     public function updatePlace(Request $request,Places $placeid) {
         //dd($request);
 
+        //$this->authorize('updatePlace', $placeid);
+
         $placeid->fill([
             'name'=> $request->name,
             'adress'=> $request->adress,

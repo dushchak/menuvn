@@ -38,10 +38,10 @@ Route::get('/home/add', [App\Http\Controllers\HomeController::class, 'formAddPla
 Route::post('/home/store', [App\Http\Controllers\HomeController::class, 'storePlace'])->name('place.store');
 Route::get('home/tomoder', function(){ 	return view('pageToModer'); })->name('place.toModer');
 Route::get('/home/edit/{placeid}', [App\Http\Controllers\HomeController::class, 'formEditPlace'])->name('place.edit');
-Route::patch('/home/edit/{placeid}', [App\Http\Controllers\HomeController::class, 'updatePlace'])->name('place.update');
+Route::patch('/home/edit/{placeid}', [App\Http\Controllers\HomeController::class, 'updatePlace'])->name('place.update')->middleware('can:updatePlace,placeid');
 
-Route::patch('/home/updImg/{placeid}', [App\Http\Controllers\HomeController::class, 'updatePlaceImage'])->name('place.updateImage');
-Route::get('/home/delImg/{placeid}', [App\Http\Controllers\HomeController::class, 'deletePlaceImage'])->name('place.deleteImage');
+Route::patch('/home/updImg/{placeid}', [App\Http\Controllers\HomeController::class, 'updatePlaceImage'])->name('place.updateImage')->middleware('can:updatePlaceImage,placeid');
+Route::get('/home/delImg/{placeid}', [App\Http\Controllers\HomeController::class, 'deletePlaceImage'])->name('place.deleteImage')->middleware('can:deletePlaceImage,placeid'); 
 
 
 

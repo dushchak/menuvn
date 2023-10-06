@@ -48,8 +48,8 @@
 
             <div class="place__actions">
                 <div class="ads-actions">
-                    <a href="{{ route('ads.new', $place->id) }}">+ PROMO-оголошення</a>
-                    <a href="{{ route('adsPlace', $place->id) }}">Всі PROMO-оголошення {{ $place->name }}</a>
+                    
+                    <a href="{{ route('adsPlace', $place->id) }}">PROMO-оголошення {{ $place->name }}</a>
                 </div>
 
                 <div class="pay-actions">

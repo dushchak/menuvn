@@ -3,26 +3,25 @@
 
 
 @section ('main')
-<h2>Акції та знижки</h2>
+<h3>Акції та знижки - {{$place->name}}</h3>
 @if(count ($ads) > 0)
-<h3>{{$place->name}}</h3>
-    @foreach ($ads as $adv)
-    <div class="place">
-        <img class="dish__image" src="/storage/images/ads/{{$adv->img}}" alt="">
-        <div class="place__adress">{{ $adv->title }}</div>
-        <div class="place__workhours">{{ $adv->description }}</div>
-        <div class="place__delivery">{{ $adv->typeads }}</div>
-        <div class="place__phone1">{{ $adv->payed_at }}</div>
-        <div class="place__sitplaces">{{ $adv->moderate }}</div>
-        <div class="place__sitplaces">{{ $adv->places_id }}</div>
-        <div class="place__sitplaces">{{ $adv->updated_at }}</div>
-        <div class="place__sitplaces">{{ $adv->created_at }}</div>
 
-        <div class="place__actions">
-            <a href="{{ route('ads.editform', $adv) }}">edit</a>
-            <a href="{{ route('viewMenu', 'placeid') }}">view menu</a>
+<a class="btn btn-success" href="{{ route('ads.new', $place->id) }}">+ PROMO-оголошення</a>
+<a class="btn btn-success" href="{{ route('viewMenu', $place->id) }}">Меню</a>
+    
+    @foreach ($ads as $adv)
+    <div class="advert">
+        <img class="advert__image" src="/storage/images/ads/{{$adv->img}}" alt="" title="{{ $adv->description }}">
+        <div class="advert__text">
+            <div class="advert__title">{{ $adv->title }}</div>
            
         </div> 
+        <div class="advert__actions">
+            <p>Показується до {{ $adv->payed_at }}</p>
+            <div class="place__actions">
+                <a class="btn btn-success" href="{{ route('ads.editform', $adv) }}">Редагувати</a>   
+            </div>
+        </div>
     </div>
     
    

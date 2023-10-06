@@ -76,7 +76,8 @@ class AdsController extends Controller
                             'img' => $fileNameWithExt, 
             ]);
 
-        return redirect()->route('home');
+        //return redirect()->route('home');
+        return redirect()->route('adsPlace', $request->places_id);
         }
     
     }

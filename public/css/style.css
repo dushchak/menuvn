@@ -45,6 +45,36 @@
 }
 
 
+/* Promo */
+.advert {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	margin: 20px;
+	border: 1px solid #999;
+}
+.advert__image {
+	height: 200px;
+	width: 266px;
+	object-fit: cover;
+}
+.advert__text {
+	padding-left: 40px ;
+	display: flex;
+	flex-direction: column;
+}
+.advert__title {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+
+/* Advert onePlace */
+.advert__actions {
+	margin-left: 100px;
+}
+
+
 .footer {
 	margin: 0 auto;
 	text-align: center;

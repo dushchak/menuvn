@@ -26,7 +26,7 @@
 		@php
 		echo  count ($place->ads()->latest()->get()); /// кількість оголошень ресторана
 		@endphp
-		<td><a href="{{ route('adsPlace', $place->id) }}">PROMO-пропозиції</a></td>
+		<td><a href="{{ route('adsPlace', $place->id) }}">PROMO-Акції</a></td>
 		
 		
 

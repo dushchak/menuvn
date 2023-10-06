@@ -10,28 +10,35 @@
 
 @section ('main')
 @if(count ($places) > 0)
-<table class="table table-striped">
+	<div class="listblock">
+
+
 	@foreach ($places as $place)
-	<tr>
-		<td><img class="dish__image" src="/storage/images/places/{{$place->thumbnail}}" alt=""></td>
+	<div class="listplace">
+		<div class="listplace__img">
+			<img class="listplace__image" src="/storage/images/places/{{$place->thumbnail}}" alt="">
+		</div>
 
-		@auth
-			<td>Рейтинг: {{ $place->position }}<a href="{{ route('coins.formUp', $place->id) }}">up</a></td>
-		@endauth
-		<td><a href="{{ route('place.view', $place->id) }}">{{ $place->name }}</a></td>
-		<td>{{ $place->adress }}</td>
-		<td>{{ $place->workhours }}</td>
-		<td>{{ $place->viber }}</td>
-		<td><a href="{{ route('viewMenu', $place->id) }}">Меню</a></td>
-		@php
-		echo  count ($place->ads()->latest()->get()); /// кількість оголошень ресторана
-		@endphp
-		<td><a href="{{ route('adsPlace', $place->id) }}">PROMO-Акції</a></td>
-		
-		
+		<div class="listplace__info">
+			
+			<h3><a href="{{ route('place.view', $place->id) }}">{{ $place->name }}</a></h3>
+			<div>{{ $place->adress }}</div>
+			<div>{{ $place->workhours }}</div>
 
-	</tr>
+			<div><a href="{{ route('viewMenu', $place->id) }}">Меню</a></div>
+			@php
+				//echo  count ($place->ads()->latest()->get()); /// кількість оголошень ресторана
+				$countads = count ($place->ads()->latest()->get()); /// кількість оголошень ресторана
+			@endphp
+			<div><a href="{{ route('adsPlace', $place->id) }}">PROMO-Акції ({{$countads}})</a></div>
+			@auth
+				<p>Рейтинг: {{ $place->position }}<a href="{{ route('coins.formUp', $place->id) }}">up</a></p>
+			@endauth
+		</div>
+</div>
+
+
 	@endforeach
-</table>
+	</div>
 @endif
 @endsection('main')

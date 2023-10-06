@@ -55,7 +55,7 @@
                 <div class="pay-actions">
                     <a href="{{ route('coins.buyads', $place->id)}}">+Promo</a>
                     <a href="{{ route('coins.formNoAds', $place->id)}}">+NoAds</a> 
-                    <a href="{{ route('coins.formUp', $place->id)}}">ТОП списку</a>
+                    <a href="{{ route('coins.formUp', $place->id)}}">в ТОП5 списку</a>
                 </div>
 
                 

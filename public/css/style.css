@@ -5,6 +5,28 @@
 }
 
 
+/*	list place  */
+listblock {
+	display: flex;
+	flex-direction: column;
+}
+.listplace {
+	display: flex;
+	margin: 20px 0;
+	align-items: center;
+}
+.listplace__image {
+	width: 500px;
+	height: 300px;
+	object-fit: cover;
+}
+.listplace__info{
+	display: flex;
+	flex-direction: column;
+	padding: 50px;
+
+}
+
 
 .place{
 	display: flex;
@@ -46,12 +68,14 @@
 
 
 /* Promo */
+
 .advert {
 	display: flex;
 	align-items: center;
 	padding: 10px;
 	margin: 20px;
 	border: 1px solid #999;
+	width: 650px;
 }
 .advert__image {
 	height: 200px;
@@ -70,8 +94,14 @@
 
 
 /* Advert onePlace */
+.promo {
+	display: flex;
+
+	align-items: center;
+}
 .advert__actions {
 	margin-left: 100px;
+	width: 50px;
 }
 
 

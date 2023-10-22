@@ -89,17 +89,25 @@
         
        
        {!!
+       /* https://www.simplesoftware.io/#/docs/simple-qrcode/ru */
+       /* https://github.com/SimpleSoftwareIO/simple-qrcode */
+
        //$from = $qrstyle->grad_col_1;
        //$to = $qrstyle->grad_col_2;
 
+       if($qrstyle->qrsize == null) {
+              $qrstyle->qrsize = 500;
+       }
+
 
        QrCode::size($qrstyle->qrsize)
+       //QrCode::size(400)
               //->style('dot')
               ->style($qrstyle->stlqr)
               ->eye('circle')
-              ->backgroundColor($qrstyle->qrbg[0], $qrstyle->qrbg[1], $qrstyle->qrbg[2])
-            ->gradient($qrstyle->grad_col_1[0], $qrstyle->grad_col_1[1], $qrstyle->grad_col_1[2], $qrstyle->grad_col_2[0], $qrstyle->grad_col_2[1], $qrstyle->grad_col_2[2], 'diagonal')
- //             ->gradient(255, 0, 0, 0, 0, 255, 'diagonal')
+              //->backgroundColor($qrstyle->bg[0], $qrstyle->bg[1], $qrstyle->bg[2])
+            //->gradient($qrstyle->grad_col_1[0], $qrstyle->grad_col_1[1], $qrstyle->grad_col_1[2], $qrstyle->grad_col_2[0], $qrstyle->grad_col_2[1], $qrstyle->grad_col_2[2], 'diagonal')
+              ->gradient(255, 0, 0, 0, 0, 255, 'diagonal')
               ->margin(10)
               ->errorCorrection('H')
               ->generate( $menuurl ); 

@@ -34,30 +34,30 @@
 
 
       
-<div class="qrstyleform__color">
-       <p>Кольори QR кода:</p>
-       <label for="head">Точки</label>
-       <input type="color" id="head" name="qrcolor" value="#00008B" />
-  
-       <label for="body">Фон</label>
-       <input type="color" id="body" name="qrbg" value="#ffffff" />
-  
-</div>
+                     <div class="qrstyleform__color">
+                            <p>Кольори QR кода:</p>
+                            <label for="head">Точки</label>
+                            <input type="color" id="head" name="qrcolor" value="#00008B" />
+                       
+                            <label for="body">Фон</label>
+                            <input type="color" id="body" name="qrbg" value="#ffffff" />
+                       
+                     </div>
 
-<p>або</p>
+                     <p>або</p>
 
-<div class="qrstyleform__gradient">
-      <label for="head"><b>QR код з градієнтом:</b></label>
-       <input id="grad_checkbox" type="checkbox" name="grad" value="1">
-       <br>
+                     <div class="qrstyleform__gradient">
+                           <label for="head"><b>QR код з градієнтом:</b></label>
+                            <input id="grad_checkbox" type="checkbox" name="grad" value="1">
+                            <br>
 
-       <label for="head">Колір 1</label>
-       <input type="color" id="head" name="grad_col_1" value="#0000FF" />
-  
-       <label for="body">Колір 2</label>
-       <input type="color" id="body" name="grad_col_2" value="#D2691E" />
-  
-</div>
+                            <label for="head">Колір 1</label>
+                            <input type="color" id="head" name="grad_col_1" value="#0000FF" />
+                       
+                            <label for="body">Колір 2</label>
+                            <input type="color" id="body" name="grad_col_2" value="#D2691E" />
+                       
+                     </div>
 
 
 

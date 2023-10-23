@@ -46,65 +46,54 @@ class PlacesController extends Controller
     public function printQR(Request $request, Places $place){
         //dd($request);
         $menuurl = route('viewMenu', ['place' => $place->id ]); // генеруємо  адресу МЕНЮ з іменованого Роута  )))
-        if(empty($request)) {
-            $request->stlqr = "square"
-              $request->qrsize = 500;
-              $request->qrcolor = "#e66465";
-              $request->qrbg = "#ffffff";
-              
-              $request->grad_col_1 = "#e66465";
-              $request->grad_col_2 =  "#ffffff";
-       }
+     
 
 
         
-        // 
-        $arrColor=str_split(substr($request->qrcolor, 1), 2);
-        if(empty($arrColor)){
-            $arrColor = array(124, 200);
+        // колір точок QR кода
+        $request->headercolor = "#999";
+        if($request->grad == "1"){
+            $request->headercolor = $request->grad_col_1;    
         }
-        foreach ($arrColor as $key) {
-            $arrColorDec[] = intval(hexdec($key));
+        else {
+            $request->headercolor = $request->qrcolor;
         }
-        $request->qrcolor = $arrColorDec;
-        #$QRparm['color1'] = $arrColorDec;
+        //$request->headercolor = $request->qrcolor;
 
-        // 
-        $arrBg = str_split(substr($request->qrbg, 1),2);
-        if(empty($arrBg)){
-            $arrBg = array(124, 200);
-        }
-        foreach ($arrBg as $key) {
-            $arrBgDec[] = hexdec($key);
-        }
-        $request->qrbg = $arrBgDec;
-        #$QRparm['bg'] = $arrBgDec;
+        if($request->qrsize != null){
+            $arrColor=str_split(substr($request->qrcolor, 1), 2);
+            foreach ($arrColor as $key) {
+                $arrColorDec[] = intval(hexdec($key));
+            }
+            $request->qrcolor = $arrColorDec;
+            
 
-        // 1 цвет градиента 
-        $arrGrad1 = str_split(substr($request->grad_col_1, 1), 2);
-        if(empty($arrGrad1)){
-            $arrGrad1 = array(124, 200);
-        }
-        foreach ($arrGrad1 as $key) {
-            $arrGradCol1[] = intval(hexdec($key));
-        }
-        $request->grad_col_1 = $arrGradCol1;
-        #$QRparm['grad1'] = $arrGradCol1;
+            // background color 
+            $arrBg = str_split(substr($request->qrbg, 1),2);       
+            foreach ($arrBg as $key) {
+                $arrBgDec[] = hexdec($key);
+            }
+            $request->qrbg = $arrBgDec;
+           
+            // 1 цвет градиента 
+            $arrGrad1 = str_split(substr($request->grad_col_1, 1), 2);
+            foreach ($arrGrad1 as $key) {
+                $arrGradCol1[] = intval(hexdec($key));
+            }
+            $request->grad_col_1 = $arrGradCol1;
+            
 
-        // 2 цвет градиента 
-        $arrGrad2 = str_split(substr($request->grad_col_2, 1), 2);
-        if(empty($arrGrad2)){
-            $arrGrad2 = array(124, 200);
+            // 2 цвет градиента 
+            $arrGrad2 = str_split(substr($request->grad_col_2, 1), 2);
+            foreach ($arrGrad2 as $key) {
+                $arrGradCol2[] = intval(hexdec($key));
+            }
+            $request->grad_col_2 = $arrGradCol2;
         }
-        foreach ($arrGrad2 as $key) {
-            $arrGradCol2[] = intval(hexdec($key));
-        }
-        $request->grad_col_2 = $arrGradCol2;
-        #$QRparm['grad2'] = $arrGradCol2;
+        
 
 
-        //dd($request->grad_col_1);
-
+        //dd($request);
         return view ('QRpage', ['place'=>$place, 'menuurl'=>$menuurl, 'qrstyle'=>$request]);
     }
 

@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Nunito:ital,wght@0,200;0,400;1,900&display=swap');
+
+
+body{
+	font-family:Arial, Helvetica, sans-serif;
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Nunito', sans-serif;
+}
+
+
 
 .wrap_main {
 	width: 1000px;
@@ -127,4 +137,22 @@ select option[value="1"] {
 
 select option[value="2"] {
   background: rgba(150, 150, 150, 0.3);
+}
+
+/* форма для QR кода */
+.qrstyleform__items {
+	display: flex;
+	margin: 0 auto;
+}
+
+
+.qrstyleform_dots, .qrstyleform__size, .qrstyleform__color, .qrstyleform__gradient {
+	border: 1px dashed; #c9c9c9c;
+	margin: 10px;
+	padding: 10px;
+}
+@media print {
+.qrstyleform {
+display: none;
+}
 }

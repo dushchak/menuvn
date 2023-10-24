@@ -97,7 +97,10 @@ Route::post('/wallet/storeUp/{place}', [App\Http\Controllers\CoinsController::cl
 
 // Admin
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('adminpanel');
+Route::get('/admin/moderate/{place}', [App\Http\Controllers\AdminController::class, 'moderatePlace'])->name('admin.moderate');
+Route::get('/admin/block/{place}', [App\Http\Controllers\AdminController::class, 'blockPlace'])->name('admin.blockPlace');
 /*
+## Доступ перевіряється в самому контроллері
 Route::get('/test/{user}', [App\Http\Controllers\HomeController::class, 'testRole'])->name('testRole')->middleware('auth', 'can:admin-panel');
 */
 

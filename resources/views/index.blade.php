@@ -33,6 +33,8 @@
 			<div><a href="{{ route('adsPlace', $place->id) }}">PROMO-Акції ({{$countads}})</a></div>
 			@auth
 				<p>Рейтинг: {{ $place->position }}<a href="{{ route('coins.formUp', $place->id) }}">up</a></p>
+
+				
 			@endauth
 		</div>
 </div>

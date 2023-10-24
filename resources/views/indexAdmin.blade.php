@@ -4,12 +4,92 @@
 
 @section ('main')
 <h1>Admin panel</h1>
-<div>
-	<div class="admin_item">
-		<h3>Поповнити монети</h3>
-		<a href="{{route('coins.add', 4)}}">Поповнити рахунок ресторану</a>
+<div class="adminPanel">
 
+
+	<div class="adminPanel__placestomoder">
+		<h3>Нові заклади</h3>
+		@if(count ($newplaces) > 0)
+		<div class="">
+			<table>
+			@foreach ($newplaces as $place)
+				<tr>
+					<td><a href="{{ route('place.view', $place->id) }}">{{ $place->name }}</a></td>
+					<td>
+						@php
+							//echo  count ($place->ads()->latest()->get()); /// кількість оголошень ресторана
+							$countads = count ($place->ads()->latest()->get()); /// кількість оголошень ресторана
+						@endphp
+						<a href="{{ route('adsPlace', $place->id) }}">PROMO-Акції ({{$countads}})</a>
+					</td>
+					<td>
+						@auth
+							Рейтинг: {{ $place->position }}<a href="{{ route('coins.formUp', $place->id) }}">up</a>
+						@endauth
+					</td>
+					<td>
+						@auth
+							Модерація закладу: <a href="{{ route('admin.moderate', $place->id) }}">Включити</a>
+						@endauth
+					</td>
+				</tr>
+			@endforeach
+			</table>
+		</div>
+		@endif
 	</div>
+
+	<!-- list places -->
+	<div class="adminPanel__placestomoder">
+		<h3>Список закладів</h3>
+		@if(count ($places) > 0)
+		<div class="">
+			<table>
+				<tr>
+					<th>Заклад</th>
+					<th>Promos</th>
+					<th>Рейт</th>
+					<th>Модер</th>
+					<th>Монети</th>
+					<th></th>
+					<th>без реклам до</th>
+					<th>Промо до</th>
+					<th>Топ до</th>
+				</tr>
+			@foreach ($places as $place)
+				<tr>
+					<td><a href="{{ route('place.view', $place->id) }}">{{ $place->name }}</a></td>
+					<td>
+						@php
+							//echo  count ($place->ads()->latest()->get()); /// кількість оголошень ресторана
+							$countads = count ($place->ads()->latest()->get()); /// кількість оголошень ресторана
+						@endphp
+						<a href="{{ route('adsPlace', $place->id) }}">PROMO ({{$countads}})</a>
+					</td>
+					<td>
+						@auth
+							Рейтинг: {{ $place->position }}<a href="{{ route('coins.formUp', $place->id) }}">up</a>
+						@endauth
+					</td>
+					<td>
+						@auth
+							Модерація закладу: <a href="{{ route('admin.blockPlace', $place->id) }}">Выключити Х</a>
+						@endauth
+					</td>
+					<td>{{ $place->coins()->first('coins_after') }} </td>
+					<td><a href="{{route('coins.formAdd', $place->id)}}"> ++Монети</a></td>
+					<td>
+						{{ $place->noadsto }}
+					</td>
+					<td>{{ $place->adsto }}</td>
+					<td>{{ $place->positionto}}</td>
+				</tr>
+			@endforeach
+			</table>
+		</div>
+		@endif
+	</div>
+
 
 	<div class="admin_item">
 		<h3>Скарги</h3>

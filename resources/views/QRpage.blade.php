@@ -65,13 +65,14 @@
               </div>
               <button type="submit">Застосувати</button>
               <p>Друкувати: "Ctrl" + "P"</p>
+              <hr>
        </form>
 
 
 	<h1 style="color:{{ $qrstyle->headercolor }};">Меню "{{ $place->name }}"</h1>
 	
        <p>wifi: abc123d</p>
-       <p >Скануй щоб переглянути</p>
+   
 
 
 
@@ -101,8 +102,8 @@
               QrCode::size($qrstyle->qrsize)
               ->style($qrstyle->stlqr)
               ->eye('circle')
-              ->color($qrstyle->qrcolor[0],$qrstyle->qrcolor[1],$qrstyle->qrcolor[2])
-            ->gradient($qrstyle->grad_col_1[0], $qrstyle->grad_col_1[1], $qrstyle->grad_col_1[2], $qrstyle->grad_col_2[0], $qrstyle->grad_col_2[1], $qrstyle->grad_col_2[2], 'diagonal')
+              ->backgroundColor($qrstyle->qrbg[0], $qrstyle->qrbg[1], $qrstyle->qrbg[2])
+              ->gradient($qrstyle->grad_col_1[0], $qrstyle->grad_col_1[1], $qrstyle->grad_col_1[2], $qrstyle->grad_col_2[0], $qrstyle->grad_col_2[1], $qrstyle->grad_col_2[2], 'diagonal')
               //->gradient(255, 0, 0, 0, 0, 255, 'diagonal')
               ->margin(10)
               ->errorCorrection('H')

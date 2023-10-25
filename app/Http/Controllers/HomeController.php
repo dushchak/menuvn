@@ -69,7 +69,7 @@ class HomeController extends Controller
 //          dd($path);
         }              
 
-        Auth::user()->places()->create([
+        $result = Auth::user()->places()->create([
             'name'=> $request->name,
             'adress'=> $request->adress,
             'workhours'=> $request->workhours,
@@ -90,7 +90,21 @@ class HomeController extends Controller
             'thumbnail'=>$fileNameWithExt,
         ]);
 
-        //return redirect()->route('home');
+        if($result){
+            /*  Telegram Notice */ 
+            $botApiToken = env('TELEGRAM_BOT_TOKEN');
+            //$channelId = 'your channel id';
+            $channelId = "@menu_adm_notice";
+            $text = 'New place:'.$request->name ."; Adress:".$request->adress.", Manager tel:".$request->manager;
+            $query = http_build_query([
+                'chat_id' => $channelId,
+                'text' => $text,
+            ]);
+            $url = "https://api.telegram.org/bot{$botApiToken}/sendMessage?{$query}";
+            ($url);
+            file_get_contents($url);
+        }
+
         return redirect()->route('place.toModer');
     }
 

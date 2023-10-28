@@ -1,88 +1,17 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Nunito:ital,wght@0,200;0,400;1,900&display=swap');
 
-* {
-	margin:	0;
-	padding: 0;
-	box-sizing: border-box;
-}
 
 body{
 	font-family:Arial, Helvetica, sans-serif;
 	font-family: 'Montserrat', sans-serif;
-}
-
-h2 {
-	color:#61483A;
+	font-family: 'Nunito', sans-serif;
 }
 
 
-.btn_m {
-	display: inline-block;
-	padding: 10px 40px;
-	border: 1px solid #666;
-	border-radius: 10px;
-	margin: 15px 0;
-	text-decoration: none;
-	text-align: center;
-	color:#fff;
-	background-color: #666;
-	font-weight: bold;
-}
 
-.btn_m:hover {
-	background-color: #333;
-}
-.toppanel {
-	display: flex;
-	justify-content: right;
-	align-items: center;
-	height: 35px;
-	padding: 0 30px;
-	background-color:#FFD392;
-
-	color:#666;
-	font-size: 16px;
-	text-align: center;
-}
-.toppanel a {
-	color: #333;
-}
-.slogan_img {
-
-	width: 50px;
-}
-.container {
-	width: 1200px;
+.wrap_main {
+	width: 1000px;
 	margin: 0 auto;
-}
-.header {
-	text-align: center;
-	padding: 20px;
-
-}
-.header__logo {
-	max-width: 350px;
-}
-.header h1{
-	color:#F95A01;
-}
-
-/* navbar */
-.navbar {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	border-top: 3px solid #FFD392 ;
-	padding-top: 15px;
-}
-.navbar  a {
-	color: #F95A01; /* #F95A01 */
-	text-decoration: underline;
-	font-size: 20px;
-	font-weight: normal;
-	line-height: 1.5;
-
 }
 
 
@@ -95,15 +24,7 @@ listblock {
 	display: flex;
 	margin: 20px 0;
 	align-items: center;
-	border: 1px solid #c9c9c9;
-	border-radius: 5px;
 }
-.listplace__info h3 a{
-	font-size: 1.6rem;
-	color:#C76228;
-	text-decoration: none;
-}
-
 .listplace__image {
 	width: 500px;
 	height: 300px;
@@ -115,10 +36,6 @@ listblock {
 	padding: 50px;
 
 }
-.place_promos_link {
-	color:#61483A;
-
-}
 
 
 .place{
@@ -126,6 +43,7 @@ listblock {
 	margin: 0 0 50px 0;
 }
 .place__image {
+	width: 50%;
 	position: relative;
 	min-height: 200px;
 }
@@ -151,10 +69,8 @@ listblock {
 	width: 300px;
 }
 .dish__image img {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 15px;
+	max-width: 100%;
+	object-fit: cover;
 }
 .dish__info {
 	padding: 20px;
@@ -169,6 +85,7 @@ listblock {
 	padding: 10px;
 	margin: 20px;
 	border: 1px solid #999;
+	width: 650px;
 }
 .advert__image {
 	height: 200px;
@@ -222,31 +139,20 @@ select option[value="2"] {
   background: rgba(150, 150, 150, 0.3);
 }
 
-/* @media Breake points  */
-@media (max-width: 767px) {
-	.container {
-		width: 100%;
-		max-width: none;
-		padding: 10px;
-	}
+/* форма для QR кода */
+.qrstyleform__items {
+	display: flex;
+	margin: 0 auto;
+}
 
-	.header__logo {
-		width: 50%;
-	}
 
-	.listplace {
-		flex-direction: column;
-	}
-	.listplace__image {
-		width: 100%;
-	}
-	.dish {
-		flex-direction: column;
-	}
-
-	/*promo page*/
-	.advert {
-		flex-direction: column;
-	}
-
+.qrstyleform_dots, .qrstyleform__size, .qrstyleform__color, .qrstyleform__gradient {
+	border: 1px dashed; #c9c9c9c;
+	margin: 10px;
+	padding: 10px;
+}
+@media print {
+.qrstyleform {
+display: none;
+}
 }

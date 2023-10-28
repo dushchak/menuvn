@@ -3,8 +3,16 @@
 
 
 @section ('main')
+<div class="bread_crumbs">
+        <a href="http://127.0.0.1:8000/">Білий список</a> >
+        <a href="{{ route('place.view', $place->id) }}">{{ $place->name }}</a> >
+        <span class="bread_crumbs__page">Меню</span>
+    
+    </div>
+
+
 <div class="newdish">
-    <a href="{{route('dish.add', $place->id) }}">new dish</a>
+    <a class="btn_m" href="{{route('dish.add', $place->id) }}">new dish</a>
 </div>
 
 
@@ -140,18 +148,24 @@
                 <p>Ціна за 100гр: {{ $dish->cost100g }} грн</p>
                 <p>Ціна за порцію: {{ $dish->portioncost }} грн</p>
                 <p>{{ $dish->description }}</p>
+
             </div>
 
             <div class="dish__actions">
-                 <td>Замовити </td>
+                @guest
+                    
+                    
+                @endguest
+                 
                      @auth
+                     <a href="#">Замовити</a>
+                     <a href="#">Помилочка в страві? >>></a>
                     <a href="{{ route('dish.up', $dish->id)  }}">+</a>
                     <a href="{{ route('dish.down', $dish->id)  }}">-</a>
                     <a href="{{ route('dish.editdish', $dish->id) }}">edit</a>
-                    <a href="{{ route('dish.formdeldish', $dish->id) }}">delete</a>                @endauth
-                    @guest
-                    <a href="">Повідомити про помилку</a>
-                    @endguest
+                    <a href="{{ route('dish.formdeldish', $dish->id) }}">delete</a>                
+                    @endauth
+
             </div>    
         </div>
             

@@ -4,9 +4,17 @@
 
 @section ('main')
 
-    <div class="place">
-        <div class="place__image">
-            <img class="" src="/storage/images/places/{{$place->thumbnail}}" alt="">    
+<div class="bread_crumbs">
+        <a href="http://127.0.0.1:8000/">Білий список</a> >
+        <span class="bread_crumbs__page">{{ $place->name }}</span> >
+        <a href="{{ route('viewMenu', $place->id) }}">Меню</a>
+    
+    </div>
+
+
+    <div class="oneplace">
+        <div class="oneplace__image">
+            <img class="oneplaceimg" src="/storage/images/places/{{$place->thumbnail}}" alt="">    
         </div>
         <div class="place__info">
             <h3>{{ $place->name }}</h3>
@@ -34,16 +42,19 @@
 
 
             <div class="place__actions">
-                <a href="{{ route('place.edit', $place->id) }}">edit</a>
-                <a href="{{ route('viewMenu', $place->id) }}">view menu</a>
-                <a href="{{ route('ads.new', $place->id) }}">new Ads</a>
-                <a href="{{ route('adsPlace', $place->id) }}">view Ads</a>
-                <a href="{{ route('coins.buyads', $place->id)}}">+1М promo</a>
-                <a href="{{ route('coins.formNoAds', $place->id)}}">+1М noAds</a>
-                
-                <a href="">В ТОП списку</a>
-                <a href="">Підключитись до tg бота</a>
-                <a href="">Активувати тариф "Стандарт" (350/М)</a>
+                <a class="btn_m" href="{{ route('viewMenu', $place->id) }}">Меню</a>
+                @auth
+                    <a href="{{ route('place.edit', $place->id) }}">Редагувати інформацію</a>
+                    
+                    <a href="{{ route('ads.new', $place->id) }}">+Нове Промо</a>
+                    <a href="{{ route('adsPlace', $place->id) }}">Промо-акції закладу</a>
+                    <a href="{{ route('coins.buyads', $place->id)}}">Вкл. промо</a>
+                    <a href="{{ route('coins.formNoAds', $place->id)}}">Викл. рекламу</a>
+                    
+                    <a href="">В ТОП списку</a>
+                    <a href="">Підключитись до tg бота</a>
+                    <a href="">Активувати тариф "Стандарт" (350/М)</a>
+                @endauth
             </div>    
         </div>
          

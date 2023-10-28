@@ -3,17 +3,18 @@
 
 
 @section ('main')
+<h3>Мої заклади</h3>
 @if(count ($places) > 0)
 
     @foreach ($places as $place)
-    <div class="place">
-        <div class="place__image">
-            <img class="" src="/storage/images/places/{{$place->thumbnail}}" alt="">    
+    <div class="oneplace">
+        <div class="oneplace__image">
+            <img class="oneplaceimg" src="/storage/images/places/{{$place->thumbnail}}" alt="">    
         </div>
-        <div class="place__info">
+        <div class="oneplace__info">
             <h3>{{ $place->name }}</h3>
 
-            <a class="btn btn-success" href="{{ route('viewMenu', $place->id) }}">Меню</a>
+            <a class="btn_m" href="{{ route('viewMenu', $place->id) }}">Меню</a>
             
             <div class="place__workhours _icon-clock-regular"> {{ $place->workhours }}</div>
             <div class="place__phone1 _icon-location-dot-solid">  {{ $place->adress }}</div>

@@ -5,37 +5,39 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title>@yield('title') - Головна сторінка</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" href="{{asset('css/iconsfont.css')  }}">
-	<link rel="stylesheet" href="{{asset('css/style.css')  }}">
+
+	<link rel="stylesheet" href="{{asset('css/normalize.min.css')  }} ">
+	<link rel="stylesheet" href="css/iconsfont.css">
+	<link rel="stylesheet" href="{{asset('css/style.css')  }} ">
+	<link rel="stylesheet" href="{{asset('css/style_menu.css')  }} ">
+	
 
 </head>
 <body>
-	<div class="wrap_main">
-		<h1>QR меню Вінниця</h1>
-		<h2>Найкращі заклади та меню у Вінниці</h2>
-		<div class="navbar">
-			<a href="{{ route('index') }}">Білий список</a>
-			<a href="{{ route('newsAds') }}">Акції</a>
-
-			
-			@auth
-			<a href="{{ route('place_add')  }}">+</a>
-			<a href="{{ route('home') }}">Мої заклади</a>
-			@endauth
-			@guest
-			<a href="{{ route('register') }}">Реєстрація</a>
-			<a href="{{ route('login') }}">Вхід</a>
-			@endguest
-			@auth
-			<form action="{{ route('logout') }}" method="POST">
-				@csrf
-				<input type="submit" class="btn" value="Вихід">
-			</form>
-			@endauth
+	<div class="wrap">
+		<div class="toppanel">
+			<span>
+				@guest
+					Для закладів:  <a href="{{ route('login') }}">Вхід</a>
+				@endguest
+				@auth
+					<form action="{{ route('logout') }}" method="POST">
+						@csrf
+						<input type="submit" class="btn" value="Вихід">
+					</form>
+				@endauth
+			</span>
 		</div>
 
-		@yield('main')
+		<div class="container">
+			<header class="header">
+				<a href="{{ route('index') }}"><img class="header__logo" src="{{asset('images/logo.svg') }}" alt="Вінницькі електронні QR меню"></a>
+		    </header>
+
+			
+
+			@yield('main')
+		</div>
 	</div>
 	
 </body>

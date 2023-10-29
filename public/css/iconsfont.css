@@ -1,17 +1,17 @@
 @font-face {
   font-family: 'icons';
-  src:  url('../fonts/icons.eot?f9t4gk');
-  src:  url('../fonts/icons.eot?f9t4gk#iefix') format('embedded-opentype'),
-    url('../fonts/icons.ttf?f9t4gk') format('truetype'),
-    url('../fonts/icons.woff?f9t4gk') format('woff'),
-    url('../fonts/icons.svg?f9t4gk#icons') format('svg');
+  src:  url('../fonts/icons.eot?jobfwq');
+  src:  url('../fonts/icons.eot?jobfwq#iefix') format('embedded-opentype'),
+    url('../fonts/icons.ttf?jobfwq') format('truetype'),
+    url('../fonts/icons.woff?jobfwq') format('woff'),
+    url('../fonts/icons.svg?jobfwq#icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="_icon-"]::before, 
-[class*=" _icon-"]::before {
+[class^="icon_"]::before, 
+[class*=" icon_"]::before {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icons' !important;
   speak: never;
@@ -26,72 +26,132 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-._icon-facebook:before {
+.icon_square-plus:before {
   content: "\e900";
 }
-._icon-instagram:before {
+.icon_clock:before {
   content: "\e901";
 }
-._icon-phone-solid:before {
+.icon_users:before {
   content: "\e902";
 }
-._icon-email-solid:before {
+.icon_coins:before {
   content: "\e903";
 }
-._icon-email-regular:before {
+.icon_wallet:before {
   content: "\e904";
 }
-._icon-xmark:before {
+.icon_utensils:before {
   content: "\e905";
 }
-._icon-location-dot-solid:before {
+.icon_circle-down:before {
   content: "\e906";
 }
-._icon-wifi-solid:before {
+.icon_circle-up:before {
   content: "\e907";
 }
-._icon-whatsapp:before {
+.icon_truck-fast:before {
   content: "\e908";
 }
-._icon-telegram:before {
+.icon_square-instagram:before {
   content: "\e909";
 }
-._icon-viber:before {
+.icon_viber:before {
   content: "\e90a";
 }
-._icon-square-instagram:before {
+.icon_telegram:before {
   content: "\e90b";
 }
-._icon-truck-fast-solid:before {
+.icon_whatsapp:before {
   content: "\e90c";
 }
-._icon-circle-up-regular:before {
+.icon_wifi:before {
   content: "\e90d";
 }
-._icon-circle-down-regular:before {
+.icon_location-dot:before {
   content: "\e90e";
 }
-._icon-utensils-solid:before {
+.icon_circle-xmark:before {
   content: "\e90f";
 }
-._icon-store-solid:before {
+.icon_email:before {
   content: "\e910";
 }
-._icon-shop-solid:before {
+.icon_email-solid:before {
   content: "\e911";
 }
-._icon-wallet-solid:before {
+.icon_phone-solid:before {
   content: "\e912";
 }
-._icon-coins-solid:before {
+.icon_instagram:before {
   content: "\e913";
 }
-._icon-users-solid:before {
+.icon_facebook:before {
   content: "\e914";
 }
-._icon-clock-regular:before {
+.icon_restaurant_logo:before {
   content: "\e915";
 }
-._icon-square-plus-regular:before {
+.icon_restaurant_drink:before {
   content: "\e916";
+}
+.icon_dinner_icon:before {
+  content: "\e917";
+}
+.icon_message-regular:before {
+  content: "\e918";
+}
+.icon_clock-solid:before {
+  content: "\e919";
+}
+.icon_heart-circle-plus:before {
+  content: "\e91a";
+}
+.icon_circle-plus:before {
+  content: "\e91b";
+}
+.icon_plus:before {
+  content: "\e91c";
+}
+.icon_triangle-alert:before {
+  content: "\e91d";
+}
+.icon_star:before {
+  content: "\e91e";
+}
+.icon_star-solid:before {
+  content: "\e91f";
+}
+.icon_circle-info:before {
+  content: "\e920";
+}
+.icon_eye-slash:before {
+  content: "\e921";
+}
+.icon_logout:before {
+  content: "\e922";
+}
+.icon_login:before {
+  content: "\e923";
+}
+.icon_edit:before {
+  content: "\e924";
+}
+.icon_percent:before {
+  content: "\e925";
+}
+.icon_heart:before {
+  content: "\e926";
+}
+.icon_heart-solid:before {
+  content: "\e927";
+}
+.icon_toggle-off:before {
+  content: "\e928";
+}
+.icon_toggle-on:before {
+  content: "\e929";
+}
+.icon_help-info:before {
+  content: "\e92a";
 }

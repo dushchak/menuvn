@@ -26,7 +26,7 @@
             <div class="place__phone1">Про нас: {{ $place->description }}</div>
             
 
-            <div class="place__sitplaces">Керуючий закладом (прихований для користувачів): {{ $place->manager }}</div>
+           
             <div class="place__adress">Основний тел: {{ $place->phone1 }}</div>
             <div class="place__workhours">тел: {{ $place->phone2 }}</div>
             <div class="place__delivery">тел: {{ $place->phone3 }}</div>

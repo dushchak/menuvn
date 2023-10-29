@@ -7,7 +7,7 @@
 	<title>@yield('title') - Головна сторінка</title>
 
 	<link rel="stylesheet" href="{{asset('css/normalize.min.css')  }} ">
-	<link rel="stylesheet" href="css/iconsfont.css">
+	<link rel="stylesheet" href="{{asset('css/iconsfont.css') }}">
 	<link rel="stylesheet" href="{{asset('css/style.css')  }} ">
 	<link rel="stylesheet" href="{{asset('css/style_menu.css')  }} ">
 	

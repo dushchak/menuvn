@@ -37,6 +37,7 @@
 			
 
 			@yield('main')
+			@yield('navbar')
 		</div>
 	</div>
 	

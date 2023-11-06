@@ -3,7 +3,7 @@
 
 
 @section ('main')
-<h3 class="icon_heart-solid">Мої заклади</h3>
+<h1 class="icon_heart-solid">Мої заклади</h1>
 @if(count ($places) > 0)
 
     @foreach ($places as $place)
@@ -27,7 +27,7 @@
             <div class="place__phone1 icon_help-info">Про нас: {{ $place->description }}</div><!-- * -->
             
 
-            <div class="place__sitplaces icon_eye-slash"> Керуючий закладом, тел. : {{ $place->manager }} (прихований для користувачів)</div><!-- * -->
+            <div class="place__sitplaces icon_eye-slash"> Керуючий закладом: {{ $place->manager }} (прихований)</div><!-- * -->
             <div class="place__adress icon_phone-solid">  {{ $place->phone1 }}</div><!-- * -->
             @if($place->phone2 != null)
                 <div class="place__workhours icon_phone-solid"> {{ $place->phone2 }}</div><!--  -->@endif
@@ -50,8 +50,8 @@
 
 
 
-            <a href="{{ route('place.view', $place->id) }}">Публічна сторінка закладу</a>
-            <a class="icon_edit" href="{{ route('place.edit', $place->id) }}">Редагувати інформацію закладу</a>
+            <a href="{{ route('place.view', $place->id) }}">Публічна сторінка</a>
+            <a class="icon_edit" href="{{ route('place.edit', $place->id) }}">Редагувати</a>
 
 
 

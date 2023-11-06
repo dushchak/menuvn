@@ -39,11 +39,13 @@ h2 {
 	align-items: center;
 	height: 35px;
 	padding: 0 30px;
-	background-color:#FFD392;
+/*	background-color:#FFD392;*/
+	background-color: #FCAB30;
 
-	color:#666;
+	color:#fff;
 	font-size: 16px;
 	text-align: center;
+	font-weight: normal;
 }
 .toppanel a {
 	color: #333;
@@ -73,14 +75,14 @@ h2 {
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	border-top: 3px solid #FFD392 ;
+	border-top: 3px solid #FCAB30 ;
 	padding-top: 15px;
 }
 .navbar  a {
-	color: #F95A01; /* #F95A01 */
-	text-decoration: underline;
-	font-size: 20px;
-	font-weight: normal;
+	color: #967E59; /* #F95A01 */
+	text-decoration: none;
+	font-size: 24px;
+	font-weight: bold;
 	line-height: 1.5;
 
 }
@@ -97,10 +99,13 @@ listblock {
 	align-items: center;
 	border: 1px solid #c9c9c9;
 	border-radius: 5px;
+	box-shadow: 1px 1px 5px #c9c9c9;
 }
 .listplace__info h3 a{
 	font-size: 1.6rem;
-	color:#C76228;
+	font-style: italic;
+/*	color:#C76228;*/
+color: #F95A01;
 	text-decoration: none;
 }
 
@@ -139,11 +144,24 @@ listblock {
 }
 .place__info {
 	padding: 30px;
+	flex: 1 0 50%;
 }
 
 
+/* menu */
 
-
+.place__menuinfo {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding: 20px 0;
+}
+.place__menuinfo > p {
+	font-weight: bold;
+	color: #9c9c9c;
+	padding: 5px;
+	flex: 1 0 50%;
+}
 .dish {
 	display: flex;
 }
@@ -158,6 +176,22 @@ listblock {
 }
 .dish__info {
 	padding: 20px;
+	flex: 2 0; /*flex-grow, shrink, basis*/
+}
+.dish__info h4 {
+	color: #332F29;
+	padding: 20px 0;
+	font-size: 1.2rem;
+}
+.dish__info > p {
+	color: #635B4F;
+	line-height: 1.5;
+}
+.dish__cost {
+	color: #F95A01;
+	font-size: 1.8rem;
+	font-weight: bolder;
+	padding: 50px;
 }
 
 
@@ -165,6 +199,7 @@ listblock {
 
 .advert {
 	display: flex;
+	flex: 0 1 50%;
 	align-items: center;
 	padding: 10px;
 	margin: 20px;

@@ -1,14 +1,21 @@
 .header {
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
+h1 {
+    color: #F95A01;
+    font-style: italic;
+}
+
 h3 {
-    color:#F95A01;
+/*    color:#F95A01;*/
+    color: #635B4F;
 }
 
 .header__logo {
-    width: 150px;
+    width: 200px;
 }
 
 .bread_crumbs {
@@ -24,8 +31,9 @@ h3 {
     display: flex;
     border: 1px solid #c9c9c9;
     border-radius: 5px;
-    margin: 20px;
+    margin: 20px 0;
     padding: 5px;
+    box-shadow: 1px 1px 15px #9c9c9c;
 }
 
 .placeinfo__contacts {
@@ -59,12 +67,14 @@ h3 {
     border-radius: 10px;
 }
 .oneplace__image {
-    flex:1 1 50%;
+    flex:1 0 50%;
 }
 .oneplace__info {
     flex: 1 1 50%;
     padding: 30px;
     color:#555;
+    font-size: 1.2rem;
+    line-height: 2;
 }
 
 /* bread_crumbs */

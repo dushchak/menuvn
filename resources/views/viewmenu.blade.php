@@ -4,7 +4,7 @@
 
 @section ('main')
 <div class="bread_crumbs">
-        <a href="http://127.0.0.1:8000/">Білий список</a> >
+        <a class="icon_star" href="http://127.0.0.1:8000/"> Білий список</a> >
         <a href="{{ route('place.view', $place->id) }}">{{ $place->name }}</a> >
         <span class="bread_crumbs__page">Меню</span>
     
@@ -12,16 +12,18 @@
 
 
 <div class="newdish">
-    <a class="btn_m" href="{{route('dish.add', $place->id) }}">new dish</a>
+    @auth
+    <a class="btn_m icon_circle-plus" href="{{route('dish.add', $place->id) }}"> Додати страву</a>
+    @endauth
 </div>
 
 
+<h1>{{$place->name}}</h1>
 
-<div>
-    <h3>{{$place->name}}</h3>
-    <p>{{$place->adress}}</p>
-    <p>{{$place->phone1}}</p>
-    <p>{{$place->delivery}}</p>   
+<div class="place__menuinfo">    
+    <p class="icon_location-dot"> {{$place->adress}}</p>
+    <p class="icon_phone-solid"> {{$place->phone1}}</p>
+    <p class="icon_truck-fast"> {{$place->delivery}}</p>   
 </div>
 
 
@@ -144,26 +146,20 @@
             </div>
             <div class="dish__info">
                 <h4>{{ $dish->dishtitle }}</h4>
-                <p>Порція, вага: {{ $dish->portionweight }} грам</p>
-                <p>Ціна за 100гр: {{ $dish->cost100g }} грн</p>
-                <p>Ціна за порцію: {{ $dish->portioncost }} грн</p>
+                <p>Порція {{ $dish->portionweight }} грам</p>
+                <p>за 100г. {{ $dish->cost100g }} грн</p>
+                
                 <p>{{ $dish->description }}</p>
 
             </div>
 
             <div class="dish__actions">
-                @guest
-                    
-                    
-                @endguest
-                 
-                     @auth
-                     <a href="#">Замовити</a>
-                     <a href="#">Помилочка в страві? >>></a>
-                    <a href="{{ route('dish.up', $dish->id)  }}">+</a>
-                    <a href="{{ route('dish.down', $dish->id)  }}">-</a>
-                    <a href="{{ route('dish.editdish', $dish->id) }}">edit</a>
-                    <a href="{{ route('dish.formdeldish', $dish->id) }}">delete</a>                
+                    <p class="dish__cost">{{ $dish->portioncost }} ₴</p>
+                    @auth
+                    <a class="icon_circle-up" href="{{ route('dish.up', $dish->id)  }}"></a>
+                    <a class="icon_circle-down" href="{{ route('dish.down', $dish->id)  }}"></a>
+                    <a class="icon_edit" href="{{ route('dish.editdish', $dish->id) }}"></a>
+                    <a class="icon_circle-xmark" href="{{ route('dish.formdeldish', $dish->id) }}"></a>                
                     @endauth
 
             </div>    

@@ -33,6 +33,17 @@ h2 {
 .btn_m:hover {
 	background-color: #333;
 }
+.btn_exit {
+	padding: 3px 5px;
+	background-color: #666;
+	color: #fff;
+	font-weight: bold;
+	border: 0px;
+	cursor: pointer;
+}
+.btn_exit:hover {
+	background-color: #999;
+}
 .toppanel {
 	display: flex;
 	justify-content: right;
@@ -48,8 +59,10 @@ h2 {
 	font-weight: normal;
 }
 .toppanel a {
-	color: #333;
+	color: #fff;
+	font-weight: bold;
 }
+
 .slogan_img {
 
 	width: 50px;
@@ -76,7 +89,7 @@ h2 {
 	justify-content: space-between;
 	flex-wrap: wrap;
 	border-top: 3px solid #FCAB30 ;
-	padding-top: 15px;
+	padding: 15px;
 }
 .navbar  a {
 	color: #967E59; /* #F95A01 */
@@ -84,7 +97,14 @@ h2 {
 	font-size: 24px;
 	font-weight: bold;
 	line-height: 1.5;
-
+}
+/* 
+NOTE!!!
+This rule in viewmenu.blade.php page for disable "navbar" in menu page
+	.navbar {
+		display: none !important; /// !important
+	}
+ */
 }
 
 
@@ -145,6 +165,7 @@ color: #F95A01;
 .place__info {
 	padding: 30px;
 	flex: 1 0 50%;
+	line-height: 2;
 }
 
 

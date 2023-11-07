@@ -2,11 +2,14 @@
 
 
 
+
 @section ('main')
 <div class="bread_crumbs">
+    <span>
         <a class="icon_star" href="http://127.0.0.1:8000/"> Білий список</a> >
         <a href="{{ route('place.view', $place->id) }}">{{ $place->name }}</a> >
         <span class="bread_crumbs__page">Меню</span>
+    </span>
     
     </div>
 
@@ -200,3 +203,6 @@
     
 </div>
 @endsection('main')
+<style>
+    .navbar {display: none !important;}
+</style>

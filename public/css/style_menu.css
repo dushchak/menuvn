@@ -80,4 +80,22 @@ h3 {
 /* bread_crumbs */
 .bread_crumbs__page {
     font-weight: bold;
+    color: #61483A;
+}
+
+
+
+/* home my Places */
+.place__actions {
+    background-color: #eee;
+    color: #61483A;
+    padding: 30px;
+    margin: 20px 0;
+
+}
+.place__actions a {
+    color: #332D29;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 1.2rem;
 }

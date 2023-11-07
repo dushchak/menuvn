@@ -39,23 +39,38 @@
             <div class="place__phone1">Instagram: {{ $place->insta }}</div>
             <div class="place__phone1">Facebook: {{ $place->fb }}</div>
 
+            @auth
+                <p> <a class="icon_edit" href="{{ route('place.edit', $place->id) }}">Редагувати: {{ $place->name}}</a></p>
+            @endauth
+
 
 
             <div class="place__actions">
-                <a class="btn_m" href="{{ route('viewMenu', $place->id) }}">Меню</a>
                 @auth
-                    <a href="{{ route('place.edit', $place->id) }}">Редагувати інформацію</a>
+                <div class="pay-actions">
+                    <p><a class="icon_toggle-on" href="{{ route('coins.formNoAds', $place->id)}}" title="Відключити рекламу в меню закладу"> Реклама в меню</a>   <br>
+                    @if(true)
+
+                    @else
+                        БЕЗ РЕКЛАМИ до: {{ $place->noadsto }}
+                    @endif
+                    </p>
+
+                    <p><a class="icon_toggle-off" href="{{ route('coins.buyads', $place->id)}}" title="Показувати Промо оголошення"> Ваші Промо-Акції</a><br>
+                        @if(false)
+                            АКТИВОВАНО до: {{ $place->adsto }}
+                        @else
+                            
+                        @endif
+                    </p>
                     
-                    <a href="{{ route('ads.new', $place->id) }}">+Нове Промо</a>
-                    <a href="{{ route('adsPlace', $place->id) }}">Промо-акції закладу</a>
-                    <a href="{{ route('coins.buyads', $place->id)}}">Вкл. промо</a>
-                    <a href="{{ route('coins.formNoAds', $place->id)}}">Викл. рекламу</a>
-                    
-                    <a href="">В ТОП списку</a>
-                    <a href="">Підключитись до tg бота</a>
-                    <a href="">Активувати тариф "Стандарт" (350/М)</a>
+                    <p><a class="icon_toggle-off" href="{{ route('coins.formUp', $place->id)}}" title="Розмістити в ТОП5 білого списку"> розміщення в ТОП5</a></p>
+                </div>
                 @endauth
-            </div>    
+            </div>  
+
+
+
         </div>
          
     </div>

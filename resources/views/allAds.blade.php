@@ -9,7 +9,7 @@
 
 
 @if(count ($ads) > 0)
-<h1>Промо-Акції закладів</h1>
+<h1 class="icon_percent"> Промо закладів</h1>
     @foreach ($ads as $adv)
 
         <div class="advert">
@@ -24,7 +24,7 @@
             </div>
 
             
-            <div class="place__actions">
+            <div class="advert__actions">
             </div> 
         </div>
         

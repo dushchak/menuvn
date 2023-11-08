@@ -59,6 +59,7 @@ h3 {
     color:#F95A01;
     font-size: 2rem;
     font-weight: bold;
+    font-style: italic;
 }
 .oneplaceimg {
     object-fit: cover;
@@ -75,6 +76,13 @@ h3 {
     color:#555;
     font-size: 1.2rem;
     line-height: 2;
+}
+.oneplace__info h3 a {
+    color:#F95A01;
+    font-size: 2rem;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
 }
 
 /* bread_crumbs */
@@ -98,4 +106,24 @@ h3 {
     text-decoration: none;
     font-weight: bolder;
     font-size: 1.2rem;
+}
+.place__actions a:hover {
+    text-decoration: underline;
+}
+
+/* placeAds */
+
+.adsActiveOff {
+    padding: 0 10px;
+    text-decoration: none;
+    color: #332D29;
+    font-weight: bold;
+}
+.adsActiveOff:hover {
+    text-decoration: underline;
+    color: #332D29;
+}
+.adv__actions a {
+    color: #332D29;
+    font-weight: bold;
 }

@@ -11,11 +11,14 @@
     
 </div>
 
-<h1>Акції та пропозиції - {{$place->name}}</h1>
+<h1 class="icon_percent"> Промо-Акції: {{$place->name}}</h1>
 
 @auth
 <a class="btn_m" href="{{ route('ads.new', $place->id) }}">+ Нове оголошення</a>
-<a class="btn btn btn-light" href="{{ route('coins.buyads', $place->id)}}">АКТИВУВАТИ оголошення</a>
+{{$place->adsto}}
+@if(count ($ads) > 0)
+    <a class="icon_toggle-off adsActiveOff" href="{{ route('coins.buyads', $place->id)}}">АКТИВУВАТИ оголошення</a>
+@endif
 @endauth
 
 
@@ -31,7 +34,7 @@
             
         </div>
         <div class="advert__actions">
-                <div class="place__actions">
+                <div class="adv__actions">
                     @auth
                     <a class="btn btn-success" href="{{ route('ads.editform', $adv) }}">Редагувати</a>
                     @endauth   

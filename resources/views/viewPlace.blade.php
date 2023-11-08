@@ -40,7 +40,7 @@
             <div class="place__phone1">Facebook: {{ $place->fb }}</div>
 
             @auth
-                <p> <a class="icon_edit" href="{{ route('place.edit', $place->id) }}">Редагувати: {{ $place->name}}</a></p>
+                <p> <a class="icon_edit" href="{{ route('place.edit', $place->id) }}"> Редагувати: {{ $place->name}}</a></p>
             @endauth
 
 

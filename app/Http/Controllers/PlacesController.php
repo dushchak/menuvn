@@ -1,8 +1,7 @@
 <?php
-
-
-
 namespace App\Http\Controllers;
+
+use DateTimeImmutable;
 
 use Illuminate\Http\Request;
 use App\Models\Places;
@@ -102,7 +101,12 @@ class PlacesController extends Controller
         return $this->printQR($request, $place);
     }
 
+    public function upPlace(Places $place){
+        
+        return view ('formUpPlace');
+    }
 
+    // Всі * ПРОМО оголошення, бо в AdsController перевіряється Auth 
     public function allAds () {
         $ads = Ads::latest()->get();
         //dd($ads);
@@ -112,21 +116,39 @@ class PlacesController extends Controller
             $adverts[] = $item; 
         }
         //dd($adverts);
-        
-        
         return view ('allAds', ['ads'=>$adverts]);
     }
 
-    public function adsPlace(Places $place){
-
+        public function placeAds(Places $place)
+    {
         $ads = $place->ads()->get();
-        //dd($ads);
 
-        return view ('placeAds', ['ads'=>$ads, 'place'=>$place]);    
-    }
+        // перевірка чи є Підписка
+        //$str_payed = "06-10-2023"; //test
 
-    public function upPlace(Places $place){
-        
-        return view ('formUpPlace');
+        try{
+            if($place->adsto != null){
+                $now  = new DateTimeImmutable();  //obj "now"
+                $payed_to = new DateTimeImmutable($place->adsto);  //obj "2023-01-01"(db)
+                if ($payed_to < $now){
+                    $tarif = false;
+                }
+                else{
+                    $tarif = true;
+                }
+            }
+            else{
+                $tarif = false;
+            }
+        }
+        catch(Exception $e){
+            echo 'Выброшено исключение: ',  $e->getMessage(), "\n";
+        }
+
+##        $new_payed = $promo_to->format('Y-m-d');
+
+
+        //dd($tarif);
+        return view('placeAds', ['ads'=>$ads,'place'=>$place, 'tarif'=>$tarif ]);
     } 
 }

@@ -14,11 +14,18 @@
 <h1 class="icon_percent"> Промо-Акції: {{$place->name}}</h1>
 
 @auth
-<a class="btn_m" href="{{ route('ads.new', $place->id) }}">+ Нове оголошення</a>
-{{$place->adsto}}
-@if(count ($ads) > 0)
-    <a class="icon_toggle-off adsActiveOff" href="{{ route('coins.buyads', $place->id)}}">АКТИВУВАТИ оголошення</a>
-@endif
+    <a class="btn_m" href="{{ route('ads.new', $place->id) }}">+ Нове оголошення</a>
+
+    @if(count ($ads) > 0 && $tarif==true)
+        <span>
+        <a class="icon_toggle-on statusOn" href="{{ route('coins.buyads', $place->id)}}">АКТИВОВАНО до {{$place->adsto}} </a>Ваші Промо-Акції показуються</span>
+        
+    @elseif(count($ads) > 0 && $tarif==false)
+        <span>
+        <a class="icon_toggle-off statusOff" href="{{ route('coins.buyads', $place->id)}}">АКТИВУВАТИ оголошення</a>Ваші Промо-оголошення не показуються</span>
+    @else
+        <span>Розкажіть людям про ваші Промо-Акції, знижки та спеціальні пропозиції</span>  
+    @endif
 @endauth
 
 

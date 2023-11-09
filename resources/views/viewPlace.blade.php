@@ -19,25 +19,38 @@
         <div class="place__info">
             <h3>{{ $place->name }}</h3>
             
-            <div class="place__workhours">Розклад: {{ $place->workhours }}</div>
-            <div class="place__sitplaces">Місць: {{ $place->sitplaces }}</div>
-            <div class="place__adress">Wi-Fi: {{ $place->wifipass }}</div>
-            <div class="place__delivery">Доставка: {{ $place->delivery }}</div>
-            <div class="place__phone1">Про нас: {{ $place->description }}</div>
+<!-- додати зразок заповнення -->
+            <div class="place__workhours icon_clock"> {{ $place->workhours }}</div><!-- * -->
+            <div class="place__phone1 icon_location-dot">  {{ $place->adress }}</div><!-- * -->
+            <div class="place__sitplaces icon_users"> {{ $place->sitplaces }} місць</div><!-- * -->
+            @if($place->wifipass != null)
+                <div class="place__adress icon_wifi"> {{ $place->wifipass }}</div><!--  -->
+            @endif
+            <div class="place__delivery icon_truck-fast">  {{ $place->delivery }}</div><!-- * -->
+            <div class="place__phone1 icon_help-info"> Про нас: {{ $place->description }}</div><!-- * -->
             
 
+            <div class="place__sitplaces icon_eye-slash"> Керуючий закладом: {{ $place->manager }} (прихований)</div><!-- * -->
+            <div class="place__adress icon_phone-solid">  {{ $place->phone1 }}</div><!-- * -->
+            @if($place->phone2 != null)
+                <div class="place__workhours icon_phone-solid"> {{ $place->phone2 }}</div><!--  -->@endif
+            @if($place->phone3 != null)
+                <div class="place__delivery icon_phone-solid"> {{ $place->phone3 }}</div><!--  -->@endif
+            @if($place->phone4 != null)
+                <div class="place__phone1 icon_phone-solid"> {{ $place->phone4 }}</div><!--  -->@endif
            
-            <div class="place__adress">Основний тел: {{ $place->phone1 }}</div>
-            <div class="place__workhours">тел: {{ $place->phone2 }}</div>
-            <div class="place__delivery">тел: {{ $place->phone3 }}</div>
-            <div class="place__phone1">тел: {{ $place->phone4 }}</div>
-           
+            @if($place->email != null)
+                <div class="place__adress icon_email"> {{ $place->email }}</div><!--  -->@endif
+            @if($place->viber != null)
+                <div class="place__workhours icon_viber"> {{ $place->viber }}</div><!--  -->@endif
+            @if($place->telegram != null)
+                <div class="place__delivery icon_telegram"> {{ $place->telegram }}</div><!--  -->@endif
+            @if($place->insta != null)
+                <div class="place__phone1 icon_instagram">  {{ $place->insta }}</div><!--  -->@endif
+            @if($place->fb != null)
+                <div class="place__phone1 icon_facebook">  {{ $place->fb }}</div><!--  -->@endif
 
-            <div class="place__adress">Email: {{ $place->email }}</div>
-            <div class="place__workhours">Viber: {{ $place->viber }}</div>
-            <div class="place__delivery">Telegram: {{ $place->telegram }}</div>
-            <div class="place__phone1">Instagram: {{ $place->insta }}</div>
-            <div class="place__phone1">Facebook: {{ $place->fb }}</div>
+
 
             @auth
                 <p> <a class="icon_edit" href="{{ route('place.edit', $place->id) }}"> Редагувати: {{ $place->name}}</a></p>

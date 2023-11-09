@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DateTimeImmutable;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; // підключаєм трейт фасад авторизації 
 use Illuminate\Support\Facades\Storage;  // для зберігання і видалення зображень на диску
@@ -26,10 +28,35 @@ class AdsController extends Controller
 */
     public function placeAds(Places $place)
     {
-        //$ads = Auth::user()->places()->get();
         $ads = $place->ads()->get();
-        //dd($ads);
-        return view('placeAds', ['ads'=>$ads,'place'=>$place ]);
+
+        // перевірка чи є Підписка
+        //$str_payed = "06-10-2023"; //test
+
+        try{
+            if($place->adsto != null){
+                $now  = new DateTimeImmutable();  //obj "now"
+                $payed_to = new DateTimeImmutable($place->adsto);  //obj "2023-01-01"(db)
+                if ($payed_to < $now){
+                    $tarif = false;
+                }
+                else{
+                    $tarif = true;
+                }
+            }
+            else{
+                $tarif = false;
+            }
+        }
+        catch(Exception $e){
+            echo 'Выброшено исключение: ',  $e->getMessage(), "\n";
+        }
+
+##        $new_payed = $promo_to->format('Y-m-d');
+
+
+        //dd($tarif);
+        return view('placeAds', ['ads'=>$ads,'place'=>$place, 'tarif'=>$tarif ]);
     }
 
     public function formNewAds(Places $place){

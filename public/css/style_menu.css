@@ -113,15 +113,29 @@ h3 {
 
 /* placeAds */
 
-.adsActiveOff {
+.link_btn {
+    color: #61483A;
+    font-weight: bold;
+}
+.link_btn:hover{
+    color: #332D29;
+    
+}
+
+.statusOff {
     padding: 0 10px;
     text-decoration: none;
     color: #332D29;
     font-weight: bold;
 }
-.adsActiveOff:hover {
+.statusOff:hover {
     text-decoration: underline;
-    color: #332D29;
+}
+.statusOn{
+    padding: 0 10px;
+    text-decoration: none;
+    color: green;
+    font-weight: bold;
 }
 .adv__actions a {
     color: #332D29;

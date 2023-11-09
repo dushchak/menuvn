@@ -50,10 +50,8 @@
 
 
 
-           <p> <a class="icon_edit" href="{{ route('place.edit', $place->id) }}">Редагувати: {{ $place->name}}</a></p>
-           <p><a href="{{ route('adsPlace', $place->id) }}">Усі Промо-Акції: {{ $place->name }}</a></p>
-           <p><a href="{{ route('place.view', $place->id) }}">Публічна сторінка: {{ $place->name }}</a>
-</p>
+           <p> <a class="icon_edit link_btn" href="{{ route('place.edit', $place->id) }}">Редагувати: {{ $place->name}}</a></p>
+
            
             
              
@@ -74,7 +72,7 @@
                     @endif
                     </p>
 
-                    <p><a class="icon_toggle-off" href="{{ route('coins.buyads', $place->id)}}" title="Показувати Промо оголошення"> Ваші Промо-Акції</a><br>
+                    <p><a class="icon_toggle-off" href="{{ route('placeAds', $place->id) }}" title="Показувати Промо оголошення"> Ваші Промо-Акції</a><br>
                         @if(false)
                             АКТИВОВАНО до: {{ $place->adsto }}
                         @else

@@ -36,7 +36,7 @@
 				//echo  count ($place->ads()->latest()->get()); /// кількість оголошень ресторана
 				$countads = count ($place->ads()->latest()->get()); /// кількість оголошень ресторана
 			@endphp
-			<div><a class="place_promos_link" href="{{ route('adsPlace', $place->id) }}">Промо-Акції </a>({{$countads}})</div>
+			<div><a class="place_promos_link" href="{{ route('placeAds', $place->id) }}">Промо-Акції </a>({{$countads}})</div>
 			@auth
 								
 			@endauth

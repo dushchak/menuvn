@@ -220,7 +220,7 @@ color: #F95A01;
 
 .advert {
 	display: flex;
-	flex: 0 1 50%;
+	flex: 0 1 75%;
 	align-items: center;
 	padding: 10px;
 	margin: 20px;
@@ -233,12 +233,11 @@ color: #F95A01;
 }
 .advert__text {
 	padding-left: 40px ;
-	display: flex;
-	flex-direction: column;
 }
 .advert__title {
 	font-weight: bold;
 	font-size: 20px;
+	padding: 20px 0;
 }
 
 

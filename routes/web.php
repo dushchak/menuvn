@@ -25,10 +25,8 @@ Route::get('/menu/print/{place}', [PlacesController::class, 'printQR'])->name('p
 Route::post('/menu/qrstyle/{place}', [PlacesController::class, 'printQRstyle'])->name('printQRstyle'); // guests
 
 Route::get('/menu/{place}', [PlacesController::class, 'viewMenu'])->name('viewMenu'); // guests
-
 Route::get('/news', [PlacesController::class, 'allAds'])->name('newsAds'); // guests
-
-Route::get('/news/{place}', [PlacesController::class, 'adsPlace'])->name('adsPlace'); // guests
+// Route::get('/news/{place}', [PlacesController::class, 'adsPlace'])->name('adsPlace'); 
 
 
 Auth::routes();
@@ -71,7 +69,7 @@ Route::get('/home/downdish/{dish}', [App\Http\Controllers\DishesController::clas
 
 // 
 // Ads
-Route::get('/myads/{place}', [App\Http\Controllers\AdsController::class, 'placeAds'])->name('placeAds');
+Route::get('/myads/{place}', [App\Http\Controllers\PlacesController::class, 'placeAds'])->name('placeAds');
 Route::get('/myads/newads/{place}', [App\Http\Controllers\AdsController::class, 'formNewAds'])->name('ads.new');
 Route::post('/myads/saveads', [App\Http\Controllers\AdsController::class, 'saveNewAds'])->name('newads.save');
 

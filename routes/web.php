@@ -59,7 +59,7 @@ Route::get('/home/delDishImg/{dishid}', [App\Http\Controllers\DishesController::
 
 
 // Dishes
-Route::get('/home/newdish/{placeid}', [App\Http\Controllers\DishesController::class, 'formNewDish'])->name('dish.add');
+Route::get('/home/newdish/{place}', [App\Http\Controllers\DishesController::class, 'formNewDish'])->name('dish.add');
 Route::post('/home/save', [App\Http\Controllers\DishesController::class, 'saveDish'])->name('dish.save');
 
 

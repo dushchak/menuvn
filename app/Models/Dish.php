@@ -7,7 +7,7 @@
             $table->text('description');
             $table->string('portionweight')->nullable();
             $table->string('portioncost');
-            $table->string('cost100g')->nullable();
+            $table->string('cost100g')->nullable();  ///// треба видалити
 */
 
 namespace App\Models;

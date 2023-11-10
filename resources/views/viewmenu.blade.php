@@ -14,19 +14,23 @@
     </div>
 
 
-<div class="newdish">
-    @auth
-    <a class="btn_m icon_circle-plus" href="{{route('dish.add', $place->id) }}"> Додати страву</a>
-    @endauth
-</div>
+
 
 
 <h1>{{$place->name}}</h1>
+<h2>МЕНЮ</h2>
 
 <div class="place__menuinfo">    
     <p class="icon_location-dot"> {{$place->adress}}</p>
     <p class="icon_phone-solid"> {{$place->phone1}}</p>
     <p class="icon_truck-fast"> {{$place->delivery}}</p>   
+</div>
+
+
+<div class="newdish">
+    @auth
+    <a class="btn_m icon_circle-plus" href="{{route('dish.add', $place->id) }}"> Додати страву</a>
+    @endauth
 </div>
 
 
@@ -150,7 +154,9 @@
             <div class="dish__info">
                 <h4>{{ $dish->dishtitle }}</h4>
                 <p>Порція {{ $dish->portionweight }} грам</p>
-                <p>за 100г. {{ $dish->cost100g }} грн</p>
+                @if(!empty($dish->cost100g))
+                    <p>за 100г. {{ $dish->cost100g }} грн</p>
+                @endif
                 
                 <p>{{ $dish->description }}</p>
 
@@ -187,7 +193,7 @@
    
     {!! 
         
-     QrCode::size(400)
+     QrCode::size(300)
  //       ->style('dot')
         ->eye('circle')
  //       ->gradient($from[0], $from[1], $from[2], $to[0], $to[1], $to[2], 'diagonal')

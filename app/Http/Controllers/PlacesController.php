@@ -36,6 +36,14 @@ class PlacesController extends Controller
         else{
             $menu = $place->dishes()->latest()->get(); 
         }
+
+        // ціна за 100гр.
+        foreach($menu as $dish){
+            if(!empty($dish->portionweight)){
+                $dish->cost100g = round( ($dish->portioncost / $dish->portionweight)*100);
+            } 
+        }
+
         //dd($menu);
 
         return view ('viewmenu', ['menu'=>$menu, 'place'=>$place ] ); // вивід dishes

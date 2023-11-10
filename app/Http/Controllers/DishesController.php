@@ -18,8 +18,8 @@ class DishesController extends Controller
         $this->middleware('auth');
     }
 
-    public function formNewDish($placeid){
-       return view('dish_add', ['placeid'=>$placeid]);
+    public function formNewDish(Places $place){
+       return view('dish_add', ['place'=>$place]);
     }
 
     // Зберігаєм страву з меню
@@ -50,9 +50,9 @@ class DishesController extends Controller
 //                dd($path);
             }    
 
-            // створюємо обєкт одного закладу = place_id
-            //$place = Places::find(['id'=>$request->places_id]);
-            $place = Places::firstOrNew(['id'=>$request->places_id]);
+            // створюємо обєкт одного закладу = place
+            $place = Places::firstOrNew(['id'=>$request->place_id]);
+
             /* викликаємо метод "прямогозвязку" методом dishes()
              який автоматом додає в таблицю БД - "place_id"
              */
@@ -62,11 +62,10 @@ class DishesController extends Controller
                 'description'=> $request->description,
                 'portionweight'=> $request->portionweight,
                 'portioncost'=> $request->portioncost,
-                'cost100g'=> $request->cost100g,
                 'thumbnail' => $fileNameWithExt, 
             ]);
 
-        return redirect()->route('viewMenu', $request->places_id);
+        return redirect()->route('viewMenu', $request->place_id);
         }
     
     }

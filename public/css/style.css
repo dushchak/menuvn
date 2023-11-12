@@ -179,7 +179,7 @@ color: #F95A01;
 }
 .place__menuinfo > p {
 	font-weight: bold;
-	color: #9c9c9c;
+	color: #666;
 	padding: 5px;
 	flex: 1 0 50%;
 }

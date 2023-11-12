@@ -4,7 +4,8 @@
 
 @section('main')
 <div class="container">
-	<h1>Додати страву в меню {{$place->name}}</h1>
+	<h1>+ Додати страву</h1>
+	<h2>Меню {{$place->name}}</h2>
 	<div class="form__wrapper">
 		<form class="form" action="{{ route('dish.save') }}" method="POST" enctype="multipart/form-data" >
 			@csrf
@@ -13,8 +14,8 @@
 
 
 			<div class="form__line">
-				<label for="txtName">*Назва страви</label>
-				<input type="text" name="dish_title" id="txtName" class="form-control">
+				<label for="txtName">Назва страви</label>
+				<input type="text" name="dish_title" id="txtName" class="form-control" placeholder="Піцца">
 			</div>
 
 			<div class="form__line">
@@ -39,26 +40,23 @@
 			</div>
 			
 			<div class="form__line">
-				<label for="txtDesc">*Про страву - склад, пропорції, опис та особливості приготування, ітп</label>
-				<textarea id="txtDesc" name="description" rows="5" cols="60" placeholder="">
-
-				</textarea>
+				<label for="txtDesc">Про страву - склад, пропорції, опис та особливості приготування, ітп</label>
+				<textarea id="txtDesc" name="description" rows="5" cols="60" placeholder="20/50/30 Сметана/Дируни/Соус"></textarea>
 				<!-- 20/50/30 Сметана/Дируни/Соус  -->
-
 			</div>
 			<!--  -->
 
 			<div class="form__line">
-				<label for="txtSitPlaces">Вага 1 порції, грамм</label>
-				<input type="text" name="portionweight" id="txtName" class="form-control">
+				<label for="txtSitPlaces">Вага 1 порції, Грамм</label>
+				<input type="text" name="portionweight" id="txtName" class="form-control" placeholder="480">
 			</div>
 			<div class="form__line">
-				<label for="txtDelivery">*Ціна 1 порції, грн</label>
-				<input type="text" name="portioncost" id="txtName" class="form-control">
+				<label for="txtDelivery">Ціна 1 порції, Грн</label>
+				<input type="text" name="portioncost" id="txtName" class="form-control" placeholder="185">
 			</div>
 
 			<div class="form__line">
-				<label  >Фото страви(jpg,png, max:2мб)</label>
+				<label  >Фото страви (jpg,png, <2мб)</label>
 				<br>
 				<input type="file" name="image_file">
 			</div>

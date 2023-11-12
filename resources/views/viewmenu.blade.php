@@ -33,6 +33,23 @@
     @endauth
 </div>
 
+<ul>
+    <li><a href="#maindish">Основне меню</a></li>
+    <li value="2"><a href=""></a>Холодні закуски</li>
+    <li value="3"><a href=""></a>Гарячі закуски</li>
+    <li value="4"><a href="#soup">Перші страви</a></li>
+    <li value="5"><a href=""></a>Гарніри</li>
+    <li><a href="#salat">Салати</a></li>
+    <li value="7"><a href=""></a>Десерт</li>
+    <li value="8"><a href=""></a>Гарячі напої</li>
+    <li value="9"><a href=""></a>Холодні напої</li>
+    <li value="10"><a href=""></a>Пиво</li>
+    <li value="11"><a href=""></a>Вино</li>
+    <li value="12"><a href=""></a>Міцні напої</li>
+    <li value="13"><a href=""></a>Алкогольні напої</li>
+    <li value="14"><a href=""></a>Коктейлі</li>
+</ul>
+
 
 @if($place->disabled==1)
         <p>Заклад не працює! Меню не доступне!</p>
@@ -61,7 +78,7 @@
         @switch($dish->dishgroup)
             @case(1)
                 @if($c1<1)
-                    <h3>Основне меню</h3>
+                    <h3 id="maindish">Основне меню</h3>
                     @php($c1++)
                 @endif
                 @break
@@ -79,7 +96,7 @@
                 @break
             @case(4)
                 @if($c4<1)
-                    <h3>Перші страви</h3>
+                    <h3 id="soup">Перші страви</h3>
                     @php($c4++)
                 @endif
                 @break
@@ -91,7 +108,7 @@
                 @break
             @case(6)
                 @if($c6<1)
-                    <h3>Салати</h3>
+                    <h3 id="salat">Салати</h3>
                     @php($c6++)
                 @endif
                 @break

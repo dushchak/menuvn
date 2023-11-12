@@ -170,3 +170,33 @@ h3 {
     padding: 8px;
     cursor: pointer;
 }
+
+
+/* style placeholders */
+::placeholder {
+  color: #9c9c9c;
+  font-size: 0.9em;
+}
+/* hide placeholder in inputs */
+:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+:focus::-webkit-placeholder {
+    color: transparent;
+}
+
+:focus::-moz-placeholder {
+    color: transparent;
+}
+
+:focus:-moz-placeholder {
+    color: transparent;
+}
+
+:focus:-ms-input-placeholder {
+    color: transparent;
+}
+
+.requared_input {
+    font-weight: bold;
+}

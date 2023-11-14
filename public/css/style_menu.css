@@ -200,3 +200,8 @@ h3 {
 .requared_input {
     font-weight: bold;
 }
+
+.link_brown {
+    color: #332F29;
+/* color: #61483A;*/
+}

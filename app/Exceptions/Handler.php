@@ -27,4 +27,21 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+
+    /*
+    * Моя переадресация с 419 ошибки на .... /login
+    * https://laravel.ru/forum/viewtopic.php?id=2947
+    */
+    // public function render($request, Exception $exception)
+    // {
+    //     foreach ($request->server as $k => $val){
+    //         //if ($k == "REDIRECT_STATUS" && $val == 200){ // original string
+    //         if ($k == "REDIRECT_STATUS" && $val == 419){
+    //             return redirect('/login');
+    //         }
+    //     }
+
+    //     return parent::render($request, $exception);
+    // }
 }

@@ -44,9 +44,99 @@ class PlacesController extends Controller
             } 
         }
 
-        //dd($menu);
+        //$groups['main_dish'] = 0;
+        $groups = array(
+            'main_dish'=> 0,
+            'cold_dish'=> 0,
+            'hot_dish'=> 0,
+            'soup'=> 0,
+            'garnir'=> 0,
+            'salat'=> 0,
+            'desert'=> 0,
+            'hot_drink'=> 0,
+            'cold_drink'=> 0,
+            'beer'=> 0,
+            'vine'=> 0,
+            'hard_alc'=> 0,
+            'alc_drink'=> 0,
+            'coctail'=> 0,
+        );
+        $flag = 0;
+        
+        if($place->disabled == 0){
+            
+            if(count ($menu) > 0){ 
+                
+                foreach($menu as $dish){
+                    switch($dish->dishgroup){
+                        case(1):
+                            $groups['main_dish']=1;
+                        break;
+                        case(2):
+                            $groups['cold_dish']=1;
+                            $flag = 1;
+                        break;
+                        case(3):
+                            $groups['hot_dish']=1;
+                            $flag = 1;
+                        break;
+                         case(4):
+                            $groups['soup']=1;
+                            $flag = 1;
+                        break;
+                        case(5):
+                            $groups['garnir']=1;
+                            $flag = 1;
+                        break;
+                        case(6):
+                            $groups['salat']=1;
+                            $flag = 1;
+                        break;
+                        case(7):
+                            $groups['desert']=1;
+                            $flag = 1;
+                        break;
+                        case(8):
+                            $groups['hot_drink']=1;
+                            $flag = 1;
+                        break;
+                        case(9):
+                            $groups['cold_drink']=1;
+                            $flag = 1;
+                        break;
+                        case(10):
+                            $groups['beer']=1;
+                            $flag = 1;
+                        break;
+                        case(11):
+                            $groups['vine']=1;
+                            $flag = 1;
+                        break;
+                        case(12):
+                            $groups['hard_alc']=1;
+                            $flag = 1;
+                        break;
+                        case(13):
+                            $groups['alc_drink']=1;
+                            $flag = 1;
+                        break;
+                        case(14):
+                            $groups['coctail']=1;
+                            $flag = 1;
+                        break;
+                        default:
+                    }
+                }
+                // якщо тільки main_dish приховуєм якорні лінки в меню
+                if($groups['main_dish'] && $flag == 0){
+                    $groups['main_dish'] = 0;
+                }
+            }
+        }
 
-        return view ('viewmenu', ['menu'=>$menu, 'place'=>$place ] ); // вивід dishes
+        //dd($groups);
+
+        return view ('viewmenu', ['menu'=>$menu, 'place'=>$place, 'groups'=>$groups ] ); // вивід dishes
 
     }
 

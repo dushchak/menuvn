@@ -18,7 +18,7 @@
 
 
 <h1>{{$place->name}}</h1>
-<h2>МЕНЮ</h2>
+
 
 <div class="place__menuinfo">    
     <p class="icon_location-dot"> {{$place->adress}}</p>
@@ -27,142 +27,150 @@
 </div>
 
 
+
 <div class="newdish">
     @auth
     <a class="btn_m icon_circle-plus" href="{{route('dish.add', $place->id) }}"> Додати страву</a>
     @endauth
 </div>
 
-<ul>
-    <li><a href="#maindish">Основне меню</a></li>
-    <li value="2"><a href=""></a>Холодні закуски</li>
-    <li value="3"><a href=""></a>Гарячі закуски</li>
-    <li value="4"><a href="#soup">Перші страви</a></li>
-    <li value="5"><a href=""></a>Гарніри</li>
-    <li><a href="#salat">Салати</a></li>
-    <li value="7"><a href=""></a>Десерт</li>
-    <li value="8"><a href=""></a>Гарячі напої</li>
-    <li value="9"><a href=""></a>Холодні напої</li>
-    <li value="10"><a href=""></a>Пиво</li>
-    <li value="11"><a href=""></a>Вино</li>
-    <li value="12"><a href=""></a>Міцні напої</li>
-    <li value="13"><a href=""></a>Алкогольні напої</li>
-    <li value="14"><a href=""></a>Коктейлі</li>
-</ul>
+<div class="anchor_links">
+    <h2>МЕНЮ</h2>
+    <ul>
+        @if($groups['main_dish'])
+            <li><a class="link_brown" href="#maindish">Основне меню</a></li>
+        @endif
+        @if($groups['cold_dish'])
+            <li><a class="link_brown" href="#cold_dish"></a>Холодні закуски</li>
+        @endif
+        @if($groups['hot_dish'])
+            <li><a class="link_brown" href="#hot_dish"></a>Гарячі закуски</li>
+        @endif
+        @if($groups['soup'])
+            <li><a class="link_brown" href="#soup">Перші страви</a></li>
+        @endif
+        @if($groups['garnir'])
+            <li><a class="link_brown" href="#garnir">Гарніри</a></li>
+        @endif
+        @if($groups['salat'])
+            <li><a class="link_brown" href="#salat">Салати</a></li>
+        @endif
+        @if($groups['desert'])
+            <li><a class="link_brown" href="#desert">Десерт</a></li>
+        @endif
+        @if($groups['hot_drink'])
+            <li><a class="link_brown" href="#hot_drink">Гарячі напої</a></li>
+        @endif
+        @if($groups['cold_drink'])
+            <li><a class="link_brown" href="#cold_drink">Холодні напої</a></li>
+        @endif
+        @if($groups['beer'])
+            <li><a class="link_brown" href="#beer">Пиво</a></li>
+        @endif
+        @if($groups['vine'])
+            <li><a class="link_brown" href="#vine">Вино</a></li>
+        @endif
+        @if($groups['hard_alc'])
+            <li><a class="link_brown" href="#hard_alc">Міцні напої</a></li>
+        @endif
+        @if($groups['alc_drink'])
+            <li><a class="link_brown" href="#alc_drink">Алкогольні напої</a></li>
+        @endif
+        @if($groups['coctail'])
+            <li><a class="link_brown" href="#coctail">Коктейлі</a></li>
+        @endif
+
+    </ul>
+</div>
 
 
+
+
+<!-- Розділ меню -->
 @if($place->disabled==1)
         <p>Заклад не працює! Меню не доступне!</p>
 @endif
 
 
-        
+<div class="menulist">        
 @if($place->disabled==0)
     @if(count ($menu) > 0) 
-        @php
-            $c1=0;
-            $c2=0;
-            $c3=0;
-            $c4=0;
-            $c5=0;
-            $c6=0;
-            $c7=0;
-            $c8=0;
-            $c9=0;
-            $c10=0;
-            $c11=0;
-            $c12=0;
-            $c13=0;
-        @endphp
         @foreach ($menu as $dish)
-        @switch($dish->dishgroup)
+            @switch($dish->dishgroup)
             @case(1)
-                @if($c1<1)
-                    <h3 id="maindish">Основне меню</h3>
-                    @php($c1++)
-                @endif
+                @once
+                    <h2 id="maindish">Основне меню</h2>
+                @endonce
                 @break
             @case(2)
-                @if($c2<1)
-                    <h3>Холодні закуски</h3>
-                    @php($c2++)
-                @endif
+                @once
+                    <h2 id="cold_dish">Холодні закуски</h2>
+                @endonce
                 @break
             @case(3)
-                @if($c3<1)
-                    <h3>Гарячі закуски</h3>
-                    @php($c3++)
-                @endif
+                @once
+                    <h2 id="hot_dish">Гарячі закуски</h2>
+                @endonce
                 @break
+            
             @case(4)
-                @if($c4<1)
-                    <h3 id="soup">Перші страви</h3>
-                    @php($c4++)
-                @endif
+                @once
+                     <h2 id="soup">Перші страви</h2>
+                @endonce
                 @break
             @case(5)
-                @if($c5<1)
-                    <h3>Гарніри</h3>
-                    @php($c5++)
-                @endif
+                @once
+                     <h2 id="garnir">Гарніри</h2>
+                @endonce
                 @break
             @case(6)
-                @if($c6<1)
-                    <h3 id="salat">Салати</h3>
-                    @php($c6++)
-                @endif
+                @once
+                     <h2 id="salat">Салати</h2>
+                @endonce
                 @break
             @case(7)
-                @if($c7<1)
-                    <h3>Десерт</h3>
-                    @php($c7++)
-                @endif
+                @once
+                    <h2 id="desert">Десерт</h2>
+                @endonce
                 @break
             @case(8)
-                @if($c8<1)
-                    h3>Гарячі напої</h3>
-                    @php($c8++)
-                @endif
+                @once
+                    <h2 id="hot_drink">Гарячі напої</h2>
+                @endonce
                 @break
             @case(9)
-                @if($c9<1)
-                    <h3>Холодні напої</h3>
-                    @php($c9++)
-                @endif
+                @once
+                    <h2 id="cold_drink">Холодні напої</h2>
+                @endonce
                 @break
             @case(10)
-                @if($c10<1)
-                    <h3>Пиво</h3>
-                    @php($c10++)
-                @endif
+                @once
+                    <h2 id="beer">Пиво</h2>
+                @endonce
                 @break
             @case(11)
-                @if($c11<1)
-                    <h3>Вино</h3>
-                    @php($c11++)
-                @endif
+                @once
+                    <h2 id="vine">Вино</h2>
+                @endonce
                 @break
             @case(12)
-                @if($c12<1)
-                    <h3>Міцні напої</h3>
-                    @php($c12++)
-                @endif
+                @once
+                    <h2 id="hard_alc">Міцні напої</h2>
+                @endonce
                 @break
             @case(13)
-                @if($c13<1)
-                    <h3>Алкогольні напої</h3>
-                    @php($c13++)
-                @endif
+                @once
+                    <h2 id="alc_drink">Алкогольні напої</h2>
+                @endonce
                 @break
             @case(14)
-                @if($c14<1)
-                    <h3>Коктейлі</h3>
-                    @php($c14++)
-                @endif
-                @break
-            @default
-                <h3>Основне меню</h3>
-        @endswitch
+                @once
+                    <h2 id="coctail">Коктейлі</h2>
+                @endonce
+                @break       
+            @endswitch
+
+
 
         <div class="dish">
             <div class="dish__image">
@@ -199,7 +207,7 @@
   
     @endif
 @endif
-
+</div><!-- end menulist -->
 
 
 <div class="testinfo">

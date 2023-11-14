@@ -183,6 +183,10 @@ color: #F95A01;
 	padding: 5px;
 	flex: 1 0 50%;
 }
+
+.menulist h2 {
+	text-align: right;
+}
 .dish {
 	display: flex;
 }
@@ -213,6 +217,26 @@ color: #F95A01;
 	font-size: 1.8rem;
 	font-weight: bolder;
 	padding: 50px;
+}
+.dish__actions > a {
+	text-decoration: none;
+	color: #635B4F ;
+	padding: 5px;
+}
+
+
+
+
+.anchor_links {
+	padding: 30px;
+}
+.anchor_links li {
+	list-style-image: url(../images/star.svg);
+}
+.anchor_links a {
+	line-height: 2;
+	font-size: 1.2rem;
+	padding: 10px;
 }
 
 

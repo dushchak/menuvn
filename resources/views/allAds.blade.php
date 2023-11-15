@@ -12,7 +12,7 @@
 <h1 class="icon_percent"> Промо закладів</h1>
 
 @auth
-    <a class="btn_m" href="{{ route('home') }}">+ Додати ваші оголошення</a>
+    <a class="btn_m" href="{{ route('ads.listPlaces') }}">+ Додати ваші оголошення</a>
 @endauth
     @foreach ($ads as $adv)
 

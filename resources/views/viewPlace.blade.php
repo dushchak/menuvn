@@ -53,7 +53,7 @@
 
 
             @auth
-                <p> <a class="icon_edit" href="{{ route('place.edit', $place->id) }}"> Редагувати: {{ $place->name}}</a></p>
+                <p> <a class="icon_edit link_btn" href="{{ route('place.edit', $place->id) }}"> Редагувати: {{ $place->name}}</a></p>
             @endauth
 
 

@@ -42,6 +42,7 @@
 				
 				@auth
 					<a class="icon_heart-circle-plus" href=" {{ route('place_add')  }}">Додати заклад</a>
+					<a class="icon_heart-circle-plus" href=" {{ route('ads.listPlaces')  }}">Мої Акції</a>
 					<a class="icon_heart-solid" href=" {{ route('home') }}">Мої заклади</a>
 				@endauth
 		</div>

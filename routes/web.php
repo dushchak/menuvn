@@ -26,7 +26,7 @@ Route::post('/menu/qrstyle/{place}', [PlacesController::class, 'printQRstyle'])-
 
 Route::get('/menu/{place}', [PlacesController::class, 'viewMenu'])->name('viewMenu'); // guests
 Route::get('/news', [PlacesController::class, 'allAds'])->name('newsAds'); // guests
-// Route::get('/news/{place}', [PlacesController::class, 'adsPlace'])->name('adsPlace'); 
+
 
 
 Auth::routes();
@@ -76,6 +76,9 @@ Route::post('/myads/saveads', [App\Http\Controllers\AdsController::class, 'saveN
 Route::get('/myads/editads/{ads}', [App\Http\Controllers\AdsController::class, 'formEditAds'])->name('ads.editform');
 Route::post('/myads/updads/{ads}', [App\Http\Controllers\AdsController::class, 'updateAds'])->name('ads.update');
 Route::get('/myads/delete/{ads}', [App\Http\Controllers\AdsController::class, 'deleteAds'])->name('ads.delete');
+
+Route::get('/myplaces', [App\Http\Controllers\AdsController::class, 'selectPlaceAdv'])->name('ads.listPlaces'); // сторінка вибору Закладу -> new Adv
+
 
 
 // Coins

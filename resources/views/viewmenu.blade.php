@@ -20,10 +20,21 @@
 <h1>{{$place->name}}</h1>
 
 
-<div class="place__menuinfo">    
-    <p class="icon_location-dot"> {{$place->adress}}</p>
-    <p class="icon_phone-solid"> {{$place->phone1}}</p>
-    <p class="icon_truck-fast"> {{$place->delivery}}</p>   
+<div class="place__menuinfo">  
+    <p class="place__workhours icon_clock"> {{ $place->workhours }}</p>
+    <p class="place__phone1 icon_location-dot">  {{ $place->adress }}</p>
+    @if($place->wifipass != null) 
+        <p class="place__adress icon_wifi"> {{ $place->wifipass }}</p>
+    @endif
+    <p class="place__delivery icon_truck-fast">  {{ $place->delivery }}</p>
+    <p class="place__adress icon_phone-solid">  {{ $place->phone1 }}</p>
+            @if($place->phone2 != null)
+                <p class="place__workhours icon_phone-solid"> {{ $place->phone2 }}</p><!--  -->@endif
+            @if($place->phone3 != null)
+                <p class="place__delivery icon_phone-solid"> {{ $place->phone3 }}</p><!--  -->@endif
+            @if($place->phone4 != null)
+                <p class="place__phone1 icon_phone-solid"> {{ $place->phone4 }}</p><!--  -->@endif
+  
 </div>
 
 

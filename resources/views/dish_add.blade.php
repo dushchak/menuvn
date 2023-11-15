@@ -19,7 +19,7 @@
 			</div>
 
 			<div class="form__line">
-				<label for="dish_group">*Розділ</label>
+				<label for="dish_group">Розділ</label>
 				<select name="dish_group" id="dish_group">
 					<!--Supplement an id here instead of using 'name'-->
 					<option value="1" selected>Основне меню</option>

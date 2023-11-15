@@ -21,7 +21,7 @@ class AdsController extends Controller
         return view('formNewAds', ['place'=>$place] );
     }
 
-    public function saveNewAds(Request $request){
+    public function saveNewAds(Request $request, Places $place){
         //dd($request);
 
         if(Auth::user()) {  //!!!! тут треба через Polices ????
@@ -56,13 +56,13 @@ class AdsController extends Controller
             $place->ads()->create([
                             'title'=> $request->title,
                             'description'=> $request->description,
-                            'typeads'=> $request->typeads,
+                            'typeads'=> 1,
                             'moderate'=> 0,
                             'img' => $fileNameWithExt, 
             ]);
 
         //return redirect()->route('home');
-        return redirect()->route('adsPlace', $request->places_id);
+        return redirect()->route('placeAds', $request->place_id);
         }
     
     }
@@ -124,5 +124,12 @@ class AdsController extends Controller
         }
         
         return redirect()->route('placeAds', $ads->places_id );  
+    }
+
+    public function selectPlaceAdv(){
+        $places = Auth::user()->places()->latest()->get();
+
+        //dd($places);
+        return view('listPlacesNewAdv',['places'=>$places]);
     }
 }

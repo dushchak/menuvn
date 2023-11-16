@@ -107,7 +107,7 @@ class AdsController extends Controller
                 'title'=>$request->title,
                 'description'=>$request->description,
                 //'img',
-                'typeads'=>$request->typeads,
+                'typeads'=>1,
             ]);
             $ads->save();
 

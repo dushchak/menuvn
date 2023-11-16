@@ -46,53 +46,60 @@
 </div>
 
 <div class="anchor_links">
-    <h2>МЕНЮ</h2>
-    <ul>
-        @if($groups['main_dish'])
-            <li><a class="link_brown" href="#maindish">Основне меню</a></li>
-        @endif
-        @if($groups['cold_dish'])
-            <li><a class="link_brown" href="#cold_dish"></a>Холодні закуски</li>
-        @endif
-        @if($groups['hot_dish'])
-            <li><a class="link_brown" href="#hot_dish"></a>Гарячі закуски</li>
-        @endif
-        @if($groups['soup'])
-            <li><a class="link_brown" href="#soup">Перші страви</a></li>
-        @endif
-        @if($groups['garnir'])
-            <li><a class="link_brown" href="#garnir">Гарніри</a></li>
-        @endif
-        @if($groups['salat'])
-            <li><a class="link_brown" href="#salat">Салати</a></li>
-        @endif
-        @if($groups['desert'])
-            <li><a class="link_brown" href="#desert">Десерт</a></li>
-        @endif
-        @if($groups['hot_drink'])
-            <li><a class="link_brown" href="#hot_drink">Гарячі напої</a></li>
-        @endif
-        @if($groups['cold_drink'])
-            <li><a class="link_brown" href="#cold_drink">Холодні напої</a></li>
-        @endif
-        @if($groups['beer'])
-            <li><a class="link_brown" href="#beer">Пиво</a></li>
-        @endif
-        @if($groups['vine'])
-            <li><a class="link_brown" href="#vine">Вино</a></li>
-        @endif
-        @if($groups['hard_alc'])
-            <li><a class="link_brown" href="#hard_alc">Міцні напої</a></li>
-        @endif
-        @if($groups['alc_drink'])
-            <li><a class="link_brown" href="#alc_drink">Алкогольні напої</a></li>
-        @endif
-        @if($groups['coctail'])
-            <li><a class="link_brown" href="#coctail">Коктейлі</a></li>
-        @endif
+    <div class="accordion" id="accordion-1">
+        <div class="accordion__item accordion__item_show">
+            <div class="accordion__header">
+                <h2>Розділи меню</h2>
+            </div>
+            <div class="accordion__body">
+                <ul>
+                    @if($groups['main_dish'])
+                        <li><a class="link_brown" href="#maindish">Основне меню</a></li>
+                    @endif
+                    @if($groups['cold_dish'])
+                        <li><a class="link_brown" href="#cold_dish">Холодні закуски</a></li>
+                    @endif
+                    @if($groups['hot_dish'])
+                        <li><a class="link_brown" href="#hot_dish">Гарячі закуски</a></li>
+                    @endif
+                    @if($groups['soup'])
+                        <li><a class="link_brown" href="#soup">Перші страви</a></li>
+                    @endif
+                    @if($groups['garnir'])
+                        <li><a class="link_brown" href="#garnir">Гарніри</a></li>
+                    @endif
+                    @if($groups['salat'])
+                        <li><a class="link_brown" href="#salat">Салати</a></li>
+                    @endif
+                    @if($groups['desert'])
+                        <li><a class="link_brown" href="#desert">Десерт</a></li>
+                    @endif
+                    @if($groups['hot_drink'])
+                        <li><a class="link_brown" href="#hot_drink">Гарячі напої</a></li>
+                    @endif
+                    @if($groups['cold_drink'])
+                        <li><a class="link_brown" href="#cold_drink">Холодні напої</a></li>
+                    @endif
+                    @if($groups['beer'])
+                        <li><a class="link_brown" href="#beer">Пиво</a></li>
+                    @endif
+                    @if($groups['vine'])
+                        <li><a class="link_brown" href="#vine">Вино</a></li>
+                    @endif
+                    @if($groups['hard_alc'])
+                        <li><a class="link_brown" href="#hard_alc">Міцні напої</a></li>
+                    @endif
+                    @if($groups['alc_drink'])
+                        <li><a class="link_brown" href="#alc_drink">Алкогольні напої</a></li>
+                    @endif
+                    @if($groups['coctail'])
+                        <li><a class="link_brown" href="#coctail">Коктейлі</a></li>
+                    @endif
 
-    </ul>
-</div>
+                </ul>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -216,6 +223,8 @@
      
         @endforeach
   
+        <!-- btn up -->
+        <div class="btn-up btn-up_hide"></div>
     @endif
 @endif
 </div><!-- end menulist -->

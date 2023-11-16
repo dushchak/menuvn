@@ -15,13 +15,12 @@
 
 	<div class="form__line">
 		<label for="txtName">Заголовок оголошення</label>
-		<input type="text" name="title" id="txtName" class="form-control">
+		<input type="text" name="title" id="txtName" class="form-control" placeholder="Друга піцца -50%">
 	</div>
 	
 	<div class="form__line">
 		<label for="txtDesc">Тут ваш Промо текст</label>
-		<textarea id="txtDesc" name="description" rows="5" cols="60">
-		</textarea>
+		<textarea id="txtDesc" name="description" rows="5" cols="60" placeholder="Кожна друга піцца зі знижкою -50%"></textarea>
 	</div>
 
 	<div class="form__line">

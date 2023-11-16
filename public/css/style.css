@@ -138,6 +138,7 @@ color: #F95A01;
 	display: flex;
 	flex-direction: column;
 	padding: 50px;
+	line-height: 2;
 
 }
 .place_promos_link {

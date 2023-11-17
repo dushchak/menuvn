@@ -54,17 +54,11 @@
 
            
             
-             
-
-
-            
-            
-           
 
             <div class="place__actions">
                 @auth
                 <div class="pay-actions">
-                    <p><a class="icon_toggle-on" href="{{ route('coins.formNoAds', $place->id)}}" title="Відключити рекламу в меню закладу"> Реклама в меню</a>   <br>
+                    <p><a class="icon_toggle-on " href="{{ route('coins.formNoAds', $place->id)}}" title="Відключити рекламу в меню закладу"> Реклама в меню</a>   <br>
                     @if(true)
 
                     @else

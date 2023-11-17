@@ -52,6 +52,33 @@
 			@yield('main')
 
 		</div>
+
+		<footer class="footer">
+			<div class="container">
+				<h1>Вінницькі QR меню</h1>
+				<div class="contacts">
+					<p>(068) 379-79-74</p>
+					<p>free@menu.vn.ua</p>
+					<p>Підписуйтесь: <a href="t.me/qr_menu_vn">Telegram</a></p>
+					<p>qrmenu.vn.ua</p>
+
+				</div>
+				<div class="links">
+					<p><a href="{{ route('index') }}">Список закладів</a></p>
+					<p><a href="{{ route('newsAds') }}">Акції</a></p>
+					<p><a href="{{ route('register') }}">Реєстрація</a></p>
+					<p><a href="{{ route('login') }}">Вхід</a></p>
+				</div>
+				<div class="about">
+					<p><a href="#">Про сервіс</a></p>
+					<p><a href="#">Наші умови та правила</a></p>
+					<p><a href="#">ЧаПи (Часті питання)</a></p>
+					<p><a href="#">Підтримати проект - Донатом</a></p>
+				</div>
+
+			</div>
+			©2023 
+		</footer>
 	</div>
 <script src="{{asset('js/main.js')  }}"></script>
 </body>

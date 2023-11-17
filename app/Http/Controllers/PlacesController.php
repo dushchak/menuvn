@@ -14,11 +14,15 @@ class PlacesController extends Controller
 {
     //
     public function index(){
+
+        // беремо рандомні 5закладів для Списку закладів
+        $topplaces = Places::inRandomOrder()->where('moderate', 1)->limit(5)->get();
+        //dd($topplaces);
         
         $places = Places::where('moderate', 1)->orderBy('position','desc')->get();
         //$countAds = count ($places->ads()->latest()->get()); // підрахунок кількості Ads ресторана > Акції
         //dd($countAds);    
-        return view ('index', ['places' => $places]); // вивід таблиці закладів
+        return view ('index', ['places' => $places, 'topplaces'=>$topplaces]); // вивід таблиці закладів
     }
 
     public function viewPlace(Places $place) {
@@ -30,6 +34,16 @@ class PlacesController extends Controller
     public function viewMenu(Places $place) {
         //dd($place->id);
 
+        // беремо рандомні оголошення для меню
+        $ads = Ads::inRandomOrder()->limit(30)->get();
+        foreach($ads as $item){
+            $item->place = Places::find($item->places_id) ;
+            $adverts[] = $item; 
+        }
+        //dd($ads);
+
+
+        // якщо заклад не відключено
         if($place->disabled != 1){
             $menu = $place->dishes()->orderBy('dishgroup','asc')->orderBy('position','desc')->get();    
         }
@@ -37,7 +51,7 @@ class PlacesController extends Controller
             $menu = $place->dishes()->latest()->get(); 
         }
 
-        // ціна за 100гр.
+        // вираховуємо ціну за 100гр.
         foreach($menu as $dish){
             if(!empty($dish->portionweight)){
                 $dish->cost100g = round( ($dish->portioncost / $dish->portionweight)*100);
@@ -136,7 +150,7 @@ class PlacesController extends Controller
 
         //dd($groups);
 
-        return view ('viewmenu', ['menu'=>$menu, 'place'=>$place, 'groups'=>$groups ] ); // вивід dishes
+        return view ('viewmenu', ['menu'=>$menu, 'place'=>$place, 'groups'=>$groups , 'ads'=>$ads] ); // вивід dishes
 
     }
 

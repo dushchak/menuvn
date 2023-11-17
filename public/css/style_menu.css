@@ -110,6 +110,10 @@ h3 {
 .place__actions a:hover {
     text-decoration: underline;
 }
+.manager_highlight {
+    color: #61483A;
+    font-weight: bold;
+}
 
 /* placeAds */
 

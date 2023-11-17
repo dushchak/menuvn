@@ -9,9 +9,6 @@
 @if(count ($places) > 0)
 	<div class="listblock">
 
-		<div>
-			Список закладів
-		</div>
 
 		<h1>+ Додати Промо-оголошення</h1>
 
@@ -21,7 +18,7 @@
 
 		<div class="listplace__info">
 			
-			<h2><a href="{{ route('place.view', $place->id) }}">{{ $place->name }}</a></h2>
+			<h3>{{ $place->name }}</h3>
 			<div> {{ $place->adress }}</div>
 
 
@@ -32,7 +29,7 @@
 			@endphp
 			<div>
 				<a class="place_promos_link" href="{{ route('placeAds', $place->id) }}">Промо-Акції </a>({{$countads}})
-				<a class="btn_m" href="{{ route('ads.new', $place->id) }}">+ Нове оголошення</a>
+				<p><a class="btn_m" href="{{ route('ads.new', $place->id) }}">+ Нове оголошення</a></p>
 			</div>
 
 		</div>

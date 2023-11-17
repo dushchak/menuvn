@@ -100,6 +100,7 @@
             </div>
         </div>
     </div>
+</div>
 
 
 
@@ -108,6 +109,9 @@
 @if($place->disabled==1)
         <p>Заклад не працює! Меню не доступне!</p>
 @endif
+@php
+    $i=0
+@endphp
 
 
 <div class="menulist">        
@@ -189,7 +193,6 @@
             @endswitch
 
 
-
         <div class="dish">
             <div class="dish__image">
                 <img class="img" src="/storage/images/dishes/{{$dish->thumbnail}}" alt="">
@@ -216,11 +219,41 @@
 
             </div>    
         </div>
+
+        @if($i % 3 === 0)
+            <div class="advert">
+                @if(!empty($ads[$i]->img))
+                    <img class="advert__image" src="/storage/images/ads/{{ $ads[$i]->img }}" alt="" title="{{ $ads[$i]->description }}">
+                @endif
+
+                <div class="advert__text">
+                    <a class="link_btn" href="{{ route('place.view', $ads[$i]->place->id) }}">{{ $ads[$i]->place->name }}</a> > 
+                    <a class="link_btn" href="{{ route('viewMenu', $ads[$i]->place->id) }}">Меню</a>
+
+                    <div class="advert__title">{{ $ads[$i]->title }}</div>
+                </div>
+
+                <div class="advert__actions">
+                    <p>Реклама</p>
+                    @auth
+                        <p><a class="icon_toggle-on place_promos_link" href="{{ route('coins.formNoAds', $place->id)}}" title="Відключити рекламу в меню закладу"> Відключити</a>
+                    @endauth
+                </div> 
+            </div> 
+
+
+        @endif
             
             
 
 
-     
+            @php
+                if(count($ads)-1>$i){
+                    $i++;    
+                }
+
+                
+            @endphp
         @endforeach
   
         <!-- btn up -->
@@ -230,30 +263,24 @@
 </div><!-- end menulist -->
 
 
-<div class="testinfo">
-    Lorem ipsum dolor sit amet consectetur adipisicing, elit. Eligendi aspernatur provident pariatur, corrupti placeat molestias tenetur quidem voluptatem vero voluptatibus ipsa vitae, magni quasi quae optio nisi ipsum eius assumenda.
-</div>
-
-<div class="footer">
-   
-    {!! 
-        
-     QrCode::size(300)
- //       ->style('dot')
-        ->eye('circle')
- //       ->gradient($from[0], $from[1], $from[2], $to[0], $to[1], $to[2], 'diagonal')
-        ->gradient(255, 0, 0, 0, 0, 255, 'diagonal')
-        ->margin(1)
-        ->generate(Request::url()); 
-    !!}
-<div>
-    <a href="{{ route('printQRpage', $place->id )   }}">Сторінка для друку</a>   
-</div>
-    
-
-    
+<div class="menu__qrcode">
+        {!! 
+            
+         QrCode::size(300)
+     //       ->style('dot')
+            ->eye('circle')
+     //       ->gradient($from[0], $from[1], $from[2], $to[0], $to[1], $to[2], 'diagonal')
+            ->gradient(255, 0, 0, 0, 0, 255, 'diagonal')
+            ->margin(1)
+            ->generate(Request::url()); 
+        !!}
+    <div>
+        <a class="place_promos_link" href="{{ route('printQRpage', $place->id )   }}">Сторінка для друку >></a>   
+    </div>    
 </div>
 @endsection('main')
+
 <style>
     .navbar {display: none !important;}
 </style>
+<script src="{{asset('js/menu.js')  }}"></script>

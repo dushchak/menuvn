@@ -29,29 +29,32 @@
 			</span>
 		</div>
 
-		<div class="container">
-			<header class="header">
-				<a href="{{ route('index') }}"><img class="header__logo" src="{{asset('images/logo.svg') }}" alt="Вінницькі електронні QR меню"></a>
-		    </header>
+		<main class="main">
+			<div class="container">
+				<header class="header">
+					<a href="{{ route('index') }}"><img class="header__logo" src="{{asset('images/logo.svg') }}" alt="Вінницькі електронні QR меню"></a>
+		    	</header>
 
 
-		    <div class="navbar">
-				<h3><a class="icon_star-solid" href=" {{ route('index') }}"> Білий список</a></h3>
-				<h3><a class="icon_percent" href=" {{ route('newsAds') }}"> Акції</a></h3>
+			    <div class="navbar">
+					<h3><a class="icon_star-solid" href=" {{ route('index') }}"> Білий список</a></h3>
+					<h3><a class="icon_percent" href=" {{ route('newsAds') }}"> Акції</a></h3>
 
-				
-				@auth
-					<a class="icon_heart-circle-plus" href=" {{ route('place_add')  }}">Додати заклад</a>
-					<a class="icon_heart-circle-plus" href=" {{ route('ads.listPlaces')  }}">Мої Акції</a>
-					<a class="icon_heart-solid" href=" {{ route('home') }}">Мої заклади</a>
-				@endauth
-		</div>
+					
+					@auth
+						<a class="icon_heart-circle-plus" href=" {{ route('place_add')  }}">Додати заклад</a>
+						<a class="icon_heart-circle-plus" href=" {{ route('ads.listPlaces')  }}">Мої Акції</a>
+						<a class="icon_heart-solid" href=" {{ route('home') }}">Мої заклади</a>
+					@endauth
+				</div>
 
 			
 
 			@yield('main')
 
-		</div>
+			</div>
+		</main>
+
 
 		<footer class="footer">
 			<div class="container">

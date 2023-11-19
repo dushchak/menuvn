@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DateTimeImmutable;
 
 /*V*/
 use Illuminate\Support\Facades\Auth; // підключаєм трейт фасад авторизації 
@@ -64,6 +65,11 @@ class HomeController extends Controller
             $fileNameWithExt = $request->file('image_file')->getClientOriginalName(); // Exempl: "krah-bitkoin.jpg"
             $fileNameWithExt = str_replace(" ", "_", $fileNameWithExt); // замена пробелов(якщо є) на _
 
+            $now  = new DateTimeImmutable();
+            $now_str = $now->format("Y-m-d");
+            $fileNameWithExt =$now_str . "_" . $fileNameWithExt; 
+
+
             #Uploading file - Загрузка файла в папку /storage
             $path = $request->file('image_file')->storeAs('public/images/places', $fileNameWithExt);//"krah-bitc_1691843459.jpg"
 //          dd($path);
@@ -90,11 +96,14 @@ class HomeController extends Controller
             'thumbnail'=>$fileNameWithExt,
         ]);
 
+
+        // сповіщення в Телеграм про новий заклад
         if($result){
             /*  Telegram Notice */ 
             $botApiToken = env('TELEGRAM_BOT_TOKEN');
             //$channelId = 'your channel id';
-            $channelId = "@menu_adm_notice";
+            $channelId = '-1001890552528';
+            //$channelId = "@menu_adm_notice";
             $text = 'New place:'.$request->name ."; Adress:".$request->adress.", Manager tel:".$request->manager;
             $query = http_build_query([
                 'chat_id' => $channelId,
@@ -157,6 +166,11 @@ class HomeController extends Controller
             #get original name file with extension
             $fileNameWithExt = $request->file('image_file')->getClientOriginalName(); // Exempl: "krah-bitkoin.jpg"
             $fileNameWithExt = str_replace(" ", "_", $fileNameWithExt); // замена пробелов(якщо є) на _
+
+            //унікалізація імені файла
+            $now  = new DateTimeImmutable();
+            $now_str = $now->format("Y-m-d");
+            $fileNameWithExt =$now_str . "_" . $fileNameWithExt; 
 
             #Uploading file - Загрузка файла в папку /storage
             $path = $request->file('image_file')->storeAs('public/images/places', $fileNameWithExt);//"krah-bitc_1691843459.jpg"

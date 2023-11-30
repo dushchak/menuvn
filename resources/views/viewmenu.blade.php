@@ -278,9 +278,12 @@
         <a class="place_promos_link" href="{{ route('printQRpage', $place->id )   }}">Сторінка для друку >></a>   
     </div>    
 </div>
-@endsection('main')
+
 
 <style>
     .navbar {display: none !important;}
 </style>
 <script src="{{asset('js/menu.js')  }}"></script>
+@endsection('main')
+
+

@@ -62,7 +62,7 @@
 				<div class="contacts">
 					<p>(068) 379-79-74</p>
 					<p>free@menu.vn.ua</p>
-					<p>Підписуйтесь: <a href="t.me/qr_menu_vn">Telegram</a></p>
+					<p>Підписуйтесь: <a href="https://t.me/qr_menu_vn">Telegram</a></p>
 					<p>qrmenu.vn.ua</p>
 
 				</div>

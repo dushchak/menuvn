@@ -8,7 +8,7 @@
 <div class="container">
 	<h1>Редагувати оголошення</h1>
 	<div class="form__wrapper">
-		<form action="{{ route('ads.update', $ads) }}" method="POST" enctype="multipart/form-data" >
+		<form action="{{ route('ads.update', [$ads, $place]) }}" method="POST" enctype="multipart/form-data" >
 			@csrf
 
 			<input type="hidden" id="postId" name="place_id" value="{{$ads->id}}" />

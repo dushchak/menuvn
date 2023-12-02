@@ -80,11 +80,14 @@
             </div>    
         </div>
          
-    </div>
-    
-   
-        
+    </div>        
     @endforeach
+
+@elseif (count ($places) == 0)
+    @auth
+        <a class="btn_m" href=" {{ route('place_add')  }}">+ Додати заклад</a>
+    @endauth
+
     
 @endif
 @endsection('main')

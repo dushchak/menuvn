@@ -45,7 +45,9 @@
             @if($place->fb != null)
                 <div class="place__phone1 icon_facebook">  {{ $place->fb }}</div><!--  -->@endif
 
-            @auth
+           
+             @can('can:updatePlace',$place)
+
                 <p class="manager_highlight">Менеджер закладу:</p>
                 <div class="manager_highlight icon_eye-slash"> Керуючий закладом: {{ $place->manager }} (прихований)</div><!-- * -->
                     @if($place->email != null)
@@ -54,40 +56,36 @@
                         <div class="manager_highlight icon_viber"> {{ $place->viber }}</div><!--  -->@endif
                     @if($place->telegram != null)
                         <div class="manager_highlight icon_telegram"> {{ $place->telegram }}</div><!--  -->@endif
-            @endauth
-            <br>
-
-
-
-            @auth
+                <br>
+ 
                 <p> <a class="icon_edit link_btn" href="{{ route('place.edit', $place->id) }}"> Редагувати: {{ $place->name}}</a></p>
-            @endauth
+           
+         
 
 
 
-            <div class="place__actions">
-                @auth
-                <div class="pay-actions">
-                    <p><a class="icon_toggle-on" href="{{ route('coins.formNoAds', $place->id)}}" title="Відключити рекламу в меню закладу"> Реклама в меню</a>   <br>
-                    @if(true)
+                <div class="place__actions"> 
+                    <div class="pay-actions">
+                        <p><a class="icon_toggle-on" href="{{ route('coins.formNoAds', $place->id)}}" title="Відключити рекламу в меню закладу"> Реклама в меню</a>   <br>
+                        @if(true)
 
-                    @else
-                        БЕЗ РЕКЛАМИ до: {{ $place->noadsto }}
-                    @endif
-                    </p>
-
-                    <p><a class="icon_toggle-off" href="{{ route('coins.buyads', $place->id)}}" title="Показувати Промо оголошення"> Ваші Промо-Акції</a><br>
-                        @if(false)
-                            АКТИВОВАНО до: {{ $place->adsto }}
                         @else
-                            
+                            БЕЗ РЕКЛАМИ до: {{ $place->noadsto }}
                         @endif
-                    </p>
-                    
-                    <p><a class="icon_toggle-off" href="{{ route('coins.formUp', $place->id)}}" title="Розмістити в ТОП5 білого списку"> розміщення в ТОП5</a></p>
-                </div>
-                @endauth
-            </div>  
+                        </p>
+
+                        <p><a class="icon_toggle-off" href="{{ route('coins.buyads', $place->id)}}" title="Показувати Промо оголошення"> Ваші Промо-Акції</a><br>
+                            @if(false)
+                                АКТИВОВАНО до: {{ $place->adsto }}
+                            @else
+                                
+                            @endif
+                        </p>
+                        
+                        <p><a class="icon_toggle-off" href="{{ route('coins.formUp', $place->id)}}" title="Розмістити в ТОП5 білого списку"> розміщення в ТОП5</a></p>
+                    </div>
+                </div> 
+         @endcan   
 
 
 

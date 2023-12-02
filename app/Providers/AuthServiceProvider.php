@@ -15,8 +15,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        'App\Models\Places' => 'App\Policies\PlacesPolicy',
-        //
+        //'App\Models\Places' => 'App\Policies\PlacesPolicy',
+        // автоматом звязок models:Places <==> PlacesPolicy
     ];
 
     /**
@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('admin-panel', function (User $user) {
-            return $user->isAdmin();
+            return $user->isAdmin(); // метод в моделі User
         });
     }
 

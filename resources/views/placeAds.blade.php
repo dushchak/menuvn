@@ -43,7 +43,7 @@
         <div class="advert__actions">
                 <div class="adv__actions">
                     @auth
-                    <a class="btn btn-success" href="{{ route('ads.editform', $adv) }}">Редагувати</a>
+                    <a class="btn btn-success" href="{{ route('ads.editform', [$adv, $place]) }}">Редагувати</a>
                     @endauth   
                 </div>
         </div>

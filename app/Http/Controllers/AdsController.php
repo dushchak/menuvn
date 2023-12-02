@@ -67,9 +67,9 @@ class AdsController extends Controller
     
     }
 
-    public function formEditAds(Ads $ads){
-        //dd($ads);
-        return view('formEditAds', ['ads'=>$ads] );
+    public function formEditAds(Ads $ads , Places $place){
+        //dd($place);
+        return view('formEditAds', ['ads'=>$ads, 'place'=>$place] );
     }
 
     public function updateAds (Request $request, Ads $ads){

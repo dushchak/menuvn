@@ -22,9 +22,28 @@ class AdsPolicy
         }
     }
 
-    public function editAds(User $user, Ads $adv, $place){
-        //$place = Places::find($place);
+    // public function newAdv (User $user, Places $place){
+    //     dd($place);
+    //     return $place->user->id === $user->id;
+    // }
+
+    public function editformAds(User $user, Ads $adv, Places $place){
+        //dd($adv->place()->get());
         //dd($place);
         return $place->user->id === $user->id;
     }
+
+    public function editAds(User $user, Ads $adv, $place){
+        //dd($place);
+        $place = Places::find($place);
+        return $place->user->id === $user->id;
+    }
+
+    public function deleteAds(User $user,Ads $adv, $place){
+        //dd($adv->places_id);
+        $places_id = $adv->places_id;
+        $place = Places::find($places_id);
+        return $place->user->id === $user->id;
+    }
+
 }

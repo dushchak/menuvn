@@ -40,6 +40,7 @@
 
             
         </div>
+        @can('editformAds', [$adv, $place])
         <div class="advert__actions">
                 <div class="adv__actions">
                     @auth
@@ -47,6 +48,7 @@
                     @endauth   
                 </div>
         </div>
+        @endcan
     </div>
     @endforeach  
 @endif

@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 use App\Models\User;
+use App\Policies\PlacePolicy;
+use App\Policies\AdsPolicy;
+use App\Policies\DishPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -15,8 +18,11 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
+        Places::class => PlacesPolicy::class,
         //'App\Models\Places' => 'App\Policies\PlacesPolicy',
         // автоматом звязок models:Places <==> PlacesPolicy
+        // 'App\Models\Ads' => 'App\Policies\AdsPolicy',
+        // 'App\Models\Dish' => 'App\Policies\DishPolicy',
     ];
 
     /**

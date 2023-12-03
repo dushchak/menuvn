@@ -34,8 +34,19 @@ class PlacesPolicy
         return $this->updatePlace($user, $place);
     }
 
-    public function updateAds(User $user, Places $place){
-        return $this->updatePlace($user, $place);
+    public function changeDish(User $user, Places $place ){
+         return  $this->updatePlace($user, $place);
     }
+
+    public function addDish(User $user, Places $place ){
+        //dd($place);
+        return  $this->updatePlace($user, $place);
+    }
+
+    public function newAdv (User $user, Places $place){
+        //dd($place);
+        return $place->user->id === $user->id;
+    }
+    
 
 }

@@ -19,7 +19,8 @@ class DishesController extends Controller
     }
 
     public function formNewDish(Places $place){
-       return view('dish_add', ['place'=>$place]);
+        //dd($place);
+        return view('dish_add', ['place'=>$place]);
     }
 
     // Зберігаєм страву з меню

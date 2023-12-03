@@ -210,12 +210,15 @@
 
             <div class="dish__actions">
                     <p class="dish__cost">{{ $dish->portioncost }} ₴</p>
+
+                    @can('changeDish',$place)
                     @auth
                     <a class="icon_circle-up" href="{{ route('dish.up', $dish->id)  }}"></a>
                     <a class="icon_circle-down" href="{{ route('dish.down', $dish->id)  }}"></a>
                     <a class="icon_edit" href="{{ route('dish.editdish', $dish->id) }}"></a>
                     <a class="icon_circle-xmark" href="{{ route('dish.formdeldish', $dish->id) }}"></a>                
                     @endauth
+                    @endcan
 
             </div>    
         </div>
@@ -235,9 +238,12 @@
 
                 <div class="advert__actions">
                     <p>Реклама</p>
+
+                    @can('changeDish',$place)
                     @auth
                         <p><a class="icon_toggle-on place_promos_link" href="{{ route('coins.formNoAds', $place->id)}}" title="Відключити рекламу в меню закладу"> Відключити</a>
                     @endauth
+                    @endcan
                 </div> 
             </div> 
 

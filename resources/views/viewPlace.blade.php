@@ -45,8 +45,9 @@
             @if($place->fb != null)
                 <div class="place__phone1 icon_facebook">  {{ $place->fb }}</div><!--  -->@endif
 
+
            
-             @can('can:updatePlace',$place)
+             @can('updatePlace', $place)
 
                 <p class="manager_highlight">Менеджер закладу:</p>
                 <div class="manager_highlight icon_eye-slash"> Керуючий закладом: {{ $place->manager }} (прихований)</div><!-- * -->

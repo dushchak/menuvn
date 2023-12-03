@@ -60,7 +60,10 @@ Route::get('/home/delDishImg/{dishid}', [App\Http\Controllers\DishesController::
 
 
 // Dishes
-Route::get('/home/newdish/{place}', [App\Http\Controllers\DishesController::class, 'formNewDish'])->name('dish.add');
+Route::get('/home/newdish/{place}', [App\Http\Controllers\DishesController::class, 'formNewDish'])->name('dish.add')
+->middleware('can:updatePlace,place');
+//->middleware('can:addDish,place');
+
 Route::post('/home/save', [App\Http\Controllers\DishesController::class, 'saveDish'])->name('dish.save');
 
 
@@ -71,13 +74,19 @@ Route::get('/home/downdish/{dish}', [App\Http\Controllers\DishesController::clas
 // 
 // Ads
 Route::get('/placeads/{place}', [App\Http\Controllers\PlacesController::class, 'placeAds'])->name('placeAds');
-Route::get('/placeads/newads/{place}', [App\Http\Controllers\AdsController::class, 'formNewAds'])->name('ads.new');
+
+Route::get('/placeads/newads/{place}', [App\Http\Controllers\AdsController::class, 'formNewAds'])
+	->middleware('can:newAdv,place')
+	->name('ads.new');
+
 Route::post('/placeads/saveads', [App\Http\Controllers\AdsController::class, 'saveNewAds'])->name('newads.save');
 
-Route::get('/placeads/editads/{ads}/{place}', [App\Http\Controllers\AdsController::class, 'formEditAds'])->name('ads.editform')->middleware('can:editAds,ads,place');
+Route::get('/placeads/editads/{ads}/{place}', [App\Http\Controllers\AdsController::class, 'formEditAds'])->name('ads.editform')->middleware('can:editformAds,ads,place');
 
 Route::post('/placeads/update/{ads}/{place}', [App\Http\Controllers\AdsController::class, 'updateAds'])->name('ads.update')->middleware('can:editAds,ads,place');
-Route::get('/placeads/delete/{ads}', [App\Http\Controllers\AdsController::class, 'deleteAds'])->name('ads.delete');
+Route::get('/placeads/delete/{ads}', [App\Http\Controllers\AdsController::class, 'deleteAds'])
+	->middleware('can:deleteAds,ads,place')
+	->name('ads.delete');
 
 Route::get('/myads/places', [App\Http\Controllers\AdsController::class, 'selectPlaceAdv'])->name('ads.listPlaces'); // сторінка вибору Закладу -> new Adv
 

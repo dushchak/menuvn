@@ -12,56 +12,67 @@
 
 			<div class="form__line">
 				<label for="txtName" class="requared_input">Назва закладу</label>
-				<input type="text" name="name" id="txtName" class="form-control " placeholder="Кафе Міраж">
+				<input type="text" name="name" id="txtName" class="form-control " placeholder="Кафе Міраж" 
+				value="{{ old('name') }}">
 			</div>
 			<div class="form__line">
 				<label for="adress" class="requared_input">Адреса</label>
-				<input type="text" name="adress" id="adress" class="form-control " placeholder="Соборна, 75">
+				<input type="text" name="adress" id="adress" class="form-control " placeholder="Соборна, 75"
+				value="{{ old('adress') }}">
 			</div>
 			<div class="form__line">
 				<label for="WorkHours" class="requared_input">Розклад</label>
-				<input type="text" name="workhours" id="WorkHours" class="form-control " placeholder="12-22">
+				<input type="text" name="workhours" id="WorkHours" class="form-control " placeholder="12-22"
+				value="{{ old('workhours') }}">
 			</div>
 			<div class="form__line">
 				<label for="txtDesc" class="requared_input">Про заклад</label>
 				<textarea  name="description" id="txtDesc"  
-				placeholder = "Затишне кафе з смачними стравами, гарною атмосферою, привітним сервісом і красивим літнім майданчиком"></textarea>
+				placeholder = "Затишне кафе з смачними стравами, гарною атмосферою, привітним сервісом і красивим літнім майданчиком"
+				>{{ old('description') }}</textarea>
 			</div>
 			<!--  -->
 
 			<div class="form__line">
 				<label for="Manager" class="requared_input">Контакти керуючого</label>
-				<input type="text" name="manager" id="Manager" class="form-control " placeholder="(068) 777-77-77">
+				<input type="text" name="manager" id="Manager" class="form-control " placeholder="(068) 777-77-77"
+				value="{{ old('manager') }}">
 			</div>
 			
 
 			<!--  -->
 			<div class="form__line">
 				<label for="txtViber" class="requared_input">Viber</label>
-				<input type="text" name="viber" id="txtName" class="form-control " placeholder="(068) 777-77-77">
+				<input type="text" name="viber" id="txtName" class="form-control " placeholder="(068) 777-77-77"
+				value="{{ old('viber') }}">
 			</div>
 			<div class="form__line">
 				<label for="txtTelegram" class="requared_input">Telegram</label>
-				<input type="text" name="telegram" id="txtName" class="form-control" placeholder="068-777-77-77">
+				<input type="text" name="telegram" id="txtName" class="form-control" placeholder="068-777-77-77"
+				value="{{ old('telegram') }}">
 			</div>
 			<div class="form__line">
 				<label for="txtEmail">Email</label>
-				<input type="text" name="email" id="txtName" class="form-control" placeholder="manager@mirage.ua">
+				<input type="text" name="email" id="txtName" class="form-control" placeholder="manager@mirage.ua"
+				value="{{ old('email') }}">
 			</div>
 
 			<!--  -->
 
 			<div class="form__line">
 				<label for="SitPlaces">Скільки клієнтських місць?</label>
-				<input type="text" name="sitplaces" id="SitPlaces" class="form-control " placeholder="35">
+				<input type="text" name="sitplaces" id="SitPlaces" class="form-control " placeholder="35"
+				value="{{ old('sitplaces') }}">
 			</div>
 			<div class="form__line">
 				<label for="Delivery">Доставка</label>
-				<input type="text" name="delivery" id="Delivery" class="form-control " placeholder="Доставка кур'єрськими службами">
+				<input type="text" name="delivery" id="Delivery" class="form-control " placeholder="Доставка кур'єрськими службами"
+				value="{{ old('delivery') }}">
 			</div>
 			<div class="form__line">
 				<label for="wifi">Пароль Wi-Fi</label>
-				<input type="text" name="wifipass" id="wifi" class="form-control" placeholder="wifipass789">
+				<input type="text" name="wifipass" id="wifi" class="form-control" placeholder="wifipass789"
+				value="{{ old('wifipass') }}">
 			</div>
 
 			

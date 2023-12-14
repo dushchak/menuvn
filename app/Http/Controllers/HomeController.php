@@ -57,8 +57,70 @@ class HomeController extends Controller
     public function storePlace(Request $request) {
         //dd($request);
         $validatedData = $request->validate([
+                'name' =>'required|string|max:100|',
+                'adress' =>'required|string|min:7|max:100|',
+                'workhours'=>'required|alpha_dash|min:3|max:6|',
+                'description'=>'required|min:200|max:1000|',
+                'manager'=>'required|min:9|max:16|',
+                'viber'=>'required|min:9|max:16|',
+                'telegram'=>'string|min:9|max:16|',
+                //'email'=>'required|email:rfc,dns,spoof|min:6|max:100|',
+                'sitplaces'=>'required|max:4|numeric',
+                'delivery'=>'string',
+                'wifipass'=>'string|max:30|',
+                'phone1'=>'required|min:9|max:16|',
+                'phone2'=>'string|min:9|max:16|',
+                'phone3'=>'string|min:9|max:16|',
+                'phone4'=>'string|min:9|max:16|',
+                'insta'=>'string|min:4|max:100|',
+                'facebook'=>'string|min:4|max:100|',
                 'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            ]);
+            ],
+            [
+                'name.required' => ' Додайте "Назва закладу"',
+                'name.max'=>'Назва закладу - максимум 100 знаків',
+
+                'adress.required'  => 'Додайте "Адресу закладу"',
+                'adress.min'  => '"Адреса закладу" - від 7 знаків',
+                'adress.max'  => '"Адреса закладу" - до 100 знаків',
+
+                'workhours.required' => 'Додайте "Розклад роботи"',
+                'workhours.alpha_dash' => '"Розклад роботи" години у вигляді "9-18"',
+                'workhours.min' => '"Розклад роботи" min 3 знаків у годинах "9-18"',
+                'workhours.max' => '"Розклад роботи" max 6 знаків у годинах "9-18"',
+
+                'description.required'=>'Додайте інформацію "Про заклад"',
+                'description.string'=>'"Про заклад" - це строка',
+                'description.min'=>'"Про заклад" - збільшіть опис до 200 знаків',
+                'description.max'=>'"Про заклад" - зменшіть опис хоча б до 1000 знаків',
+
+                'manager.string'=>'"Про заклад" - це строка',
+
+                'viber.string'=>'"Про заклад" - це строка',
+
+                'telegram.string'=>'"Про заклад" - це строка',
+
+                'email.string'=>'"Про заклад" - це строка',
+
+                'sitplaces.string'=>'"Про заклад" - це строка',
+
+                'delivery.string'=>'"Про заклад" - це строка',
+
+                'wifipass.string'=>'"Про заклад" - це строка',
+
+                'phone1.string'=>'"Про заклад" - це строка',
+
+                'phone2.string'=>'"Про заклад" - це строка',
+
+                'phone3.string'=>'"Про заклад" - це строка',
+
+                'phone4.string'=>'"Про заклад" - це строка',
+
+                'insta.string'=>'"Про заклад" - це строка',
+                'facebook.string'=>'"Про заклад" - це строка',
+                'image_file.required'=>'"Про заклад" - це строка',
+
+        ]);
 
         if($request->hasFile('image_file')){
             #get original name file with extension
@@ -102,7 +164,7 @@ class HomeController extends Controller
             /*  Telegram Notice */ 
             $botApiToken = env('TELEGRAM_BOT_TOKEN');
             //$channelId = 'your channel id';
-            $channelId = '-1001890552528';
+            $channelId = '-1001890552528'; // @qr_menu_vn
             //$channelId = "@menu_adm_notice";
             $text = 'New place:'.$request->name ."; Adress:".$request->adress.", Manager tel:".$request->manager;
             $query = http_build_query([

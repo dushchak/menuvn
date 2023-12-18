@@ -25,12 +25,48 @@ class DishesController extends Controller
 
     // Зберігаєм страву з меню
     public function saveDish(Request $request){
-
         if(Auth::user()) {  //!!!! тут треба через Polices 
 
             $validatedData = $request->validate([
+                'place_id'=>'required|integer|max:7',
+                'dish_title'=>'required|string|min:2|max:100',
+                'dish_group'=>'required|string|max:50',
+                'description'=>'required|string|max:200',
+                'portionweight'=>'required|integer|max:10000',
+                'portioncost'=>'required|integer|max:10000',
                 'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            ]);
+            ],
+            [
+                //required|string|min:2|max:100
+               'dish_title.required' => ' Додайте "Назва страви"',
+               'dish_title.string' => '"Назва страви" - string ',
+               'dish_title.min' => '"Назва страви" - мінімум 2 символи',
+               'dish_title.max' => '"Назва страви" - максимум 100 знаків',
+
+               //
+               'dish_group.required' => 'Група меню',
+
+               // required|string|max:200 
+               'description.required' => ' Додайте "Опис страви"',
+               'description.string' => '"Опис страви" - це строка',
+               'description.max' => '"Опис страви" - максимум 200 символів',
+
+               // required|integer|max:6 
+               'portionweight.required' => ' Додайте "Вагу порції"',
+               'portionweight.integer' => '"Вага порції" - тільки цілі числа',
+               'portionweight.max' => '"Вага порції" - максимум 10000',
+
+               // required|integer|max:6 
+               'portioncost.required' => ' Додайте "Ціну порції"',
+               'portioncost.integer' => '"Ціна порції" - тільки цілі числа',
+               'portioncost.max' => '"Ціна порції" - максимум 10000',
+
+
+               //required|image|mimes:jpg,png,jpeg,gif,svg|max:2048
+               'image_file.required' => ' Додайте "Фото страви"',
+                'image_file.image' => '"Фото страви" - файл зображення',
+                 'image_file.mimes' => '"Фото страви" - тільки jpg, jpeg, png, gif',
+                  'image_file.max' => '"Фото страви" - розмір максимум 2 Мб',             ]);
 
             if($request->hasFile('image_file')){
                 #get original name file with extension

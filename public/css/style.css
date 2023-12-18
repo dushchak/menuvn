@@ -188,6 +188,11 @@ color: #F95A01;
 }
 
 
+/* Form add_place */
+.error_field {
+	background-color: #ff050526;
+}
+
 /* menu */
 
 .place__menuinfo {
@@ -365,6 +370,16 @@ select option[value="2"] {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
 
 /* страница для печати */
 @media print {

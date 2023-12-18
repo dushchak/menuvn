@@ -59,21 +59,21 @@ class HomeController extends Controller
         $validatedData = $request->validate([
                 'name' =>'required|string|max:100|',
                 'adress' =>'required|string|min:7|max:100|',
-                'workhours'=>'required|alpha_dash|min:3|max:6|',
-                'description'=>'required|min:200|max:1000|',
-                'manager'=>'required|min:9|max:16|',
-                'viber'=>'required|min:9|max:16|',
-                'telegram'=>'string|min:9|max:16|',
+                'workhours'=>'alpha_dash|min:3|max:6|',
+                'description'=>'required|string|min:200|max:1000|',
+                'manager'=>'required|string|min:10|max:16|',
+                'viber'=>'required|string|min:10|max:16|',
+                'telegram'=>'string|min:3|max:16|',
                 //'email'=>'required|email:rfc,dns,spoof|min:6|max:100|',
-                'sitplaces'=>'required|max:4|numeric',
-                'delivery'=>'string',
+                'sitplaces'=>'integer|max:10000|',
+                'delivery'=>'string|max:200|',
                 'wifipass'=>'string|max:30|',
-                'phone1'=>'required|min:9|max:16|',
-                'phone2'=>'string|min:9|max:16|',
-                'phone3'=>'string|min:9|max:16|',
-                'phone4'=>'string|min:9|max:16|',
-                'insta'=>'string|min:4|max:100|',
-                'facebook'=>'string|min:4|max:100|',
+                'phone1'=>'required|min:10|max:16|',
+                'phone2'=>'string|min:10|max:16|',
+                'phone3'=>'string|min:10|max:16|',
+                'phone4'=>'string|min:10|max:16|',
+                'insta'=>'string|max:100|',
+                'facebook'=>'string|max:100|',
                 'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ],
             [
@@ -85,7 +85,7 @@ class HomeController extends Controller
                 'adress.max'  => '"Адреса закладу" - до 100 знаків',
 
                 'workhours.required' => 'Додайте "Розклад роботи"',
-                'workhours.alpha_dash' => '"Розклад роботи" години у вигляді "9-18"',
+                'workhours.alpha_dash' => '"Розклад роботи" години(без хвилин) у вигляді "9-18"',
                 'workhours.min' => '"Розклад роботи" min 3 знаків у годинах "9-18"',
                 'workhours.max' => '"Розклад роботи" max 6 знаків у годинах "9-18"',
 
@@ -94,33 +94,78 @@ class HomeController extends Controller
                 'description.min'=>'"Про заклад" - збільшіть опис до 200 знаків',
                 'description.max'=>'"Про заклад" - зменшіть опис хоча б до 1000 знаків',
 
-                'manager.string'=>'"Про заклад" - це строка',
+                'manager.string'=>'"Контакт менеджера" - це строка',
+                'manager.min'=>'"Контакт менеджера" - мінімум 9 цифр(0674443311)',
+                'manager.max'=>'"Контакт менеджера" - максимум 16 цифр',
 
-                'viber.string'=>'"Про заклад" - це строка',
+                'viber.required'=>'Додайте телефон "Viber"',
+                'viber.string'=>'"Viber" - це строка',
+                'viber.min'=>'"Viber" - мінімум 9 цифр(0674443311)',
+                'viber.max'=>'"Viber" - максимум 16 цифр',
 
-                'telegram.string'=>'"Про заклад" - це строка',
+                'telegram.string'=>'"Viber" - це строка',
+                'telegram.min'=>'"Viber" - мінімум 3 знака',
+                'telegram.max'=>'"Viber" - максимум 16 цифр',
 
-                'email.string'=>'"Про заклад" - це строка',
+                //required|email:rfc,dns,spoof|min:6|max:100|
+                'email.required'=>'"Email" - обовязкове поле',
+                'email.email.rfc'=>'"Email" - rfc',
+                'email.email.dns'=>'"Email" - dns',
+                'email.email.spoof'=>'"Email" - spoof',
+                'email.min'=>'"Email" - занадто короткий',
+                'email.max'=>'"Email" - max 100',
 
-                'sitplaces.string'=>'"Про заклад" - це строка',
+                // max:4|integer
+                'sitplaces.string'=>'"Місць" - це строка',
+                'sitplaces.max'=>'"Місць" - max 10000',
+                'sitplaces.integer'=>'"Місць" - лише цілі цифри ',
 
-                'delivery.string'=>'"Про заклад" - це строка',
+                //string|max:200|
+                'delivery.string'=>'"Доставка" - це строка',
+                'delivery.max'=>'"Доставка" - максимум 200 знаків',
 
-                'wifipass.string'=>'"Про заклад" - це строка',
+                // wifipass'=>'string|max:30|
+                'wifipass.string'=>'"WіFі пароль" - це строка',
+                'wifipass.max'=>'"WіFі пароль" - максимум 30 знаків',
 
-                'phone1.string'=>'"Про заклад" - це строка',
+                // required|min:10|max:16|
+                'phone1.required'=>'Додайте "Основний телефон"',
+                'phone1.string'=>'"Основний телефон" - це строка',
+                'phone1.min'=>'"Основний телефон" - мінімум 10 цифр(0674443311)',
+                'phone1.max'=>'"Основний телефон" - максимум 16 цифр',
 
-                'phone2.string'=>'"Про заклад" - це строка',
+                // phone2'=>'string|min:10|max:16|
+                'phone2.string'=>'"Телефон 2" - це строка',
+                'phone2.min'=>'"Телефон 2" - мінімум 10 цифр(0674443311)',
+                'phone2.max'=>'"Телефон 2" - максимум 16 цифр',
 
-                'phone3.string'=>'"Про заклад" - це строка',
+                // phone3'=>'string|min:10|max:16|
+                'phone3.string'=>'"Телефон 3" - це строка',
+                'phone3.min'=>'"Телефон 3" - мінімум 10 цифр(0674443311)',
+                'phone3.max'=>'"Телефон 3" - максимум 16 цифр',
 
-                'phone4.string'=>'"Про заклад" - це строка',
+                // phone4'=>'string|min:10|max:16|
+                'phone4.string'=>'"Телефон 4" - це строка',
+                'phone4.min'=>'"Телефон 4" - мінімум 10 цифр(0674443311)',
+                'phone4.max'=>'"Телефон 4" - максимум 16 цифр',
 
-                'insta.string'=>'"Про заклад" - це строка',
-                'facebook.string'=>'"Про заклад" - це строка',
-                'image_file.required'=>'"Про заклад" - це строка',
+
+                // string|min:10|max:100|
+                'insta.string'=>'"Instagram" - це строка',
+                'insta.max'=>'"Instagram" - максимум 100 знаків',
+
+                // string|min:4|max:100|
+                'facebook.string'=>'"Facebook" - це строка',
+                'facebook.max'=>'"Facebook" - максимум 100 знаків ',
+
+                'image_file.required'=>'Додайте фото закладу',
+                //'image_file.image'=>'',
+                'image_file.mimes'=>'формат Фото: jpg, png, jpeg',
+                'image_file.max'=>'Розмір Фото: максимум 2мб',
 
         ]);
+
+    
 
         if($request->hasFile('image_file')){
             #get original name file with extension

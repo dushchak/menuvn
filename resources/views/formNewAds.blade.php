@@ -15,18 +15,45 @@
 
 	<div class="form__line">
 		<label for="txtName">Заголовок оголошення</label>
-		<input type="text" name="title" id="txtName" class="form-control" placeholder="Друга піцца -50%">
+		@if($errors->has('title'))
+			<input type="text" name="title" id="txtName" class="form-control error_field" placeholder="Друга піцца -50%" value="{{  old('title') }}">
+		@else
+			<input type="text" name="title" id="txtName" class="form-control" placeholder="Друга піцца -50%" value="{{  old('title') }}">
+		@endif
+		
 	</div>
+	<div class="field_error">
+		<ul>
+			@foreach($errors->get('title') as $message)
+				<li>{{ $message }}</li>
+			@endforeach
+		</ul>
+	</div>
+
+
 	
 	<div class="form__line">
 		<label for="txtDesc">Тут ваш Промо текст</label>
-		<textarea id="txtDesc" name="description" rows="5" cols="60" placeholder="Кожна друга піцца зі знижкою -50%"></textarea>
+		@if($errors->has('description'))
+			<textarea id="txtDesc" name="description" rows="5" cols="60" placeholder="Кожна друга піцца зі знижкою -50%" class="error_field">{{  old('title') }}</textarea>
+		@else
+			<textarea id="txtDesc" name="description" rows="5" cols="60" placeholder="Кожна друга піцца зі знижкою -50%">{{  old('title') }}</textarea>
+		@endif
 	</div>
+	<div class="field_error">
+		<ul>
+			@foreach($errors->get('description') as $message)
+				<li>{{ $message }}</li>
+			@endforeach
+		</ul>
+	</div>
+
+
 
 	<div class="form__line">
 		<label>Зображення <br> (jpg, png, <2mb)</label>
 		<br>
-		<input type="file" name="image_file">
+		<input type="file" name="image_file" value="{{  old('image_file') }}">
 	</div>
 
 	<div class="form__line">

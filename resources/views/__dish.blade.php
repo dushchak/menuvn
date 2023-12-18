@@ -12,13 +12,13 @@
 
             <div class="dish__actions">
                  <td>Замовити </td>
-                     @auth
-                    <a href="{{ route('dish.up', $dish->id)  }}">+</a>
-                    <a href="{{ route('dish.down', $dish->id)  }}">-</a>
-                    <a href="{{ route('dish.editdish', $dish->id) }}">edit</a>
-                    <a href="{{ route('dish.formdeldish', $dish->id) }}">delete</a>                @endauth
+                    @auth
+                        <a href="{{ route('dish.up', $dish->id)  }}">+</a>
+                        <a href="{{ route('dish.down', $dish->id)  }}">-</a>
+                        <a href="{{ route('dish.editdish', $dish->id) }}">edit</a>
+                        <a href="{{ route('dish.formdeldish', $dish->id) }}">delete</a>                @endauth
                     @guest
-                    <a href="">Повідомити про помилку</a>
+                        <a href="">Повідомити про помилку</a>
                     @endguest
             </div>    
         </div>

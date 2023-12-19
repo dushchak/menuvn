@@ -13,51 +13,149 @@
 
 			<div class="form__line">
 				<label for="txtName">Назва закладу</label>
-				<input type="text" name="name" id="txtName" class="form-control" value="{{ $place->name  }}" placeholder="Кафе Новорічне">
+				<input type="text" name="name" id="txtName" class="form-control" value="{{ $place->name  }}" placeholder="Кафе Новорічне" >
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('name') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			<div class="form__line">
 				<label for="txtAdress">Адреса</label>
 				<input type="text" name="adress" id="txtName" class="form-control" value="{{ $place->adress  }}" placeholder="Соборна 77">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('adress') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			<div class="form__line">
 				<label for="txtWorkHours">Розклад</label>
 				<input type="text" name="workhours" id="txtName" class="form-control" value="{{ $place->workhours  }}" placeholder="9-22">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('workhours') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			<div class="form__line">
 				<label for="txtDesc">Про заклад</label>
 				<input type="text" name="description" id="txtName" class="form-control" value="{{ $place->description  }}" placeholder="Смачні страви, святкова зала і привітний персонал ">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('description') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			<!--  -->
 
 			<div class="form__line">
 				<label for="txtSitPlaces">Скільки клієнтських місць?</label>
 				<input type="text" name="sitplaces" id="txtName" class="form-control" value="{{ $place->sitplaces  }}" placeholder="35">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('sitplaces') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			<div class="form__line">
 				<label for="txtDelivery">Доставка</label>
 				<input type="text" name="delivery" id="txtName" class="form-control" value="{{ $place->delivery  }}" placeholder="Доставка кур'єрськими службами">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('delivery') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			<div class="form__line">
 				<label for="txtDelivery">Пароль Wi-Fi</label>
 				<input type="text" name="wifipass" id="txtName" class="form-control" placeholder="pass_wifi135">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('wifipass') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
+
 			<br>
 			<p class="manager_highlight">Контакти менеджера:</p>
 			<div class="form__line">
 				<label for="txtManager" class="manager_highlight">Контакти керуючого</label>
 				<input type="text" name="manager" id="txtName" class="form-control" value="{{ $place->manager  }}" placeholder="067-777-77-77">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('manager') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			<div class="form__line">
 				<label for="txtEmail" class="manager_highlight">Email</label>
 				<input type="text" name="email" id="txtName" class="form-control"  value="{{ $place->phone4  }}" placeholder="hello@kafe.ua">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('email') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			<div class="form__line">
 				<label for="txtViber" class="manager_highlight">Viber</label>
 				<input type="text" name="viber" id="txtName" class="form-control" value="{{ $place->viber  }}" placeholder="067-777-77-77">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('viber') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			<div class="form__line">
 				<label for="txtTelegram" manager_highlight>Telegram</label>
 				<input type="text" name="telegram" id="txtName" class="form-control" value="{{ $place->telegram  }}" placeholder="067-777-77-77">
+			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('telegram') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
 			</div>
 			<br>
 
@@ -67,18 +165,54 @@
 				<label for="txtPhone2">Телефон 1</label>
 				<input type="text" name="phone1" id="txtName" class="form-control"  value="{{ $place->phone1  }}" placeholder="067-777-77-77">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('phone1') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			<div class="form__line">
 				<label for="txtPhone3">Телефон 2</label>
 				<input type="text" name="phone2" id="txtName" class="form-control" value="{{ $place->phone2  }}" placeholder="067-777-77-77">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('phone2') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			<div class="form__line">
 				<label for="txtPhone4">Телефон 3</label>
 				<input type="text" name="phone3" id="txtName" class="form-control" value="{{ $place->phone3  }}" placeholder="067-777-77-77">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('phone3') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			<div class="form__line">
 				<label for="txtEmail">Телефон 4</label>
 				<input type="text" name="phone4" id="txtName" class="form-control"  value="{{ $place->phone4  }}" placeholder="067-777-77-77">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('phone4') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 
 			<!--  -->
 
@@ -86,10 +220,28 @@
 				<label for="txtInsta">Instagram</label>
 				<input type="text" name="insta" id="txtName" class="form-control" value="{{ $place->insta  }}" placeholder="@kafename">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('insta') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			<div class="form__line">
 				<label for="txtFb">Facebook</label>
 				<input type="text" name="fb" id="txtName" class="form-control"  value="{{ $place->facebook  }}" placeholder="www.facebook.com/kafe">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('fb') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			<div>
 				<label for="">Видимість: </label>
 				<input type="radio" id="contactChoice1" name="disabled" value="0" checked />

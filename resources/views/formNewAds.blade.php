@@ -4,7 +4,7 @@
 
 @section('main')
 <div class="container">
-	<h1>Додати Рекламне оголошення</h1>
+	<h1>Додати Акційне оголошення</h1>
 	<div class="form__wrapper">
 <form action="{{ route('newads.save') }}" method="POST" enctype="multipart/form-data" >
 	@csrf

@@ -116,22 +116,22 @@ class DishesController extends Controller
     public function updateDish (Request $request,Dish $dishid){
 
         $validatedData = $request->validate([
-                'place_id'=>'required|integer|max:7000000',
-                'dish_title'=>'required|string|min:2|max:100',
-                'dish_group'=>'required|string|max:50',
+                'dishid'=>'required|integer|max:7000000',
+                'dishtitle'=>'required|string|min:2|max:100',
+                'dishgroup'=>'required|string|max:50',
                 'description'=>'required|string|max:200',
                 'portionweight'=>'required|integer|max:10000',
                 'portioncost'=>'required|integer|max:10000',
-                //'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'image_file' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ],
             [
                 //required|string|min:2|max:100
-                'dish_title.required' => ' Додайте "Назва страви"',
-                'dish_title.string' => '"Назва страви" - string ',
-                'dish_title.min' => '"Назва страви" - мінімум 2 символи',
-                'dish_title.max' => '"Назва страви" - максимум 100 знаків',
+                'dishtitle.required' => ' Додайте "Назва страви"',
+                'dishtitle.string' => '"Назва страви" - string ',
+                'dishtitle.min' => '"Назва страви" - мінімум 2 символи',
+                'dishtitle.max' => '"Назва страви" - максимум 100 знаків',
                 //
-                'dish_group.required' => 'Група меню',
+                'dishgroup.required' => 'Група меню',
                 // required|string|max:200 
                 'description.required' => ' Додайте "Опис страви"',
                 'description.string' => '"Опис страви" - це строка',
@@ -152,28 +152,6 @@ class DishesController extends Controller
                 //'image_file.max' => '"Фото страви" - розмір максимум 2 Мб',             
             ]);
 
-        $dishid->fill([
-            'dishtitle'=> $request->dishtitle,
-            'dishgroup'=> $request->dishgroup,
-            'description'=> $request->description,
-            'portionweight'=> $request->portionweight,
-            'portioncost'=> $request->portioncost,
-            'cost100g'=> $request->cost100g,
-        ]);
-
-        $dishid->save();
-
-        //return redirect()->route('viewMenu',$request->dishid);
-        return redirect()->route('viewMenu',$dishid->places_id);
-    }
-
-
-    public function updateDishImage(Request $request,Dish $dishid) {
-        //dd($dishid);
-        $validatedData = $request->validate([
-                'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            ]);
-
         if($request->hasFile('image_file')){
             #get original name file with extension
             $fileNameWithExt = $request->file('image_file')->getClientOriginalName(); // Exempl: "krah-bitkoin.jpg"
@@ -185,37 +163,34 @@ class DishesController extends Controller
         }
 
         $dishid->fill([
-            'thumbnail'=>$fileNameWithExt,
+            'dishtitle'=> $request->dishtitle,
+            'dishgroup'=> $request->dishgroup,
+            'description'=> $request->description,
+            'portionweight'=> $request->portionweight,
+            'portioncost'=> $request->portioncost,
+            'cost100g'=> $request->cost100g,
         ]);
+
+        if(isset($fileNameWithExt)){
+            $dishid->fill([
+                'thumbnail'=>$fileNameWithExt,
+            ]);
+        }
+
         $result = $dishid->save();
-        
+
+        //видаляєм попереднє фото страви з диска
         if($result){
             $resldel = Storage::disk('public')->delete('images/dishes/'.$request->thumbnail); //для удаления файла из папки 
             //dd('images/places/'.$dishid->thumbnail);
             //dd($resldel);
         }
 
-        
-        return redirect()->route('viewMenu',$dishid->places_id);         
-
+        //return redirect()->route('viewMenu',$request->dishid);
+        return redirect()->route('viewMenu',$dishid->places_id);
     }
 
-    //deleteDishImage
-    public function deleteDishImage(Dish $dishid) {
-    
-        $result = $dishid->fill([
-            'thumbnail'=>"",
-        ]);
-        if($result){
-            $dish = Dish::find($dishid);
-            //dd($dish[0]->thumbnail);
-            $test = Storage::disk('public')->delete('images/dishes/'.$dish[0]->thumbnail); //для удаления файла из папки 
-            
-        }
-    
-        //return redirect()->route('home');
-        return redirect()->route('viewMenu',$dishid);         
-    }
+
 
     public function formDelDish(Dish $dish) {
         return view('formDeleteDish', ['dish'=>$dish]);

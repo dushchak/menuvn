@@ -52,7 +52,7 @@
 
 			<div class="form__line">
 				<label for="txtDesc">Про заклад</label>
-				<input type="text" name="description" id="txtName" class="form-control" value="{{ $place->description  }}" placeholder="Смачні страви, святкова зала і привітний персонал ">
+				<textarea type="text" name="description" id="txtName" class="form-control" value="" placeholder="Смачні страви, святкова зала і привітний персонал ">{{ $place->description  }}</textarea>
 			</div>
 			<div class="field_error">
 				<ul>

@@ -37,7 +37,7 @@
 		@if($errors->has('description'))
 			<textarea id="txtDesc" name="description" rows="5" cols="60" placeholder="Кожна друга піцца зі знижкою -50%" class="error_field">{{  old('title') }}</textarea>
 		@else
-			<textarea id="txtDesc" name="description" rows="5" cols="60" placeholder="Кожна друга піцца зі знижкою -50%">{{  old('title') }}</textarea>
+			<textarea id="txtDesc" name="description" rows="5" cols="60" placeholder="Кожна друга піцца зі знижкою -50%">{{  old('description') }}</textarea>
 		@endif
 	</div>
 	<div class="field_error">

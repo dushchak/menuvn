@@ -17,13 +17,19 @@
             <a class="btn_m" href="{{ route('viewMenu', $place->id) }}">Меню</a>
             
             <!-- додати зразок заповнення -->
-            <div class="place__workhours icon_clock"> {{ $place->workhours }}</div><!-- * -->
+            @if($place->workhours != null)
+                <div class="place__workhours icon_clock"> {{ $place->workhours }}</div><!-- * -->
+            @endif
             <div class="place__phone1 icon_location-dot">  {{ $place->adress }}</div><!-- * -->
-            <div class="place__sitplaces icon_users"> {{ $place->sitplaces }} місць</div><!-- * -->
+            @if($place->sitplaces != null)
+                <div class="place__sitplaces icon_users"> {{ $place->sitplaces }} місць</div><!-- * -->
+            @endif
             @if($place->wifipass != null)
                 <div class="place__adress icon_wifi"> {{ $place->wifipass }}</div><!--  -->
             @endif
-            <div class="place__delivery icon_truck-fast">  {{ $place->delivery }}</div><!-- * -->
+            @if($place->delivery != null)
+                <div class="place__delivery icon_truck-fast">  {{ $place->delivery }}</div><!-- * -->
+            @endif
             <div class="place__phone1 icon_help-info"> Про нас: {{ $place->description }}</div><!-- * -->
             
 
@@ -46,11 +52,17 @@
                 <div class="place__phone1 icon_instagram">  {{ $place->insta }}</div><!--  -->@endif
             @if($place->fb != null)
                 <div class="place__phone1 icon_facebook">  {{ $place->fb }}</div><!--  -->@endif
+            
 
 
 
 
            <p> <a class="icon_edit link_btn" href="{{ route('place.edit', $place->id) }}">Редагувати: {{ $place->name}}</a></p>
+
+
+            @if($place->disabled != null)
+                <div class="place__sitplaces icon_eye-slash">Заклад відключено (немає в Білому списку)</div><!-- * -->
+            @endif
 
            
             

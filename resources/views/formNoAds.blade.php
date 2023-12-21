@@ -8,6 +8,12 @@
 	<p>Підключіть показ вашої реклами на сторінках Menu.vn.ua. Ви можете показувати цільовій аудиторії ваші оголошення, розкажіть про ваші знижки та акційні пропозиції</p>
 	
 	<p>Ціна: 30 монет/місяць</p>
+
+	<!-- Buy Me a Coffee Please!  -->
+	<a href="https://www.buymeacoffee.com/menu.vn.ua"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=menu.vn.ua&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
+
+
+
 <form action="{{ route('coins.noads1m', $place) }}" method="POST" >
 	@csrf
 	<div class="form-group">

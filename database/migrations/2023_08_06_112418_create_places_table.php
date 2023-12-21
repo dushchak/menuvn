@@ -18,9 +18,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');       # назва закладу
             $table->string('adress');     #
-            $table->string('workhours');  # робочі години
+            $table->string('workhours')->nullable();;  # робочі години
             $table->text('description');         # опис закладу
-            $table->unsignedSmallInteger('sitplaces')->default(0);   # посадочн місць
+            $table->unsignedSmallInteger('sitplaces')->default(0)->nullable();   # посадочн місць
             $table->string('delivery')->nullable();   # що по доставці
             $table->string('manager');    # контакти керуючого viber,tg,....
             $table->string('phone1');

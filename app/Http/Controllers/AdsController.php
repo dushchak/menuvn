@@ -95,6 +95,28 @@ class AdsController extends Controller
 
         if(Auth::user()) {  //!!!! тут треба через Polices
 
+            $validatedData = $request->validate([
+                'place_id'=>'required|integer|max:90000',
+                'title'=>'required|string|max:50',
+                'description'=>'required|string|max:100',
+                //'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ],[
+                'place_id.required'=>'place_id необхідний',
+                'place_id.max'=>'place_id max 90000',
+                
+                'title.required'=>'Додайте "Заголовок оголошення"',
+                'title.string'=>'"Заголовок оголошення" - string',
+                'title.max'=>'"Заголовок оголошення" - максимум 50 знаків',
+                'description.required'=>'Додайте "Промо текст"',
+                'description.string'=>'"Промо текст" - строка',
+                'description.max'=>'"Промо текст" - максимум 100 знаків',
+                'image_file.required'=>'Додайте "Зображення"',
+                'image_file.image'=>'"Зображення" - не зображення',
+                'image_file.mimes'=>'"Зображення" - тільки jpg, jpeg, png, gif',
+                'image_file.max'=>'"Зображення" - максимум 2 Мб',
+
+            ]);
+
             if($request->hasFile('image_file')){
                 #get original name file with extension
                 $fileNameWithExt = $request->file('image_file')->getClientOriginalName(); // Exempl: "krah-bitkoin.jpg"

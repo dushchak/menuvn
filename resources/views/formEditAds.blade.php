@@ -16,12 +16,20 @@
 
 			<div class="form__line">
 				<label for="txtName">Заголовок оголошення</label>
-				<input type="text" name="title" id="txtName" class="form-control" value="{{$ads->title}}" placeholder="Акція 3+1">
+				@if($errors->has('title'))
+					<input type="text" name="title" id="txtName" class="form-control error_field" value="{{$ads->title}}" placeholder="Акція 3+1">
+				@else
+					<input type="text" name="title" id="txtName" class="form-control" value="{{$ads->title}}" placeholder="Акція 3+1">
+				@endif
 			</div>
 			
 			<div class="form__line">
 				<label for="txtDesc">Опис пропозиції</label>
-				<textarea id="txtDesc" name="description" rows="5" cols="60" placeholder="Кожна четверта піцца в подарунок">{{$ads->description}}</textarea>
+				@if($errors->has('description'))
+					<textarea id="txtDesc" name="description" rows="5" cols="60" placeholder="Кожна четверта піцца в подарунок" class="error_field">{{$ads->description}}</textarea>
+				@else
+					<textarea id="txtDesc" name="description" rows="5" cols="60" placeholder="Кожна четверта піцца в подарунок">{{$ads->description}}</textarea>
+				@endif
 			</div>
 
 			<div class="form__line">

@@ -192,6 +192,9 @@ color: #F95A01;
 .error_field {
 	background-color: #ff050526;
 }
+.alert_text {
+	color:red;
+}
 
 /* menu */
 

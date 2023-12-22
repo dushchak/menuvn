@@ -22,6 +22,15 @@
 					<input type="text" name="title" id="txtName" class="form-control" value="{{$ads->title}}" placeholder="Акція 3+1">
 				@endif
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('title') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 			
 			<div class="form__line">
 				<label for="txtDesc">Опис пропозиції</label>
@@ -31,6 +40,15 @@
 					<textarea id="txtDesc" name="description" rows="5" cols="60" placeholder="Кожна четверта піцца в подарунок">{{$ads->description}}</textarea>
 				@endif
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('description') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+
 
 			<div class="form__line">
 				<img class="dish__image" src="/storage/images/ads/{{$ads->img}}" alt="">
@@ -41,6 +59,15 @@
 				<br>
 				<input type="file" name="image_file" value="{{$ads->img}}">
 			</div>
+			<div class="field_error">
+				<ul>
+					@foreach($errors->get('image_file') as $message)
+						<li>{{ $message }}</li>
+					@endforeach
+				</ul>
+			</div>
+
+			
 
 			<div class="form__line">
 				<input type="submit" class="btn btn-primary" value="Зберегти">

@@ -61,7 +61,7 @@
 
 
             @if($place->disabled != null)
-                <div class="place__sitplaces icon_eye-slash">Заклад відключено (немає в Білому списку)</div><!-- * -->
+                <div class="place__sitplaces icon_eye-slash alert_text">Заклад відключено (немає в Білому списку)</div><!-- * -->
             @endif
 
            

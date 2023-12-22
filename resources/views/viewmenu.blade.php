@@ -39,11 +39,13 @@
 
 
 
-<div class="newdish">
-    @auth
-    <a class="btn_m icon_circle-plus" href="{{route('dish.add', $place->id) }}"> Додати страву</a>
-    @endauth
-</div>
+@can('addDish', $place)
+    <div class="newdish">
+        @auth
+        <a class="btn_m icon_circle-plus" href="{{route('dish.add', $place->id) }}"> Додати страву</a>
+        @endauth
+    </div>
+@endcan
 
 <div class="anchor_links">
     <div class="accordion" id="accordion-1">

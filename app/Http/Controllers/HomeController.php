@@ -255,8 +255,8 @@ class HomeController extends Controller
                 'phone4'=>'nullable|string|min:10|max:16|',
                 'insta'=>'nullable|string|max:100|',
                 'fb'=>'nullable|string|max:100|',
-                'disabled'=>'required|integer|min:0|max:1'
-                //'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'disabled'=>'required|integer|min:0|max:1',
+                'image_file' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ],
             [
                 'name.required' => ' Додайте "Назва закладу"',
@@ -346,12 +346,28 @@ class HomeController extends Controller
                 'disabled.min'=>'disabled min',
                 'disabled.max'=>'disabled max',
 
-                // 'image_file.required'=>'Додайте фото закладу',
-                // 'image_file.image'=>'Image',
-                // 'image_file.mimes'=>'формат Фото: jpg, png, jpeg',
-                // 'image_file.max'=>'Розмір Фото: максимум 2мб',
+                'image_file.image'=>'Image format',
+                'image_file.mimes'=>'формат Фото: jpg, png, jpeg',
+                'image_file.max'=>'Розмір Фото: максимум 2мб',
 
         ]);
+
+
+        if($request->hasFile('image_file')){
+            #get original name file with extension
+            $fileNameWithExt = $request->file('image_file')->getClientOriginalName(); // Exempl: "krah-bitkoin.jpg"
+            $fileNameWithExt = str_replace(" ", "_", $fileNameWithExt); // замена пробелов(якщо є) на _
+
+            //унікалізація імені файла
+            $now  = new DateTimeImmutable();
+            $now_str = $now->format("Y-m-d");
+            $fileNameWithExt =$now_str . "_" . $fileNameWithExt; 
+
+            #Uploading file - Загрузка файла в папку /storage
+            $path = $request->file('image_file')->storeAs('public/images/places', $fileNameWithExt);//"krah-bitc_1691843459.jpg"
+//          dd($path);
+        }
+
 
 
         $placeid->fill([
@@ -374,12 +390,26 @@ class HomeController extends Controller
             'fb'=> $request->fb,
             'disabled' => $request->disabled, 
         ]);
+        if(isset($fileNameWithExt)){
+            $placeid->fill([
+            'thumbnail'=>$fileNameWithExt,
+        ]);
+        }
 
-        $placeid->save();
+        $result = $placeid->save();
+
+        // delete old imgage from disk
+        if($result){
+            $resldel = Storage::disk('public')->delete('images/places/'.$request->thumbnail); //для удаления файла из папки 
+            //dd('images/places/'.$placeid->thumbnail);
+            //dd($resldel);
+        }
 
         return redirect()->route('home');        
     }
 
+    /*
+    // update image
     public function updatePlaceImage(Request $request,Places $placeid) {
         $validatedData = $request->validate([
                 'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
@@ -415,6 +445,10 @@ class HomeController extends Controller
 
     }
 
+    */
+
+    /*
+    // delete image
     public function deletePlaceImage(Places $placeid) {
     
         $result = $placeid->fill([
@@ -428,7 +462,7 @@ class HomeController extends Controller
     
         return redirect()->route('home');
     }
-
+    */
 
 
 }

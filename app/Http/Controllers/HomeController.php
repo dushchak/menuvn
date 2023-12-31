@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth; // підключаєм трейт фаса
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Places;
-use App\Models\Dish;  
+use App\Models\Dish; 
+use App\Models\Coins; 
 
 
  
@@ -463,6 +464,43 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
     */
+
+    // buymeacoffe
+    // /bmac/pay/aaa 
+    public function pay5usd (){
+        //dd($request);
+        $idUser = Auth::user()->id;
+
+        $lastpay = Coins::where('user_id', $idUser)->orderBy('id','desc')->first('coins_after');
+        //dd($lastpay );
+
+        if($lastpay == null){
+            $coins_before = 0;
+        }
+        else{
+            $coins_before = $lastpay->coins_after;
+        }
+        
+        $sum = 5;
+        $comment = "+ $5 bmac";
+
+        //dd($coins_before, $sum);
+
+        
+        $coins = new Coins();
+        $coins->fill([
+            'coins_before' => intval($coins_before),     // 0
+            'operation_sum' => intval($sum),    // 10
+            'coins_after' => $coins_before + $sum,      // before+sum
+            'user_id' => Auth::user()->id,      // Auth::user->id
+            'typeoperation'=> "add",    // "add"
+            'comment' => $comment,          // "поповнення"
+            'places_id' => 0 // default for BMAC
+        ]);
+        $coins->save();
+
+        return redirect()->route('home');
+    }
 
 
 }

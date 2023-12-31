@@ -251,7 +251,11 @@ color: #F95A01;
 	padding: 5px;
 }
 
-
+.toplist__logo{
+	font-weight: bold;
+	color:orangered;
+	padding: 5px;
+}
 
 
 .anchor_links {
@@ -292,6 +296,18 @@ color: #F95A01;
 	padding: 20px 0;
 }
 
+/* Promo Table for Tarifs */
+.promo_table {
+	text-align: center;
+	padding: 20px;
+	border: 1px solid #666;
+}
+.promo_table td {
+	padding: 20px;
+}
+.promo_table img {
+	width: 60px;
+}
 
 /* Advert onePlace */
 .promo {

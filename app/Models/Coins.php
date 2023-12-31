@@ -14,7 +14,8 @@ class Coins extends Model
         'coins_before',
         'operation_sum',
         'coins_after',
-        'operator_id',
+        'user_id',
+        'places_id',
         'typeoperation',
         'comment',
     ];

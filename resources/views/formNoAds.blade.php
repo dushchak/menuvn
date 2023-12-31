@@ -4,14 +4,66 @@
 
 @section('main')
 <div class="container">
-	<h1>Відключити рекламу в Меню {{$place->name}}</h1>
+	<h1>Відключити рекламу: {{$place->name}}</h1>
 	<p>Підключіть показ вашої реклами на сторінках Menu.vn.ua. Ви можете показувати цільовій аудиторії ваші оголошення, розкажіть про ваші знижки та акційні пропозиції</p>
 	
-	<p>Ціна: 30 монет/місяць</p>
+	<p></p>
+
+	<table class="promo_table">
+		<tr>
+			<th>Тариф</th>
+			<th>Free</th>
+			<th>Start</th>
+			<th>Standart</th>
+			<th>Premium</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>Є реклама в меню</td>
+			<td>Без реклами</td>
+			<td>Без реклами<br>Розкручуєм Ваші Акції
+			</td>
+			<td>Без реклами<br> Показ Акцій<br> Топ5</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td><img src="/images/promos/noAds.svg" alt=""></td>
+			<td>
+				<img src="/images/promos/noAds.svg" alt="">
+				<img src="/images/promos/myAds.svg" alt="">
+			</td>
+			<td>
+				<img src="/images/promos/noAds.svg" alt="">
+				<img src="/images/promos/myAds.svg" alt="">
+				<img src="/images/promos/topPlace.svg" alt="">
+			</td>
+		</tr>
+		<tr>
+			<td>Місяць</td>
+			<td>0</td>
+			<td>$ 5</td>
+			<td>$ 15</td>
+			<td>$ 25</td>
+		</tr>
+		<tr>
+			<td>Рік</td>
+			<td>0</td>
+			<td>$ 49 (-18%)</td>
+			<td>$ 139 (-23%)</td>
+			<td>$ 199 (-33%)</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
 
 	<!-- Buy Me a Coffee Please!  -->
 	<a href="https://www.buymeacoffee.com/menu.vn.ua"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=menu.vn.ua&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
-
 
 
 <form action="{{ route('coins.noads1m', $place) }}" method="POST" >

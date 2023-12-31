@@ -109,6 +109,10 @@ Route::get('/wallet/formup/{place}', [App\Http\Controllers\CoinsController::clas
 
 Route::post('/wallet/storeUp/{place}', [App\Http\Controllers\CoinsController::class, 'upTop'])->name('coins.storeUp')->middleware('can:updatePlace,place');
 
+/// BuyMeACoffe payment 
+/// HomeController (auth) 
+Route::get('/bmac/pay/aaa', [App\Http\Controllers\HomeController::class, 'pay5usd'])->name('pay5')->middleware('auth');
+
 
 // Admin
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('adminpanel');

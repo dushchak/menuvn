@@ -12,7 +12,7 @@
 	<div class="toplist">
 		@foreach ($topplaces as $place)
 			<div class="listplace">
-				<p>top</p>
+				<p class="toplist__logo">top</p>
 				<div class="listplace__img">
 					<img class="listplace__image" src="/storage/images/places/{{$place->thumbnail}}" alt="">
 				</div>

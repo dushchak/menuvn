@@ -18,7 +18,7 @@ use App\Models\Ads;
         'coins_before',
         'operation_sum',
         'coins_after',
-        'operator_id',
+        'user_id',
         'typeoperation',
         'comment',
 */
@@ -38,6 +38,7 @@ class CoinsController extends Controller
 
     public function addCoins(Request $request, Places $place){
         //dd($request);
+        $idUser = Auth::user()->id;
 
         $lastpay = $place->coins()->orderBy('id','desc')->first('coins_after')   ; // залишок на рахунку в останній операції
         //dd($lastpay );
@@ -59,7 +60,7 @@ class CoinsController extends Controller
             'coins_before' => intval($coins_before),     // 0
             'operation_sum' => intval($sum),    // 10
             'coins_after' => $coins_before + $sum,      // before+sum
-            'operator_id' => Auth::user()->id,      // Auth::user->id
+            'user_id' => Auth::user()->id,      // Auth::user->id
             'typeoperation'=> "add",    // "add"
             'comment' => $comment,          // "поповнення"
         ]);
@@ -78,7 +79,8 @@ class CoinsController extends Controller
     }
 
     public function formNoAds (Places $place){
-        return view('formNoAds', ['place' => $place]  );
+        
+        return view('formNoAds', ['place' => $place,]  );
     }
 
     public function formUpPlace(Places $place){  
@@ -285,7 +287,7 @@ class CoinsController extends Controller
             'coins_before' => intval($coins_before),     // 0
             'operation_sum' => intval($sum),    // 10
             'coins_after' => $coins_before + $sum,      // before+sum
-            'operator_id' => Auth::user()->id,      // Auth::user->id
+            'user_id' => Auth::user()->id,      // Auth::user->id
             'typeoperation'=> $typeoperation,    // "add"
             'comment' => $comment,          // "поповнення"
         ]);

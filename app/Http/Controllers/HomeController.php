@@ -37,18 +37,22 @@ class HomeController extends Controller
     {
 
         $places = Auth::user()->places()->latest()->get();
+        $coins = Auth::user()->coins()->orderBy('id','desc')->first('coins_after');
+        if($coins){
+            $coin_sum = $coins->coins_after;
+        }
+        else {
+            $coin_sum = 0;
+        }
+       
+        //dd($coins);
+
         foreach($places as $place){
             $latestCoin = $place->coins()->orderBy('id','desc')->first('coins_after'); 
-            if($latestCoin){  
-                $place->coins=$latestCoin->coins_after;
-            }
-            else{
-                $place->coins=0;
-            }
         }
         //dd($places);
 
-        return view('home', ['places'=> $places]);
+        return view('home', ['places'=> $places, 'coins'=>$coin_sum ]);
     }
 
     public function formAddPlace(){

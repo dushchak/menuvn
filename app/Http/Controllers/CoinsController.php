@@ -70,25 +70,91 @@ class CoinsController extends Controller
     }
 
 
-
+    private function userCoins(){
+        $coins = Auth::user()->coins()->orderBy('id','desc')->first('coins_after');
+        if($coins){
+            $coin_sum = $coins->coins_after;
+        }
+        else {
+            $coin_sum = 0;
+        }
+        return $coin_sum;
+    }
 
     public function formBuyAds (Places $place){
-        //dd($place);
+        $coin_sum = $this->userCoins();
 
-        return view('formBuyAds', ['place' => $place]  );
+        return view('formBuyAds', ['place' => $place,'coins'=>$coin_sum]  );
     }
 
     public function formNoAds (Places $place){
+        $coin_sum = $this->userCoins();
         
-        return view('formNoAds', ['place' => $place,]  );
+        return view('formNoAds', ['place' => $place,'coins'=>$coin_sum]  );
     }
 
-    public function formUpPlace(Places $place){  
-        return view ('formUpPlace', ['place'=>$place]);
+    public function formUpPlace(Places $place){
+        $coin_sum = $this->userCoins();  
+        return view ('formUpPlace', ['place'=>$place,'coins'=>$coin_sum]);
     }
 
 
+    public function tariffs(Request $request, Places $place){
+        switch($request->tariff){
+            case 'noAds1m':
+                $result = $this->payNoAds($place,'m1');
+                break;
+            case 'noAds12m':
+                $result = $this->payNoAds($place,'m12');
+                break;
+            default:
+                dd('noone tariff selected');
+                break;    
+        }
+        if($result=='nomoney')
+            return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
+        else{
+            return redirect()->route('home');
+        }
 
+        
+    }
+
+
+    private function payNoAds(Places $place, $period ){
+
+        switch ($period) {
+            case 'm1':
+                $sum = -5;  //  ціна за 12міс noAds
+                $comment = "1М noAds ".$place->name;
+                $period = "m1";
+                break;
+            case 'm12':
+                $sum = -49;   // ціна за 12міс noAds
+                $comment = "12М noAds ".$place->name;
+                $period = "m12";
+                break;
+            default:
+                dd("Error value 'period'"); // tyt redirect to error page!!!!!!!!!!!!!!!!!!!
+                //redirect()->;
+                break;
+        }
+        
+    
+        $typeoperation = "buyNoAds";
+        //dd($place, $sum, $typeoperation, $comment,);
+
+        $result = $this->pay($place, $sum, $typeoperation, $comment); // Спочатку!! ПЕРЕВІРКА и списание монет
+
+        if($result == 'nomoney'){
+            return 'nomoney';
+        }
+        else{
+            $this->storeDate($place, 'noads', $period); // до якої дати буде діяти  
+        }
+
+        
+    }
 
 
     public function payPromo(Request $request, Places $place ){
@@ -128,42 +194,7 @@ class CoinsController extends Controller
     }
 
 
-    public function payNoAds(Request $request, Places $place ){
-        switch ($request->period) {
-            case 'm1':
-                $sum = -10;                    // ціна за місяць рекламних постерів
-                $comment = "1М noAds ".$place->name;
-                $period = "m1";
-                break;
-            case 'm6':
-                $sum = -55;                    // ціна за 6місяць рекламних постерів
-                $comment = "6М noAds ".$place->name;
-                $period = "m6";
-                break;
-            case 'm12':
-                $sum = -90;                    // ціна за 12місяць рекламних постерів
-                $comment = "12М noAds ".$place->name;
-                $period = "m12";
-                break;
-            default:
-                dd("Error value 'period'"); // tyt redirect to error page!!!!!!!!!!!!!!!!!!!
-                //redirect()->;
-                break;
-        }
-       
-        $typeoperation = "buyNoAds";
-        //dd($place, $sum, $typeoperation, $comment,);
 
-        $result = $this->pay($place, $sum, $typeoperation, $comment); // Спочатку!! ПЕРЕВІРКА и списание монет
-        if($result == 'nomoney'){
-            return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
-        }
-        else{
-            $this->storeDate($place, 'noads', $period); // до якої дати буде діяти
-        }
-
-        return redirect()->route('home');
-    }
 
     public function upTop(Request $request, Places $place ){
         switch ($request->period) {
@@ -192,6 +223,8 @@ class CoinsController extends Controller
 
         $result = $this->pay($place, $sum, $typeoperation, $comment); // операції з монетами
         if($result == 'nomoney'){
+
+            return redirect()->route('coins.nocoins');
             return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
         }
         else{
@@ -223,7 +256,7 @@ class CoinsController extends Controller
                 $field = 'positionto';         // name table column
                 break;
             default:
-                dd('Error: 159 $typepayment'); // error page
+                //dd('Error: 159 $typepayment'); // error page
                 break;
         }
 
@@ -231,9 +264,7 @@ class CoinsController extends Controller
             case 'm1':
                 $timeper = "+ 1 month";
                 break;
-            case 'm6':
-                $timeper = "+ 6 month";
-                break;
+
             case 'm12':
                 $timeper = "+ 12 month";
                 break;
@@ -271,10 +302,13 @@ class CoinsController extends Controller
     private function pay (Places $place, $sum, $typeoperation, $comment) {
         //dd($place, $sum, $typeoperation, $comment,);
 
-        $lastpay = $place->coins()->orderBy('id','desc')->first('coins_after')   ; // залишок на рахунку в останній операції
+        //$lastpay = $place->coins()->orderBy('id','desc')->first('coins_after')   ; // залишок на рахунку в останній операції
+        $lastpay = Auth::user()->coins()->orderBy('id','desc')->first('coins_after');
         //dd($lastpay);
-        if($lastpay == null || $lastpay->coins_after+$sum <= 0){
+        if($lastpay == null || $lastpay->coins_after+$sum < 0){
+            //dd('nomoney');
             return 'nomoney'; // flag to show "noMoney" page
+
         }
         else{
             $coins_before = $lastpay->coins_after;

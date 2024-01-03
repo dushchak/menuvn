@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Places;
+use App\Models\User;
 
 class Coins extends Model
 {
@@ -20,7 +21,11 @@ class Coins extends Model
         'comment',
     ];
 
-    public function oneplace(){
-        return $this->belongsTo(Places::class);
+    // public function oneplace(){
+    //     return $this->belongsTo(Places::class);
+    // }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

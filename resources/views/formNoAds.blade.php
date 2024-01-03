@@ -4,11 +4,13 @@
 
 @section('main')
 <div class="container">
-	<h1>Відключити рекламу: {{$place->name}}</h1>
-	<p>Підключіть показ вашої реклами на сторінках Menu.vn.ua. Ви можете показувати цільовій аудиторії ваші оголошення, розкажіть про ваші знижки та акційні пропозиції</p>
+	<h1>Тарифи для {{$place->name}}</h1>
 	
-	<p></p>
+	
+	<h3>Рахунок: ${{ @$coins }}</h3>
 
+	<form action="{{ route('coins.tariffs', $place) }}" method="POST" >
+	@csrf
 	<table class="promo_table">
 		<tr>
 			<th>Тариф</th>
@@ -42,31 +44,51 @@
 		<tr>
 			<td>Місяць</td>
 			<td>0</td>
-			<td>$ 5</td>
-			<td>$ 15</td>
-			<td>$ 25</td>
+			<td>$ 5 
+				<br>
+				<input type="radio" id="contactChoice1" name="tariff" value="noAds1m" checked />
+			</td>
+			<td>$ 15
+			<br>
+				<input type="radio" id="contactChoice1" name="tariff" value="noAds1m"  /></td>
+			<td>$ 25
+			<br>
+				<input type="radio" id="contactChoice1" name="tariff" value="noAds1m"  /></td>
 		</tr>
 		<tr>
 			<td>Рік</td>
 			<td>0</td>
-			<td>$ 49 (-18%)</td>
-			<td>$ 139 (-23%)</td>
-			<td>$ 199 (-33%)</td>
+			<td>$ 49 (-18%)
+			<br>
+				<input type="radio" id="contactChoice1" name="tariff" value="noAds1m"  /></td>
+			<td>$ 139 (-23%)
+			<br>
+				<input type="radio" id="contactChoice1" name="tariff" value="noAds1m"  /></td>
+			<td>$ 199 (-33%)
+			<br>
+				<input type="radio" id="contactChoice1" name="tariff" value="noAds1m"  /></td>
 		</tr>
 		<tr>
 			<td></td>
-			<td></td>
-			<td></td>
+			<td>
+				
+
+			</td>
+			<td>
+				<input type="submit" class="btn btn-primary" value="Оформити">
+			</td>
 			<td></td>
 			<td></td>
 		</tr>
 	</table>
 
+	</form>
+
 	<!-- Buy Me a Coffee Please!  -->
 	<a href="https://www.buymeacoffee.com/menu.vn.ua"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=menu.vn.ua&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
 
 
-<form action="{{ route('coins.noads1m', $place) }}" method="POST" >
+<form action="{{ route('coins.tariffs', $place) }}" method="POST" >
 	@csrf
 	<div class="form-group">
 		<p>На який час відключити рекламу в Меню:</p>

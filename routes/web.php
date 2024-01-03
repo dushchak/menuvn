@@ -94,7 +94,7 @@ Route::get('/myads/places', [App\Http\Controllers\AdsController::class, 'selectP
 
 // Coins
 
-Route::post('/wallet/nocoins/{place}', [App\Http\Controllers\CoinsController::class, 'pageNoCoins'])->name('coins.nocoins');
+//Route::post('/wallet/nocoins/', [App\Http\Controllers\CoinsController::class, 'pageNoCoins'])->name('coins.nocoins');
 Route::get('/wallet/addForm/{place}', [App\Http\Controllers\CoinsController::class, 'formAddConis'])->name('coins.formAdd');
 Route::post('/wallet/add/{place}', [App\Http\Controllers\CoinsController::class, 'addCoins'])->name('coins.add'); // добавить монет
 
@@ -103,7 +103,7 @@ Route::get('/wallet/buyads/{place}', [App\Http\Controllers\CoinsController::clas
 Route::post('/wallet/payads/{place}', [App\Http\Controllers\CoinsController::class, 'payPromo'])->name('coins.payads')->middleware('can:updatePlace,place');
 
 Route::get('/wallet/formnoads/{place}', [App\Http\Controllers\CoinsController::class, 'formNoAds'])->name('coins.formNoAds')->middleware('can:updatePlace,place') ;
-Route::post('/wallet/noads/{place}', [App\Http\Controllers\CoinsController::class, 'payNoAds'])->name('coins.noads1m')->middleware('can:updatePlace,place');
+Route::post('/wallet/noads/{place}', [App\Http\Controllers\CoinsController::class, 'tariffs'])->name('coins.tariffs');//->middleware('can:updatePlace,place');
 
 Route::get('/wallet/formup/{place}', [App\Http\Controllers\CoinsController::class, 'formUpPlace'])->name('coins.formUp')->middleware('can:updatePlace,place');
 

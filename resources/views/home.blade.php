@@ -4,6 +4,9 @@
 
 @section ('main')
 <h1 class="icon_heart-solid">Мої заклади</h1>
+
+<h3>Рахунок: ${{ @$coins }}</h3>
+
 @if(count ($places) > 0)
 
     @foreach ($places as $place)

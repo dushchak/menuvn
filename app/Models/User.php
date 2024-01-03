@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\Places;
+use App\Models\Coins;
 
 class User extends Authenticatable
 {
@@ -53,6 +54,10 @@ class User extends Authenticatable
 
     public function places(){
         return $this->hasMany(Places::class); // звязок "один -> багато"
+    }
+
+    public function coins(){
+        return $this->hasMany(Coins::class); // звязок "один -> багато"
     }
 
     public function isAdmin(): bool{

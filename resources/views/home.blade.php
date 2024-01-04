@@ -73,23 +73,43 @@
             <div class="place__actions">
                 @auth
                 <div class="pay-actions">
-                    <p><a class="icon_toggle-on " href="{{ route('coins.formNoAds', $place->id)}}" title="Відключити рекламу в меню закладу"> Реклама в меню</a>   <br>
-                    @if(true)
-
-                    @else
-                        БЕЗ РЕКЛАМИ до: {{ $place->noadsto }}
-                    @endif
-                    </p>
-
-                    <p><a class="icon_toggle-off" href="{{ route('placeAds', $place->id) }}" title="Показувати Промо оголошення"> Ваші Промо-Акції</a><br>
-                        @if(false)
-                            АКТИВОВАНО до: {{ $place->adsto }}
-                        @else
-                            
-                        @endif
-                    </p>
                     
-                    <p><a class="icon_toggle-off" href="{{ route('coins.formUp', $place->id)}}" title="Розмістити в ТОП5 білого списку"> розміщення в ТОП5</a></p>
+                    @if($place->tarif['noadsto'])
+                        <p class="green_element"><a class="icon_toggle-off " href="{{ route('coins.formNoAds', $place->id)}}" title="Відключити рекламу в меню закладу"> Реклама в меню("Start")</a>
+                            <br>
+                       Відключено до: {{ $place->noadsto }}
+                        </p>
+                    @else
+                        <p><a class="icon_toggle-on " href="{{ route('coins.formNoAds', $place->id)}}" title="Відключити рекламу в меню закладу"> Реклама в меню</a>
+                        </p>
+                    @endif
+                    
+
+                   
+                        @if($place->tarif['adsto'])
+                            <p class="green_element">
+                                <a class="icon_toggle-on" href="{{ route('placeAds', $place->id) }}" title="Показувати Промо оголошення"> Ваші Промо-Акції("Standart")</a>
+                                <br>
+                            АКТИВОВАНО до: {{ $place->adsto }}
+                            </p>
+                        @else
+                            <p><a class="icon_toggle-off" href="{{ route('placeAds', $place->id) }}" title="Показувати Промо оголошення"> Ваші Промо-Акції</a><br>
+                            </p>
+                        @endif
+                    
+                    
+                    
+                        @if($place->tarif['positionto'])
+                            <p class="green_element">
+                                <a class="icon_toggle-on" href="{{ route('coins.formUp', $place->id)}}" title="Розмістити в ТОП5 білого списку"> розміщення в ТОП5("Premium")</a>
+                            <br>
+                            АКТИВОВАНО до: {{ $place->positionto }}
+                            </p>
+                        @else
+                            <p><a class="icon_toggle-off" href="{{ route('coins.formUp', $place->id)}}" title="Розмістити в ТОП5 білого списку"> розміщення в ТОП5</a>
+                            </p>
+                        @endif
+                    
                 </div>
                 @endauth
             </div>    

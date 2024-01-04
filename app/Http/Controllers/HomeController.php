@@ -44,13 +44,58 @@ class HomeController extends Controller
         else {
             $coin_sum = 0;
         }
-       
-        //dd($coins);
 
         foreach($places as $place){
             $latestCoin = $place->coins()->orderBy('id','desc')->first('coins_after'); 
+            try{
+                $now  = new DateTimeImmutable();  //obj "now"
+                if($place->noadsto != null){
+                    $payed_to = new DateTimeImmutable($place->noadsto);  //obj "2023-01-01"
+                    if ($payed_to < $now){
+                        $tarif['noadsto'] = false;
+                    }
+                    else{
+                        $tarif['noadsto'] = true;
+                    }
+                }
+                else{
+                    $tarif['noadsto'] = false;
+                }
+
+                if($place->adsto != null){
+                    $payed_to = new DateTimeImmutable($place->adsto);  //obj "2023-01-01"
+                    if ($payed_to < $now){
+                        $tarif['adsto'] = false;
+                    }
+                    else{
+                        $tarif['adsto'] = true;
+                    }
+                }
+                else{
+                    $tarif['adsto'] = false;
+                }
+
+                if($place->positionto != null){
+                    $payed_to = new DateTimeImmutable($place->positionto);  //obj "2023-01-01"
+                    if ($payed_to < $now){
+                        $tarif['positionto'] = false;
+                    }
+                    else{
+                        $tarif['positionto'] = true;
+                    }
+                }
+                else{
+                    $tarif['positionto'] = false;
+                }
+            }
+            catch(Exception $e){
+                echo 'Выброшено исключение: ',  $e->getMessage(), "\n";
+            }
+            $place->tarif=$tarif;
         }
-        //dd($places);
+
+
+        //dd($place->tarif['noadsto']);
 
         return view('home', ['places'=> $places, 'coins'=>$coin_sum ]);
     }
@@ -471,7 +516,7 @@ class HomeController extends Controller
 
     // buymeacoffe
     // /bmac/pay/aaa 
-    public function pay5usd (){
+    public function payBMAC ($sum){
         //dd($request);
         $idUser = Auth::user()->id;
 
@@ -485,8 +530,7 @@ class HomeController extends Controller
             $coins_before = $lastpay->coins_after;
         }
         
-        $sum = 5;
-        $comment = "+ $5 bmac";
+        $comment = "+ $".$sum." bmac";
 
         //dd($coins_before, $sum);
 
@@ -503,6 +547,31 @@ class HomeController extends Controller
         ]);
         $coins->save();
 
+        
+    }
+
+    public function pay5usd(){
+        $this->payBMAC(5);
+        return redirect()->route('home');
+    }
+
+    public function pay15usd(){
+        $this->payBMAC(16);
+        return redirect()->route('home');
+    }
+
+    public function pay50usd(){
+        $this->payBMAC(50);
+        return redirect()->route('home');
+    }
+
+    public function pay100usd(){
+        $this->payBMAC(100);
+        return redirect()->route('home');
+    }
+
+    public function pay200usd(){
+        $this->payBMAC(200);
         return redirect()->route('home');
     }
 

@@ -110,8 +110,17 @@ Route::get('/wallet/formup/{place}', [App\Http\Controllers\CoinsController::clas
 Route::post('/wallet/storeUp/{place}', [App\Http\Controllers\CoinsController::class, 'upTop'])->name('coins.storeUp')->middleware('can:updatePlace,place');
 
 /// BuyMeACoffe payment 
-/// HomeController (auth) 
-Route::get('/bmac/pay/aaa', [App\Http\Controllers\HomeController::class, 'pay5usd'])->name('pay5')->middleware('auth');
+/// HomeController (auth)
+// RLW7bED5qs2sC5Bw4m7 
+Route::get('/bmac/aaa', [App\Http\Controllers\HomeController::class, 'pay5usd'])->name('bmac5')->middleware('auth');
+// xCGtr8PXc55TEZkpyrX
+Route::get('/bmac/bbb', [App\Http\Controllers\HomeController::class, 'pay15usd'])->name('bmac15')->middleware('auth');
+// MrkZt2hW3j3zfKCu6RC
+Route::get('/bmac/ccc', [App\Http\Controllers\HomeController::class, 'pay50usd'])->name('bmac50')->middleware('auth');
+// 3c9rXHUXjp9KFKfscVy
+Route::get('/bmac/ddd', [App\Http\Controllers\HomeController::class, 'pay100usd'])->name('bmac100')->middleware('auth');
+// QbJ4qaGCqqkE4DGCZBW
+Route::get('/bmac/eee', [App\Http\Controllers\HomeController::class, 'pay200usd'])->name('bmac200')->middleware('auth');
 
 
 // Admin

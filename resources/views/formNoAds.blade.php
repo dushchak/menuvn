@@ -46,27 +46,27 @@
 			<td>0</td>
 			<td>$ 5 
 				<br>
-				<input type="radio" id="contactChoice1" name="tariff" value="noAds1m" checked />
+				<input type="radio" id="contactChoice1" name="tariff" value="start1m" checked />
 			</td>
 			<td>$ 15
 			<br>
-				<input type="radio" id="contactChoice1" name="tariff" value="noAds1m"  /></td>
+				<input type="radio" id="contactChoice1" name="tariff" value="standart1m"  /></td>
 			<td>$ 25
 			<br>
-				<input type="radio" id="contactChoice1" name="tariff" value="noAds1m"  /></td>
+				<input type="radio" id="contactChoice1" name="tariff" value="premium1m"  /></td>
 		</tr>
 		<tr>
 			<td>Рік</td>
 			<td>0</td>
 			<td>$ 49 (-18%)
 			<br>
-				<input type="radio" id="contactChoice1" name="tariff" value="noAds1m"  /></td>
+				<input type="radio" id="contactChoice1" name="tariff" value="start12m"  /></td>
 			<td>$ 139 (-23%)
 			<br>
-				<input type="radio" id="contactChoice1" name="tariff" value="noAds1m"  /></td>
+				<input type="radio" id="contactChoice1" name="tariff" value="standart12m"  /></td>
 			<td>$ 199 (-33%)
 			<br>
-				<input type="radio" id="contactChoice1" name="tariff" value="noAds1m"  /></td>
+				<input type="radio" id="contactChoice1" name="tariff" value="premium12m"  /></td>
 		</tr>
 		<tr>
 			<td></td>

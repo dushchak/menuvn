@@ -99,144 +99,126 @@ class CoinsController extends Controller
     }
 
 
+
+
+
+
+
+
+
+
+
+
     public function tariffs(Request $request, Places $place){
         switch($request->tariff){
-            case 'noAds1m':
-                $result = $this->payNoAds($place,'m1');
+            case 'start1m':
+                $result = $this->pay($place, -5, "start1m", "1m ".$place->name);
+                if($result){
+                    $setNoAds = $this->setNoAds($place,'m1'); // places.
+                    return redirect()->route('home');
+                }
+                else{
+                    return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
+                }
                 break;
-            case 'noAds12m':
-                $result = $this->payNoAds($place,'m12');
+            case 'start12m':
+                $result = $this->pay($place, -49, "start1m", "12m ".$place->name);
+                if($result){
+                    $setNoAds = $this->setNoAds($place,'m12'); // places.
+                    return redirect()->route('home');
+                }
+                else{
+                    return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
+                }
+                break;
+            case 'standart1m':
+                $result = $this->pay($place, -15, "standart1m", "1m ".$place->name);
+                if($result){
+                    $setNoAds = $this->setNoAds($place,'m1'); // places.
+                    $setPromo = $this->addPromo($place,'m1'); // places.
+                    return redirect()->route('home');
+                }
+                else{
+                    return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
+                }
+                break;
+            case 'standart12m':
+                $result = $this->pay($place, -139, "standart12m", "12m ".$place->name);
+                if($result){
+                    $setNoAds = $this->setNoAds($place,'m12'); // places.
+                    $setPromo = $this->addPromo($place,'m12'); // places.
+                    return redirect()->route('home');
+                }
+                else{
+                    return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
+                }
+                break;
+            case 'premium1m':
+                $result = $this->pay($place, -25, "premium1m", "1m ".$place->name);
+                if($result){
+                    $setNoAds = $this->setNoAds($place,'m1'); // places.
+                    $setPromo = $this->addPromo($place,'m1'); // places.
+                    $setPromo = $this->upTop($place,'m1'); // places.
+
+                    return redirect()->route('home');
+                }
+                else{
+                    return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
+                }
+                break;
+            case 'premium12m':
+                $result = $this->pay($place, -139, "premium12m", "12m ".$place->name);
+                if($result){
+                    $setNoAds = $this->setNoAds($place,'m12'); // places.
+                    $setPromo = $this->addPromo($place,'m12'); // places.
+                    $setPromo = $this->upTop($place,'m12'); // places.
+                    return redirect()->route('home');
+                }
+                else{
+                    return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
+                }
                 break;
             default:
                 dd('noone tariff selected');
                 break;    
-        }
-        if($result=='nomoney')
-            return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
-        else{
-            return redirect()->route('home');
-        }
-
-        
+        }    
     }
 
 
-    private function payNoAds(Places $place, $period ){
-
-        switch ($period) {
-            case 'm1':
-                $sum = -5;  //  ціна за 12міс noAds
-                $comment = "1М noAds ".$place->name;
-                $period = "m1";
-                break;
-            case 'm12':
-                $sum = -49;   // ціна за 12міс noAds
-                $comment = "12М noAds ".$place->name;
-                $period = "m12";
-                break;
-            default:
-                dd("Error value 'period'"); // tyt redirect to error page!!!!!!!!!!!!!!!!!!!
-                //redirect()->;
-                break;
+    private function setNoAds(Places $place, $period ){
+        try{
+            if(!empty($period)){
+                $this->storeDate($place, 'noads', $period); // до якої дати буде діяти  
+            }
         }
-        
-    
-        $typeoperation = "buyNoAds";
-        //dd($place, $sum, $typeoperation, $comment,);
-
-        $result = $this->pay($place, $sum, $typeoperation, $comment); // Спочатку!! ПЕРЕВІРКА и списание монет
-
-        if($result == 'nomoney'){
-            return 'nomoney';
-        }
-        else{
-            $this->storeDate($place, 'noads', $period); // до якої дати буде діяти  
-        }
-
-        
+        catch(Exception $e){
+                echo 'Выброшено исключение: ',  $e->getMessage(), "\n";
+            }
     }
 
 
-    public function payPromo(Request $request, Places $place ){
-        switch ($request->period) {
-            case 'm1':
-                $sum = -10;                    // ціна за місяць рекламних постерів
-                $comment = "1М Промо ".$place->name;
-                $period = "m1";
-                break;
-            case 'm6':
-                $sum = -55;                    // ціна за 6місяць рекламних постерів
-                $comment = "6М Промо ".$place->name;
-                $period = "m6";
-                break;
-            case 'm12':
-                $sum = -90;                    // ціна за 12місяць рекламних постерів
-                $comment = "12М Промо ".$place->name;
-                $period = "m12";
-                break;
-            default:
-                dd("Error value 'period'"); // tyt redirect to error page!!!!!!!!!!!!!!!!!!!
-                //redirect()->;
-                break;
+    private function addPromo(Places $place, $period ){
+        try{
+            if(!empty($period)){
+                $this->storeDate($place, 'promoto', $period); // до якої дати буде діяти  
+            }
         }
-
-        $typeoperation = "promoto";
-
-        $result = $this->pay($place, $sum, $typeoperation, $comment);
-        if($result == 'nomoney'){
-            return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
-        }
-        else {
-            $this->storeDate($place, $typeoperation, $period);
-        }
-
-        return redirect()->route('home');
+        catch(Exception $e){
+                echo 'Выброшено исключение: ',  $e->getMessage(), "\n";
+            }
     }
 
-
-
-
-    public function upTop(Request $request, Places $place ){
-        switch ($request->period) {
-            case 'm1':
-                $sum = -10;                    // ціна за місяць рекламних постерів
-                $comment = "1М ТОП ".$place->name;
-                $period = "m1";
-                break;
-            case 'm6':
-                $sum = -55;                    // ціна за 6місяць рекламних постерів
-                $comment = "6М ТОП ".$place->name;
-                $period = "m6";
-                break;
-            case 'm12':
-                $sum = -90;                    // ціна за 12місяць рекламних постерів
-                $comment = "12М ТОП ".$place->name;
-                $period = "m12";
-                break;
-            default:
-                dd("Error value 'period'"); // tyt redirect to error page!!!!!!!!!!!!!!!!!!!
-                //redirect()->;
-                break;
+    private function upTop(Places $place, $period ){
+        try{
+            if(!empty($period)){
+                $this->storeDate($place, 'toplist', $period); // до якої дати буде діяти
+                $place->position = 1;
+                $place->save();  
+            }
         }
-
-        $typeoperation = "toplist";
-
-        $result = $this->pay($place, $sum, $typeoperation, $comment); // операції з монетами
-        if($result == 'nomoney'){
-
-            return redirect()->route('coins.nocoins');
-            return view('pageNoCoins', ['place' => $place]); // сторінка "Недостатньо коштів"
-        }
-        else{
-            $store = $this->storeDate($place, $typeoperation, $period);  // запис кінцевої дати послуги 
-            //dd($store, $typeoperation, $period);
-            $place->position = 1;
-            $place->save();
-        
-        }
-
-        return redirect()->route('home');
-
+        catch(Exception $e){
+                echo 'Выброшено исключение: ',  $e->getMessage(), "\n";
+            }
     } 
 
     //
@@ -302,13 +284,12 @@ class CoinsController extends Controller
     private function pay (Places $place, $sum, $typeoperation, $comment) {
         //dd($place, $sum, $typeoperation, $comment,);
 
-        //$lastpay = $place->coins()->orderBy('id','desc')->first('coins_after')   ; // залишок на рахунку в останній операції
         $lastpay = Auth::user()->coins()->orderBy('id','desc')->first('coins_after');
         //dd($lastpay);
+
         if($lastpay == null || $lastpay->coins_after+$sum < 0){
             //dd('nomoney');
-            return 'nomoney'; // flag to show "noMoney" page
-
+            return false; // flag to show "noMoney" page
         }
         else{
             $coins_before = $lastpay->coins_after;
@@ -327,6 +308,7 @@ class CoinsController extends Controller
         ]);
         $result= $place->coins()->save($coins);
         //dd($result);
+        return $result;
     }
 
 

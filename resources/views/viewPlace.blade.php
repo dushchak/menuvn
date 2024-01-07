@@ -45,6 +45,9 @@
             @if($place->fb != null)
                 <div class="place__phone1 icon_facebook">  {{ $place->fb }}</div><!--  -->@endif
 
+                
+            <div><a class="btn_m" href="{{ route('viewMenu', $place->id) }}">Меню</a></div>
+
 
            
              @can('updatePlace', $place)

@@ -227,6 +227,10 @@ class PlacesController extends Controller
             $item->place = Places::find($item->places_id) ;
             $adverts[] = $item; 
         }
+        // if no one advert
+        if(empty($adverts)){
+            $adverts=array();    
+        }
         //dd($adverts);
         return view ('allAds', ['ads'=>$adverts]);
     }

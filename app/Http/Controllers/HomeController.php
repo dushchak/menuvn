@@ -46,7 +46,7 @@ class HomeController extends Controller
         }
 
         foreach($places as $place){
-            $latestCoin = $place->coins()->orderBy('id','desc')->first('coins_after'); 
+            
             try{
                 $now  = new DateTimeImmutable();  //obj "now"
                 if($place->noadsto != null){
@@ -110,7 +110,7 @@ class HomeController extends Controller
                 'name' =>'required|string|max:100|',
                 'adress' =>'required|string|min:7|max:100|',
                 'workhours'=>'required|alpha_dash|min:3|max:6|',
-                'description'=>'required|string|min:200|max:1000|',
+                'description'=>'required|string|min:50|max:1000|',
                 'manager'=>'required|string|min:10|max:16|',
                 'viber'=>'required|string|min:10|max:16|',
                 'telegram'=>'nullable|string|min:3|max:16|',
@@ -141,7 +141,7 @@ class HomeController extends Controller
 
                 'description.required'=>'Додайте інформацію "Про заклад"',
                 'description.string'=>'"Про заклад" - це строка',
-                'description.min'=>'"Про заклад" - збільшіть опис до 200 знаків',
+                'description.min'=>'"Про заклад" - збільшіть опис від 50 знаків',
                 'description.max'=>'"Про заклад" - зменшіть опис хоча б до 1000 знаків',
 
                 'manager.string'=>'"Контакт менеджера" - це строка',

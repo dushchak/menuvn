@@ -16,10 +16,9 @@ return new class extends Migration
             $table->unsignedSmallInteger('coins_before')->default(0);   # 1000
             $table->smallInteger('operation_sum');                      # -200; 150(+150)   
             $table->unsignedSmallInteger('coins_after');                # 800 
-            $table->unsignedSmallInteger('user_id');                # 1 // admin, manager, liqpay 
             $table->string('typeoperation');                            # поповн, за QR, за Топ, promo
             $table->string('comment');
-            //$table->foreignId('places_id')->constrained();               # coins.places_id
+            $table->unsignedSmallInteger('places_id');
             $table->foreignId('user_id')->constrained();               # OWNER COINS, id user
             $table->timestamps();                                       # create_at
         });

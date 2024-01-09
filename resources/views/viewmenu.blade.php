@@ -226,29 +226,29 @@
         </div>
 
         @if($i % 3 === 0)
-            <div class="advert">
-                @if(!empty($ads[$i]->img))
+            @if(!empty($ads[$i]->img))
+                <div class="advert">
                     <img class="advert__image" src="/storage/images/ads/{{ $ads[$i]->img }}" alt="" title="{{ $ads[$i]->description }}">
-                @endif
+                
 
-                <div class="advert__text">
-                    <a class="link_btn" href="{{ route('place.view', $ads[$i]->place->id) }}">{{ $ads[$i]->place->name }}</a> > 
-                    <a class="link_btn" href="{{ route('viewMenu', $ads[$i]->place->id) }}">Меню</a>
+                    <div class="advert__text">
+                        <a class="link_btn" href="{{ route('place.view', $ads[$i]->place->id) }}">{{ $ads[$i]->place->name }}</a> > 
+                        <a class="link_btn" href="{{ route('viewMenu', $ads[$i]->place->id) }}">Меню</a>
 
-                    <div class="advert__title">{{ $ads[$i]->title }}</div>
-                </div>
+                        <div class="advert__title">{{ $ads[$i]->title }}</div>
+                    </div>
 
-                <div class="advert__actions">
-                    <p>Реклама</p>
+                    <div class="advert__actions">
+                        <p>Реклама</p>
 
-                    @can('changeDish',$place)
-                    @auth
-                        <p><a class="icon_toggle-on place_promos_link" href="{{ route('coins.formNoAds', $place->id)}}" title="Відключити рекламу в меню закладу"> Відключити</a>
-                    @endauth
-                    @endcan
+                        @can('changeDish',$place)
+                        @auth
+                            <p><a class="icon_toggle-on place_promos_link" href="{{ route('coins.formNoAds', $place->id)}}" title="Відключити рекламу в меню закладу"> Відключити</a>
+                        @endauth
+                        @endcan
+                    </div> 
                 </div> 
-            </div> 
-
+            @endif
 
         @endif
             

@@ -147,8 +147,8 @@ class PlacesController extends Controller
                 }
             }
         }
-
         //dd($groups);
+
 
         return view ('viewmenu', ['menu'=>$menu, 'place'=>$place, 'groups'=>$groups , 'ads'=>$ads] ); // вивід dishes
 

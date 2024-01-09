@@ -133,6 +133,11 @@ Route::get('/test/{user}', [App\Http\Controllers\HomeController::class, 'testRol
 */
 
 
+
+// pages Faq, Rules, AboutUs
+Route::get('/aboutus', function(){
+	return view('aboutus') })->name('aboutus');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

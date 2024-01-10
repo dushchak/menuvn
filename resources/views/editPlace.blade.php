@@ -123,9 +123,9 @@
 			<div class="form__line">
 				<label for="txtDelivery">Пароль Wi-Fi</label>
 				@if($errors->has('wifipass'))
-					<input type="text" name="wifipass" id="txtName" class="form-control error_field" placeholder="pass_wifi135">
+					<input type="text" name="wifipass" id="txtName" class="form-control error_field" placeholder="pass_wifi135" value="{{ $place->wifipass  }}">
 				@else
-					<input type="text" name="wifipass" id="txtName" class="form-control" placeholder="pass_wifi135">
+					<input type="text" name="wifipass" id="txtName" class="form-control" placeholder="pass_wifi135" value="{{ $place->wifipass  }}">
 				@endif
 				
 			</div>

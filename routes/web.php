@@ -136,7 +136,13 @@ Route::get('/test/{user}', [App\Http\Controllers\HomeController::class, 'testRol
 
 // pages Faq, Rules, AboutUs
 Route::get('/aboutus', function(){
-	return view('aboutus') })->name('aboutus');
+	return view('aboutus'); })->name('aboutus');
+// pages Faq, Rules, AboutUs
+Route::get('/rules', function(){
+	return view('rules'); })->name('rules');
+// pages Faq, Rules, AboutUs
+Route::get('/faqs', function(){
+	return view('faqs'); })->name('faqs');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

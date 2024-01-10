@@ -728,6 +728,15 @@ background-size: 1.25rem;
 }
 
 
+/* Pages, Rules, FAQs */
+.textinfo {
+	font-size: 1.2rem;
+}
+.textinfo h3 {padding: 10px, 0}
+.textinfo p {
+	padding: 20px;
+}
+
 
 
 

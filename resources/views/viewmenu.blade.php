@@ -17,7 +17,7 @@
 
 
 
-<h1>{{$place->name}}</h1>
+<h1>{{$place->name}} <br>  <span class="icon_phone-solid">{{ $place->phone1 }}</span></h1>
 
 
 <div class="place__menuinfo">  

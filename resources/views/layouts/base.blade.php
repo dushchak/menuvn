@@ -11,6 +11,10 @@
 	<link rel="stylesheet" href="{{asset('css/style.css')  }} ">
 	<link rel="stylesheet" href="{{asset('css/style_menu.css')  }} ">
 
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Nunito:ital,wght@0,200;0,400;1,900&family=Roboto&display=swap" rel="stylesheet">
+
 	
 
 </head>
@@ -61,10 +65,10 @@
 			<div class="container">
 				<h1>Вінницькі QR меню</h1>
 				<div class="contacts">
-					<p>(068) 379-79-74</p>
+					<p>Адмін: (068) 379-79-74</p>
 					<p>free@menu.vn.ua</p>
 					<p>Підписуйтесь: <a href="https://t.me/qr_menu_vn">Telegram</a></p>
-					<p>qrmenu.vn.ua</p>
+					
 
 				</div>
 				<div class="links">
@@ -77,7 +81,7 @@
 					<p><a href="{{ route('aboutus') }}">Про сервіс</a></p>
 					<p><a href="{{ route('rules') }}">Наші умови та правила</a></p>
 					<p><a href="{{ route('faqs') }}">ЧаПи (Часті питання)</a></p>
-					<p><a href="#">Підтримати проект - Донатом</a></p>
+					
 				</div>
 
 			</div>

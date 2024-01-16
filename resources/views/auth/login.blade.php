@@ -11,7 +11,7 @@
                     Реєстрація закладів харчування для створення електронного QR меню: 
                 </p>
                 <div class="register">
-                    <a href="{{ route('register') }}">Реєстрація</a>
+                    <a href="{{ route('register') }}" class="btn_m">Реєстрація</a>
                 </div>
                 <div class="card-header">{{ __('Вхід') }}</div>
 
@@ -61,7 +61,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn_m">
                                     {{ __('Вхід') }}
                                 </button>
 

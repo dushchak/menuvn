@@ -70,7 +70,8 @@
        </div>
 
 
-	<h1 style="color:{{ $qrstyle->headercolor }};">Меню "{{ $place->name }}"</h1>
+	<h1 style="color:{{ $qrstyle->headercolor }};"> {{ $place->name }} <br></h1>
+       <h3 style="color:{{ $qrstyle->headercolor }};">Меню</h3>
 	      @if($place->wifipass != null)
                 <div class="place__adress icon_wifi">Пароль WiFi: {{ $place->wifipass }}</div><!--  -->
             @endif

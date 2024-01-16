@@ -15,11 +15,14 @@ class PlacesController extends Controller
     //
     public function index(){
 
+        $now  = new DateTimeImmutable();  //obj "now"
+        $nowDate = $now->format('Y-m-d');
+
         // беремо рандомні 5закладів для Списку закладів
-        $topplaces = Places::inRandomOrder()->where('moderate', 1)->limit(5)->get();
+        $topplaces = Places::inRandomOrder()->where('moderate', 1)->where('positionto','>', $nowDate)->limit(5)->get();
         //dd($topplaces);
         
-        $places = Places::where('moderate', 1)->orderBy('position','desc')->get();
+        $places = Places::inRandomOrder()->where('moderate', 1)->orderBy('position','desc')->get();
         //$countAds = count ($places->ads()->latest()->get()); // підрахунок кількості Ads ресторана > Акції
         //dd($countAds);    
         return view ('index', ['places' => $places, 'topplaces'=>$topplaces]); // вивід таблиці закладів
@@ -32,15 +35,21 @@ class PlacesController extends Controller
 
     // перегляд меню
     public function viewMenu(Places $place) {
-        //dd($place->id);
+        $now  = new DateTimeImmutable();  //obj "now"
+        $payed_to = new DateTimeImmutable($place->noadsto);  //obj "2023-01-01"(db)
 
-        // беремо рандомні оголошення для меню
-        $ads = Ads::inRandomOrder()->limit(30)->get();
-        foreach($ads as $item){
-            $item->place = Places::find($item->places_id) ;
-            $adverts[] = $item; 
+        if($place->adsto == null || $payed_to < $now){
+            // беремо рандомні оголошення для меню
+            $ads = Ads::inRandomOrder()->limit(30)->get();
+            foreach($ads as $item){
+                $item->place = Places::find($item->places_id) ;
+                $adverts[] = $item; 
+            }
+            //dd($ads);
         }
-        //dd($ads);
+        else {  
+            $ads = [];
+        }
 
 
         // якщо заклад не відключено
@@ -220,46 +229,64 @@ class PlacesController extends Controller
 
     // Всі * ПРОМО оголошення, бо в AdsController перевіряється Auth 
     public function allAds () {
-        $ads = Ads::latest()->get();
+        $now  = new DateTimeImmutable();  //obj "now"
+        $nowDate = $now->format('Y-m-d');
+
+        $adsto_places = Places::where('moderate', 1)->where('adsto','>', $nowDate)->limit(400)->get();
+            //dd($adsto_places);
+
+        foreach($adsto_places as $place){
+            $ads = $place->ads()->latest()->get();
+
+            foreach($ads as $adv){
+                $adv->place = $place;
+                $allAds[]=$adv;    
+            }
+        }
+        if(!isset($allAds)){
+            $allAds=[];
+        }
+
+        //$ads = Ads::latest()->get();
         //dd($ads);
         
-        foreach($ads as $item){
-            $item->place = Places::find($item->places_id) ;
-            $adverts[] = $item; 
-        }
-        // if no one advert
-        if(empty($adverts)){
-            $adverts=array();    
-        }
-        //dd($adverts);
-        return view ('allAds', ['ads'=>$adverts]);
+        return view ('allAds', ['ads'=>$allAds]);
     }
 
+        //      /placeads/7 - всі оголошення 1 закладу
         public function placeAds(Places $place)
     {
-        $ads = $place->ads()->get();
+        $now  = new DateTimeImmutable();  //obj "now"
+        $payed_to = new DateTimeImmutable($place->adsto);
+
+        // перевірка чи є Підписка
+        if($place->adsto == null || $payed_to < $now){
+            $ads = [];
+            $tarif = false;
+        }
+        else {
+            $ads = $place->ads()->get();
+            $tarif = true;
+        }
+        
+        
 
         // перевірка чи є Підписка
         //$str_payed = "06-10-2023"; //test
 
-        try{
-            if($place->adsto != null){
-                $now  = new DateTimeImmutable();  //obj "now"
-                $payed_to = new DateTimeImmutable($place->adsto);  //obj "2023-01-01"(db)
-                if ($payed_to < $now){
-                    $tarif = false;
-                }
-                else{
-                    $tarif = true;
-                }
-            }
-            else{
-                $tarif = false;
-            }
-        }
-        catch(Exception $e){
-            echo 'Выброшено исключение: ',  $e->getMessage(), "\n";
-        }
+            // if($place->adsto != null){
+            //       //obj "2023-01-01"(db)
+            //     if ($payed_to < $now){
+            //         $tarif = false;
+            //     }
+            //     else{
+            //         $tarif = true;
+            //     }
+            // }
+            // else{
+            //     $tarif = false;
+            // }
+        
 
 ##        $new_payed = $promo_to->format('Y-m-d');
 

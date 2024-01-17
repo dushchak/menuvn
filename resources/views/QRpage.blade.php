@@ -96,6 +96,7 @@
               ->gradient(255, 0, 0, 0, 0, 255, 'diagonal')
               ->margin(10)
               ->errorCorrection('H')
+              /* ->format('png') */
               ->generate( $menuurl ); 
    
        !!}

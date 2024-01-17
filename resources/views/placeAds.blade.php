@@ -14,6 +14,7 @@
 <h1 class="icon_percent"> Промо-Акції: {{$place->name}}</h1>
 
 @auth
+    @can('newAdv', $place)
     <a class="btn_m" href="{{ route('ads.new', $place->id) }}">+ Нове оголошення</a>
 
     @if(count ($ads) > 0 && $tarif==true)
@@ -26,9 +27,12 @@
     @else
         <span>Розкажіть про Промо-Акції, знижки та спеціальні пропозиції! Підключіть тариф "Промо"(Standart)</span>  
     @endif
+
+    @endcan
 @endauth
 
 
+@can('newAdv', $place)
 @if(count ($ads) > 0)
     @foreach ($ads as $adv)
     <div class="promo">
@@ -52,4 +56,8 @@
     </div>
     @endforeach  
 @endif
+@endcan
+
+
+
 @endsection('main')

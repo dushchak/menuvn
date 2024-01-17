@@ -261,13 +261,13 @@ class PlacesController extends Controller
 
         // перевірка чи є Підписка
         if($place->adsto == null || $payed_to < $now){
-            $ads = [];
             $tarif = false;
         }
-        else {
-            $ads = $place->ads()->get();
+        else {  
             $tarif = true;
         }
+
+        $ads = $place->ads()->get();
         
         
 

@@ -110,20 +110,20 @@ class HomeController extends Controller
                 'name' =>'required|string|max:100|',
                 'adress' =>'required|string|min:7|max:100|',
                 'workhours'=>'required|alpha_dash|min:3|max:6|',
-                'description'=>'required|string|min:50|max:1000|',
+                'description'=>'required|string|min:20|max:1000|',
                 'manager'=>'required|string|min:10|max:16|',
                 'viber'=>'required|string|min:10|max:16|',
                 'telegram'=>'nullable|string|min:3|max:16|',
                 //'email'=>'required|email:rfc,dns,spoof|min:6|max:100|',
                 'sitplaces'=>'nullable|integer|max:10000|',
-                'delivery'=>'nullable|string|max:200|',
+                'delivery'=>'nullable|string|max:300|',
                 'wifipass'=>'nullable|string|max:30|',
                 'phone1'=>'required|min:10|max:16|',
                 'phone2'=>'nullable|string|min:10|max:16|',
                 'phone3'=>'nullable|string|min:10|max:16|',
                 'phone4'=>'nullable|string|min:10|max:16|',
-                'insta'=>'nullable|string|max:100|',
-                'facebook'=>'nullable|string|max:100|',
+                'insta'=>'nullable|string|max:300|',
+                'facebook'=>'nullable|string|max:300|',
                 'image_file' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ],
             [
@@ -141,7 +141,7 @@ class HomeController extends Controller
 
                 'description.required'=>'Додайте інформацію "Про заклад"',
                 'description.string'=>'"Про заклад" - це строка',
-                'description.min'=>'"Про заклад" - збільшіть опис від 50 знаків',
+                'description.min'=>'"Про заклад" - збільшіть опис від 20 знаків',
                 'description.max'=>'"Про заклад" - зменшіть опис хоча б до 1000 знаків',
 
                 'manager.string'=>'"Контакт менеджера" - це строка',
@@ -172,7 +172,7 @@ class HomeController extends Controller
 
                 //string|max:200|
                 'delivery.string'=>'"Доставка" - це строка',
-                'delivery.max'=>'"Доставка" - максимум 200 знаків',
+                'delivery.max'=>'"Доставка" - максимум 300 знаків',
 
                 // wifipass'=>'string|max:30|
                 'wifipass.string'=>'"WіFі пароль" - це строка',
@@ -291,20 +291,20 @@ class HomeController extends Controller
                 'name' =>'required|string|max:100|',
                 'adress' =>'required|string|min:7|max:100|',
                 'workhours'=>'required|alpha_dash|min:3|max:6|',
-                'description'=>'required|string|min:50|max:600|',
+                'description'=>'required|string|min:20|max:600|',
                 'manager'=>'required|string|min:10|max:16|',
                 'viber'=>'required|string|min:10|max:16|',
                 'telegram'=>'nullable|string|min:3|max:16|',
                 //'email'=>'required|email:rfc,dns,spoof|min:6|max:100|',
                 'sitplaces'=>'nullable|integer|max:10000|',
-                'delivery'=>'nullable|string|max:200|',
+                'delivery'=>'nullable|string|max:300|',
                 'wifipass'=>'nullable|string|max:30|',
                 'phone1'=>'required|min:10|max:16|',
                 'phone2'=>'nullable|string|min:10|max:16|',
                 'phone3'=>'nullable|string|min:10|max:16|',
                 'phone4'=>'nullable|string|min:10|max:16|',
-                'insta'=>'nullable|string|max:100|',
-                'fb'=>'nullable|string|max:100|',
+                'insta'=>'nullable|string|max:300|',
+                'fb'=>'nullable|string|max:300|',
                 'disabled'=>'required|integer|min:0|max:1',
                 'image_file' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ],
@@ -323,7 +323,7 @@ class HomeController extends Controller
 
                 'description.required'=>'Додайте інформацію "Про заклад"',
                 'description.string'=>'"Про заклад" - це строка',
-                'description.min'=>'"Про заклад" - збільшіть опис, від 50 знаків',
+                'description.min'=>'"Про заклад" - збільшіть опис, від 20 знаків',
                 'description.max'=>'"Про заклад" - зменшіть опис хоча б до 1000 знаків',
 
                 'manager.string'=>'"Контакт менеджера" - це строка',
@@ -354,7 +354,7 @@ class HomeController extends Controller
 
                 //string|max:200|
                 'delivery.string'=>'"Доставка" - це строка',
-                'delivery.max'=>'"Доставка" - максимум 200 знаків',
+                'delivery.max'=>'"Доставка" - максимум 300 знаків',
 
                 // wifipass'=>'string|max:30|
                 'wifipass.string'=>'"WіFі пароль" - це строка',
@@ -384,11 +384,11 @@ class HomeController extends Controller
 
                 // string|min:10|max:100|
                 'insta.string'=>'"Instagram" - це строка',
-                'insta.max'=>'"Instagram" - максимум 100 знаків',
+                'insta.max'=>'"Instagram" - максимум 300 знаків',
 
                 // string|min:4|max:100|
                 'fb.string'=>'"Facebook" - це строка',
-                'fb.max'=>'"Facebook" - максимум 100 знаків ',
+                'fb.max'=>'"Facebook" - максимум 300 знаків ',
 
                 //required|integer|min:0|max:1
                 'disabled.required'=>'disabled required',

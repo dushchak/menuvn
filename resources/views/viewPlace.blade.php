@@ -5,7 +5,7 @@
 @section ('main')
 
 <div class="bread_crumbs">
-        <a class="icon_star" href="http://127.0.0.1:8000/"> Білий список</a> >
+        <a class="icon_star" href="{{ route('index') }}"> Білий список</a> >
         <span class="bread_crumbs__page">{{ $place->name }}</span> >
         <a href="{{ route('viewMenu', $place->id) }}">Меню</a>
     

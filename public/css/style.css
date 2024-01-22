@@ -32,6 +32,9 @@ main {
 h1 {
     color: #F95A01;
 }
+h1 a {
+	 color: #F95A01;
+}
 
 
 h2 {
@@ -262,7 +265,7 @@ color: #F95A01;
 	justify-content: space-around;
 	padding: 20px 0;
 }
-.place__menuinfo > p {
+.place__menuinfo > p, a {
 	font-weight: bold;
 	color: #666;
 	padding: 5px;
@@ -812,7 +815,7 @@ background-size: 1.25rem;
 		width: 150px;
 	}
 	.place__menuinfo {
-		display: none;
+		/ * display: none; */
 	}
 }
 

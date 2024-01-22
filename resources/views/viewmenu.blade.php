@@ -6,7 +6,7 @@
 @section ('main')
 <div class="bread_crumbs">
     <span>
-        <a class="icon_star" href="http://127.0.0.1:8000/"> Білий список</a> >
+        <a class="icon_star" href="{{ route('index') }}"> Білий список</a> >
         <a href="{{ route('place.view', $place->id) }}">{{ $place->name }}</a> >
         <span class="bread_crumbs__page">Меню</span>
     </span>
@@ -17,7 +17,7 @@
 
 
 
-<h1>{{$place->name}} <br>  <span class="icon_phone-solid">{{ $place->phone1 }}</span></h1>
+<h1><a href="tel:{{ $place->phone1 }}">{{$place->name}} <br>  <span class="icon_phone-solid"> {{ $place->phone1 }}</span></a></h1>
 
 
 <div class="place__menuinfo">  
@@ -27,13 +27,13 @@
         <p class="place__adress icon_wifi"> {{ $place->wifipass }}</p>
     @endif
     <p class="place__delivery icon_truck-fast">  {{ $place->delivery }}</p>
-    <p class="place__adress icon_phone-solid">  {{ $place->phone1 }}</p>
+    <p class="place__adress icon_phone-solid"> <a href="tel:{{ $place->phone1 }}"> {{ $place->phone1 }}</a></p>
             @if($place->phone2 != null)
-                <p class="place__workhours icon_phone-solid"> {{ $place->phone2 }}</p><!--  -->@endif
+                <p class="place__workhours icon_phone-solid"><a href="tel:{{ $place->phone1 }}"> {{ $place->phone2 }}</a></p><!--  -->@endif
             @if($place->phone3 != null)
-                <p class="place__delivery icon_phone-solid"> {{ $place->phone3 }}</p><!--  -->@endif
+                <p class="place__delivery icon_phone-solid"><a href="tel:{{ $place->phone1 }}"> {{ $place->phone3 }}</a></p><!--  -->@endif
             @if($place->phone4 != null)
-                <p class="place__phone1 icon_phone-solid"> {{ $place->phone4 }}</p><!--  -->@endif
+                <p class="place__phone1 icon_phone-solid"><a href="tel:{{ $place->phone1 }}"> {{ $place->phone4 }}</a></p><!--  -->@endif
   
 </div>
 
@@ -44,6 +44,9 @@
         @auth
         <a class="btn_m icon_circle-plus" href="{{route('dish.add', $place->id) }}"> Додати страву</a>
         @endauth
+    </div>
+    <div class="add_pdf">
+        <!-- <a href="#">Завантажити PDF меню</a> -->
     </div>
 @endcan
 

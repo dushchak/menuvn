@@ -218,10 +218,10 @@
 
                     @can('changeDish',$place)
                     @auth
-                    <a class="icon_circle-up" href="{{ route('dish.up', $dish->id)  }}"></a>
-                    <a class="icon_circle-down" href="{{ route('dish.down', $dish->id)  }}"></a>
-                    <a class="icon_edit" href="{{ route('dish.editdish', $dish->id) }}"></a>
-                    <a class="icon_circle-xmark" href="{{ route('dish.formdeldish', $dish->id) }}"></a>                
+                    <a class="icon_circle-up" href="{{ route('dish.up', $dish->id)  }}" title="Up"></a>
+                    <a class="icon_circle-down" href="{{ route('dish.down', $dish->id)  }}" title="Down"></a>
+                    <a class="icon_edit" href="{{ route('dish.editdish', $dish->id) }}" title="Edit"></a>
+                    <a class="icon_circle-xmark" href="{{ route('dish.formdeldish', $dish->id) }}" title="Delete"></a>                
                     @endauth
                     @endcan
 

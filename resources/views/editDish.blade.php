@@ -35,20 +35,62 @@
 				<label for="dish_group">Розділ</label>
 				<select name="dishgroup" id="dish_group"  value="{{ $dish->dishgroup  }}">
 				  <!--Supplement an id here instead of using 'name'-->
-				  <option value="1" selected>Основне меню</option>
-				  <option value="2">Холодні закуски</option>
-				  <option value="3">Гарячі закуски</option>
-				  <option value="4">Перші страви</option>
-				  <option value="5">Гарніри</option>
-				  <option value="6">Салати</option>
-				  <option value="7">Десерт</option>
-				  <option value="8">Гарячі напої</option>
-				  <option value="9">Холодні напої</option>
-				  <option value="10">Пиво</option>
-				  <option value="11">Вино</option>
-				  <option value="12">Міцні напої</option>
-				  <option value="13">Алкогольні напої</option>
-				  <option value="14">Коктейлі</option>
+				  <option value="1" 
+				  @if($dish->dishgroup==1)selected 
+				  @endif 
+				  >Основне меню</option>
+				  <option value="2"
+				  @if($dish->dishgroup==2)selected 
+				  @endif
+				  >Холодні закуски</option>
+				  <option value="3"
+				  @if($dish->dishgroup==3)selected 
+				  @endif
+				  >Гарячі закуски</option>
+				  <option value="4"
+				  @if($dish->dishgroup==4)selected 
+				  @endif
+				  >Перші страви</option>
+				  <option value="5"
+				  @if($dish->dishgroup==5)selected 
+				  @endif
+				  >Гарніри</option>
+				  <option value="6"
+				  @if($dish->dishgroup==6)selected 
+				  @endif
+				  >Салати</option>
+				  <option value="7"
+				  @if($dish->dishgroup==7)selected 
+				  @endif
+				  >Десерт</option>
+				  <option value="8"
+				  @if($dish->dishgroup==8)selected 
+				  @endif
+				  >Гарячі напої</option>
+				  <option value="9"
+				  @if($dish->dishgroup==9)selected 
+				  @endif
+				  >Холодні напої</option>
+				  <option value="10"
+				  @if($dish->dishgroup==10)selected 
+				  @endif
+				  >Пиво</option>
+				  <option value="11"
+				  @if($dish->dishgroup==11)selected 
+				  @endif
+				  >Вино</option>
+				  <option value="12"
+				  @if($dish->dishgroup==12)selected 
+				  @endif
+				  >Міцні напої</option>
+				  <option value="13"
+				  @if($dish->dishgroup==13)selected 
+				  @endif
+				  >Алкогольні напої</option>
+				  <option value="14"
+				  @if($dish->dishgroup==14)selected 
+				  @endif
+				  >Коктейлі</option>
 				</select>
 			</div>
 			

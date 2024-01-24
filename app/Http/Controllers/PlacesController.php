@@ -36,9 +36,31 @@ class PlacesController extends Controller
     // перегляд меню
     public function viewMenu(Places $place) {
         $now  = new DateTimeImmutable();  //obj "now"
-        $payed_to = new DateTimeImmutable($place->noadsto);  //obj "2023-01-01"(db)
+        $noads_to = new DateTimeImmutable($place->noadsto);  //obj "2023-01-01"(db)
+        $ads_to = new DateTimeImmutable($place->adsto);
+        $position_to = new DateTimeImmutable($place->positionto);
 
-        if($place->adsto == null || $payed_to < $now){
+        if($noads_to < $now || $place->noadsto == null){
+            $tarif_1 = true; //+Ads
+        }
+        else{
+            $tarif_1 = false;
+        }
+        if($ads_to<$now || $place->adsto == null){
+            $tarif_2 = true;
+        }
+        else{
+            $tarif_2 = false;
+        }
+        if($position_to<$now || $place->positionto == null){
+            $tarif_3 = true;
+        }
+        else{
+            $tarif_3 = false;
+        }
+
+
+        if($tarif_1 /* &&$tarif_2&&$tarif_3 */ ){
             // беремо рандомні оголошення для меню
             $ads = Ads::inRandomOrder()->limit(30)->get();
             foreach($ads as $item){

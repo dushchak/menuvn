@@ -5,7 +5,7 @@
 @section ('main')
 <h1 class="icon_heart-solid">Мої заклади</h1>
 
-<h3>Рахунок: ${{ @$coins }}</h3>
+<h3 class="green_element">Рахунок: ${{ @$coins }}</h3>
 
 @if(count ($places) > 0)
 

@@ -87,6 +87,8 @@
                         </p>
                         
                         <p><a class="icon_toggle-off" href="{{ route('coins.formUp', $place->id)}}" title="Розмістити в ТОП5 білого списку"> розміщення в ТОП5</a></p>
+
+                        <p>Скарги та пропозиції пишіть на Telegram: <a href="https://t.me/armtec">@armtec</a></p>
                     </div>
                 </div> 
          @endcan   

@@ -14,6 +14,7 @@ body{
 	font-family: 'Montserrat', sans-serif;
 	font-family: 'Nunito', sans-serif;
 	font-family: 'Roboto', sans-serif;
+
 }
 
 /* footer донизу */
@@ -403,17 +404,40 @@ color: #F95A01;
 }
 
 /* Promo Table for Tarifs */
-.promo_table {
+.tarifs {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+}
+.tarif__block {
+	flex: 1 1 25%;
+	padding: 30px;
+	margin: 20px;
+	border: 1px solid #9c9c9c ;
+	line-height: 2;
+	box-shadow: 0 0 20px #999;
+	min-height: 100%;
+	display:flex;
+	flex-direction: column;
+}
+.tarif__block h3 {
 	text-align: center;
-	padding: 20px;
-	border: 1px solid #666;
+	font-size: 26px;
+	font-weight: bold;
 }
-.promo_table td {
-	padding: 20px;
+.tarif__info {
+ padding: 0 0 20px 0;
 }
-.promo_table img {
-	width: 60px;
+.tarif__radiogroup {
+	margin-top:auto;
 }
+.btn_submit {
+	padding: 10px 20px;
+	margin: 20px 0;
+  border-radius: 10px;
+}
+
+
 
 /* Advert onePlace */
 .promo {
@@ -479,12 +503,12 @@ select option[value="2"] {
 }
 .place__actions a {
     color: #332D29;
-    text-decoration: none;
+    text-decoration: underline;
     font-weight: bolder;
     font-size: 1.2rem;
 }
 .place__actions a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 .green_element {
     color:green;

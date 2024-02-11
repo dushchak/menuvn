@@ -7,105 +7,104 @@
 	<h1>Тарифи для {{$place->name}}</h1>
 	
 	
-	<h3>Рахунок: ${{ @$coins }}</h3>
+	<h3 class="green_element">Рахунок: ${{ @$coins }}</h3>
+	<p><a href="https://www.buymeacoffee.com/menu.vn.ua/extras">Поповнити</a></p>
 
 	<form action="{{ route('coins.tariffs', $place) }}" method="POST" >
 	@csrf
-	<table class="promo_table">
-		<tr>
-			<th>Тариф</th>
-			<th>Free</th>
-			<th>Start</th>
-			<th>Standart</th>
-			<th>Premium</th>
-		</tr>
-		<tr>
-			<td></td>
-			<td>Є реклама в меню</td>
-			<td>Без реклами</td>
-			<td>Без реклами<br>Розкручуєм Ваші Акції
-			</td>
-			<td>Без реклами<br> Показ Акцій<br> Топ5</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td><img src="/images/promos/noAds.svg" alt=""></td>
-			<td>
-				<img src="/images/promos/noAds.svg" alt="">
-				<img src="/images/promos/myAds.svg" alt="">
-			</td>
-			<td>
-				<img src="/images/promos/noAds.svg" alt="">
-				<img src="/images/promos/myAds.svg" alt="">
-				<img src="/images/promos/topPlace.svg" alt="">
-			</td>
-		</tr>
-		<tr>
-			<td>Місяць</td>
-			<td>0</td>
-			<td>$ 5 
-				<br>
-				<input type="radio" id="contactChoice1" name="tariff" value="start1m" checked />
-			</td>
-			<td>$ 15
-			<br>
-				<input type="radio" id="contactChoice1" name="tariff" value="standart1m"  /></td>
-			<td>$ 25
-			<br>
-				<input type="radio" id="contactChoice1" name="tariff" value="premium1m"  /></td>
-		</tr>
-		<tr>
-			<td>Рік</td>
-			<td>0</td>
-			<td>$ 49 (-18%)
-			<br>
-				<input type="radio" id="contactChoice1" name="tariff" value="start12m"  /></td>
-			<td>$ 139 (-23%)
-			<br>
-				<input type="radio" id="contactChoice1" name="tariff" value="standart12m"  /></td>
-			<td>$ 199 (-33%)
-			<br>
-				<input type="radio" id="contactChoice1" name="tariff" value="premium12m"  /></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>
-				
+	<div class="tarifs">
 
-			</td>
-			<td>
-				<input type="submit" class="btn btn-primary" value="Оформити">
-			</td>
-			<td></td>
-			<td></td>
-		</tr>
-	</table>
-
-	</form>
-
-	<!-- Buy Me a Coffee Please!  -->
-	<a href="https://www.buymeacoffee.com/menu.vn.ua"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=menu.vn.ua&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
-
-
-<form action="{{ route('coins.tariffs', $place) }}" method="POST" >
-	@csrf
-	<div class="form-group">
-		<p>На який час відключити рекламу в Меню:</p>
-			<div>
-			    <input type="radio" id="contactChoice1" name="period" value="m1" checked />
-			    <label for="contactChoice1">1 місяць - 10 монет</label>
-
-			    <input type="radio" id="contactChoice2" name="period" value="m6" />
-			    <label for="contactChoice2">6 місяць - 55 монет</label>
-
-			    <input type="radio" id="contactChoice3" name="period" value="m12" />
-			    <label for="contactChoice3">12 місяць - 90 монет</label>
+		<div class="tarif__block">
+			<div class="tarif__info">
+				<h3>"Free"</h3>
+				<img src="/images/promos/Ads.png" alt="" width="60">
+				<ul>
+					<li>QR меню</li>
+					<li>Сторінка закладу</li>
+					<li>Стороння реклама в меню</li>
+				</ul>
 			</div>
-		<input type="submit" class="btn btn-primary" value="Оплатити">
-	</div>
-</form>
+		</div>
+		<div class="tarif__block">
+			<div class="tarif__info">
+				<h3>"Старт"</h3>
+				<img src="/images/promos/noAds.svg" alt="" width="60">
+				<ul>
+					<li><b>Без реклами в меню</b></li>
+					<li>Сторінка закладу</li>
+					<li>QR меню</li>
+				</ul>
+			</div>
+			<div class="tarif__radiogroup">
+				<p>
+					<input type="radio" id="contactChoice1" name="tariff" value="premium1m" checked />
+					<label><b>$5</b> - місяць (~200грн)</label>
+				</p>
+				<p>
+					<input type="radio" id="contactChoice1" name="tariff" value="premium12m" />
+					<label>$45 - рік (-18%)</label>
+				</p>
+				<input type="submit" class="btn_submit" value="Оформити">
+			</div>
+		</div>
+		<div class="tarif__block">
+			<div class="tarif__info">
+				<h3>"Стандарт"</h3>
+				<img src="/images/promos/noAds.svg" alt="" width="60">
+				<img src="/images/promos/myAds.svg" alt="" width="60">
+				<ul>
+					
+					<li><b>Промо оголошення</b></li>
+					<li>Без реклами</li>
+					<li>Сторінка закладу</li>
+					<li>QR меню</li>
 
+				</ul>
+			</div>
+			<div class="tarif__radiogroup">
+				<p>
+					<input type="radio" id="contactChoice1" name="tariff" value="premium1m"/>
+					<label><b>$10</b> в місяць</label>
+				</p>
+				<p>
+					
+					<input type="radio" id="contactChoice1" name="tariff" value="premium12m" />
+					<label>$99 в рік (-18%)</label>
+				</p>
+				<input type="submit" class="btn_submit" value="Оформити">
+			</div>
+		</div>
+		<div class="tarif__block">
+			<div class="tarif__info">
+				<h3>"Преміум"</h3>
+				<img src="/images/promos/noAds.svg" alt="" width="60">
+				<img src="/images/promos/myAds.svg" alt="" width="60">
+				<img src="/images/promos/topPlace.svg" alt="" width="60">
+				<ul>
+					<li><b>Розміщення в ТОП5</b></li>
+					<li>Промо оголошення</li>
+					<li>Без реклами в меню</li>
+					<li>Сторінка закладу</li>
+					<li>QR меню</li>
+					
+				</ul>
+			</div>
+			<div class="tarif__radiogroup">
+				<p>
+					<input type="radio" id="contactChoice1" name="tariff" value="premium1m" />
+					<label><b>$25</b> в місяць</label>
+				</p>
+				<p>
+					
+					<input type="radio" id="contactChoice1" name="tariff" value="premium12m" />
+					<label>$199 в рік (-18%)</label>
+				</p>
+				<input type="submit" class="btn_submit" value="Оформити">
+			</div>
+			
+		</div>
+	</div>
+	</form>
 
 <div class="valid_errors">
 	@if ($errors->any())

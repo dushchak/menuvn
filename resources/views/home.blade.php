@@ -6,6 +6,7 @@
 <h1 class="icon_heart-solid">Мої заклади</h1>
 
 <h3 class="green_element">Рахунок: ${{ @$coins }}</h3>
+<p><a href="https://www.buymeacoffee.com/menu.vn.ua/extras">Поповнити</a></p>
 
 @if(count ($places) > 0)
 
@@ -73,9 +74,25 @@
             <div class="place__actions">
                 @auth
                 <div class="pay-actions">
+
+                    <p><a href="https://www.buymeacoffee.com/menu.vn.ua/extras">Поповнити рахунок</a></p>
+
+                    @if($place->tarif['positionto'])
+                        <p>Ваш тариф <b>Premium</b> - до {{ $place->positionto }}</p>
+
+                    @elseif ($place->tarif['adsto'])
+                        <p>Ваш тариф <b>Standart</b></p>
+                        <p>АКТИВОВАНО до: {{ $place->adsto }}</p>
+
+                    @elseif($place->tarif['noadsto'])
+                        <p>Ваш тариф <b>Start</b> -  до {{ $place->noadsto }}
+                        </p>
+                    @else
+                         <p>vash tarif Free</p>
+                    @endif
                     
                     @if($place->tarif['noadsto'])
-                        <p class="green_element"><a class="icon_toggle-off " href="{{ route('coins.formNoAds', $place->id)}}" title="Відключити рекламу в меню закладу"> Реклама в меню("Start")</a>
+                        <p class="green_element"><a class="icon_toggle-off " href="{{ route('coins.formNoAds', $place->id)}}" title="Відключити рекламу в меню закладу"> Реклама в меню</a>
                             <br>
                        Відключено до: {{ $place->noadsto }}
                         </p>
@@ -88,7 +105,7 @@
                    
                         @if($place->tarif['adsto'])
                             <p class="green_element">
-                                <a class="icon_toggle-on" href="{{ route('placeAds', $place->id) }}" title="Показувати Промо оголошення"> Ваші Промо-Акції("Standart")</a>
+                                <a class="icon_toggle-on" href="{{ route('placeAds', $place->id) }}" title="Показувати Промо оголошення"> Ваші Промо-Акції</a>
                                 <br>
                             АКТИВОВАНО до: {{ $place->adsto }}
                             </p>
@@ -101,14 +118,16 @@
                     
                         @if($place->tarif['positionto'])
                             <p class="green_element">
-                                <a class="icon_toggle-on" href="{{ route('coins.formUp', $place->id)}}" title="Розмістити в ТОП5 білого списку"> розміщення в ТОП5("Premium")</a>
+                                <a class="icon_toggle-on" href="{{ route('coins.formUp', $place->id)}}" title="Розмістити в ТОП5 білого списку"> розміщення в ТОП5</a>
                             <br>
                             АКТИВОВАНО до: {{ $place->positionto }}
                             </p>
                         @else
-                            <p><a class="icon_toggle-off" href="{{ route('coins.formUp', $place->id)}}" title="Розмістити в ТОП5 білого списку"> розміщення в ТОП5</a>
+                            <p><a class="icon_toggle-off" href="{{ route('coins.formUp', $place->id)}}" title="Розмістити в ТОП5 білого списку"> Розміщення в ТОП5</a>
                             </p>
                         @endif
+
+                        <p>Скарги та пропозиції пишіть на Telegram: <a href="https://t.me/armtec">@armtec</a></p>
                     
                 </div>
                 @endauth

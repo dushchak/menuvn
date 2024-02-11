@@ -1,0 +1,47 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    #icons
+    RewriteCond $1 !^(index\.php|css|woff|eot|ttf|svg|css|js|resources|robots\.txt)
+
+    # запрет просмотра содержимого каталогов, напр. domen.com/uploads
+    Options -Indexes
+
+    # редирект з robota.Evikna.com.ua на robota.vn.ua //07.12.2023
+    #RewriteCond %{HTTP_HOST} robota\.evikna\.com\.ua$ [NC]
+    #RewriteRule ^(.*)$ https://robota.vn.ua/$1 [R=301,L]
+
+    # редирект з www на БЕЗ www
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+    # redirect http to https 
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L=301]
+
+
+
+
+
+    # ORIGINAL
+    
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+

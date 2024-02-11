@@ -87,7 +87,8 @@
 					<p><a href="{{ route('aboutus') }}">Про сервіс</a></p>
 					<p><a href="{{ route('rules') }}">Наші умови та правила</a></p>
 					<p><a href="{{ route('faqs') }}">ЧаПи (Часті питання)</a></p>
-					
+					<!-- Buy Me a Coffee Please!  -->
+						
 				</div>
 
 			</div>

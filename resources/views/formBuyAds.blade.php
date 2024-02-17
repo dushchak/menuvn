@@ -4,28 +4,83 @@
 
 @section('main')
 <div class="container">
-	<h1>+ ПРОМО для {{$place->name}}</h1>
-	<p>Підключіть показ вашої реклами на сторінках Menu.vn.ua. Ви можете показувати цільовій аудиторії ваші оголошення, розкажіть про ваші знижки та акційні пропозиції</p>
-	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ipsa suscipit repellat exercitationem consequuntur quam, alias, assumenda cupiditate, commodi eligendi consequatur voluptate illo? Sequi et explicabo totam nostrum. Voluptates, aliquid.</p>
 
-	<p>Ціна: 300грн/місяць</p>
-<form action="{{ route('coins.payads', $place) }}" method="POST" >
+	<h1>Тарифи з активними "Промо-оголошеннями" {{$place->name}}</h1>
+	<h2>Включіть показ ваших промо оголошеннь на сторінках menu.vn.ua </h2>
+
+	<p>Ваші рекламні оголошення про "Акції", "Знижки", "Запрошення", "Спеціальні пропозиції"  будуть приваблювати клієнтів до Закладу</p>
+
+	<h3 class="green_element">Рахунок: ${{ @$coins }}</h3>
+	<p><a href="https://www.buymeacoffee.com/menu.vn.ua/extras">Поповнити</a></p>
+
+	<form action="{{ route('coins.tariffs', $place) }}" method="POST" >
 	@csrf
-	<div class="form-group">
-		<p>Включити ваші Промо:</p>
-			<div>
-			    <input type="radio" id="contactChoice1" name="period" value="m1" checked />
-			    <label for="contactChoice1">1 місяць - 10 монет</label>
+	<div class="tarifs">
+		<div class="tarif__block">
+			<div class="tarif__info">
+				<h3>"Стандарт"</h3>
+				<img src="/images/promos/noAds.svg" alt="" width="60">
+				<img src="/images/promos/myAds.svg" alt="" width="60">
+				<ul>
+					
+					<li><b>Промо оголошення</b></li>
+					<li>Без реклами в меню</li>
+					<li>Сторінка закладу</li>
+					<li>QR меню</li>
 
-			    <input type="radio" id="contactChoice2" name="period" value="m6" />
-			    <label for="contactChoice2">6 місяць - 55 монет</label>
-
-			    <input type="radio" id="contactChoice3" name="period" value="m12" />
-			    <label for="contactChoice3">12 місяць - 90 монет</label>
+				</ul>
 			</div>
-		<input type="submit" class="btn btn-primary" value="Оплатити">
+			<div class="tarif__radiogroup">
+				<p>
+					<input type="radio" id="contactChoice1" name="tariff" value="standart1m" checked/>
+					<label><b>$10</b> в місяць</label>
+				</p>
+				<p>
+					
+					<input type="radio" id="contactChoice1" name="tariff" value="standart12m" />
+					<label>$99 в рік (-18%)</label>
+				</p>
+				<input type="submit" class="btn_submit" value="Оформити">
+			</div>
+		</div>
+		<div class="tarif__block">
+			<div class="tarif__info">
+				<h3>"Преміум"</h3>
+				<img src="/images/promos/noAds.svg" alt="" width="60">
+				<img src="/images/promos/myAds.svg" alt="" width="60">
+				<img src="/images/promos/topPlace.svg" alt="" width="60">
+				<ul>
+					<li><b>Розміщення в ТОП5</b></li>
+					<li>Промо оголошення</li>
+					<li>Без реклами в меню</li>
+					<li>Сторінка закладу</li>
+					<li>QR меню</li>
+					
+				</ul>
+			</div>
+			<div class="tarif__radiogroup">
+				<p>
+					<input type="radio" id="contactChoice1" name="tariff" value="premium1m" />
+					<label><b>$25</b> в місяць</label>
+				</p>
+				<p>
+					
+					<input type="radio" id="contactChoice1" name="tariff" value="premium12m" />
+					<label>$199 в рік (-33%)</label>
+				</p>
+				<input type="submit" class="btn_submit" value="Оформити">
+			</div>
+			
+		</div>
 	</div>
-</form>
+	</form>
+
+	<p class="articles_promo">
+		<b>Розміщення прямих посиланнь(a href) лінків</b> на ваші інтернет сайти - <b>$30 в рік</b>.
+		Розміщення відбувається в тематичних статтях про ваш заклад. Щодо розміщення ссилок на сайти з тематикою - Закладів харчування Вінниці - звертайтесь на контакти внизу сторінки.
+		<br>
+		Посилання розміщуються незалежно від тарифів.
+	</p>
 
 
 

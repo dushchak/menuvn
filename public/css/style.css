@@ -406,7 +406,7 @@ color: #F95A01;
 /* Promo Table for Tarifs */
 .tarifs {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	flex-direction: row;
 }
 .tarif__block {
@@ -417,6 +417,7 @@ color: #F95A01;
 	line-height: 2;
 	box-shadow: 0 0 20px #999;
 	min-height: 100%;
+	max-width: 350px;
 	display:flex;
 	flex-direction: column;
 }
@@ -772,6 +773,10 @@ background-size: 1.25rem;
 .textinfo p {
 	padding: 20px;
 	line-height: 1.5;
+}
+
+.alert-danger {
+	color: red;
 }
 
 

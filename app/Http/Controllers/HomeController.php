@@ -556,7 +556,7 @@ class HomeController extends Controller
     }
 
     public function pay15usd(){
-        $this->payBMAC(16);
+        $this->payBMAC(15);
         return redirect()->route('home');
     }
 

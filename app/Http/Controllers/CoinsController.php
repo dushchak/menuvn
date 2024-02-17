@@ -110,6 +110,9 @@ class CoinsController extends Controller
 
 
     public function tariffs(Request $request, Places $place){
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ]);
         switch($request->tariff){
             case 'start1m':
                 $result = $this->pay($place, -5, "start1m", "1m ".$place->name);
@@ -132,7 +135,7 @@ class CoinsController extends Controller
                 }
                 break;
             case 'standart1m':
-                $result = $this->pay($place, -15, "standart1m", "1m ".$place->name);
+                $result = $this->pay($place, -10, "standart1m", "1m ".$place->name);
                 if($result){
                     $setNoAds = $this->setNoAds($place,'m1'); // places.
                     $setPromo = $this->addPromo($place,'m1'); // places.
@@ -143,7 +146,7 @@ class CoinsController extends Controller
                 }
                 break;
             case 'standart12m':
-                $result = $this->pay($place, -139, "standart12m", "12m ".$place->name);
+                $result = $this->pay($place, -99, "standart12m", "12m ".$place->name);
                 if($result){
                     $setNoAds = $this->setNoAds($place,'m12'); // places.
                     $setPromo = $this->addPromo($place,'m12'); // places.
@@ -167,7 +170,7 @@ class CoinsController extends Controller
                 }
                 break;
             case 'premium12m':
-                $result = $this->pay($place, -139, "premium12m", "12m ".$place->name);
+                $result = $this->pay($place, -199, "premium12m", "12m ".$place->name);
                 if($result){
                     $setNoAds = $this->setNoAds($place,'m12'); // places.
                     $setPromo = $this->addPromo($place,'m12'); // places.
@@ -179,7 +182,8 @@ class CoinsController extends Controller
                 }
                 break;
             default:
-                dd('noone tariff selected');
+                //dd('noone tariff selected');
+                return view ('home');
                 break;    
         }    
     }

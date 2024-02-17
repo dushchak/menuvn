@@ -109,18 +109,23 @@ Route::get('/wallet/formup/{place}', [App\Http\Controllers\CoinsController::clas
 
 Route::post('/wallet/storeUp/{place}', [App\Http\Controllers\CoinsController::class, 'upTop'])->name('coins.storeUp')->middleware('can:updatePlace,place');
 
+// Tariffs page
+// Route::get('/tariffs', function(){
+// 	return view('tariffs');
+// 	 })->name('tariffs')->middleware('auth');
+
 /// BuyMeACoffe payment 
 /// HomeController (auth)
 // RLW7bED5qs2sC5Bw4m7 
-Route::get('/bmac/aaa', [App\Http\Controllers\HomeController::class, 'pay5usd'])->name('bmac5')->middleware('auth');
+Route::get('/bmac/RLW7bED5qs2sC5Bw4m7', [App\Http\Controllers\HomeController::class, 'pay5usd'])->name('bmac5')->middleware('auth');
 // xCGtr8PXc55TEZkpyrX
-Route::get('/bmac/bbb', [App\Http\Controllers\HomeController::class, 'pay15usd'])->name('bmac15')->middleware('auth');
+Route::get('/bmac/xCGtr8PXc55TEZkpyrX', [App\Http\Controllers\HomeController::class, 'pay15usd'])->name('bmac15')->middleware('auth');
 // MrkZt2hW3j3zfKCu6RC
-Route::get('/bmac/ccc', [App\Http\Controllers\HomeController::class, 'pay50usd'])->name('bmac50')->middleware('auth');
+Route::get('/bmac/MrkZt2hW3j3zfKCu6RC', [App\Http\Controllers\HomeController::class, 'pay50usd'])->name('bmac50')->middleware('auth');
 // 3c9rXHUXjp9KFKfscVy
-Route::get('/bmac/ddd', [App\Http\Controllers\HomeController::class, 'pay100usd'])->name('bmac100')->middleware('auth');
+Route::get('/bmac/3c9rXHUXjp9KFKfscVy', [App\Http\Controllers\HomeController::class, 'pay100usd'])->name('bmac100')->middleware('auth');
 // QbJ4qaGCqqkE4DGCZBW
-Route::get('/bmac/eee', [App\Http\Controllers\HomeController::class, 'pay200usd'])->name('bmac200')->middleware('auth');
+Route::get('/bmac/QbJ4qaGCqqkE4DGCZBW', [App\Http\Controllers\HomeController::class, 'pay200usd'])->name('bmac200')->middleware('auth');
 
 
 // Admin

@@ -55,7 +55,7 @@
 				<ul>
 					
 					<li><b>Промо оголошення</b></li>
-					<li>Без реклами в меню</li>
+					<li>Без реклами</li>
 					<li>Сторінка закладу</li>
 					<li>QR меню</li>
 
@@ -63,7 +63,7 @@
 			</div>
 			<div class="tarif__radiogroup">
 				<p>
-					<input type="radio" id="contactChoice1" name="tariff" value="standart1m" checked/>
+					<input type="radio" id="contactChoice1" name="tariff" value="standart1m"/>
 					<label><b>$10</b> в місяць</label>
 				</p>
 				<p>
@@ -108,8 +108,6 @@
 	<p class="articles_promo">
 		<b>Розміщення прямих посиланнь(a href) лінків</b> на ваші інтернет сайти - <b>$30 в рік</b>.
 		Розміщення відбувається в тематичних статтях про ваш заклад. Щодо розміщення ссилок на сайти з тематикою - Закладів харчування Вінниці - звертайтесь на контакти внизу сторінки.
-		<br>
-		Посилання розміщуються незалежно від тарифів.
 	</p>
 
 

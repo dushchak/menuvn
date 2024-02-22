@@ -110,8 +110,9 @@ class CoinsController extends Controller
 
 
     public function tariffs(Request $request, Places $place){
+        //dd($request);
         $validatedData = $request->validate([
-            'name' => 'required',
+            'tariff' => 'required',
         ]);
         switch($request->tariff){
             case 'start1m':

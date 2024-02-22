@@ -17,7 +17,9 @@
 
 
 
-<h1><a href="tel:{{ $place->phone1 }}">{{$place->name}} <br>  <span class="icon_phone-solid"> {{ $place->phone1 }}</span></a></h1>
+<h1>{{$place->name}}<a href="tel:{{ $place->phone1 }}">
+ <span class="icon_phone-solid"> {{ $place->phone1 }}</span></a>
+</h1>
 
 
 <div class="place__menuinfo">  

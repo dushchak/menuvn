@@ -291,7 +291,7 @@ class HomeController extends Controller
                 'name' =>'required|string|max:100|',
                 'adress' =>'required|string|min:7|max:100|',
                 'workhours'=>'required|alpha_dash|min:3|max:6|',
-                'description'=>'required|string|min:20|max:600|',
+                'description'=>'required|string|min:20|max:1000|',
                 'manager'=>'required|string|min:10|max:16|',
                 'viber'=>'required|string|min:10|max:16|',
                 'telegram'=>'nullable|string|min:3|max:16|',

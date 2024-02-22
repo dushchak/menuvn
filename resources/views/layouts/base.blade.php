@@ -12,8 +12,20 @@
 	<link rel="stylesheet" href="{{asset('css/style_menu.css')  }} ">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Nunito:ital,wght@0,200;0,400;1,900&family=Roboto&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Nunito:ital,wght@0,200;0,400;1,900&family=Roboto&display=swap" rel="stylesheet">
+
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-B8N4WSMPTL"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-B8N4WSMPTL');
+	</script>
+	<!-- end Google tag (gtag.js) -->
 
 	
 

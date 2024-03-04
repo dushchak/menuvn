@@ -89,7 +89,10 @@
        /* https://www.simplesoftware.io/#/docs/simple-qrcode/ru */
        /* https://github.com/SimpleSoftwareIO/simple-qrcode */
 
-       QrCode::size(400)
+
+
+       QrCode::format('png')
+              ->size(400)
               ->style('square')
               ->eye('circle')
               //->backgroundColor($qrstyle->bg[0], $qrstyle->bg[1], $qrstyle->bg[2])

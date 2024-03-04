@@ -1,28 +1,32 @@
 @font-face {
   font-family: 'icons';
-  /*
-  src:  url('../fonts/icons.eot?jobfwq');
+  
+  src:  url('../css/fonts/icons.eot?jobfwq');
   src:  
-    url('../fonts/icons.eot?jobfwq#iefix') format('embedded-opentype'),
-    url('../fonts/icons.ttf?jobfwq') format('truetype'),
-    url('../fonts/icons.woff?jobfwq') format('woff'),
-    url('../fonts/icons.svg?jobfwq#icons') format('svg');
+    url('../css/fonts/icons.eot?jobfwq#iefix') format('embedded-opentype'),
+    url('../css/fonts/icons.ttf?jobfwq') format('truetype'),
+    url('../css/fonts/icons.woff?jobfwq') format('woff'),
+    url('../css/fonts/icons.svg?jobfwq#icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
-  */
   
-  src:  url('fonts/icons.eot?jobfwq');
+  
+/*
+  src:  url('/fonts/icons.eot?jobfwq');
   src:  
-    url('fonts/icons.eot?jobfwq#iefix') format('embedded-opentype'),
-    url('fonts/icons.ttf?jobfwq') format('truetype'),
-    url('fonts/icons.woff?jobfwq') format('woff'),
-    url('fonts/icons.svg?jobfwq#icons') format('svg');
+    url('/fonts/icons.eot?jobfwq#iefix') format('embedded-opentype'),
+    url('/fonts/icons.ttf?jobfwq') format('truetype'),
+    url('/fonts/icons.woff?jobfwq') format('woff'),
+    url('/fonts/icons.svg?jobfwq#icons') format('svg');
+
   
   font-weight: normal;
   font-style: normal;
   font-display: block;
+
+    */
 
 
 [class^="icon_"]::before, 
